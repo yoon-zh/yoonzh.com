@@ -4,105 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>yoonzh.com</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-
-        header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .section {
-            background: white;
-            margin: 2rem 0;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .projects a, .contact a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        .projects .project {
-            margin-bottom: 20px;
-        }
-
-        .projects a:hover, .contact a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #2c3e50;
-            color: white;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>윤.志</h1>
         <p>:3</p>
-        <p><a href="./">Home</a> | <b>About</b></p>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="./index">Home</a></li>
+                <li><a href="./about">About</a></li>
+                <li><a href="./projects">Projects</a></li>
+                <li><a href="./archive">Archive</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main class="container">
         <section class="section about">
             <h2>About Me</h2>
             <p>Passionate about robotics and creating innovative solutions. I enjoy exploring new technologies and building projects that challenge my skills. Eager to learn and grow in the tech world!</p>
-        </section>
-
-        <section class="section projects">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Personal Portfolio Website</h3>
-                <p>Designed and developed a personal webpage to showcase my projects and skills. Special thanks to my partner for inspiring me to create this space! <a href="https://yoonzh.com">View Project</a></p>
-            </div>
-            <div class="project">
-                <h3>Flame Temperature Calculator</h3>
-                <p>A coding project in Matlab that calculates flame temperatures. <a href="https://github.com/yoon-zh/flametemp">View Project</a></p>
-            </div>
-            <div class="project">
-                <h3>Chemical Element Counter</h3>
-                <p>Quick project on a chemical compound reader to process the number of elements. <a href="https://github.com/yoon-zh/chemcount">View Project</a></p>
-            </div>
         </section>
 
         <section class="section contact">
