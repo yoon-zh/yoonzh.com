@@ -1,0 +1,16 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include head.html %}
+</head>
+<body>
+    {% include header.html %}
+    
+    <main class="container">
+        {{ content }} <!-- Content injection point -->
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>

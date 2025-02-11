@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<article class="robot-project">
+    <header class="project-header">
+        <h1>{{ page.title }}</h1>
+        <div class="project-meta">
+            {% if page.ros_version %}
+            <span class="ros-badge">ROS{{ page.ros_version }}</span>
+            {% endif %}
+            {% if page.github %}
+            <a href="{{ page.github }}" class="github-link">
+                <svg class="github-icon">...</svg>
+                View on GitHub
+            </a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="project-content">
+        {{ content }}
+    </div>
+    
+</article>
