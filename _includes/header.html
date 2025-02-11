@@ -2,14 +2,12 @@
 <header class="robot-header">
     <h1>윤.志</h1>
     <p class="robot-subtitle">:3</p>
-    <nav class="nav-panel">
-        <ul class="nav-grid">
+    <nav class="navbar">
+        <ul class="nav-links">
             {% for item in site.navigation %}
-            <li class="nav-node">
-                <a href="{{ item.link }}" class="nav-link {% if page.url == item.link %}active-sensor{% endif %}">
-                    {{ item.name }}
-                </a>
-            </li>
+                <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
+            {% else %}
+                <li>no nav items found</li>
             {% endfor %}
         </ul>
     </nav>

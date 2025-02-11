@@ -1,7 +1,17 @@
 navigation:
   - name: Home
     link: /
+  - name: About
+    link: /about/
   - name: Projects
     link: /projects/
-  - name: Articles
-    link: /articles/
+  - name: Posts
+    link: /posts/
+
+projects:
+  - title: AFT calculator
+    url: /projects/flametemp
+  - title: Chemical Counter
+    url: /projects/chemcount
+  - title: Website
+    url: /projects/website
