@@ -1,42 +1,52 @@
+<!-- _layouts/default.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yoonzh.com</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- _includes/head.html -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>yoonzh.com</title>
+<link rel="stylesheet" href="/css/styles.css">
+
 </head>
 <body>
-    <header>
-        <h1>윤.志</h1>
-        <p>:3</p>
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./projects/index.html">Projects</a></li>
-                <li><a href="./archive.html">Archive</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <!-- _includes/header.html -->
+<header class="robot-header">
+    <h1>윤.志</h1>
+    <p class="robot-subtitle">:3</p>
+    <nav class="nav-panel">
+        <ul class="nav-grid">
+            
+            <li class="nav-node">
+                <a href="/" class="nav-link active-sensor">
+                    Home
+                </a>
+            </li>
+            
+            <li class="nav-node">
+                <a href="/projects/" class="nav-link ">
+                    Projects
+                </a>
+            </li>
+            
+            <li class="nav-node">
+                <a href="/articles/" class="nav-link ">
+                    Articles
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</header>
+    
     <main class="container">
-        <section class="home">
-            <h2>Home</h2>
-            <p>testing pages... this is home</p>
-            <p>s</p>
-        </section>
+        <h1 id="welcome-to-my-portfolio">Welcome to My Portfolio</h1>
 
-        <section class="section contact">
-            <h2>Contact</h2>
-            <p>📧 Email: <a href="mailto:yoon_zh@outlook.com">yoon_zh@outlook.com</a></p>
-            <p>💼 LinkedIn: <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/">View</a></p>
-            <p>🐱 GitHub: <a href="https://github.com/yoon-zh">github.com/yoon-zh</a></p>
-        </section>
+<h2 id="featured-projects">Featured Projects</h2>
+
+ <!-- Content injection point -->
     </main>
 
-    <footer>
-        <p>© 2025 윤.志. All rights reserved.</p>
-    </footer>
+    <p>© 2025 윤.志. All rights reserved.</p>
 </body>
 </html>
