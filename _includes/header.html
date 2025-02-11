@@ -1,13 +1,11 @@
 <!-- _includes/header.html -->
-<header class="robot-header">
+<header>
     <h1>윤.志</h1>
-    <p class="robot-subtitle">:3</p>
+    <p>:3</p>
     <nav class="navbar">
         <ul class="nav-links">
             {% for item in site.navigation %}
                 <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
-            {% else %}
-                <li>no nav items found</li>
             {% endfor %}
         </ul>
     </nav>

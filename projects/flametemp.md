@@ -5,7 +5,9 @@ math: true
 ---
 
 # Adiabatic flame temperature (AFT) calculator - flametemp()
+
 ### What is it?
+
 The temperature resulting from the combustion of a mix of fuels with air under the assumption of no heat loss in a steady process.
 
 **Figure 1:** AFT from a combustion chamber.
@@ -16,13 +18,18 @@ The temperature resulting from the combustion of a mix of fuels with air under t
 
 In simple terms, **adiabatic** means no heat loss to the surroundings. If the combustion inside a chamber is adiabatic, the assumption is there is no heat transfer to the outside of the chamber.
 The main things to consider when calculating the AFT is:
+
 1. Fuels and their states (liquid, gas...)
 2. Amount of air used and its humidity
 3. Environmental conditions such as temperature and pressure
 4. Degree of completion of the reaction
+
 The AFT is **maximum** when the proportions of fuels and air is 1:1. In other words, when all the fuels react with all the air available, there is no extra air or fuel components left in the product.
+
 ### Why do we care about it?
+
 There are plenty of applications for it, but to name a few:
+
 1. Designing a combustion chamber
 The AFT essentially provides the maximum temperature a combustion can ever reach, which is under ideal conditions. This is a useful reference value for the design process of a combustion chamber, for example when choosing the materials or carrying out a simulation.
 2. Determining efficiency
@@ -31,6 +38,7 @@ When aiming for high temperatures, the AFT can be understood as the "best" tempe
 In a cycle that involves combustion chambers, the AFT can be used along with the conditions of the cycle such as power output and efficiency to determine the molar flow and fractions of the combustion chamber (in simpler words, how much fuel is needed to produce certain amount of energy in a power plant design).
 
 ### How to calculate it?
+
 The key for calculating AFT is using enthalpy. Considering the combustion chamber as the system, an adiabatic combustion process implies there is no energy loss, for which the enthalpies of the products is equal to the enthalpies of the reactants:
 
 <!--![image](https://github.com/user-attachments/assets/dbd67560-970f-4bb2-8248-c25c8eb43f84)-->
@@ -53,6 +61,7 @@ However, step 3 can be particularly challenging since $\overline{h}\_{flame}$ is
 This process is rather tedious and timetaking, but necessary for critical applications. In an attempt to simplify the calculation process, this code provides a function to calculate the AFT: flametemp()
 
 ## Tutorial for flametemp()
+
 To use this function, you need the following information:
 1. Fuels to be used
 2. State of the fuels
@@ -126,6 +135,7 @@ disp("Precise AFT: " + tflame)
 These options are both deactivated (false) by default.
 
 ### Credits
+
 [^1]: Cengel, Y. (2015). _Thermodynamics: An Engineering Approach._ McGraw Hill: 8th Ed. 
 [^2]: Robayo, D (2024). _Termoquímica de la Combustion_ (Lecture Notes). Universidad de La Sabana.
 
