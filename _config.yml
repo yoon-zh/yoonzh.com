@@ -1,0 +1,7 @@
+navigation:
+  - name: Home
+    link: /
+  - name: Projects
+    link: /projects/
+  - name: Articles
+    link: /articles/
