@@ -1,36 +1,40 @@
 <!-- _layouts/default.html -->
 <!DOCTYPE html>
 <html lang="en">
+<!-- _includes/head.html -->
 <head>
-    <!-- _includes/head.html -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>yoonzh.com</title>
-<link rel="stylesheet" href="/css/main.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
 </head>
 <body>
-    <!-- _includes/header.html -->
-<header>
-    <h1>윤.志</h1>
-    <p>:3</p>
-    <nav class="navbar">
-        <ul class="nav-links">
-            
-                <li><a href="/">Home</a></li>
-            
-                <li><a href="/about/">About</a></li>
-            
-                <li><a href="/projects/">Projects</a></li>
-            
-                <li><a href="/posts/">Posts</a></li>
-            
-        </ul>
+  <!-- _includes/header.html -->
+<header class="site-header">
+  <div class="logo-container">
+    <h1 class="logo">윤志</h1>
+    <p class="logo-subtitle">:3</p>
+  </div>
+  <div class="nav-container">
+    <nav class="nav-links">
+      
+        <a href="/" class="hover-glow">Home</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
     </nav>
+  </div>
 </header>
-    
-    <main class="container">
-        <h1 id="posts">Posts</h1>
+  
+  <main class="page-content">
+    <div class="content-wrapper">
+      <h1 id="posts">Posts</h1>
 
 <ul>
   <li>
@@ -44,20 +48,32 @@
   </li>
 </ul>
 
-<h2 id="contact">Contact</h2>
-<p>📧 Email: <a href="mailto:yoon_zh@outlook.com">yoon_zh@outlook.com</a><br />
-💼 LinkedIn: <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/">View</a><br />
-🐱 GitHub: <a href="https://github.com/yoon-zh">github.com/yoon-zh</a></p>
- <!-- Content injection point -->
-    </main>
-    <footer>
-        <div class="social-links">
-    <a href="https://github.com/yoon-zh"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#"><i class="fab fa-youtube"></i></a>
+
+    </div>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 윤志. All rights reserved.</p>
+    </div>
   </div>
-<p>© 2025 윤.志. All rights reserved.</p>
-    </footer>
+</footer>
+
 </body>
 </html>
