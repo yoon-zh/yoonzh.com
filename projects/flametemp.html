@@ -43,7 +43,6 @@
     <div class="content-wrapper">
       <article class="project-detail">
   <header class="project-header">
-    <h1>Adiabatic flame temperature (AFT) calculator - flametemp()</h1>
     <div class="project-meta">
       
       
@@ -51,9 +50,11 @@
   </header>
 
   <div class="project-content">
-    <h3 id="view-on-github"><a href="https://github.com/yoon-zh/flametemp">View on GitHub</a></h3>
+    <h1 id="adiabatic-flame-temperature-aft-calculator---flametemp">Adiabatic flame temperature (AFT) calculator - flametemp()</h1>
 
-<h3 id="what-is-it">What is it?</h3>
+<h3 id="view-on-github"><a href="https://github.com/yoon-zh/flametemp">View on GitHub</a></h3>
+
+<h2 id="what-is-it">What is it?</h2>
 
 <p>The temperature resulting from the combustion of a mix of fuels with air under the assumption of no heat loss in a steady process.</p>
 
@@ -75,7 +76,7 @@ The main things to consider when calculating the AFT is:</p>
 
 <p>The AFT is <strong>maximum</strong> when the proportions of fuels and air is 1:1. In other words, when all the fuels react with all the air available, there is no extra air or fuel components left in the product.</p>
 
-<h3 id="why-do-we-care-about-it">Why do we care about it?</h3>
+<h2 id="why-do-we-care-about-it">Why do we care about it?</h2>
 
 <p>There are plenty of applications for it, but to name a few:</p>
 
@@ -88,7 +89,7 @@ When aiming for high temperatures, the AFT can be understood as the “best” t
 In a cycle that involves combustion chambers, the AFT can be used along with the conditions of the cycle such as power output and efficiency to determine the molar flow and fractions of the combustion chamber (in simpler words, how much fuel is needed to produce certain amount of energy in a power plant design).</li>
 </ol>
 
-<h3 id="how-to-calculate-it">How to calculate it?</h3>
+<h2 id="how-to-calculate-it">How to calculate it?</h2>
 
 <p>The key for calculating AFT is using enthalpy. Considering the combustion chamber as the system, an adiabatic combustion process implies there is no energy loss, for which the enthalpies of the products is equal to the enthalpies of the reactants:</p>
 
@@ -100,16 +101,16 @@ In a cycle that involves combustion chambers, the AFT can be used along with the
 
 <p><em>Taken from <sup id="fnref:1:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>, pg 780</em></p>
 
-<p>In the equation above, $\overline{h^{\circ}_f}$ is the enthalpy of formation, and $\overline{h^{\circ}}$ the enthalpy at 298K. $\overline{h}$ is the enthalpy at the temperature of the elements before and after the reaction. Consider this enthalpy as $\overline{h}_{flame}$. <em>Adapted from <sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</em></p>
+<p>In the equation above, \(\overline{h^{\circ}_f}\) is the enthalpy of formation, and \(\overline{h^{\circ}}\) the enthalpy at 298K. \(\overline{h}\) is the enthalpy at the temperature of the elements before and after the reaction. Consider this enthalpy as \(\overline{h}_{flame}\). <em>Adapted from <sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</em></p>
 
 <p>Therefore, calculating the AFT can be considered in three steps:</p>
 <ol>
   <li>Determining the moles of the reactants and products.</li>
-  <li>Obtaining the enthalpies for each reactant and product from the above equation and solving for $\overline{h}_{flame}$.</li>
-  <li>Linking $\overline{h}_{flame}$ to its corresponding temperature, $T_{flame}$.</li>
+  <li>Obtaining the enthalpies for each reactant and product from the above equation and solving for \(\overline{h}_{flame}\).</li>
+  <li>Linking \(\overline{h}_{flame}\) to its corresponding temperature, \(T_{flame}\).</li>
 </ol>
 
-<p>However, step 3 can be particularly challenging since $\overline{h}_{flame}$ is different for each product. Therefore, a common technique to calculate it is assuming all products are N2 (since the products will be mostly N2), solving for $\overline{h}_{flame}$, and interpolating from there.</p>
+<p>However, step 3 can be particularly challenging since \(\overline{h}_{flame}\) is different for each product. Therefore, a common technique to calculate it is assuming all products are N2 (since the products will be mostly N2), solving for \(\overline{h}_{flame}\), and interpolating from there.</p>
 
 <p>This process is rather tedious and timetaking, but necessary for critical applications. In an attempt to simplify the calculation process, this code provides a function to calculate the AFT: flametemp()</p>
 
@@ -226,7 +227,7 @@ In a cycle that involves combustion chambers, the AFT can be used along with the
 
 <p>These options are both deactivated (false) by default.</p>
 
-<h3 id="credits">Credits</h3>
+<h2 id="credits">Credits</h2>
 
 <!--Written by Jorge Porras (2025)-->
 <div class="footnotes" role="doc-endnotes">
@@ -263,7 +264,7 @@ In a cycle that involves combustion chambers, the AFT can be used along with the
       </a>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 윤志. All rights reserved.</p>
+      <p>© 2025 윤志. All rights reserved.</p>
     </div>
   </div>
 </footer>
