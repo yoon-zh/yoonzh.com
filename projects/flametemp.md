@@ -80,7 +80,7 @@ If you are designing a cycle, you may also need the molar fractions of the produ
 3. Power output of the cycle
 
 Below is an example of the syntax:
-```matlab
+{% highlight matlab %}
 fuels = ["C2H5OH", "C3H6"];     % Mix of fuels, can be more than one
 fuel_state = ["(l)", "(g)"];    % Fuel state (liquid or gas)
 fractions = [0.25, 0.75];       % Fuel fractions (proportions in the mix)
@@ -103,9 +103,9 @@ tflame = flametemp(fuels, 'fuel_state', fuel_state, 'fractions', fractions, ...
     'real_air', real_air, 'phi', phi, 'air_temp', air_temp, 'pressure', pressure, ...
     'xCO2', xCO2, 'xH2O', xH2O, 'num_comb', num_comb, 'eff', eff, 'Wnet', Wnet);
 disp("AFT: " + tflame)
-```
+{% endhighlight %}
 You may not have all of these values, or you may not be carrying out a critical application. If such, you can skip many of the arguments above. Here is a breakdown:
-```matlab
+{% highlight matlab %}
 fuels;      % 1. Fuels to be used (MUST INCLUDE)
 fuel_state; % 2. State of the fuels (defaults to gas, "(g)", for all fuels)
 fractions;  % 3. Fractions of the fuels (defaults to equal proportions, 1/numel(fuels))
@@ -121,9 +121,9 @@ num_comb;   % 10. Number of combustors in the cycle (defaults to 1)
 eff;        % 11. Efficiency of the cycle (Needed for molar flow)
 Wnet;       % 12. Total power output of the cycle, in MW (Needed for molar flow)
 Qnet;       % 13. Total heat input of the cycle, in MW (Needed for molar flow)
-```
+{% endhighlight %}
 There are also some special options you can activate to print all the process of the code, as well as calculating a more precise AFT by interpolating for enthalpies in a large vector. The syntax is the following:
-```matlab
+{% highlight matlab %}
 % printmeall: Debugging - Print all the calculation process
 % precise: Calculate precise value for AFT (warning: long calculation times)
 tflame = flametemp(fuels, 'fuel_state', fuel_state, 'fractions', fractions, ...
@@ -131,7 +131,7 @@ tflame = flametemp(fuels, 'fuel_state', fuel_state, 'fractions', fractions, ...
     'xCO2', xCO2, 'xH2O', xH2O, 'num_comb', num_comb, 'eff', eff, 'Wnet', Wnet, ...
     'printmeall', true, 'precise', true);
 disp("Precise AFT: " + tflame)
-```
+{% endhighlight %}
 These options are both deactivated (false) by default.
 
 ### Credits

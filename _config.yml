@@ -15,3 +15,7 @@ projects:
     url: /projects/chemcount
   - title: Website
     url: /projects/website
+
+sass:
+  sass_dir: css
+  style: compressed
