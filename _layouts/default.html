@@ -1,8 +1,10 @@
 <!-- _layouts/default.html -->
 <!DOCTYPE html>
 <html lang="en">
-{% include head.html %}
-<body>
+<head>
+  {% include head.html %}
+</head>
+<body class="{% if page.url == '/' %}home-page{% endif %}">
   {% include header.html %}
   
   <main class="page-content">

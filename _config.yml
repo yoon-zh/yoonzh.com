@@ -1,6 +1,4 @@
 navigation:
-  - name: Home
-    link: /
   - name: About
     link: /about/
   - name: Projects
@@ -19,3 +17,9 @@ projects:
 sass:
   sass_dir: _sass
   style: compressed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts/

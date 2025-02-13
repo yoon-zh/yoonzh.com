@@ -169,8 +169,23 @@ body {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .logo-container {
-    text-align: center;
+  .site-header {
+    .logo-container {
+      text-align: center;
+      .logo {
+        font-size: 2rem;
+      }
+      .logo-subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    .nav-links {
+      gap: 1.5rem;
+      a {
+        font-size: 1.2rem;
+      }
+    }
   }
 }
 
