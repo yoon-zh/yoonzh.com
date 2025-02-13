@@ -186,7 +186,7 @@ body {
 }
 
 .project-card {
-  background: $darker-bg;
+  background: $code-bg;
   padding: 1.5rem;
   border-radius: 8px;
   border: 1px solid rgba($primary, 0.1);
@@ -208,4 +208,8 @@ body {
   border-radius: 4px;
   font-size: 0.8rem;
   margin-left: 1rem;
+}
+
+.page-content[data-header-style="compact"] {
+  padding-top: 80px;
 }

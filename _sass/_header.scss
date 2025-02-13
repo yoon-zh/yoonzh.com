@@ -1,26 +1,26 @@
 // _sass/_header.scss
 .site-header {
-  background: rgba($darker-bg, 0.95);
+  background: linear-gradient(180deg, $code-bg, $darker-bg);
   backdrop-filter: blur(10px);
-  position: fixed;
-  width: 100%;
+  position: relative;
+  width: auto;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba($primary, 0.1);
+  border-bottom: 2px solid rgba($primary, 0.5);
   padding: 1rem 0;
 
   .nav-container {
+    font-size: 1.3rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 5%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
 
   .logo-container {
     .logo {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin: 0;
       background: linear-gradient(45deg, $primary, $secondary);
       -webkit-background-clip: text;
@@ -31,7 +31,7 @@
     .logo-subtitle {
       color: $text-secondary;
       margin: 0;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
     }
   }
 

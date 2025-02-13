@@ -2,9 +2,10 @@
 layout: project
 title: Adiabatic flame temperature (AFT) calculator - flametemp()
 math: true
+header_style: compact
 ---
 
-[View on GitHub](https://github.com/yoon-zh/flametemp)
+### [View on GitHub](https://github.com/yoon-zh/flametemp)
 
 ### What is it?
 
