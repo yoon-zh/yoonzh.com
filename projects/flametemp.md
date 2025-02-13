@@ -45,7 +45,7 @@ The key for calculating AFT is using enthalpy. Considering the combustion chambe
 
 $$H_{\text{prod}} = H_{\text{react}}$$
 
-$$\sum N\_p \left( \overline{h^{\circ}\_f} + \overline{h} - \overline{h^{\circ}} \right)\_p = \sum N_r \left( \overline{h^{\circ}_r} + \overline{h} - \overline{h^{\circ}} \right)_r$$
+$$\sum N_p \left( \overline{h^{\circ}_f} + \overline{h} - \overline{h^{\circ}} \right)_p = \sum N_r \left( \overline{h^{\circ}_r} + \overline{h} - \overline{h^{\circ}} \right)_r$$
 
 *Taken from [^1], pg 780*
 
@@ -80,7 +80,7 @@ If you are designing a cycle, you may also need the molar fractions of the produ
 3. Power output of the cycle
 
 Below is an example of the syntax:
-{% highlight matlab %}
+{% highlight %}
 fuels = ["C2H5OH", "C3H6"];     % Mix of fuels, can be more than one
 fuel_state = ["(l)", "(g)"];    % Fuel state (liquid or gas)
 fractions = [0.25, 0.75];       % Fuel fractions (proportions in the mix)
@@ -105,7 +105,7 @@ tflame = flametemp(fuels, 'fuel_state', fuel_state, 'fractions', fractions, ...
 disp("AFT: " + tflame)
 {% endhighlight %}
 You may not have all of these values, or you may not be carrying out a critical application. If such, you can skip many of the arguments above. Here is a breakdown:
-{% highlight matlab %}
+{% highlight java %}
 fuels;      % 1. Fuels to be used (MUST INCLUDE)
 fuel_state; % 2. State of the fuels (defaults to gas, "(g)", for all fuels)
 fractions;  % 3. Fractions of the fuels (defaults to equal proportions, 1/numel(fuels))
@@ -123,7 +123,7 @@ Wnet;       % 12. Total power output of the cycle, in MW (Needed for molar flow)
 Qnet;       % 13. Total heat input of the cycle, in MW (Needed for molar flow)
 {% endhighlight %}
 There are also some special options you can activate to print all the process of the code, as well as calculating a more precise AFT by interpolating for enthalpies in a large vector. The syntax is the following:
-{% highlight matlab %}
+{% highlight %}
 % printmeall: Debugging - Print all the calculation process
 % precise: Calculate precise value for AFT (warning: long calculation times)
 tflame = flametemp(fuels, 'fuel_state', fuel_state, 'fractions', fractions, ...
