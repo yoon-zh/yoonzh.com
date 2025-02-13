@@ -224,7 +224,7 @@ body {
 }
 
 .project-detail {
-  padding-top: 2rem;
+  padding-top: 0;
 }
 
 .ros-badge {
@@ -236,6 +236,16 @@ body {
   margin-left: 1rem;
 }
 
-.page-content[data-header-style="compact"] {
-  padding-top: 80px;
+.pdf-link {
+  color: $text-primary;
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  transition: color 0.3s, transform 0.3s;
+  
+  &:hover {
+    color: $primary;
+    transform: translateY(-3px);
+  }
 }

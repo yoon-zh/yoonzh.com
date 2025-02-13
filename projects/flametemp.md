@@ -1,13 +1,14 @@
 ---
 layout: project
-title: Adiabatic flame temperature (AFT) calculator - flametemp()
+title: flametemp
 math: true
-header_style: compact
 ---
+
+# Adiabatic flame temperature (AFT) calculator - flametemp()
 
 ### [View on GitHub](https://github.com/yoon-zh/flametemp)
 
-### What is it?
+## What is it?
 
 The temperature resulting from the combustion of a mix of fuels with air under the assumption of no heat loss in a steady process.
 
@@ -27,7 +28,7 @@ The main things to consider when calculating the AFT is:
 
 The AFT is **maximum** when the proportions of fuels and air is 1:1. In other words, when all the fuels react with all the air available, there is no extra air or fuel components left in the product.
 
-### Why do we care about it?
+## Why do we care about it?
 
 There are plenty of applications for it, but to name a few:
 
@@ -38,7 +39,7 @@ When aiming for high temperatures, the AFT can be understood as the "best" tempe
 3. Designing thermodynamic cycles
 In a cycle that involves combustion chambers, the AFT can be used along with the conditions of the cycle such as power output and efficiency to determine the molar flow and fractions of the combustion chamber (in simpler words, how much fuel is needed to produce certain amount of energy in a power plant design).
 
-### How to calculate it?
+## How to calculate it?
 
 The key for calculating AFT is using enthalpy. Considering the combustion chamber as the system, an adiabatic combustion process implies there is no energy loss, for which the enthalpies of the products is equal to the enthalpies of the reactants:
 
@@ -50,14 +51,14 @@ $$\sum N_p \left( \overline{h^{\circ}_f} + \overline{h} - \overline{h^{\circ}} \
 
 *Taken from [^1], pg 780*
 
-In the equation above, $\overline{h^{\circ}\_f}$ is the enthalpy of formation, and $\overline{h^{\circ}}$ the enthalpy at 298K. $\overline{h}$ is the enthalpy at the temperature of the elements before and after the reaction. Consider this enthalpy as $\overline{h}\_{flame}$. *Adapted from [^2].*
+In the equation above, $$\overline{h^{\circ}_f}$$ is the enthalpy of formation, and $$\overline{h^{\circ}}$$ the enthalpy at 298K. $$\overline{h}$$ is the enthalpy at the temperature of the elements before and after the reaction. Consider this enthalpy as $$\overline{h}_{flame}$$. *Adapted from [^2].*
 
 Therefore, calculating the AFT can be considered in three steps:
 1. Determining the moles of the reactants and products.
-2. Obtaining the enthalpies for each reactant and product from the above equation and solving for $\overline{h}\_{flame}$.
-3. Linking $\overline{h}\_{flame}$ to its corresponding temperature, $T\_{flame}$.
+2. Obtaining the enthalpies for each reactant and product from the above equation and solving for $$\overline{h}_{flame}$$.
+3. Linking $$\overline{h}_{flame}$$ to its corresponding temperature, $$T_{flame}$$.
 
-However, step 3 can be particularly challenging since $\overline{h}\_{flame}$ is different for each product. Therefore, a common technique to calculate it is assuming all products are N2 (since the products will be mostly N2), solving for $\overline{h}\_{flame}$, and interpolating from there.
+However, step 3 can be particularly challenging since $$\overline{h}_{flame}$$ is different for each product. Therefore, a common technique to calculate it is assuming all products are N2 (since the products will be mostly N2), solving for $$\overline{h}_{flame}$$, and interpolating from there.
 
 This process is rather tedious and timetaking, but necessary for critical applications. In an attempt to simplify the calculation process, this code provides a function to calculate the AFT: flametemp()
 
@@ -135,7 +136,7 @@ disp("Precise AFT: " + tflame)
 {% endhighlight %}
 These options are both deactivated (false) by default.
 
-### Credits
+## Credits
 
 [^1]: Cengel, Y. (2015). _Thermodynamics: An Engineering Approach._ McGraw Hill: 8th Ed. 
 [^2]: Robayo, D (2024). _Termoquímica de la Combustion_ (Lecture Notes). Universidad de La Sabana.

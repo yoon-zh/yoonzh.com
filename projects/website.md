@@ -1,8 +1,10 @@
 ---
 layout: project
-title: Portfolio Website
+title: yoonzh.com
 math: true
 ---
+
+# Portfolio Website
 
 This is a new project for showcasing my work and connect with people in a dynamic way. [View on GitHub](https://github.com/yoon-zh/yoonzh.com)
 
