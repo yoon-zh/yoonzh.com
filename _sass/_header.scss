@@ -4,47 +4,61 @@
   backdrop-filter: blur(10px);
   position: fixed;
   width: 100%;
+  top: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba($primary, 0.1);
-  
+  padding: 1rem 0;
+
   .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 5%;
-    
+    align-items: center;
+  }
+
+  .logo-container {
     .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 2rem;
+      margin: 0;
       background: linear-gradient(45deg, $primary, $secondary);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+
+    .logo-subtitle {
+      color: $text-secondary;
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
     
-    .nav-links {
-      display: flex;
-      gap: 2rem;
+    a {
+      color: $text-primary;
+      text-decoration: none;
+      position: relative;
+      padding: 0.5rem 0;
       
-      a {
-        color: $text-primary;
-        text-decoration: none;
-        position: relative;
-        
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -5px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background: $primary;
-          transition: width 0.3s ease;
-        }
-        
-        &:hover::after {
-          width: 100%;
-        }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $primary;
+        transition: width 0.3s ease;
+      }
+      
+      &:hover::after {
+        width: 100%;
       }
     }
   }
-}  
+}

@@ -1,21 +1,23 @@
 // _sass/_content.scss
 .page-content {
+  padding-top: 100px; // Adjust based on header height
+  min-height: calc(100vh - 150px); // Prevent footer overlap
   padding: 4rem 5%;
   max-width: 1200px;
   margin: 0 auto;
     
   h1, h2, h3, h4, h5, h6 {
-    color: v.$primary;
+    color: $primary;
     margin: 2rem 0 1rem;
   }
   
   a {
-    color: v.$secondary;
+    color: $secondary;
     text-decoration: none;
     transition: color 0.3s;
       
     &:hover {
-      color: v.$primary;
+      color: $primary;
     }
   }
   
@@ -29,7 +31,7 @@
   }
   
   code {
-    background: rgba(v.$primary, 0.1);
+    background: rgba($primary, 0.1);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
     font-family: 'Source Code Pro', monospace;

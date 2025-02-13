@@ -2,13 +2,13 @@
 ---
 
 @charset "utf-8";
+@use "sass:color";
 
 // Import partials from _sass directory
-@import
-  "variables",
-  "header",
-  "footer",
-  "content";
+@import "variables";
+@import "header";
+@import "footer";
+@import "content";
 
 // Base styles
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Source+Code+Pro&display=swap');
@@ -51,7 +51,7 @@ body {
       
       &:hover {
         transform: translateY(-3px);
-        background: lighten($primary, 10%);
+        background: color.adjust($primary, $lightness: 10%);
       }
     }
   }
@@ -195,6 +195,10 @@ body {
   &:hover {
     transform: translateY(-5px);
   }
+}
+
+.project-detail {
+  padding-top: 2rem;
 }
 
 .ros-badge {
