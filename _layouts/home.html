@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Robotics Developer</h1>
+    <p class="hero-subtitle">Building intelligent systems at the edge of innovation</p>
+  </div>
+</section>
+
+<section class="featured-projects">
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="project-grid">
+    {% for project in site.projects limit:3 %}
+      <article class="project-card">
+        <h3><a href="{{ project.url }}" class="project-link">{{ project.title }}</a></h3>
+        {% if project.ros_version %}
+          <span class="ros-badge">ROS{{ project.ros_version }}</span>
+        {% endif %}
+        <p class="project-excerpt">{{ project.excerpt | truncate: 150 }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>

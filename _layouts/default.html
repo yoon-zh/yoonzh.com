@@ -1,17 +1,16 @@
 <!-- _layouts/default.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% include head.html %}
-</head>
+{% include head.html %}
 <body>
-    {% include header.html %}
-    
-    <main class="container">
-        {{ content }} <!-- Content injection point -->
-    </main>
-    <footer>
-        {% include footer.html %}
-    </footer>
+  {% include header.html %}
+  
+  <main class="page-content">
+    <div class="content-wrapper">
+      {{ content }}
+    </div>
+  </main>
+
+  {% include footer.html %}
 </body>
 </html>

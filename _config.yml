@@ -17,5 +17,5 @@ projects:
     url: /projects/website
 
 sass:
-  sass_dir: css
+  sass_dir: _sass
   style: compressed

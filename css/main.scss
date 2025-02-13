@@ -1,10 +1,17 @@
 ---
 ---
 
-@import "variables";
+@charset "utf-8";
+
+// Import partials from _sass directory
+@import
+  "variables",
+  "header",
+  "footer",
+  "content";
 
 // Base styles
-//@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Source+Code+Pro&display=swap');
 
 body {
   background-color: $dark-bg;
@@ -12,57 +19,6 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
-}
-
-// Header styles
-.site-header {
-  background: rgba($darker-bg, 0.95);
-  backdrop-filter: blur(10px);
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-  border-bottom: 1px solid rgba($primary, 0.1);
-  
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 5%;
-    
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      background: linear-gradient(45deg, $primary, $secondary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      
-      a {
-        color: $text-primary;
-        text-decoration: none;
-        position: relative;
-        
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -5px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background: $primary;
-          transition: width 0.3s ease;
-        }
-        
-        &:hover::after {
-          width: 100%;
-        }
-      }
-    }
-  }
 }
 
 // Hero Section
@@ -181,41 +137,6 @@ body {
   }
 }
 
-// Footer
-.site-footer {
-  background: $darker-bg;
-  padding: 4rem 5%;
-  border-top: 1px solid rgba($primary, 0.1);
-  
-  .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      
-      a {
-        color: $text-secondary;
-        font-size: 1.5rem;
-        transition: color 0.3s, transform 0.3s;
-        
-        &:hover {
-          color: $primary;
-          transform: translateY(-3px);
-        }
-      }
-    }
-  }
-  
-  .footer-bottom {
-    margin-top: 3rem;
-    text-align: center;
-    color: $text-secondary;
-  }
-}
-
 // Utility Classes
 .diagonal-split {
   position: relative;
@@ -254,4 +175,33 @@ body {
   .functionality-grid {
     grid-template-columns: 1fr;
   }
+}
+
+// Project Grid
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: $darker-bg;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba($primary, 0.1);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.ros-badge {
+  background: $secondary;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-left: 1rem;
 }

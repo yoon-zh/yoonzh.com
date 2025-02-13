@@ -1,0 +1,50 @@
+// _sass/_header.scss
+.site-header {
+  background: rgba($darker-bg, 0.95);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba($primary, 0.1);
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(45deg, $primary, $secondary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      
+      a {
+        color: $text-primary;
+        text-decoration: none;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: $primary;
+          transition: width 0.3s ease;
+        }
+        
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}  
