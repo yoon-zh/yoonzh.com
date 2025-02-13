@@ -1,7 +1,8 @@
 <!-- _layouts/default.html -->
 <!DOCTYPE html>
 <html lang="en">
-<!-- _includes/head.html -->
+<head>
+  <!-- _includes/head.html -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
 </head>
-<body>
+</head>
+<body class="">
   <!-- _includes/header.html -->
 <header class="site-header">
   <div class="nav-container">
     <div class="logo-container">
-      <h1 class="logo">윤志</h1>
+      <a href="/" class="logo-link">
+        <h1 class="logo">윤志</h1>
+      </a>
       <p class="logo-subtitle">[云 ~ 찌]</p>
     </div>
     <nav class="nav-links">
-      
-        <a href="/" class="hover-glow">Home</a>
       
         <a href="/about/" class="hover-glow">About</a>
       
@@ -74,6 +76,6 @@
     </div>
   </div>
 </footer>
-
+<script src="/scripts/main.js"></script>
 </body>
 </html>
