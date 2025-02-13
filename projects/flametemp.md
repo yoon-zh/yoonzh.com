@@ -1,10 +1,10 @@
 ---
 layout: project
-title: flametemp
+title: Adiabatic flame temperature (AFT) calculator - flametemp()
 math: true
 ---
 
-# Adiabatic flame temperature (AFT) calculator - flametemp()
+[View on GitHub](https://github.com/yoon-zh/flametemp)
 
 ### What is it?
 

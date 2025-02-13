@@ -1,10 +1,10 @@
 ---
 layout: project
-title: chemcount
+title: Chemical Compound Parser
 math: true
 ---
 
-# Chemical Compound Parser
+[View on GitHub](https://github.com/yoon-zh/chemcount)
 
 # TEST (to do)
 
