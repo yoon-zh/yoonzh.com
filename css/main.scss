@@ -23,11 +23,11 @@ body {
 
 // Hero Section
 .hero {
-  height: 100vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   padding: 0 5%;
-  background: linear-gradient(45deg, rgba($darker-bg, 0.9), rgba($darker-bg, 0.7)),
+  background: linear-gradient(45deg, rgba($darker-bg, 0.95), rgba($darker-bg, 0.5)),
               url('/images/robot-bg.jpg') center/cover;
   
   .hero-content {
@@ -165,11 +165,26 @@ body {
       font-size: 2.5rem;
     }
   }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .logo-container {
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
   .functionality-grid {
     grid-template-columns: 1fr;
+  }
+  .logo-container{
+    .logo {
+      font-size: 2rem;
+    }
+    .logo-subtitle {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -182,7 +197,7 @@ body {
 }
 
 .project-card {
-  background: $code-bg;
+  background: $dark-bg;
   padding: 1.5rem;
   border-radius: 8px;
   border: 1px solid rgba($primary, 0.1);
