@@ -7,12 +7,12 @@ title: Projects
 
 ## Personal Portfolio Website
 
-Designed and developed a personal webpage to showcase my projects and skills. Special thanks to my partner for inspiring me to create this space! [View Project](/projects/website)
+Designed and developed a personal webpage to showcase my projects and skills. [View Project](/projects/website)
 
-## Flame Temperature Calculator
+## Adiabatic Flame Temperature Calculator
 
-A coding project in MATLAB that calculates adiabatic flame temperatures. [View Project](/projects/flametemp)  
+A project in MATLAB that calculates adiabatic flame temperatures for a mix of fuels. [View Project](/projects/flametemp)  
 
-## Chemical Element Counter
+## Chemical Compound Parser
 
 Quick project on a chemical compound reader to process the number of elements. [View Project](/projects/chemcount)

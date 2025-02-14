@@ -9,7 +9,7 @@ navigation:
 projects:
   - title: AFT calculator
     url: /projects/flametemp
-  - title: Chemical Counter
+  - title: Chemical Compound Parser
     url: /projects/chemcount
   - title: Website
     url: /projects/website
