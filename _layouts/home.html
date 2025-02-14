@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+<!-- _layouts/home.html -->
 <section class="hero">
   <div class="hero-content">
     <h1 class="hero-title">Home | 首页 </h1>
@@ -13,11 +14,23 @@ layout: default
   <div class="project-grid">
     {% for project in site.projects limit:3 %}
       <article class="project-card">
-        <h3><a href="{{ project.url }}" class="project-link">{{ project.title }}</a></h3>
+        {% if project.image %}
+          <img src="{{ project.image }}" alt="{{ project.title }}" class="project-image">
+        {% endif %}
+        <h3>
+          <a href="{{ project.url }}" class="project-link">{{ project.title }}</a>
+        </h3>
         {% if project.ros_version %}
           <span class="ros-badge">ROS{{ project.ros_version }}</span>
         {% endif %}
         <p class="project-excerpt">{{ project.excerpt | truncate: 150 }}</p>
+        {% if project.tech_stack %}
+          <div class="tech-stack">
+            {% for tech in project.tech_stack %}
+              <span class="tech-item">{{ tech }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
       </article>
     {% endfor %}
   </div>

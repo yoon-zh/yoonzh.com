@@ -6,3 +6,11 @@ $darker-bg: #050505;
 $code-bg: #1a1a1a;
 $text-primary: #ffffff;
 $text-secondary: #cccccc;
+
+// Project card variables
+$card-bg: $dark-bg;
+$card-hover-bg: color.adjust($darker-bg, $lightness: 5%);
+$card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+$card-border: 1px solid rgba($primary, 0.2);
+$card-radius: 12px;
+$card-transition: all 0.3s ease;

@@ -1,10 +1,10 @@
 navigation:
-  - name: About
-    link: /about/
   - name: Projects
     link: /projects/
   - name: Posts
     link: /posts/
+  - name: About
+    link: /about/
 
 projects:
   - title: AFT calculator

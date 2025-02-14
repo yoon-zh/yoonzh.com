@@ -9,6 +9,7 @@
 @import "header";
 @import "footer";
 @import "content";
+@import "projects";
 
 // Base styles
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Source+Code+Pro&display=swap');
@@ -201,39 +202,6 @@ body {
       font-size: 1rem;
     }
   }
-}
-
-// Project Grid
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.project-card {
-  background: $dark-bg;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid rgba($primary, 0.1);
-  transition: transform 0.3s;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-}
-
-.project-detail {
-  padding-top: 0;
-}
-
-.ros-badge {
-  background: $secondary;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  margin-left: 1rem;
 }
 
 .pdf-link {

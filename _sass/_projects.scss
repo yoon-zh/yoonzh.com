@@ -1,0 +1,143 @@
+// _sass/_projects.scss
+.project-detail {
+  padding-top: 0;
+}
+  
+// Featured Projects Section
+.featured-projects {
+  padding: 4rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  .section-title {
+    font-size: 2rem;
+    color: $primary;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, $primary, $secondary);
+    }
+  }
+}
+  
+// Project Grid
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+  
+// Project Card
+.project-card {
+  background: $card-bg;
+  padding: 1.5rem;
+  border-radius: $card-radius;
+  border: $card-border;
+  transition: $card-transition;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+    background: $card-hover-bg;
+    box-shadow: $card-shadow;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba($primary, 0.1), transparent);
+        z-index: -1;
+      }
+
+    .project-image {
+      transform: scale(1.1);
+    }
+  
+    .project-link::after {
+      width: 100%;
+    }
+  }
+  
+  .project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  
+    .project-link {
+      color: $text-primary;
+      text-decoration: none;
+      position: relative;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $primary;
+        transition: width 0.3s ease;
+      }
+    }
+  }
+  
+  .project-excerpt {
+    color: $text-secondary;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .project-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  .ros-badge {
+    background: $secondary;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .tech-stack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  
+    .tech-item {
+      background: rgba($primary, 0.1);
+      color: $primary;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+  }
+}

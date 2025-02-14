@@ -2,6 +2,11 @@
 layout: project
 title: flametemp
 math: true
+tech_stack:
+  - Python
+  - NumPy
+  - Matplotlib
+ros_version: 2
 ---
 
 # Adiabatic flame temperature (AFT) calculator - flametemp()
