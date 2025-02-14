@@ -4,17 +4,28 @@ layout: default
 <!-- _layouts/project.html -->
 <article class="project-detail">
   <header class="project-header">
-    <div class="project-meta">
-      {% if page.date %}
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
-      {% endif %}
+    <h1>
+      {{ page.title }}
       {% if page.github %}
-        <a href="{{ page.github }}" class="github-button">
+        <a href="{{ page.github }}" class="github-icon" target="_blank">
           <i class="fab fa-github"></i>
-          View Source
         </a>
       {% endif %}
+    </h1>
+    <div class="project-meta">
+      {% if page.date %}
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          📅 {{ page.date | date: "%B %Y" }}
+        </time>
+      {% endif %}
     </div>
+    {% if page.tech_stack %}
+    <div class="tech-tags">
+      {% for tech in page.tech_stack %}
+        <span class="tech-tag">{{ tech }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
   </header>
 
   <div class="project-content">

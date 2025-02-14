@@ -1,10 +1,11 @@
 ---
 layout: default
-title: Home
+title: Posts
 ---
 
 # Posts
 
-{% for project in site.projects limit:3 %}
+{% assign projects = site.pages | where: "layout", "project" | sort: "date" | reverse %}
+{% for project in projects %}
 - [{{ project.title }}]({{ project.url }})
 {% endfor %}

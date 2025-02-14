@@ -1,22 +1,23 @@
 ---
 layout: project
-title: chemcount
+title: Chemical Compound Parser - chemcount()
+url: /projects/chemcount
 math: true
+excerpt: "Chemical Compound Parser Library in C"
+github: https://github.com/yoon-zh/chemcount
+tech_stack: [C/C++]
+date: 2025-02-14
 ---
-
-# Chemical Compound Parser - chemcount()
-
-[View on GitHub](https://github.com/yoon-zh/chemcount)
 
 ## What is it?
 
-A simple library in C for a chemical formula parser that converts strings like `C2H5OH` into structured element counts, including total element types.
+A simple library in C for a chemical formula parser that converts strings like $$C_2H_5OH$$ into structured element counts, including total element types.
 
 ## Features
 
-- Parses chemical formulas (e.g., CoCl3 6(NH3)) into element counts
-- Handles parentheses for grouped compounds (e.g., `(NH3)6 → N:6, H:18`)
-- Returns a `cElement` struct with total element count `"TTT"` and individual element quantities
+- Parses chemical formulas such as $$H_2SO_4$$ into element counts
+- Handles parentheses for grouped compounds: $$(NH3)_6$$ → `N:6, H:18`
+- Returns struct `cElement` with total element count `"TTT"` and individual element quantities `N`
 
 ## Installation
 
@@ -93,7 +94,7 @@ gcc main.c chemcount.o -o main
 ```
 
 ## Assumptions
-- Case-sensitive: `Co` (cobalt) ≠ `CO` (carbon monoxide).
+- Case-sensitive: $$Co$$ (cobalt) ≠ $$CO$$ (carbon monoxide).
 - Parentheses: Coefficients outside parentheses apply to all nested elements (e.g., `(H2O)2 → H:4, O:2`).
 - Implicit "1": Missing counts are treated as 1 (e.g., `OH → O:1, H:1`).
 

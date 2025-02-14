@@ -1,14 +1,19 @@
 ---
 layout: project
-title: yoonzh.com
-math: true
+title: Portfolio Website
+url: /projects/website
+excerpt: "Personal website built with Jekyll to showcase my projects"
+github: https://github.com/yoon-zh/yoonzh.com
+tech_stack: [Web Development]
+date: 2025-02-14
 ---
 
-# Portfolio Website
+## What is it?
 
-This is a new project for showcasing my work and connect with people in a dynamic way. [View on GitHub](https://github.com/yoon-zh/yoonzh.com)
+A new project built from scratch to showcase my work and connect with people in a dynamic way.
 
 ## Development
+
 Built with Jekyll and hosted on GitHub Pages.
 
 ## Local Setup

@@ -6,13 +6,21 @@ navigation:
   - name: About
     link: /about/
 
-projects:
-  - title: AFT calculator
-    url: /projects/flametemp
-  - title: Chemical Compound Parser
-    url: /projects/chemcount
-  - title: Website
-    url: /projects/website
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+defaults:
+  - scope:
+      path: "_projects"
+      type: "projects"
+    values:
+      layout: "project"
+      comments: true
+      excerpt: "Project description"
+      tech_stack: []
+      github: ""
 
 sass:
   sass_dir: _sass

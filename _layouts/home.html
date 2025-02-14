@@ -12,13 +12,21 @@ layout: default
 <section class="featured-projects">
   <h2 class="section-title">Featured Projects</h2>
   <div class="project-grid">
-    {% for project in site.projects limit:3 %}
-      <article class="project-card">
-        {% if project.image %}
-          <img src="{{ project.image }}" alt="{{ project.title }}" class="project-image">
-        {% endif %}
+    {% assign projects = site.pages | where: "layout", "project" | sort: "date" | reverse %}
+    {% for project in projects %}
+    <article class="project-card">
+      <a href="{{ project.url }}" class="card-link"></a>
+      {% if project.image %}
+        <img src="{{ project.image }}" alt="{{ project.title }}" class="project-image">
+      {% endif %}
+      <div class="card-content">
         <h3>
-          <a href="{{ project.url }}" class="project-link">{{ project.title }}</a>
+          {{ project.title }}
+          {% if project.github %}
+            <span class="github-mini">
+              <i class="fab fa-github"></i>
+            </span>
+          {% endif %}
         </h3>
         {% if project.ros_version %}
           <span class="ros-badge">ROS{{ project.ros_version }}</span>
@@ -31,7 +39,8 @@ layout: default
             {% endfor %}
           </div>
         {% endif %}
-      </article>
+      </div>
+    </article>
     {% endfor %}
   </div>
 </section>

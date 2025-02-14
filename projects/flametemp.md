@@ -1,17 +1,13 @@
 ---
 layout: project
-title: flametemp
+title: Adiabatic flame temperature (AFT) calculator - flametemp()
+url: /projects/flametemp
 math: true
-tech_stack:
-  - Python
-  - NumPy
-  - Matplotlib
-ros_version: 2
+excerpt: "Adiabatic Flame Temperature calculator using NASA polynomials..."
+github: https://github.com/yoon-zh/flametemp
+tech_stack: [MATLAB, Thermodynamics]
+date: 2025-02-14
 ---
-
-# Adiabatic flame temperature (AFT) calculator - flametemp()
-
-### [View on GitHub](https://github.com/yoon-zh/flametemp)
 
 ## What is it?
 
