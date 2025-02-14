@@ -3,7 +3,7 @@ layout: project
 title: Adiabatic flame temperature (AFT) calculator - flametemp()
 url: /projects/flametemp
 math: true
-excerpt: "Adiabatic Flame Temperature calculator using NASA polynomials..."
+excerpt: "Adiabatic Flame Temperature calculator in MATLAB"
 github: https://github.com/yoon-zh/flametemp
 tech_stack: [MATLAB, Thermodynamics]
 date: 2025-02-14

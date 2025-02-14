@@ -23,9 +23,9 @@ layout: default
         <h3>
           {{ project.title }}
           {% if project.github %}
-            <span class="github-mini">
+            <a href="{{ project.github }}" class="github-mini" target="_blank" title="View on GitHub">
               <i class="fab fa-github"></i>
-            </span>
+            </a>
           {% endif %}
         </h3>
         {% if project.ros_version %}
