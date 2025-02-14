@@ -29,11 +29,11 @@
     </div>
     <nav class="nav-links">
       
-        <a href="/about/" class="hover-glow">About</a>
-      
         <a href="/projects/" class="hover-glow">Projects</a>
       
         <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
       
     </nav>
   </div>
@@ -41,29 +41,44 @@
   
   <main class="page-content">
     <div class="content-wrapper">
-      <article class="project-detail">
+      <!-- _layouts/project.html -->
+<article class="project-detail">
   <header class="project-header">
+    <h1>
+      Chemical Compound Parser - chemcount()
+      
+        <a href="https://github.com/yoon-zh/chemcount" class="github-icon" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    </h1>
     <div class="project-meta">
       
+        <time datetime="2025-02-14T00:00:00+00:00">
+          📅 February 2025
+        </time>
       
     </div>
+    
+    <div class="tech-tags">
+      
+        <span class="tech-tag">C/C++</span>
+      
+    </div>
+    
   </header>
 
   <div class="project-content">
-    <h1 id="chemical-compound-parser---chemcount">Chemical Compound Parser - chemcount()</h1>
+    <h2 id="what-is-it">What is it?</h2>
 
-<p><a href="https://github.com/yoon-zh/chemcount">View on GitHub</a></p>
-
-<h2 id="what-is-it">What is it?</h2>
-
-<p>A simple library in C for a chemical formula parser that converts strings like <code class="language-plaintext highlighter-rouge">C2H5OH</code> into structured element counts, including total element types.</p>
+<p>A simple library in C for a chemical formula parser that converts strings like \(C_2H_5OH\) into structured element counts, including total element types.</p>
 
 <h2 id="features">Features</h2>
 
 <ul>
-  <li>Parses chemical formulas (e.g., CoCl3 6(NH3)) into element counts</li>
-  <li>Handles parentheses for grouped compounds (e.g., <code class="language-plaintext highlighter-rouge">(NH3)6 → N:6, H:18</code>)</li>
-  <li>Returns a <code class="language-plaintext highlighter-rouge">cElement</code> struct with total element count <code class="language-plaintext highlighter-rouge">"TTT"</code> and individual element quantities</li>
+  <li>Parses chemical formulas such as \(H_2SO_4\) into element counts</li>
+  <li>Handles parentheses for grouped compounds: \((NH3)_6\) → <code class="language-plaintext highlighter-rouge">N:6, H:18</code></li>
+  <li>Returns struct <code class="language-plaintext highlighter-rouge">cElement</code> with total element count <code class="language-plaintext highlighter-rouge">"TTT"</code> and individual element quantities <code class="language-plaintext highlighter-rouge">N</code></li>
 </ul>
 
 <h2 id="installation">Installation</h2>
@@ -135,7 +150,7 @@ gcc main.c chemcount.o <span class="nt">-o</span> main
 
 <h2 id="assumptions">Assumptions</h2>
 <ul>
-  <li>Case-sensitive: <code class="language-plaintext highlighter-rouge">Co</code> (cobalt) ≠ <code class="language-plaintext highlighter-rouge">CO</code> (carbon monoxide).</li>
+  <li>Case-sensitive: \(Co\) (cobalt) ≠ \(CO\) (carbon monoxide).</li>
   <li>Parentheses: Coefficients outside parentheses apply to all nested elements (e.g., <code class="language-plaintext highlighter-rouge">(H2O)2 → H:4, O:2</code>).</li>
   <li>Implicit “1”: Missing counts are treated as 1 (e.g., <code class="language-plaintext highlighter-rouge">OH → O:1, H:1</code>).</li>
 </ul>

@@ -24,11 +24,11 @@
     </div>
     <nav class="nav-links">
       
-        <a href="/about/" class="hover-glow">About</a>
-      
         <a href="/projects/" class="hover-glow">Projects</a>
       
         <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
       
     </nav>
   </div>
@@ -36,7 +36,8 @@
   
   <main class="page-content">
     <div class="content-wrapper">
-      <section class="hero">
+      <!-- _layouts/home.html -->
+<section class="hero">
   <div class="hero-content">
     <h1 class="hero-title">Home | 首页 </h1>
     <p class="hero-subtitle">#define jiā 홈페이지 [homepage] 초기 화면</p>
@@ -47,23 +48,80 @@
   <h2 class="section-title">Featured Projects</h2>
   <div class="project-grid">
     
-      <article class="project-card">
-        <h3><a href="/projects/flametemp" class="project-link">AFT calculator</a></h3>
-        
-        <p class="project-excerpt"></p>
-      </article>
     
-      <article class="project-card">
-        <h3><a href="/projects/chemcount" class="project-link">Chemical Compound Parser</a></h3>
+    <article class="project-card">
+      <a href="/projects/website.html" class="card-link"></a>
+      
+      <div class="card-content">
+        <h3>
+          Portfolio Website
+          
+            <span class="github-mini">
+              <i class="fab fa-github"></i>
+            </span>
+          
+        </h3>
         
-        <p class="project-excerpt"></p>
-      </article>
+        <p class="project-excerpt">Personal website built with Jekyll to showcase my projects</p>
+        
+          <div class="tech-stack">
+            
+              <span class="tech-item">Web Development</span>
+            
+          </div>
+        
+      </div>
+    </article>
     
-      <article class="project-card">
-        <h3><a href="/projects/website" class="project-link">Website</a></h3>
+    <article class="project-card">
+      <a href="/projects/flametemp.html" class="card-link"></a>
+      
+      <div class="card-content">
+        <h3>
+          Adiabatic flame temperature (AFT) calculator - flametemp()
+          
+            <span class="github-mini">
+              <i class="fab fa-github"></i>
+            </span>
+          
+        </h3>
         
-        <p class="project-excerpt"></p>
-      </article>
+        <p class="project-excerpt">Adiabatic Flame Temperature calculator using NASA polynomials...</p>
+        
+          <div class="tech-stack">
+            
+              <span class="tech-item">MATLAB</span>
+            
+              <span class="tech-item">Thermodynamics</span>
+            
+          </div>
+        
+      </div>
+    </article>
+    
+    <article class="project-card">
+      <a href="/projects/chemcount.html" class="card-link"></a>
+      
+      <div class="card-content">
+        <h3>
+          Chemical Compound Parser - chemcount()
+          
+            <span class="github-mini">
+              <i class="fab fa-github"></i>
+            </span>
+          
+        </h3>
+        
+        <p class="project-excerpt">Chemical Compound Parser Library in C</p>
+        
+          <div class="tech-stack">
+            
+              <span class="tech-item">C/C++</span>
+            
+          </div>
+        
+      </div>
+    </article>
     
   </div>
 </section>
