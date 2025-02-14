@@ -217,3 +217,37 @@ body {
     transform: translateY(-3px);
   }
 }
+
+.github-mini {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  color: $text-secondary;
+  transition: color 0.3s;
+  position: relative;
+  text-decoration: none;
+  
+  &::after {
+    content: "View on GitHub";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $darker-bg;
+    color: $text-primary;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+   
+  &:hover {
+    color: $primary;
+      
+    &::after {
+      opacity: 1;
+    }
+  }
+}

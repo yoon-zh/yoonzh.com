@@ -8,14 +8,16 @@ layout: default
       {{ page.title }}
       {% if page.github %}
         <a href="{{ page.github }}" class="github-icon" target="_blank">
-          <i class="fab fa-github"></i>
+          <span class="github-mini">
+            <i class="fab fa-github"></i>
+          </span>
         </a>
       {% endif %}
     </h1>
     <div class="project-meta">
       {% if page.date %}
         <time datetime="{{ page.date | date_to_xmlschema }}">
-          📅 {{ page.date | date: "%B %Y" }}
+          📅 {{ page.date | date: "%Y/%m/%d" }}
         </time>
       {% endif %}
     </div>
