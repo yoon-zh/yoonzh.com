@@ -1,6 +1,7 @@
 ---
 layout: project
-title: Adiabatic flame temperature (AFT) calculator - flametemp()
+title: flametemp
+card_title: Adiabatic flame temperature (AFT) calculator
 url: /projects/flametemp
 math: true
 excerpt: "Adiabatic Flame Temperature calculator in MATLAB"

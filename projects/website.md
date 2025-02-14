@@ -1,6 +1,7 @@
 ---
 layout: project
-title: Portfolio Website
+title: website
+card_title: Portfolio Website
 url: /projects/website
 excerpt: "Personal website built with Jekyll to showcase my projects"
 github: https://github.com/yoon-zh/yoonzh.com

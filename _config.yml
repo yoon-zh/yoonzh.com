@@ -18,6 +18,7 @@ defaults:
     values:
       layout: "project"
       comments: true
+      card_title: "Project Title"
       excerpt: "Project description"
       tech_stack: []
       github: ""

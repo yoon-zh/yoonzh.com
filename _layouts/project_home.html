@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<!-- _layouts/project_home.html -->
+<section class="projects-index">
+  <h2 class="section-title">Projects</h2>
+  
+  <div class="project-list">
+    {% assign projects = site.pages | where: "layout", "project" | sort: "date" | reverse %}
+    {% for project in projects %}
+      <a href="{{ project.url }}" class="project-card">
+        {% if project.image %}
+          <img src="{{ project.image }}" alt="{{ project.card_title }}" class="project-image">
+        {% endif %}
+        <div class="card-content">
+          <div class="project-header">
+            <h3>{{ project.card_title }}</h3>
+            <span class="project-date">
+              {{ project.date | date: "%b %Y" }}
+            </span>
+          </div>
+          {% if project.ros_version %}
+            <span class="ros-badge">ROS{{ project.ros_version }}</span>
+          {% endif %}
+          <p class="project-excerpt">{{ project.excerpt | truncate: 150 }}</p>
+          {% if project.tech_stack %}
+            <div class="tech-stack">
+              {% for tech in project.tech_stack %}
+                <span class="tech-item">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>

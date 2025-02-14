@@ -1,6 +1,6 @@
 // _sass/_variables.scss
-$primary: #00ff9d; // Neon green for tech accent
-$secondary: #0077ff; // Electric blue
+$primary: #00ff9d;
+$secondary: #0077ff;
 $dark-bg: #0a0a0a;
 $darker-bg: #050505;
 $code-bg: #1a1a1a;
@@ -8,8 +8,8 @@ $text-primary: #ffffff;
 $text-secondary: #cccccc;
 
 // Project card variables
-$card-bg: $dark-bg;
-$card-hover-bg: color.adjust($darker-bg, $lightness: 5%);
+$card-bg: #1b1b1b;
+$card-hover-bg: color.adjust($darker-bg, $lightness: 10%);
 $card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 $card-border: 1px solid rgba($primary, 0.2);
 $card-radius: 12px;

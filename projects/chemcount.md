@@ -1,12 +1,13 @@
 ---
 layout: project
-title: Chemical Compound Parser - chemcount()
+title: chemcount
+card_title: Chemical Compound Parser
 url: /projects/chemcount
 math: true
 excerpt: "Chemical Compound Parser Library in C"
 github: https://github.com/yoon-zh/chemcount
 tech_stack: [C/C++]
-date: 2025-02-14
+date: 2025-02-13
 ---
 
 ## What is it?

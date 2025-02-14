@@ -73,7 +73,7 @@
   gap: 2rem;
   margin-top: 2rem;
 }
-  
+
 // Project Card
 .project-card {
   background: $card-bg;
@@ -174,6 +174,98 @@
       border-radius: 4px;
       font-size: 0.8rem;
       font-weight: 500;
+    }
+  }
+}
+
+.projects-index {
+  padding: 1rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  .section-title {
+    font-size: 2.5rem;
+    color: $primary;
+    text-align: center;
+    position: relative;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, $primary, $secondary);
+    }
+  }
+
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    background: $card-bg;
+    border: $card-border;
+    border-radius: $card-radius;
+    padding: 1.5rem;
+    transition: $card-transition;
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-3px);
+      background: $card-hover-bg;
+      box-shadow: $card-shadow;
+    }
+
+    .project-image {
+      flex: 0 0 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.5rem;
+
+      h3 {
+        margin: 0;
+        font-size: 1.4rem;
+      }
+
+      .project-date {
+        color: $text-secondary;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        margin-left: 1rem;
+      }
+    }
+
+    .project-excerpt {
+      color: $text-secondary;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
     }
   }
 }

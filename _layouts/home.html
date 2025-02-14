@@ -17,11 +17,11 @@ layout: default
     <a href="{{ project.url }}" >
     <article class="project-card">
       {% if project.image %}
-        <img src="{{ project.image }}" alt="{{ project.title }}" class="project-image">
+        <img src="{{ project.image }}" alt="{{ project.card_title }}" class="project-image">
       {% endif %}
       <div class="card-content">
         <h3>
-          {{ project.title }}
+          {{ project.card_title }}
         </h3>
         {% if project.ros_version %}
           <span class="ros-badge">ROS{{ project.ros_version }}</span>
@@ -40,3 +40,4 @@ layout: default
     {% endfor %}
   </div>
 </section>
+
