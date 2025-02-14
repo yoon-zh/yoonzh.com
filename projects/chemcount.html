@@ -50,32 +50,95 @@
   </header>
 
   <div class="project-content">
-    <h1 id="chemical-compound-parser">Chemical Compound Parser</h1>
+    <h1 id="chemical-compound-parser---chemcount">Chemical Compound Parser - chemcount()</h1>
 
 <p><a href="https://github.com/yoon-zh/chemcount">View on GitHub</a></p>
 
-<h1 id="test-to-do">TEST (to do)</h1>
+<h2 id="what-is-it">What is it?</h2>
 
-<h3 id="what-is-it">What is it?</h3>
+<p>A simple library in C for a chemical formula parser that converts strings like <code class="language-plaintext highlighter-rouge">C2H5OH</code> into structured element counts, including total element types.</p>
 
-<p><strong>Figure 1:</strong></p>
+<h2 id="features">Features</h2>
 
-<h3 id="why-do-we-care-about-it">Why do we care about it?</h3>
+<ul>
+  <li>Parses chemical formulas (e.g., CoCl3 6(NH3)) into element counts</li>
+  <li>Handles parentheses for grouped compounds (e.g., <code class="language-plaintext highlighter-rouge">(NH3)6 → N:6, H:18</code>)</li>
+  <li>Returns a <code class="language-plaintext highlighter-rouge">cElement</code> struct with total element count <code class="language-plaintext highlighter-rouge">"TTT"</code> and individual element quantities</li>
+</ul>
 
-<h3 id="how-to-calculate-it">How to calculate it?</h3>
+<h2 id="installation">Installation</h2>
 
-\[H_{\text{prod}} = H_{\text{react}}\]
+<p>Clone the repository and compile the code:</p>
 
-\[\sum N\_p \left( \overline{h^{\circ}\_f} + \overline{h} - \overline{h^{\circ}} \right)\_p = \sum N_r \left( \overline{h^{\circ}_r} + \overline{h} - \overline{h^{\circ}} \right)_r\]
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/yoonzh/chemcount
+</code></pre></div></div>
 
-<h2 id="tutorial-for-chemcount">Tutorial for chemcount()</h2>
+<h2 id="usage">Usage</h2>
 
-<p>Below is an example of the syntax:</p>
+<p>Import the chemcount library in your code:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"chemcount.h"</span><span class="cp">
+</span></code></pre></div></div>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">robot_move</span><span class="p">():</span>
-    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Moving!</span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
+<p>Then build into .o file and link into your function.</p>
 
-<h3 id="credits">Credits</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>chemcount  
+gcc <span class="nt">-o</span> chemcount chemcount.c
+gcc yourprogram.c chemcount.o <span class="nt">-o</span> yourprogram
+</code></pre></div></div>
+
+<h2 id="output-format">Output Format</h2>
+<p>The <code class="language-plaintext highlighter-rouge">cElement</code> struct is an array of arrays sorted by appearance.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cElement</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">name</span> <span class="o">=</span> <span class="s">"TTT"</span><span class="p">;</span>
+<span class="n">cElement</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">amount</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The first element in the struct has the title <code class="language-plaintext highlighter-rouge">"TTT"</code> and <code class="language-plaintext highlighter-rouge">N</code> is the total unique elements in the formula.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cElement</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\t</span><span class="s">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cElement</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span> <span class="n">cElement</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">amount</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The other objects in the <code class="language-plaintext highlighter-rouge">cElement</code> struct contain the string of the element and its amount in the compound.</p>
+
+<h2 id="example">Example</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chemcount</span><span class="p">(</span><span class="s">"C2H5OH"</span><span class="p">);</span>
+<span class="cm">/* Returns:
+ * ["TTT", 3]
+ * ["C", 2]
+ * ["H", 6]
+ * ["O", 1]
+ */</span>
+
+<span class="n">chemcount</span><span class="p">(</span><span class="s">"CoCl3 (NH3)6"</span><span class="p">);</span>
+<span class="cm">/* Returns:
+ * ["TTT", 4]
+ * ["Co", 1]
+ * ["Cl", 3]
+ * ["N", 6]
+ * ["H", 18]
+ */</span>
+</code></pre></div></div>
+
+<h2 id="mainc-example">main.c example</h2>
+
+<p>In the repository you may find a main function containing an example of the usage. To use this example, run the following commands in your terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/yoonzh/chemcount
+<span class="nb">cd </span>chemcount
+gcc <span class="nt">-o</span> chemcount chemcount.c
+gcc main.c chemcount.o <span class="nt">-o</span> main
+./main
+</code></pre></div></div>
+
+<h2 id="assumptions">Assumptions</h2>
+<ul>
+  <li>Case-sensitive: <code class="language-plaintext highlighter-rouge">Co</code> (cobalt) ≠ <code class="language-plaintext highlighter-rouge">CO</code> (carbon monoxide).</li>
+  <li>Parentheses: Coefficients outside parentheses apply to all nested elements (e.g., <code class="language-plaintext highlighter-rouge">(H2O)2 → H:4, O:2</code>).</li>
+  <li>Implicit “1”: Missing counts are treated as 1 (e.g., <code class="language-plaintext highlighter-rouge">OH → O:1, H:1</code>).</li>
+</ul>
 
 <!--Written by Jorge Porras (2025)-->
 
