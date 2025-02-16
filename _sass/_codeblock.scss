@@ -21,8 +21,8 @@
     background: $code-header;
     border-radius: 6px 6px 0 0;
     padding: 5px 15px;
-    color: $code-bg;
-    font-family: 'Source Code Pro', monospace;
+    color: $text-primary;
+    font-family: $code-font;
     font-size: 0.8em;
     line-height: 30px;
     z-index: 2;
@@ -32,7 +32,7 @@
     position: absolute;
     top: 5px;
     right: 10px;
-    color: #fff;
+    color: $text-primary;
     padding: 2px 8px;
     font-size: 0.9em;
     cursor: pointer;
