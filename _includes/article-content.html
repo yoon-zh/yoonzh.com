@@ -1,5 +1,5 @@
 <!-- _includes/article-content.html -->
-<header class="project-header">
+<header class="article-header">
   <h1>
     {{ page.card_title }}
     {% if page.github %}
@@ -17,7 +17,7 @@
     {% endfor %}
   </div>
   {% endif %}
-  <div class="project-meta">
+  <div class="article-meta">
     {% if page.date %}
       <time datetime="{{ page.date | date_to_xmlschema }}">
         📅 {{ page.date | date: "%Y/%m/%d" }}
@@ -26,6 +26,6 @@
   </div>
 </header>
 
-<div class="project-content">
+<div class="article-content">
   {{ content }}
 </div>

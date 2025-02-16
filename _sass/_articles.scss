@@ -1,13 +1,13 @@
-// _sass/_projects.scss
+// _sass/_articles.scss
 
-// Project Page Styles
-.project-detail {
+// Articles Page Styles
+.article-detail {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 5%;
 
-  .project-header {
-    margin: 2rem 0 2rem;
+  .article-header {
+    margin: 2rem 0 0;
   }
   
   .github-icon {
@@ -21,11 +21,11 @@
     }
   }
 
-  .project-meta {
+  .article-meta {
     color: $text-secondary;
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 0;
     font-size: 1rem;
-    padding: 1rem 0 1rem;
+    padding: 1rem 0 0;
   }
   
   .tech-tags {
@@ -44,7 +44,11 @@
     }
   }
   
-  .project-content {
+  .article-content {
+    h1, h2, h3 {
+      padding-top: 1.5rem;
+    }
+
     .katex-display {
       max-width: 100%;
       overflow-x: auto;
