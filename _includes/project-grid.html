@@ -1,0 +1,38 @@
+<!-- _includes/project-grid.html -->
+{% if include.title %}
+<h2 class="section-title">{{ include.title }}</h2>
+{% endif %}
+
+<div class="project-grid">
+  {% assign projects = site.pages | where: "layout", "project" | sort: "date" | reverse %}
+  {% for project in projects %}
+    <article class="project-card {% if include.featured %}featured{% endif %}">
+      <a href="{{ project.url }}" class="project-link">
+        {% if project.image %}
+          <img src="{{ project.image }}" alt="{{ project.card_title }}" class="project-image">
+        {% endif %}
+        <div class="card-content">
+          <div class="project-header">
+            <h3>{{ project.card_title }}</h3>
+            {% if include.show_date %}
+              <span class="project-date">
+                {{ project.date | date: "%b %Y" }}
+              </span>
+            {% endif %}
+          </div>
+          {% if project.ros_version %}
+            <span class="ros-badge">ROS{{ project.ros_version }}</span>
+          {% endif %}
+          <p class="project-excerpt">{{ project.excerpt | truncate: 150 }}</p>
+          {% if project.tech_stack %}
+            <div class="tech-stack">
+              {% for tech in project.tech_stack %}
+                <span class="tech-item">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
