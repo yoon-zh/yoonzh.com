@@ -1,0 +1,209 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-container">
+      <a href="/" class="logo-link">
+        <h1 class="logo">윤志</h1>
+      </a>
+      <p class="logo-subtitle">[云 ~ 찌]</p>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Double and Triple pointers in C
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">C/C++</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-02-16T00:00:00+00:00">
+        📅 2025/02/16
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h2 id="what-the-heck-is-a-double-or-triple-pointer">What the heck is a double or triple pointer?</h2>
+
+<p>let’s start simple: a regular pointer in C is a variable that stores the memory address of another variable. easy enough, right?</p>
+
+<ul>
+  <li>Single pointer: <code class="language-text highlighter-rouge">int *p;</code> → stores the address of an <code class="language-text highlighter-rouge">int</code></li>
+  <li>Double pointer: <code class="language-text highlighter-rouge">int **p;</code> → stores the address of a pointer that stores an <code class="language-text highlighter-rouge">int</code></li>
+  <li>Triple pointer: <code class="language-text highlighter-rouge">int ***p</code>; → stores the address of a pointer that stores the address of a pointer that stores an <code class="language-text highlighter-rouge">int</code></li>
+</ul>
+
+<p>so we’ve got a pattern here. the more stars <code class="language-text highlighter-rouge">*</code>, the deeper down the rabbit hole we go. it’s like an inception of pointers, and we all know how that movie ended up: a whole bunch of confusion. but can we actually use this in a practical way?</p>
+
+<h2 id="why-bother-with-it">Why bother with it?</h2>
+
+<p>sometimes we need to dynamically allocate memory for complex data structures, like multi-dimensional arrays or structures that involve multiple levels of indirection. pointers to pointers can be thought of as adding dimensions: <code class="language-text highlighter-rouge">int **p</code> → 2D array, <code class="language-text highlighter-rouge">int ***p</code> → 3D array, and so on.</p>
+
+<p>also, passing pointers to pointers around functions lets us modify values at these deeper levels without making copies of the data. very useful for managing memory efficiently, especially when handling large datasets or manipulating multi-level structures.</p>
+
+<h2 id="moving-pointers-around-functions">Moving pointers around functions</h2>
+
+<p>Here’s where the fun begins. passing pointers to functions means we can modify the data they’re pointing to outside the function. basically we can “expand the scope” of a variable giving its pointer to another function and modifying it there.</p>
+
+<h2 id="the-right-way">The Right Way</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">update_value</span><span class="p">(</span><span class="kt">int</span> <span class="o">**</span><span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">**</span><span class="n">ptr</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// dereferencing twice to update the value of the int</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// the &amp; symbol gives us the address of a</span>
+    <span class="kt">int</span> <span class="o">**</span><span class="n">pp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 5</span>
+
+    <span class="n">update_value</span><span class="p">(</span><span class="n">pp</span><span class="p">);</span>  <span class="c1">// passing the double pointer</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"After: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 10</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><strong>explanation:</strong>
+We have a pointer to a pointer <code class="language-text highlighter-rouge">int **pp</code>, which stores the address of <code class="language-text highlighter-rouge">p</code>, which stores the address of <code class="language-text highlighter-rouge">a</code>. When we pass <code class="language-text highlighter-rouge">pp</code> to the <code class="language-text highlighter-rouge">update_value()</code> function, we access <code class="language-text highlighter-rouge">a</code> through <code class="language-text highlighter-rouge">**pp</code> and change its value. this works just fine, and our variable <code class="language-text highlighter-rouge">a</code> gets updated outside the function.</p>
+
+<h2 id="the-wrong-way">The Wrong Way</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">bad_update</span><span class="p">(</span><span class="kt">int</span> <span class="o">**</span><span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// This is wrong, it should dereference twice (**ptr)</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">**</span><span class="n">pp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// Should print 5</span>
+
+    <span class="n">bad_update</span><span class="p">(</span><span class="n">pp</span><span class="p">);</span>  <span class="c1">// This messes up the pointer</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"After: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// This will still print 5 (no change)</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><strong>why doesnt it update?</strong>
+in the bad_update function, we did <code class="language-text highlighter-rouge">*ptr = 10;</code>. this is <strong>modifying the pointer itself</strong>, not the value it points to. <code class="language-text highlighter-rouge">ptr</code> is a pointer to <code class="language-text highlighter-rouge">p</code>, so <code class="language-text highlighter-rouge">*ptr</code> modifies the address stored in <code class="language-text highlighter-rouge">p</code>, not the value of <code class="language-text highlighter-rouge">a</code>. the value of <code class="language-text highlighter-rouge">a</code> doesn’t change, and instead, <code class="language-text highlighter-rouge">p</code> ends up pointing to some random address (and god helps you if that address is something important). note that vscode or your editor will probably save you from messing up like that.</p>
+
+<h2 id="quick-note-">quick note: <code class="language-text highlighter-rouge">&amp;</code></h2>
+
+<p>when using pointers we’ll notice the <code class="language-text highlighter-rouge">*</code> being used along the <code class="language-text highlighter-rouge">&amp;</code>. so worth mentioning its difference:</p>
+
+<ul>
+  <li>
+    <p><code class="language-text highlighter-rouge">*</code> (dereference operator): takes a pointer and accesses the value stored at the address the pointer points to. if <code class="language-text highlighter-rouge">p</code> is a pointer, <code class="language-text highlighter-rouge">*p</code> returns the value stored at that address</p>
+  </li>
+  <li>
+    <p><code class="language-text highlighter-rouge">&amp;</code> (address of operator): the <strong>opposite</strong> of <code class="language-text highlighter-rouge">*</code>: gets the address of a variable. if we have a variable <code class="language-text highlighter-rouge">a</code>, <code class="language-text highlighter-rouge">&amp;a</code> returns the memory address where <code class="language-text highlighter-rouge">a</code> is stored.</p>
+  </li>
+</ul>
+
+<h3 id="double--double-">double <code class="language-text highlighter-rouge">**</code>, double <code class="language-text highlighter-rouge">&amp;&amp;</code>?</h3>
+
+<p>ill confess it. when working on <a href="/projects/chemcount">chemcount</a> i tried it. made a compsci grad cry that day.</p>
+
+<p>no, we cannot get the address of the address. <code class="language-text highlighter-rouge">&amp;&amp;</code> is for logical <code class="language-text highlighter-rouge">AND</code>.</p>
+
+<p><em>idk. it just made sense in the moment…</em></p>
+
+<h2 id="challenge">challenge</h2>
+
+<p>the above should be easy enough too. lets look at a challenge:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">challenge_update</span><span class="p">(</span><span class="kt">int</span> <span class="o">***</span><span class="n">ppp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">***</span><span class="n">ppp</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">ppp</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">**</span><span class="n">pp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">***</span><span class="n">ppp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pp</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 5</span>
+    <span class="n">challenge_update</span><span class="p">(</span><span class="n">ppp</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"After: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// what happens now?</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><strong>question:</strong> does it print 50?</p>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+</body>
+</html>
