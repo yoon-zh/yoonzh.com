@@ -3,8 +3,8 @@
   position: relative;
   margin: 0 -3%;
   width: calc(100% + 6%);
-  border-radius: 6px;
   background: $code-bg;
+  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   @media (min-width: 768px) {
@@ -19,7 +19,7 @@
     right: 0;
     height: 30px;
     background: $code-header;
-    border-radius: 6px 6px 0 0;
+    border-radius: 10px 10px 0 0;
     padding: 5px 15px;
     color: $text-primary;
     font-family: $code-font;
@@ -47,20 +47,17 @@
     -o-tab-size: 4;
     margin: 0;
     background: transparent;
-    border-radius: 6px;
-    padding: 50px 12px 15px;
+    border-radius: 10px;
+    padding: 50px 12px 10px;
     overflow-x: auto;
     
     code {
       background: transparent;
-      padding: 0;
+      border-radius: 10px;
+      padding: 1rem;
       line-height: 1.5;
       white-space: pre;
       display: block;
-      
-      &:last-child::after {
-        content: none !important;
-      }
     }
 
     .unrecognized {

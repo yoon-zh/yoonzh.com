@@ -31,17 +31,11 @@
     h1, h2, h3 {
       word-break: break-word;
       hyphens: auto;
+      padding-top: 1rem;
     }
       
     ul, ol {
       padding-left: 1.2rem;
-    }
-      
-    .code-block-container {
-      border-radius: 0;
-      pre {
-        border-radius: 0;
-      }
     }
   }
     
@@ -50,7 +44,6 @@
   }
 }
 
-// Media Queries
 @media (max-width: 480px) {
   .functionality-grid {
     grid-template-columns: 1fr;
