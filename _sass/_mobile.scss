@@ -1,10 +1,17 @@
 // _sass/_mobile.scss
-@media (max-width: 768px) {
-.hero {
-    h1 {
-      font-size: 2.5rem;
+@media (max-width: 768px) { 
+  .hero {
+    height:40vh;
+    .hero-content {
+      h1 {
+        font-size: 3.5rem;
+      }
     }
-  }
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+  } 
+
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
@@ -28,10 +35,11 @@
     }
   }
   .page-content {
+    width: 90%;
+    
     h1, h2, h3 {
       word-break: break-word;
       hyphens: auto;
-      padding-top: 1rem;
     }
       
     ul, ol {
@@ -45,15 +53,33 @@
 }
 
 @media (max-width: 480px) {
-  .functionality-grid {
-    grid-template-columns: 1fr;
+  .hero {
+    height: 30vh;
+    .hero-content {
+      h1 {
+        font-size: 2.75rem;
+      }
+    }
+    .hero-subtitle {
+      font-size: 0.9rem;
+    }
   }
+  
   .logo-container{
     .logo {
       font-size: 2rem;
     }
     .logo-subtitle {
       font-size: 1rem;
+    }
+  }
+
+  .page-content {
+    .content-section {
+      .section-title {
+        font-size: 2rem;
+        margin: 1rem 0 2rem;
+      }
     }
   }
 }

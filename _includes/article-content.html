@@ -10,13 +10,6 @@
       </a>
     {% endif %}
   </h1>
-  <div class="project-meta">
-    {% if page.date %}
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        📅 {{ page.date | date: "%Y/%m/%d" }}
-      </time>
-    {% endif %}
-  </div>
   {% if page.tech_stack %}
   <div class="tech-tags">
     {% for tech in page.tech_stack %}
@@ -24,6 +17,13 @@
     {% endfor %}
   </div>
   {% endif %}
+  <div class="project-meta">
+    {% if page.date %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        📅 {{ page.date | date: "%Y/%m/%d" }}
+      </time>
+    {% endif %}
+  </div>
 </header>
 
 <div class="project-content">

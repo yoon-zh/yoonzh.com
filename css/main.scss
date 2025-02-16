@@ -40,7 +40,7 @@ body {
     margin: 0;
   }
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   
   a {
@@ -61,11 +61,6 @@ body {
       margin: 0.5rem 0;
     }
   }
-  
-  @media (min-width: 768px) {
-    padding: 100px 5% 0;
-    width: 90%;
-  }
 
   code:not([class]) {
     padding: 0.2em 0.4em;
@@ -74,10 +69,25 @@ body {
     font-family: $code-font;
     font-size: 0.95em;
   }
+
+  // Scrolling for paragraphs - to get scrollable images
+  // Consider changing for performance
+  p {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  img {
+    display: block;
+    // max-width: none;
+    // width: auto;
+    // height: auto;
+  }
+
 }
 
 .content-section {
-  padding: 2rem 5% 4rem;
+  padding: 0rem 5% 2rem;
   position: relative;
   
   .section-title {
