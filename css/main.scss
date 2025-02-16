@@ -7,12 +7,14 @@
 // Import partials from _sass directory
 @import "variables";
 @import "mixins";
-@import "syntax-highlighting";
 @import "header";
 @import "footer";
-@import "content";
+@import "hero";
 @import "cards";
 @import "projects";
+@import "codeblock";
+@import "syntax-highlighting";
+@import "mobile";
 
 // Base styles
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Source+Code+Pro&display=swap');
@@ -25,119 +27,63 @@ body {
   overflow-x: hidden;
 }
 
-// Hero Section
-.hero {
-  height: 50vh;
-  display: flex;
-  align-items: center;
+.page-content {
+  padding-top: 10px 0;
+  min-height: calc(100vh - 150px);
   padding: 0 5%;
-  background: linear-gradient(45deg, rgba($darker-bg, 0.95), rgba($darker-bg, 0.5)),
-              url('/images/robot-bg.jpg') center/cover;
-  
-  .hero-content {
-    max-width: 800px;
+  max-width: 1200px;
+  width: 94%;
+  margin: 0 auto;
     
-    h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      line-height: 1.1;
-      text-shadow: 0 0 20px rgba($primary, 0.3);
-    }
-    
-    .cta-button {
-      background: $primary;
-      color: $dark-bg;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.3s, background 0.3s;
-      
-      &:hover {
-        transform: translateY(-3px);
-        background: color.adjust($primary, $lightness: 10%);
-      }
-    }
+  h1, h2, h3, h4, h5, h6 {
+    color: $primary;
+    margin: 0;
   }
-}
-
-// Functionality Grid
-.functionality-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 5rem 5%;
+  h1 {
+    font-size: 2rem;
+  }
   
-  .function-card {
-    background: $darker-bg;
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba($primary, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    
+  a {
+    color: $secondary;
+    text-decoration: none;
+    transition: color 0.3s;
+      
     &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba($primary, 0.1);
-      
-      .code-preview {
-        max-height: 200px;
-        opacity: 1;
-      }
+      color: $primary;
     }
-    
-    .code-preview {
-      max-height: 0;
-      opacity: 0;
-      transition: all 0.5s ease;
-      overflow: hidden;
-      margin-top: 1rem;
-      background: $code-bg;
-      border-radius: 8px;
+  }
+  
+  ul, ol {
+    padding-left: 2rem;
+    margin: 1rem 0;
       
-      pre {
-        margin: 0;
-        padding: 1rem;
-        font-family: 'Source Code Pro', monospace;
-        font-size: 0.9rem;
-      }
+    li {
+      margin: 0.5rem 0;
     }
+  }
+  
+  @media (min-width: 768px) {
+    padding: 100px 5% 0;
+    width: 90%;
+  }
+
+  // Inline code only
+  code:not([class]) {
+    padding: 0.2em 0.4em;
+    background-color: $code-bg;
+    border-radius: 4px;
+    font-family: $code-font;
+    font-size: 0.95em;
   }
 }
 
-// Code Section
-.code-section {
-  background: $darker-bg;
-  padding: 5rem 5%;
-  margin: 5rem 0;
+.content-section {
+  padding: 2rem 5% 4rem;
   position: relative;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, $primary, $secondary);
-  }
-  
-  .code-block {
-    background: $code-bg;
-    border-radius: 15px;
-    padding: 2rem;
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 2px solid rgba($primary, 0.1);
-      border-radius: 15px;
-      pointer-events: none;
-    }
+  .section-title {
+    margin: 0 0 2rem;
+    @include section-title;
   }
 }
 
@@ -159,51 +105,6 @@ body {
   transition: filter 0.3s;
   &:hover {
     filter: drop-shadow(0 0 10px rgba($primary, 0.3));
-  }
-}
-
-// Media Queries
-@media (max-width: 768px) {
-  .hero {
-    h1 {
-      font-size: 2.5rem;
-    }
-  }
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .site-header {
-    .logo-container {
-      text-align: center;
-      .logo {
-        font-size: 2rem;
-      }
-      .logo-subtitle {
-        font-size: 1rem;
-      }
-    }
-
-    .nav-links {
-      gap: 1.5rem;
-      a {
-        font-size: 1.2rem;
-      }
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .functionality-grid {
-    grid-template-columns: 1fr;
-  }
-  .logo-container{
-    .logo {
-      font-size: 2rem;
-    }
-    .logo-subtitle {
-      font-size: 1rem;
-    }
   }
 }
 

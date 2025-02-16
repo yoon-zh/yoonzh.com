@@ -2,7 +2,7 @@
 
 /* Based on https://gist.github.com/asaaki/1007420  for Monokai theme */
 .highlight {
-    pre { background-color: #2d2d2d !important; }
+    pre { background-color: $code-bg !important; }
     .c { color: #75715e } /* Comment */
     .err { color: #960050; background-color: #1e0010 } /* Error */
     .k { color: #66d9ef } /* Keyword */

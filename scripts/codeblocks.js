@@ -2,10 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('pre').forEach(pre => {
     // Get language from class
-    const language = Array.from(pre.classList)
-      .find(c => c.startsWith('language-'))
-      ?.replace('language-', '') 
-      || 'code';
+    const languageClass = Array.from(pre.classList).find(c => c.startsWith('language-'));
+    const language = languageClass ? languageClass.replace('language-', '') : 'code';
 
     // Create container div
     const container = document.createElement('div');
