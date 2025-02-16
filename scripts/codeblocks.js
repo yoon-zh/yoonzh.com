@@ -1,8 +1,8 @@
 // scripts/codeblocks.js
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('pre').forEach(pre => {
+  document.querySelectorAll('div[class*="language-"]').forEach(div => {
     // Get language from class
-    const languageClass = Array.from(pre.classList).find(c => c.startsWith('language-'));
+    const languageClass = Array.from(div.classList).find(c => c.startsWith('language-'));
     const language = languageClass ? languageClass.replace('language-', '') : 'code';
 
     // Create container div
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create header with language
     const header = document.createElement('div');
     header.className = 'code-block-header';
-    header.textContent = language.toUpperCase();
+    header.textContent = language;
 
     // Create copy button
     const copyButton = document.createElement('div');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set up copy functionality
     copyButton.addEventListener('click', () => {
-      const code = pre.querySelector('code').innerText;
+      const code = div.querySelector('code').innerText;
       navigator.clipboard.writeText(code).then(() => {
         copyButton.textContent = 'Copied!';
         setTimeout(() => {
@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
-    // Wrap the pre in container
-    pre.parentNode.insertBefore(container, pre);
+    // Wrap the div in container
+    div.parentNode.insertBefore(container, div);
     container.appendChild(header);
-    container.appendChild(pre);
+    container.appendChild(div);
     container.appendChild(copyButton);
   });
 });
