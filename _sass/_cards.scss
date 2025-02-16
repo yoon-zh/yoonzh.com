@@ -1,0 +1,98 @@
+// _sass/_cards.scss
+
+// Card List Structure
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+}
+  
+// Base Card Styles
+.content-card {
+  @include card-base;
+}
+  
+// Card Contents
+.card-body {
+  padding: 1.5rem;
+   
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+    
+    h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: $primary;
+    }
+      
+    .card-date {
+      color: $text-secondary;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+  }
+    
+  .card-excerpt {
+    color: $text-secondary;
+    line-height: 1.6;
+    margin: 1rem 0;
+  }
+}
+  
+// Image Container
+.card-image-container {
+  overflow: hidden;
+  border-radius: $card-radius $card-radius 0 0;
+    
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+  
+// Tags and Badges
+.card-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+   
+  .tag {
+    background: rgba($primary, 0.1);
+    color: $primary;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    border: 1px solid rgba($primary, 0.3);
+  }
+}
+  
+.ros-badge {
+  @extend .tag;
+  background: $secondary;
+  color: white;
+  border-color: $secondary;
+}
+
+@media (max-width: 768px) {
+  .content-card {
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      
+      .card-date {
+        margin-top: 0.5rem;
+      }
+    }
+      
+    .card-image {
+      height: 150px;
+    }
+  }
+}

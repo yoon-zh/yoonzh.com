@@ -1,0 +1,52 @@
+// _sass/mixins.scss
+@mixin section-title {
+  font-size: 2.5rem;
+  color: $primary;
+  text-align: center;
+  margin: 2rem 0;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, $primary, $secondary);
+  }
+}
+  
+@mixin card-base {
+  background: $card-bg;
+  border-radius: $card-radius;
+  transition: $card-transition;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px);
+    background: $card-hover-bg;
+    box-shadow: $card-shadow;
+  
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba($primary, 0.1), transparent);
+        z-index: -1;
+      }
+  
+    .card-image {
+      transform: scale(1.1);
+    }
+    
+    .card-link::after {
+      width: 100%;
+    }
+  }
+}

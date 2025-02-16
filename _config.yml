@@ -1,3 +1,5 @@
+# _config.yml
+
 navigation:
   - name: Projects
     link: /projects/
@@ -10,18 +12,27 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
-
-defaults:
-  - scope:
-      path: "_projects"
-      type: "projects"
-    values:
-      layout: "project"
-      comments: true
-      card_title: "Project Title"
-      excerpt: "Project description"
-      tech_stack: []
-      github: ""
+    defaults:
+    - scope:
+        path: "_projects"
+        type: "projects"
+      values:
+        layout: "project"
+        comments: true
+        card_title: "Project Title"
+        excerpt: "Project description"
+        tech_stack: []
+        github: ""
+  posts:
+    output: true
+    permalink: /posts/:path/
+    defaults:
+      - scope:
+          path: "_posts"
+          type: "posts"
+        values:
+          layout: "post"
+          comments: true
 
 sass:
   sass_dir: _sass

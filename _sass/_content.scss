@@ -37,3 +37,13 @@
     font-family: 'Source Code Pro', monospace;
   }
 }
+
+.content-section {
+  padding: 2rem 5% 4rem;
+  position: relative;
+  
+  .section-title {
+    margin: 0 0 2rem;
+    @include section-title;
+  }
+}

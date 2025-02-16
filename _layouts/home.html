@@ -9,35 +9,10 @@ layout: default
   </div>
 </section>
 
-<section class="featured-projects">
-  <h2 class="section-title">Featured Projects</h2>
-  <div class="project-grid">
-    {% assign projects = site.pages | where: "layout", "project" | sort: "date" | reverse %}
-    {% for project in projects %}
-    <a href="{{ project.url }}" >
-    <article class="project-card">
-      {% if project.image %}
-        <img src="{{ project.image }}" alt="{{ project.card_title }}" class="project-image">
-      {% endif %}
-      <div class="card-content">
-        <h3>
-          {{ project.card_title }}
-        </h3>
-        {% if project.ros_version %}
-          <span class="ros-badge">ROS{{ project.ros_version }}</span>
-        {% endif %}
-        <p class="project-excerpt">{{ project.excerpt | truncate: 150 }}</p>
-        {% if project.tech_stack %}
-          <div class="tech-stack">
-            {% for tech in project.tech_stack %}
-              <span class="tech-item">{{ tech }}</span>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </div>
-    </article>
-    </a>
-    {% endfor %}
-  </div>
+<section class="content-section">
+  {% include card-grid.html 
+    collection="projects" 
+    title="Featured Projects" 
+    show_date=false
+    limit=3 %}
 </section>
-

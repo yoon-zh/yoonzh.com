@@ -1,0 +1,51 @@
+<!-- _includes/card-grid.html -->
+{%- if include.collection == "projects" -%}
+  {%- assign items = site.pages | where: "layout", "project" | sort: "date" | reverse -%}
+{%- else -%}
+  {%- assign items = site.pages | where: "layout", "post" | sort: "date" | reverse -%}
+{%- endif -%}
+
+{%- if include.limit and include.limit != "" -%}
+  {%- assign items = items | slice: 0, include.limit -%}
+{%- endif -%}
+
+{% if include.title %}
+<h2 class="section-title">{{ include.title }}</h2>
+{% endif %}
+
+<div class="card-list">
+  {% for item in items %}
+    <article class="content-card">
+      <a href="{{ item.url }}" class="card-link">
+        {% if item.image %}
+          <div class="card-image-container">
+            <img src="{{ item.image }}" alt="{{ item.card_title }}" class="card-image" loading="lazy" decoding="async">
+          </div>
+        {% endif %}
+        
+        <div class="card-body">
+          <div class="card-header">
+            <h3>{{ item.card_title }}</h3>
+            {% if include.show_date %}
+              <time class="card-date">{{ item.date | date: "%b %d, %Y" }}</time>
+            {% endif %}
+          </div>
+          
+          {% if item.ros_version %}
+            <span class="card-badge ros">ROS{{ item.ros_version }}</span>
+          {% endif %}
+          
+          <p class="card-excerpt">{{ item.excerpt | truncate: 150 }}</p>
+          
+          {% if item.tech_stack %}
+            <div class="card-tags">
+              {% for tech in item.tech_stack %}
+                <span class="tag">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
