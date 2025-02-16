@@ -30,11 +30,63 @@
     }
   }
   
-  code {
-    background: rgba($primary, 0.1);
-    padding: 0.2rem 0.4rem;
+  // Inline code only
+  code:not([class]) {
+    padding: 0.2em 0.4em;
     border-radius: 4px;
     font-family: 'Source Code Pro', monospace;
+    font-size: 0.95em;
+  }
+}
+
+.code-block-container {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: 6px;
+  background: #2d2d2d;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .code-block-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: #1e1e1e;
+    border-radius: 6px 6px 0 0;
+    padding: 5px 15px;
+    color: #888;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9em;
+    line-height: 20px;
+    z-index: 2;
+  }
+
+  .code-copy-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 0.9em;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  pre {
+    margin: 0;
+    background: transparent;
+    padding: 50px 15px 15px;
+    overflow-x: auto;
+    
+    code {
+      background: transparent;
+      padding: 0;
+      font-size: 0.85em;
+      line-height: 1.5;
+      white-space: pre;
+      display: block;
+    }
   }
 }
 

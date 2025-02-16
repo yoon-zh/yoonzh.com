@@ -38,6 +38,17 @@ sass:
   sass_dir: _sass
   style: compressed
 
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    default_lang: text
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
 exclude:
   - README.md
   - Gemfile
