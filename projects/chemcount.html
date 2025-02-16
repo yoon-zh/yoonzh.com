@@ -80,8 +80,8 @@
 
 <ul>
   <li>Parses chemical formulas such as \(H_2SO_4\) into element counts</li>
-  <li>Handles parentheses for grouped compounds: \((NH3)_6\) → <code class="language-plaintext highlighter-rouge">N:6, H:18</code></li>
-  <li>Returns struct <code class="language-plaintext highlighter-rouge">cElement</code> with total element count <code class="language-plaintext highlighter-rouge">"TTT"</code> and individual element quantities <code class="language-plaintext highlighter-rouge">N</code></li>
+  <li>Handles parentheses for grouped compounds: \((NH3)_6\) → <code class="language-text highlighter-rouge">N:6, H:18</code></li>
+  <li>Returns struct <code class="language-text highlighter-rouge">cElement</code> with total element count <code class="language-text highlighter-rouge">"TTT"</code> and individual element quantities <code class="language-text highlighter-rouge">N</code></li>
 </ul>
 
 <h2 id="installation">Installation</h2>
@@ -105,20 +105,20 @@ gcc yourprogram.c chemcount.o <span class="nt">-o</span> yourprogram
 </code></pre></div></div>
 
 <h2 id="output-format">Output Format</h2>
-<p>The <code class="language-plaintext highlighter-rouge">cElement</code> struct is an array of arrays sorted by appearance.</p>
+<p>The <code class="language-text highlighter-rouge">cElement</code> struct is an array of arrays sorted by appearance.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cElement</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">name</span> <span class="o">=</span> <span class="s">"TTT"</span><span class="p">;</span>
 <span class="n">cElement</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">amount</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>The first element in the struct has the title <code class="language-plaintext highlighter-rouge">"TTT"</code> and <code class="language-plaintext highlighter-rouge">N</code> is the total unique elements in the formula.</p>
+<p>The first element in the struct has the title <code class="language-text highlighter-rouge">"TTT"</code> and <code class="language-text highlighter-rouge">N</code> is the total unique elements in the formula.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cElement</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\t</span><span class="s">%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cElement</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span> <span class="n">cElement</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">amount</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>The other objects in the <code class="language-plaintext highlighter-rouge">cElement</code> struct contain the string of the element and its amount in the compound.</p>
+<p>The other objects in the <code class="language-text highlighter-rouge">cElement</code> struct contain the string of the element and its amount in the compound.</p>
 
 <h2 id="example">Example</h2>
 
@@ -154,8 +154,8 @@ gcc main.c chemcount.o <span class="nt">-o</span> main
 <h2 id="assumptions">Assumptions</h2>
 <ul>
   <li>Case-sensitive: \(Co\) (cobalt) ≠ \(CO\) (carbon monoxide).</li>
-  <li>Parentheses: Coefficients outside parentheses apply to all nested elements (e.g., <code class="language-plaintext highlighter-rouge">(H2O)2 → H:4, O:2</code>).</li>
-  <li>Implicit “1”: Missing counts are treated as 1 (e.g., <code class="language-plaintext highlighter-rouge">OH → O:1, H:1</code>).</li>
+  <li>Parentheses: Coefficients outside parentheses apply to all nested elements (e.g., <code class="language-text highlighter-rouge">(H2O)2 → H:4, O:2</code>).</li>
+  <li>Implicit “1”: Missing counts are treated as 1 (e.g., <code class="language-text highlighter-rouge">OH → O:1, H:1</code>).</li>
 </ul>
 
 <!--Written by Jorge Porras (2025)-->
@@ -187,5 +187,6 @@ gcc main.c chemcount.o <span class="nt">-o</span> main
   </div>
 </footer>
 <script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
 </body>
 </html>
