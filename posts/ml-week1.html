@@ -1,0 +1,161 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-container">
+      <a href="/" class="logo-link">
+        <h1 class="logo">윤志</h1>
+      </a>
+      <p class="logo-subtitle">[云 ~ 찌]</p>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    ML week 1
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">ML</span>
+    
+      <span class="tech-tag">Python</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-02-17T00:00:00+00:00">
+        📅 2025/02/17
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+
+<h2 id="week-1-introduction-to-ml--deployment">Week 1: Introduction to ML &amp; Deployment</h2>
+
+<p><strong>Objective:</strong> Understand core ML concepts, deploy a simple model via an API, and identify deployment challenges.</p>
+
+<h2 id="concepts">Concepts</h2>
+
+<p><strong>1. ML Basics</strong></p>
+<ul>
+  <li><strong>What is ML?</strong> Algorithms that learn patterns from data to make predictions or decisions.</li>
+  <li><strong>Supervised Learning Example:</strong> Classify iris flowers into species (setosa, versicolor, virginica) using measurements (sepal length, petal width).</li>
+</ul>
+
+<h2 id="setup">Setup</h2>
+
+<p>1 Verify python 3</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">--version</span> <span class="c"># should return Python 3.12.x</span>
+pip3 <span class="nt">--version</span> <span class="c"># should return pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)</span>
+</code></pre></div></div>
+<p>If not Python 3, <a href="https://www.python.org/downloads/">install</a></p>
+
+<p>2</p>
+
+<p>Install Dependencies</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>flask scikit-learn
+</code></pre></div></div>
+
+<h2 id="test">Test</h2>
+
+<ol>
+  <li>What is supervised learning?</li>
+  <li>What does an API endpoint do?</li>
+  <li>Name one security risk in deploying a model</li>
+</ol>
+
+<h2 id="dictionary">Dictionary</h2>
+<ul>
+  <li><strong>API:</strong> A bridge between software applications (e.g., your model and a mobile app)</li>
+  <li><strong>Deployment:</strong> Making a model usable by others via an interface like an API</li>
+  <li><strong>Flask:</strong> A Python library for building web servers</li>
+  <li><strong>Model:</strong> A file (e.g., .pkl) containing learned patterns from data</li>
+  <li><strong>Pre-trained Model:</strong> A model already trained on data (e.g., iris_model.pkl)</li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li>https://scikit-learn.org/stable/auto_examples/decomposition/plot_pca_iris.html</li>
+</ul>
+
+<h2 id="credits">Credits</h2>
+
+<!--Written by Jorge Porras (2025)-->
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Deepseek. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-container">
+      <a href="/" class="logo-link">
+        <h1 class="logo">윤志</h1>
+      </a>
+      <p class="logo-subtitle">[云 ~ 찌]</p>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Void Pointers
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">C/C++</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-02-16T00:00:00+00:00">
+        📅 2025/02/16
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <p>still on dev</p>
+
+<p><code class="language-text highlighter-rouge">void* p;</code></p>
+
+<p>??</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">satan_swap</span><span class="p">(</span><span class="kt">void</span><span class="o">*****</span> <span class="n">d</span><span class="p">,</span> <span class="kt">void</span><span class="o">*****</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// your code here...</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">888</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="o">**</span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="o">***</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">***</span><span class="p">)</span><span class="o">&amp;</span><span class="n">b</span><span class="p">;</span>
+
+    <span class="c1">// Allocate new_value via c (triple void pointer)</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">new_value</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="o">*</span><span class="n">new_value</span> <span class="o">=</span> <span class="mi">999</span><span class="p">;</span>
+    <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">**</span><span class="p">)</span><span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">new_value</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">evil</span> <span class="o">=</span> <span class="mi">69</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">evil1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">evil</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="o">**</span><span class="n">evil2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">evil1</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="o">***</span><span class="n">evil3</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">***</span><span class="p">)</span><span class="o">&amp;</span><span class="n">evil2</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="o">****</span><span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">****</span><span class="p">)</span><span class="o">&amp;</span><span class="n">evil3</span><span class="p">;</span>
+
+    <span class="n">satan_swap</span><span class="p">((</span><span class="kt">void</span><span class="o">*****</span><span class="p">)</span><span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*****</span><span class="p">)</span><span class="o">&amp;</span><span class="n">d</span><span class="p">);</span>
+
+    <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">***</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">))</span> <span class="o">=</span> <span class="mi">420</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"value: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"new_value: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">new_value</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"evil: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">evil</span><span class="p">);</span>
+
+    <span class="c1">// printf("\nAddresses:\na: %p\nb: %p\nc: %p\nd: %p\n", </span>
+    <span class="c1">//        (void*)a, (void*)b, (void*)c, (void*)d);</span>
+
+    <span class="n">free</span><span class="p">(</span><span class="n">new_value</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+</body>
+</html>

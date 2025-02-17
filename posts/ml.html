@@ -1,0 +1,235 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-container">
+      <a href="/" class="logo-link">
+        <h1 class="logo">윤志</h1>
+      </a>
+      <p class="logo-subtitle">[云 ~ 찌]</p>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    ml learning path
+    
+  </h1>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-02-17T00:00:00+00:00">
+        📅 2025/02/17
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+
+<h2 id="goals">goals</h2>
+
+<ul>
+  <li>explain core ML concepts and deployment challenges</li>
+  <li>manipulate tensors and implement efficient data pipelines</li>
+  <li>build and train models using PyTorch and TensorFlow</li>
+  <li>convert and secure models using Safetensors.</li>
+  <li>deploy models locally and at scale via APIs, cloud, or edge devices.</li>
+  <li>fine-tune and run local LLMs (deepseek)</li>
+</ul>
+
+<h2 id="prereq">prereq</h2>
+
+<ul>
+  <li>python</li>
+  <li>freshman level calc</li>
+</ul>
+
+<h3 id="week-1-introduction-to-ml--deployment">Week 1: Introduction to ML &amp; Deployment</h3>
+
+<p>ML fundamentals: Supervised, unsupervised, reinforcement learning.</p>
+
+<p>Model deployment lifecycle: Training, validation, monitoring, scaling.</p>
+
+<p>Ethical considerations: Bias, privacy, and environmental impact.</p>
+
+<p><strong>Project:</strong> Deploy a pre-trained scikit-learn model (e.g., Iris classifier) via a Flask API. Write a 1-page report on potential deployment pitfalls.</p>
+
+<h3 id="week-2-tensors--mathematical-foundations">Week 2: Tensors &amp; Mathematical Foundations</h3>
+
+<p>Tensors as data structures: Scalars, vectors, matrices, n-dimensional arrays.</p>
+
+<p>Tensor operations: Reshaping, broadcasting, einsum.</p>
+
+<p>Automatic differentiation and gradient computation.</p>
+
+<p><strong>Exercise:</strong> Use NumPy to compute the Jacobian matrix for a simple function (e.g., \({f(x,y)=x^2+3y}\)). Visualize tensor operations in a Jupyter notebook.</p>
+
+<h3 id="week-3-data-pipelines--preprocessing">Week 3: Data Pipelines &amp; Preprocessing</h3>
+
+<p>Data loading (CSV, JSON, Parquet), normalization, and augmentation.</p>
+
+<p>Feature engineering: Embeddings, one-hot encoding, PCA.</p>
+
+<p>Tools: Pandas, Hugging Face Datasets, TF Data API.</p>
+
+<p><strong>Project:</strong> Build a data pipeline for the Titanic dataset. Implement a custom PyTorch Dataset class to handle missing values and categorical features.</p>
+
+<h3 id="week-4-pytorch-vs-tensorflow-deep-dive">Week 4: PyTorch vs. TensorFlow Deep Dive</h3>
+
+<p>PyTorch: Dynamic computation graphs, torch.nn, GPU acceleration.</p>
+
+<p>TensorFlow: Static graphs, Keras layers, distributed training.</p>
+
+<p><strong>Exercise:</strong> Train a logistic regression model on MNIST using both frameworks. Compare code structure, debugging ease, and training speed.</p>
+
+<h3 id="week-5-building--training-models">Week 5: Building &amp; Training Models</h3>
+
+<p>Architectures: CNNs (ResNet), RNNs (LSTM), Transformers.</p>
+
+<p>Transfer learning with pretrained models (e.g., BERT, ResNet-50).</p>
+
+<p><strong>Project:</strong> Train a PyTorch CNN on CIFAR-10 and a TensorFlow Transformer for text generation. Profile GPU usage with nvtop or NSight.</p>
+
+<h3 id="week-6-model-evaluation--optimization">Week 6: Model Evaluation &amp; Optimization</h3>
+
+<p>Metrics: Precision, recall, F1, ROC-AUC.</p>
+
+<p>Hyperparameter tuning: Grid search, Bayesian optimization.</p>
+
+<p>Explainability: SHAP, LIME.</p>
+
+<p><strong>Exercise:</strong> Use Optuna to optimize hyperparameters for a Random Forest model. Generate a SHAP summary plot for feature importance.</p>
+
+<h3 id="week-7-safetensors--model-security">Week 7: Safetensors &amp; Model Security</h3>
+
+<p>Safetensors format: Security benefits over pickle.</p>
+
+<p>Model serialization/deserialization in PyTorch/TensorFlow.</p>
+
+<p>Vulnerability scanning with tools like safety or bandit.</p>
+
+<p><strong>Project:</strong> Convert a PyTorch model to Safetensors. Write a script to detect unsafe operations in a model’s inference pipeline.</p>
+
+<h3 id="week-8-deployment-with-flaskfastapi">Week 8: Deployment with Flask/FastAPI</h3>
+
+<p>REST API design, request handling, async endpoints.</p>
+
+<p>Scalability: Load balancing, Redis caching.</p>
+
+<p><strong>Project:</strong> Deploy a sentiment analysis model with FastAPI. Use Docker to containerize the app and Locust for load testing.</p>
+
+<h3 id="week-9-local-llms--fine-tuning">Week 9: Local LLMs &amp; Fine-Tuning</h3>
+
+<p>Quantization (GGUF, GPTQ), LoRA for parameter-efficient tuning.</p>
+
+<p>Tools: Ollama, llama.cpp, Hugging Face Transformers.</p>
+
+<p><strong>Project:</strong> Fine-tune Mistral-7B on a custom dataset (e.g., legal documents) using QLoRA. Benchmark inference speed on a CPU vs. GPU.</p>
+
+<h3 id="week-10-advanced-deployment-strategies">Week 10: Advanced Deployment Strategies</h3>
+
+<p>Cloud platforms: AWS SageMaker, Google AI Platform.</p>
+
+<p>Edge devices: TensorFlow Lite, ONNX Runtime.</p>
+
+<p><strong>Project:</strong> Deploy a TFLite model to a Raspberry Pi. Collect real-time sensor data and run inferences.</p>
+
+<h3 id="week-11-capstone-project">Week 11: Capstone Project</h3>
+
+<p>End-to-end project: From dataset selection to deployed model. Example:</p>
+
+<ul>
+  <li>Train a GAN to generate synthetic art.</li>
+  <li>Deploy it as a Gradio app with user input controls.</li>
+  <li>Write a CI/CD pipeline for model updates.</li>
+</ul>
+
+<h3 id="week-12-next-steps--emerging-trends">Week 12: Next Steps &amp; Emerging Trends</h3>
+
+<p>MLOps: MLflow, Kubeflow, monitoring with Prometheus.</p>
+
+<p>Trends: Federated learning, neuromorphic computing.</p>
+
+<p><strong>Exercise:</strong> Present a research paper (e.g., “Attention Is All You Need”) and propose a deployment strategy for its architecture.</p>
+
+<p>Tools: Docker, Hugging Face Hub, Weights &amp; Biases.</p>
+
+<p>Communities: Kaggle, MLflow Slack, PyTorch Forums.</p>
+
+<h2 id="credits">Credits</h2>
+
+<!--Written by Jorge Porras (2025)-->
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Deepseek. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+</body>
+</html>

@@ -61,7 +61,9 @@
 </header>
 
 <div class="article-content">
-  <h2 id="what-the-heck-is-a-double-or-triple-pointer">What the heck is a double or triple pointer?</h2>
+  <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+
+<h2 id="what-the-heck-is-a-double-or-triple-pointer">What the heck is a double or triple pointer?</h2>
 
 <p>let’s start simple: a regular pointer in C is a variable that stores the memory address of another variable. easy enough, right?</p>
 
@@ -96,11 +98,11 @@
     <span class="kt">int</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// the &amp; symbol gives us the address of a</span>
     <span class="kt">int</span> <span class="o">**</span><span class="n">pp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">;</span>
 
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 5</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 5</span>
 
     <span class="n">update_value</span><span class="p">(</span><span class="n">pp</span><span class="p">);</span>  <span class="c1">// passing the double pointer</span>
 
-    <span class="n">printf</span><span class="p">(</span><span class="s">"After: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 10</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"after: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 10</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -120,11 +122,11 @@ We have a pointer to a pointer <code class="language-text highlighter-rouge">int
     <span class="kt">int</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
     <span class="kt">int</span> <span class="o">**</span><span class="n">pp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">;</span>
 
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// Should print 5</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// Should print 5</span>
 
     <span class="n">bad_update</span><span class="p">(</span><span class="n">pp</span><span class="p">);</span>  <span class="c1">// This messes up the pointer</span>
 
-    <span class="n">printf</span><span class="p">(</span><span class="s">"After: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// This will still print 5 (no change)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"after: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// This will still print 5 (no change)</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -169,13 +171,24 @@ in the bad_update function, we did <code class="language-text highlighter-rouge"
     <span class="kt">int</span> <span class="o">**</span><span class="n">pp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">;</span>
     <span class="kt">int</span> <span class="o">***</span><span class="n">ppp</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pp</span><span class="p">;</span>
 
-    <span class="n">printf</span><span class="p">(</span><span class="s">"Before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 5</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"before: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// should print 5</span>
     <span class="n">challenge_update</span><span class="p">(</span><span class="n">ppp</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"After: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// what happens now?</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"after: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>  <span class="c1">// what happens now?</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 <p><strong>question:</strong> does it print 50?</p>
+
+<h2 id="credits">Credits</h2>
+
+<!--Written by Jorge Porras (2025)-->
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>ChatGPT <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 </div>
 </article>
