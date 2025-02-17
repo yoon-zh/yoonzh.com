@@ -5,9 +5,9 @@ card_title: ml learning path
 url: /posts/ml
 excerpt: ml 
 math: true
-date: 2025-02-17
 ---
 
+date: 2025-02-17
 *Adapted from [^1]*
 
 ## goals

@@ -5,8 +5,9 @@ card_title: ML week 1
 url: /posts/ml-week1
 math: true
 tech_stack: [ML, Python]
-date: 2025-02-17
 ---
+
+date: 2025-02-17
 
 *Adapted from [^1]*
 
@@ -16,21 +17,31 @@ date: 2025-02-17
 
 ## Concepts
 
-**1. ML Basics**
-- **What is ML?** Algorithms that learn patterns from data to make predictions or decisions.
+1. **What is ML?** Algorithms that learn patterns from data to make predictions or decisions.
+
+2. **Model Deployment**
+- Definition: Making a trained model accessible to users/apps via an interface (e.g., API).
+
+- Why Flask? A lightweight Python web framework for building APIs.
+
+3. **API (Application Programming Interface)**
+
+A set of rules allowing apps to communicate. Example: A mobile app sends data to your model via an API and receives predictions.
+
+
 - **Supervised Learning Example:** Classify iris flowers into species (setosa, versicolor, virginica) using measurements (sepal length, petal width).
 
 
 ## Setup
 
-1 Verify python 3
+1. Verify python 3
 ```bash
 python3 --version # should return Python 3.12.x
 pip3 --version # should return pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)
 ```
 If not Python 3, [install](https://www.python.org/downloads/)
 
-2 
+2. 
 
 Install Dependencies
 ```bash
