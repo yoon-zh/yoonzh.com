@@ -60,15 +60,13 @@
   
   <div class="article-meta">
     
-      <time datetime="2025-02-17T00:00:00+00:00">
-        📅 2025/02/17
-      </time>
-    
   </div>
 </header>
 
 <div class="article-content">
-  <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+  <p>date: 2025-02-17</p>
+
+<p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
 
 <h2 id="week-1-introduction-to-ml--deployment">Week 1: Introduction to ML &amp; Deployment</h2>
 
@@ -76,21 +74,43 @@
 
 <h2 id="concepts">Concepts</h2>
 
-<p><strong>1. ML Basics</strong></p>
+<ol>
+  <li>
+    <p><strong>What is ML?</strong> Algorithms that learn patterns from data to make predictions or decisions.</p>
+  </li>
+  <li>
+    <p><strong>Model Deployment</strong></p>
+    <ul>
+      <li>Definition: Making a trained model accessible to users/apps via an interface (e.g., API).</li>
+    </ul>
+  </li>
+</ol>
+
 <ul>
-  <li><strong>What is ML?</strong> Algorithms that learn patterns from data to make predictions or decisions.</li>
+  <li>Why Flask? A lightweight Python web framework for building APIs.</li>
+</ul>
+
+<ol>
+  <li><strong>API (Application Programming Interface)</strong></li>
+</ol>
+
+<p>A set of rules allowing apps to communicate. Example: A mobile app sends data to your model via an API and receives predictions.</p>
+
+<ul>
   <li><strong>Supervised Learning Example:</strong> Classify iris flowers into species (setosa, versicolor, virginica) using measurements (sepal length, petal width).</li>
 </ul>
 
 <h2 id="setup">Setup</h2>
 
-<p>1 Verify python 3</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">--version</span> <span class="c"># should return Python 3.12.x</span>
+<ol>
+  <li>Verify python 3
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">--version</span> <span class="c"># should return Python 3.12.x</span>
 pip3 <span class="nt">--version</span> <span class="c"># should return pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)</span>
-</code></pre></div></div>
-<p>If not Python 3, <a href="https://www.python.org/downloads/">install</a></p>
-
-<p>2</p>
+</code></pre></div>    </div>
+    <p>If not Python 3, <a href="https://www.python.org/downloads/">install</a></p>
+  </li>
+  <li></li>
+</ol>
 
 <p>Install Dependencies</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>flask scikit-learn
