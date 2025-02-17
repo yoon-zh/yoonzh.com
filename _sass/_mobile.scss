@@ -47,6 +47,17 @@
     ul, ol {
       padding-left: 1.2rem;
     }
+
+    .article-detail {
+      .article-content {
+        h1 {
+          font-size: 1.8rem;
+        }
+        h3 {
+          padding-top: 0.5rem;
+        }
+      }
+    }
   }
     
   .content-section {
