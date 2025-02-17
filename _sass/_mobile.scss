@@ -38,8 +38,10 @@
     width: 90%;
     
     h1, h2, h3 {
-      word-break: break-word;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
       hyphens: auto;
+      max-width: 100%;
     }
       
     ul, ol {
@@ -79,6 +81,20 @@
       .section-title {
         font-size: 2rem;
         margin: 1rem 0 2rem;
+      }
+    }
+
+    .article-detail {
+      .article-header {
+        h1 {
+          font-size: 2rem;
+        }
+      }
+
+      .article-content {
+        h1 {
+          font-size: 1.5rem;
+        }
       }
     }
   }

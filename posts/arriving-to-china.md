@@ -12,7 +12,7 @@ date: 2025-02-17
 
 before taking off, make sure your paperwork is solid. passports, visas, admission letters, insurance, college stuff... everything should be in order, because china isn't shy about checking these things.
 
-you should also be mentally prepared for *a lot* of bureaucracy. expect some paperwork, like registering with the police on the first dates or getting a local bank account.
+you should also be mentally prepared for *a lot* of bureaucracy. expect some paperwork, like registering with the police on the first days or getting a local bank account.
 
 ## VPN
 
