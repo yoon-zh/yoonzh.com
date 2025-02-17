@@ -76,7 +76,7 @@
 .ros-badge {
   @extend .tag;
   background: $secondary;
-  color: white;
+  color: $text-primary;
   border-color: $secondary;
 }
 

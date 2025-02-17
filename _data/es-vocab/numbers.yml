@@ -1,0 +1,127 @@
+numbers:
+  - number: 0
+    spanish: "cero"
+  - number: 1
+    spanish: "uno"
+  - number: 2
+    spanish: "dos"
+  - number: 3
+    spanish: "tres"
+  - number: 4
+    spanish: "cuatro"
+  - number: 5
+    spanish: "cinco"
+  - number: 6
+    spanish: "seis"
+  - number: 7
+    spanish: "siete"
+  - number: 8
+    spanish: "ocho"
+  - number: 9
+    spanish: "nueve"
+  - number: 10
+    spanish: "diez"
+  - number: 11
+    spanish: "once"
+  - number: 12
+    spanish: "doce"
+  - number: 13
+    spanish: "trece"
+  - number: 14
+    spanish: "catorce"
+  - number: 15
+    spanish: "quince"
+  - number: 16
+    spanish: "dieciséis"
+  - number: 17
+    spanish: "diecisiete"
+  - number: 18
+    spanish: "dieciocho"
+  - number: 19
+    spanish: "diecinueve"
+  - number: 20
+    spanish: "veinte"
+  - number: 30
+    spanish: "treinta"
+  - number: 40
+    spanish: "cuarenta"
+  - number: 50
+    spanish: "cincuenta"
+  - number: 60
+    spanish: "sesenta"
+  - number: 70
+    spanish: "setenta"
+  - number: 80
+    spanish: "ochenta"
+  - number: 90
+    spanish: "noventa"
+  - number: 100
+    spanish: "cien"
+  - number: 101
+    spanish: "ciento uno"
+  - number: 110
+    spanish: "ciento diez"
+  - number: 120
+    spanish: "ciento veinte"
+  - number: 130
+    spanish: "ciento treinta"
+  - number: 140
+    spanish: "ciento cuarenta"
+  - number: 150
+    spanish: "ciento cincuenta"
+  - number: 160
+    spanish: "ciento sesenta"
+  - number: 170
+    spanish: "ciento setenta"
+  - number: 180
+    spanish: "ciento ochenta"
+  - number: 190
+    spanish: "ciento noventa"
+  - number: 200
+    spanish: "doscientos"
+  - number: 300
+    spanish: "trescientos"
+  - number: 400
+    spanish: "cuatrocientos"
+  - number: 500
+    spanish: "quinientos"
+  - number: 600
+    spanish: "seiscientos"
+  - number: 700
+    spanish: "setecientos"
+  - number: 800
+    spanish: "ochocientos"
+  - number: 900
+    spanish: "novecientos"
+  - number: 1000
+    spanish: "mil"
+  - number: 1001
+    spanish: "mil uno"
+  - number: 1010
+    spanish: "mil diez"
+  - number: 1100
+    spanish: "mil cien"
+  - number: 1200
+    spanish: "mil doscientos"
+  - number: 1300
+    spanish: "mil trescientos"
+  - number: 1400
+    spanish: "mil cuatrocientos"
+  - number: 1500
+    spanish: "mil quinientos"
+  - number: 1600
+    spanish: "mil seiscientos"
+  - number: 1700
+    spanish: "mil setecientos"
+  - number: 1800
+    spanish: "mil ochocientos"
+  - number: 1900
+    spanish: "mil novecientos"
+  - number: 2000
+    spanish: "dos mil"
+  - number: 10000
+    spanish: "diez mil"
+  - number: 100000
+    spanish: "cien mil"
+  - number: 1000000
+    spanish: "un millón"

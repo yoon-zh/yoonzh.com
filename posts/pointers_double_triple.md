@@ -8,6 +8,8 @@ tech_stack: [C/C++]
 date: 2025-02-16
 ---
 
+*Adapted from [^1]*
+
 ## What the heck is a double or triple pointer?
 
 let’s start simple: a regular pointer in C is a variable that stores the memory address of another variable. easy enough, right?
@@ -43,11 +45,11 @@ int main() {
     int *p = &a; // the & symbol gives us the address of a
     int **pp = &p;
 
-    printf("Before: %d\n", a);  // should print 5
+    printf("before: %d\n", a);  // should print 5
 
     update_value(pp);  // passing the double pointer
 
-    printf("After: %d\n", a);  // should print 10
+    printf("after: %d\n", a);  // should print 10
     return 0;
 }
 ```
@@ -68,11 +70,11 @@ int main() {
     int *p = &a;
     int **pp = &p;
 
-    printf("Before: %d\n", a);  // Should print 5
+    printf("before: %d\n", a);  // Should print 5
 
     bad_update(pp);  // This messes up the pointer
 
-    printf("After: %d\n", a);  // This will still print 5 (no change)
+    printf("after: %d\n", a);  // This will still print 5 (no change)
     return 0;
 }
 ```
@@ -113,10 +115,15 @@ int main() {
     int **pp = &p;
     int ***ppp = &pp;
 
-    printf("Before: %d\n", a);  // should print 5
+    printf("before: %d\n", a);  // should print 5
     challenge_update(ppp);
-    printf("After: %d\n", a);  // what happens now?
+    printf("after: %d\n", a);  // what happens now?
     return 0;
 }
 ```
 **question:** does it print 50?
+
+## Credits
+
+[^1]: ChatGPT
+<!--Written by Jorge Porras (2025)-->
