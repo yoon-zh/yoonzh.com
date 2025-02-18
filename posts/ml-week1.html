@@ -20,6 +20,16 @@
 </head>
 <body class="">
   <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
 <header class="site-header">
   <div class="nav-container">
     <div class="logo-container">
@@ -60,84 +70,182 @@
   
   <div class="article-meta">
     
+      <time datetime="2025-02-18T00:00:00+00:00">
+        📅 2025/02/18
+      </time>
+    
   </div>
 </header>
 
 <div class="article-content">
-  <p>date: 2025-02-17</p>
-
-<p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+  <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
 
 <h2 id="week-1-introduction-to-ml--deployment">Week 1: Introduction to ML &amp; Deployment</h2>
-
 <p><strong>Objective:</strong> Understand core ML concepts, deploy a simple model via an API, and identify deployment challenges.</p>
 
-<h2 id="concepts">Concepts</h2>
-
+<h2 id="key-concepts-explained"><strong>Key Concepts Explained</strong></h2>
 <ol>
-  <li>
-    <p><strong>What is ML?</strong> Algorithms that learn patterns from data to make predictions or decisions.</p>
-  </li>
-  <li>
-    <p><strong>Model Deployment</strong></p>
+  <li><strong>Machine Learning Basics</strong>
     <ul>
-      <li>Definition: Making a trained model accessible to users/apps via an interface (e.g., API).</li>
+      <li><strong>What is ML?</strong> Algorithms that learn patterns from data to make predictions or decisions.</li>
+      <li><strong>Supervised Learning Example:</strong> Classify iris flowers into species (setosa, versicolor, virginica) using measurements (sepal length, petal width).
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Sample code: Load the Iris dataset
+</span><span class="kn">from</span> <span class="n">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="nf">load_iris</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="p">.</span><span class="n">target</span>  <span class="c1"># Features (measurements) and labels (species)
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Model Deployment</strong>
+    <ul>
+      <li><strong>Definition:</strong> Making a trained model accessible to users/apps via an interface (e.g., API).</li>
+      <li><strong>Why Flask?</strong> A lightweight Python web framework for building APIs.</li>
+    </ul>
+  </li>
+  <li><strong>API (Application Programming Interface)</strong>
+    <ul>
+      <li>A set of rules allowing apps to communicate. Example: A mobile app sends data to your model via an API and receives predictions.</li>
     </ul>
   </li>
 </ol>
 
+<hr />
+
+<h2 id="mini-exercises"><strong>Mini Exercises</strong></h2>
+
+<p><strong>1. Train a Basic Model</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="c1"># Split data into training and testing sets
+</span><span class="kn">from</span> <span class="n">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="nf">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># Train a logistic regression model
+</span><span class="n">model</span> <span class="o">=</span> <span class="nc">LogisticRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict on test data
+</span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Accuracy:</span><span class="sh">"</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="nf">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong>2. Create a Simple Flask Endpoint</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="nc">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/hello</span><span class="sh">'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="sh">"</span><span class="s">Hello, World!</span><span class="sh">"</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</code></pre></div></div>
 <ul>
-  <li>Why Flask? A lightweight Python web framework for building APIs.</li>
+  <li>Run with <code class="language-text highlighter-rouge">python app.py</code>, then visit <code class="language-text highlighter-rouge">http://localhost:5000/hello</code> in your browser.</li>
 </ul>
 
-<ol>
-  <li><strong>API (Application Programming Interface)</strong></li>
-</ol>
+<h2 id="project-walkthrough-deploy-an-iris-classifier"><strong>Project Walkthrough: Deploy an Iris Classifier</strong></h2>
 
-<p>A set of rules allowing apps to communicate. Example: A mobile app sends data to your model via an API and receives predictions.</p>
-
-<ul>
-  <li><strong>Supervised Learning Example:</strong> Classify iris flowers into species (setosa, versicolor, virginica) using measurements (sepal length, petal width).</li>
-</ul>
-
-<h2 id="setup">Setup</h2>
-
-<ol>
-  <li>Verify python 3
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">--version</span> <span class="c"># should return Python 3.12.x</span>
-pip3 <span class="nt">--version</span> <span class="c"># should return pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)</span>
-</code></pre></div>    </div>
-    <p>If not Python 3, <a href="https://www.python.org/downloads/">install</a></p>
-  </li>
-  <li></li>
-</ol>
-
-<p>Install Dependencies</p>
+<h3 id="step-1-install-dependencies">Step 1: Install Dependencies</h3>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>flask scikit-learn
 </code></pre></div></div>
 
-<h2 id="test">Test</h2>
+<h3 id="step-2-save-the-trained-model">Step 2: Save the Trained Model</h3>
 
+<p>Add this code to <code class="language-text highlighter-rouge">train_model.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">joblib</span>
+<span class="kn">from</span> <span class="n">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="n">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="nf">load_iris</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="nc">LogisticRegression</span><span class="p">().</span><span class="nf">fit</span><span class="p">(</span><span class="n">iris</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">joblib</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="sh">'</span><span class="s">iris_model.pkl</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Run it: <code class="language-text highlighter-rouge">python train_model.py</code> (generates <code class="language-text highlighter-rouge">iris_model.pkl</code>).</p>
+
+<h3 id="step-3-build-the-flask-api">Step 3: Build the Flask API</h3>
+<p>Create <code class="language-text highlighter-rouge">app.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">import</span> <span class="n">joblib</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="nc">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="sh">'</span><span class="s">iris_model.pkl</span><span class="sh">'</span><span class="p">)</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/predict</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">json</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="sh">'</span><span class="s">sepal_length</span><span class="sh">'</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="sh">'</span><span class="s">sepal_width</span><span class="sh">'</span><span class="p">],</span> 
+                         <span class="n">data</span><span class="p">[</span><span class="sh">'</span><span class="s">petal_length</span><span class="sh">'</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="sh">'</span><span class="s">petal_width</span><span class="sh">'</span><span class="p">]]).</span><span class="nf">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">jsonify</span><span class="p">({</span><span class="sh">'</span><span class="s">species</span><span class="sh">'</span><span class="p">:</span> <span class="nf">int</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">])})</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="step-4-test-the-api">Step 4: Test the API</h3>
+
+<p>Send a POST request using <code class="language-text highlighter-rouge">curl</code> (or Postman):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-d</span> <span class="s1">'{"sepal_length":5.1, "sepal_width":3.5, "petal_length":1.4, "petal_width":0.2}'</span> http://localhost:5000/predict
+</code></pre></div></div>
+
+<p>Expected response: <code class="language-text highlighter-rouge">{"species":0}</code> (0 = setosa).</p>
+
+<h3 id="step-5-write-the-1-page-report">Step 5: Write the 1-Page Report</h3>
+
+<p><strong>Template: Deployment Pitfalls Example</strong></p>
+<ul>
+  <li><strong>Security:</strong> No input validation (e.g., someone could send text instead of numbers).</li>
+  <li><strong>Scalability:</strong> Flask’s default server can’t handle many users at once.</li>
+  <li><strong>Monitoring:</strong> No logging to track failed requests or model accuracy drift.</li>
+</ul>
+
+<hr />
+
+<h2 id="questions">Questions</h2>
 <ol>
   <li>What is supervised learning?</li>
   <li>What does an API endpoint do?</li>
-  <li>Name one security risk in deploying a model</li>
+  <li>Name one security risk in deploying a model.</li>
 </ol>
 
-<h2 id="dictionary">Dictionary</h2>
+<h2 id="dictionary"><strong>Dictionary</strong></h2>
 <ul>
-  <li><strong>API:</strong> A bridge between software applications (e.g., your model and a mobile app)</li>
-  <li><strong>Deployment:</strong> Making a model usable by others via an interface like an API</li>
-  <li><strong>Flask:</strong> A Python library for building web servers</li>
-  <li><strong>Model:</strong> A file (e.g., .pkl) containing learned patterns from data</li>
-  <li><strong>Pre-trained Model:</strong> A model already trained on data (e.g., iris_model.pkl)</li>
+  <li><strong>API:</strong> A bridge between software applications (e.g., your model and a mobile app).</li>
+  <li><strong>Deployment:</strong> Making a model usable by others via an interface like an API.</li>
+  <li><strong>Flask:</strong> A Python library for building web servers.</li>
+  <li><strong>Model:</strong> A file (e.g., <code class="language-text highlighter-rouge">.pkl</code>) containing learned patterns from data.</li>
+  <li><strong>Pre-trained Model:</strong> A model already trained on data (e.g., <code class="language-text highlighter-rouge">iris_model.pkl</code>).</li>
 </ul>
 
 <h2 id="resources">Resources</h2>
 <ul>
-  <li>https://scikit-learn.org/stable/auto_examples/decomposition/plot_pca_iris.html</li>
+  <li><strong>Flask Quickstart:</strong> <a href="https://flask.palletsprojects.com/en/3.0.x/quickstart/">Official Documentation</a></li>
+  <li><strong>scikit-learn Iris Tutorial:</strong> <a href="https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html">scikit-learn Guide</a></li>
+  <li><strong>Postman API Testing Tool:</strong> <a href="https://www.postman.com/">Download Postman</a></li>
 </ul>
 
+<h2 id="debugging">Debugging</h2>
+<p>If stuck, debug by:</p>
+<ol>
+  <li>Checking ports (is another app using port 5000?).</li>
+  <li>Verifying input data shape matches the model’s expectations.</li>
+</ol>
+
+<h2 id="answers-to-questions-above">Answers to questions above</h2>
+<ol>
+  <li>Supervised learning uses labeled data to train models to predict outcomes.</li>
+  <li>An API endpoint accepts input data, processes it (e.g., runs a model), and returns a result.</li>
+  <li>Risk: Lack of input validation allows malicious data to crash the model.</li>
+</ol>
+
+<hr />
 <h2 id="credits">Credits</h2>
 
 <!--Written by Jorge Porras (2025)-->
