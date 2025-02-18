@@ -30,13 +30,7 @@
               <time class="card-date">{{ item.date | date: "%b %d, %Y" }}</time>
             {% endif %}
           </div>
-          
-          {% if item.ros_version %}
-            <span class="card-badge ros">ROS{{ item.ros_version }}</span>
-          {% endif %}
-          
-          <p class="card-excerpt">{{ item.excerpt | truncate: 150 }}</p>
-          
+          <p class="card-excerpt">{{ item.excerpt | truncate: 200 }}</p>          
           {% if item.tech_stack %}
             <div class="card-tags">
               {% for tech in item.tech_stack %}

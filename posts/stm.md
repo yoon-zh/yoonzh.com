@@ -5,8 +5,7 @@ card_title: stm learning path
 url: /posts/stm
 excerpt: from arduino blinking LEDs to a ROS2-integrated, vision-enabled autonomous robot
 math: true
-tech_stack: [C/C++]
-ros-version: 2
+tech_stack: [ROS2, C/C++, STM]
 ---
 
 *Adapted from [^1]*

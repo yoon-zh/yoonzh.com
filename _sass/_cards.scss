@@ -72,13 +72,6 @@
     border: 1px solid rgba($primary, 0.3);
   }
 }
-  
-.ros-badge {
-  @extend .tag;
-  background: $secondary;
-  color: $text-primary;
-  border-color: $secondary;
-}
 
 @media (max-width: 768px) {
   .content-card {
