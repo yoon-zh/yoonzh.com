@@ -93,6 +93,10 @@ expect some variation. smaller cities are pretty cheap, but in places like beiji
 
 get a local sim card for your phone as soon as possible. **phone numbers are VERY important here.** the major carriers (china mobile 中国移动, china unicom 中国联通) all offer student-friendly deals, and they’ll hook you up with a number and data plan. **talk with your university about this**. mine has some sort of local agreement and they give me a ¥60 plan with 100 GB of data per month. pretty good if you ask me.
 
+### taobao 淘宝
+
+you may have heard how packages and deliveries here are super cheap. yes, it's true. get [taobao淘宝](https://login.taobao.com/member/login.jhtml). note, if you live in dorms your packages may arrive to a [cainiao菜鸟驿站](https://www.cainiao.com/technology-cainiao-app.html) instead of your door.
+
 # 4. getting around
 
 ### from the airport to your place
@@ -131,11 +135,11 @@ this is where it’s at. dumplings (baozi包子、jiaozi饺子、xiaolongbao小�
 
 ### Delivery
 
-if you’re lazy (just like everyone else), [meituan美团](http://www.meituan.com/mobile/) and [eleme饿了么](https://www.ele.me/waimai) deliver to your door. just make sure to use wechat or alipay to pay. *i like meituan.*
+if you’re lazy (just like everyone else), [meituan美团](http://www.meituan.com/mobile/) and [eleme饿了么](https://www.ele.me/waimai) deliver to your door. just make sure to use wechat or alipay to pay. depending where you order, they may deliver to some lockers (外卖柜) instead, so keep an eye on where they are. *i like meituan.*
 
 ### Spicy food
 
-in chinese, "辣" (là) means spicy. write this word down. if you're not used to spicy food like an italian, beware - the "small spicy 微辣" options can be much stronger than expected. *sichuan food 川菜 is known for being spicy.* i wouldnt suggest it as your first dish unless you're korean.
+in chinese, "辣" (là) means spicy. write this word down. chinese food can vary a lot, but spicy food is relatively common. if you're not used to spicy food like an italian, beware - the "small spicy 微辣" options can be much stronger than expected. *sichuan food 川菜 is known for being spicy.* i wouldnt suggest it as your first dish unless you're korean.
 
 # 6. cultural quirks
 
