@@ -12,7 +12,7 @@ tech_stack: [ROS2, C/C++, STM]
 
 # Robot Development Course Syllabus
 
-**Target Audience:** Engineering undergrads
+**Target Audience:** Engineering undergrads who want to build a robot.
 
 **Tools:** STM32CubeIDE, VSCode, Keil uVision, GitHub.
 
@@ -20,7 +20,6 @@ tech_stack: [ROS2, C/C++, STM]
 
 ## Course Structure
 Organized into **20 weeks**, progressing from foundational STM32 concepts to advanced robotic systems. Each week includes a hands-on project reinforcing theory.  
-
 
 ## Week 1: From Arduino to STM32
 
@@ -42,7 +41,7 @@ Push the modified code to a GitHub repository with a descriptive commit message.
 
 ### Sample Project
 
-Rewrite the Week 1 LED blinker using LL drivers instead of HAL. Measure the performance difference using Keil’s debugger.  
+Rewrite the Week 1 LED blinker using LL drivers instead of HAL. Measure the performance difference using Keil’s debugger.
 
 ## Week 3: Clock & Power Management
 

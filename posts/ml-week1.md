@@ -14,7 +14,7 @@ date: 2025-02-18
 ## Week 1: Introduction to ML & Deployment
 **Objective:** Understand core ML concepts, deploy a simple model via an API, and identify deployment challenges.
 
-## **Key Concepts Explained**  
+## Key Concepts Explained
 1. **Machine Learning Basics**  
    - **What is ML?** Algorithms that learn patterns from data to make predictions or decisions.  
    - **Supervised Learning Example:** Classify iris flowers into species (setosa, versicolor, virginica) using measurements (sepal length, petal width).  
@@ -34,7 +34,7 @@ date: 2025-02-18
 
 ---
 
-## **Mini Exercises**  
+## Mini Exercises
 
 **1. Train a Basic Model**  
 
@@ -68,7 +68,7 @@ if __name__ == '__main__':
 ```
 - Run with `python app.py`, then visit `http://localhost:5000/hello` in your browser.
 
-## **Project Walkthrough: Deploy an Iris Classifier**
+## Project Walkthrough: Deploy an Iris Classifier
 
 ### Step 1: Install Dependencies
 ```bash
@@ -137,7 +137,7 @@ Expected response: `{"species":0}` (0 = setosa).
 2. What does an API endpoint do?  
 3. Name one security risk in deploying a model.  
 
-## **Dictionary**  
+## Dictionary
 - **API:** A bridge between software applications (e.g., your model and a mobile app).  
 - **Deployment:** Making a model usable by others via an interface like an API.  
 - **Flask:** A Python library for building web servers.  
