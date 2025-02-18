@@ -10,13 +10,13 @@ date: 2025-02-17
 
 # 1. Prepping before you get here
 
-before taking off, make sure your paperwork is solid. passports, visas, admission letters, insurance, college stuff... everything should be in order, because china isn't shy about checking these things.
+before taking off, make sure your paperwork is solid. passports, visas, admission letters, insurance, college stuff... everything should be in order, because china isn't shy about checking these things. bring a printed copy of everything for immigration if they ask.
 
 you should also be mentally prepared for *a lot* of bureaucracy. expect some paperwork, like registering with the police on the first days or getting a local bank account.
 
 ## VPN - get one before coming
 
-expect any non-chinese apps to be blocked. google, youtube, telegram, whatsapp, chatgpt, instagram... as a foreigner, having a vpn is a MUST. set it up before coming.
+expect any non-chinese apps to be blocked. google, youtube, telegram, whatsapp, chatgpt, instagram... as a foreigner, having a vpn is a MUST. set it up in your devices before traveling.
 
 *if you're not aware, China is known for banning online content, mostly from other countries. a VPN is basically a tool that lets you bypass the ban. most foreigners NEED a VPN for daily stuff such as talking with our families back at home, managing home bank accounts, and other stuff like youtube, discord, netflix...*
 
@@ -28,10 +28,10 @@ if you want more options, look at this [reddit post](https://www.reddit.com/r/ch
 
 - [WeChat 微信](https://www.wechat.com/): used for EVERYTHING. messaging, payments, social media, even booking taxis. get it and set it up before you land.
 - [Alipay 支付宝](https://mobile.alipay.com): wechat 2.0 but for money-stuff only. paying bills, ordering food, booking hotels, yada yada. bind your foreign bank card before flying, saves lots of headache.
-- [amap 高德地图](https://mobile.amap.com/): chinese map. everything google is blocked here, so you need a chinese map. i suggest [amap](https://mobile.amap.com/), or baidu maps: [(iOS)](https://apps.apple.com/us/app/百度地图-路线规划-出行必备/id452186370) - [(android)](https://play.google.com/store/apps/details?id=com.baidu.BaiduMap&hl=zh). it’s not perfect, but you’ll get around. and no, unfortunately theres no map in english... dont try to use others, they're unreliable.
+- [amap 高德地图](https://mobile.amap.com/): chinese map. everything google is blocked here, so you need a chinese map. i suggest [amap](https://mobile.amap.com/), or baidu maps: [(iOS)](https://apps.apple.com/us/app/百度地图-路线规划-出行必备/id452186370) - [(android)](https://play.google.com/store/apps/details?id=com.baidu.BaiduMap&hl=zh). it’s not perfect, but you’ll get around. and no, unfortunately theres no map in english (maybe apple maps can help if you really dont know)... dont try to use others, they're unreliable. 
 - translator app: i suggest [deepL](https://www.deepl.com/app?utm_source=windows&utm_campaign=share-with-friends&utm_medium=app). other translators should be fine too, as long as you have wifi or data. if you're studying chinese or staying for more than a few weeks, pleco is your best friend. [(iOS)](https://apps.apple.com/us/app/pleco-chinese-dictionary/id341922306) - [(android)](https://play.google.com/store/apps/details?id=com.pleco.chinesesystem)
 
-keep in mind EVERYTHING here is done and paid in phone, expect no cash. so setting up 微信 or 支付宝 is crucial. yes, **get both**. if one gives trouble you have the other one. 
+keep in mind EVERYTHING here is done and paid in phone, expect no cash. so setting up 微信 and 支付宝 is crucial. yes, **get both**. if one gives trouble you have the other one.
 
 *bringing cash is not really necessary*. at most, maybe bring RMB 500 in cash for an emergency, like if your phone doesnt work and you're stuck at the airport.
 
@@ -41,7 +41,11 @@ if you can get an ESIM for the first days while getting a real phone number, go 
 
 ### just note: do NOT expect public wifi anywhere
 
-the only places that *might* have constant wifi are starbucks星巴克, mcdonalds麦当劳, intl' airports, and your university campus. getting a phone number with decent amount of data is key.
+the only places that *might* have constant wifi are starbucks星巴克, mcdonalds麦当劳, intl' airports, and your university campus. getting a phone number with a decent amount of data is key. *i use over 70 GB monthly.*
+
+## Medical check-up
+
+if you're an X1 student (coming for more than 6 months), you have to take a medical check-up locally. this is usually arranged by your university on the first week. make sure to write down the details, take your documents with you, and expect fasting.
 
 # 2. expectations when you land
 
@@ -53,15 +57,19 @@ you have to go to your local police office and register within the first 2-3 day
 
 ### language
 
-you’re probably not fluent in chinese (or maybe you are, flex). but you're gonna be in situations where even basic chinese will be super helpful. get familiar with some phrases. try hellochinese - [iOS](https://apps.apple.com/us/app/hellochinese-learn-chinese/id1001507516) - [android](https://play.google.com/store/apps/details?id=com.hellochinese). *i dont like duolingo, i dont recommend it for chinese.*
+you’re probably not fluent in chinese (or maybe you are, flex). but you're gonna be in situations where even basic chinese will be super helpful. no, dont expect people to know english. get familiar with some phrases. try hellochinese - [iOS](https://apps.apple.com/us/app/hellochinese-learn-chinese/id1001507516) - [android](https://play.google.com/store/apps/details?id=com.hellochinese). *i dont like duolingo for chinese.*
 
 ### air pollution
 
-depending on where you're at, the air quality might be a little... questionable. masks are normal here, so bring some along or just buy them locally. check the air quality index of your destination.
+depending on where you're at, the air quality might be a little... questionable. masks are normal here, so bring some along or just buy them locally. check the air quality index of your destination. *pollution is better than 5 years ago though.*
 
 ### public transportation
 
-public transport is pretty great in most cities, and taxis are everywhere. that said, *don’t rely on google maps for anything*, it’s basically useless here. use [amap](https://mobile.amap.com/), take the metro, or call a cab - they're *dirty cheap.*
+public transport is pretty great in most cities, and taxis are everywhere. that said, *don’t rely on google maps for anything*, it’s basically useless here. use [amap](https://mobile.amap.com/), take the metro, or call a cab - *they're dirty cheap.*
+
+### "this app is not available in your region"
+
+if using iphone, create a new apple id and set its country do china. *i suggest making a new, separate account from your home country if you can.* if using android or other, check this [reddit post](https://www.reddit.com/r/chinalife/comments/18evxyh/what_android_app_store_do_you_use_for_chinese_apps/) (google is banned, so no chinese apps on google store). you'll need a chinese app store account to download most chinese apps further than wechat/alipay.
 
 # 3. money matters
 
@@ -87,6 +95,10 @@ get a local sim card for your phone as soon as possible. **phone numbers are VER
 
 # 4. getting around
 
+### from the airport to your place
+
+if new to china, set up didi and get a taxi. or if you speak chinese, you could take the city metro 地铁, or train 高铁 if going between cities (ex, arriving to beijing北京 but going to tianjin天津). for train tickets, i use [12306](https://www.12306.cn). note, you NEED your passport for taking trains. *universities usually offer help for booking a pickup, sometimes they pick you up themselves* if you dont speak chinese, just take it.
+
 ### public transport
 
 metros and buses are everywhere, and they’re dirt cheap (¥2–¥5 per ride). you can get a physical transport card and reload it as needed, or you can set it up on alipay (press the transport button in main menu) and use a QR like a real chinese. if you don’t read chinese, alipay has your back (supports other languages, should load in your phone's language)
@@ -97,31 +109,33 @@ china’s version of uber, but better and cheaper. you’ll need to link a payme
 
 ### driving
 
-don't expect to drive a car here. the chinese dont care about your country's license, you'll need a local drivers license (驾照) regardless of your nationality. *however,* you'll notice the massive amount of bikes (and e-bikes) around the street. for the yellow ones, you can rent them with meituan美团. ask your university for more info on that if you're into bikes.
+don't expect to drive a car here. the chinese dont care about your country's license, you'll need a local 驾照 regardless of your nationality. *however,* you'll notice the massive amount of bikes (and e-bikes) around the street. for the yellow ones, you can rent them with meituan美团. ask your university for more info if you're into that.
 
 ### e-bikes
 
-some foreign students buy e-bikes like the chinese. you *can* buy one and use it, you dont need a license as of 2025 (ive heard it starts from ¥3000), but keep in mind *most are illegal* (their speed limit is 25 km/h, but the stores mod them to increase the cap). if you get into an accident while driving an illegal e-bike, **your insurance may not cover you.** i dont know the details, but make sure to know your stuff if you want to get one.
+some foreign students buy e-bikes like the chinese. you *can buy one and use it* (ive heard it starts from ¥3000), you dont need a license as of 2025. but keep in mind *most are illegal* (their legal speed limit is 25 km/h, but stores mod them to increase the cap and show 25). if you get into an accident while driving an illegal e-bike, **your insurance may not cover you.** i dont know the details, but make sure to know your stuff if you want to get one.
 
 # 5. food & dining
 
 china has some of the best food in the world, but it can also be a bit… different. don’t freak out though. here are some basics:
 
-### restaurants
+### Restaurants
 
-don’t expect a menu in english, not even a physical menu at all. look for the QR codes that say "扫码点菜", "扫码点单" or sth like that (sometimes they're in the tables). get the translate feature in wechat/alipay for help with menus or just play laowai, point at stuff and hope for the best.
+don’t expect a menu in english, not even a physical menu at all. look for the QR codes that say "扫码点菜", "扫码点单" or sth like that (sometimes they're in the tables). get the translate feature in wechat/alipay for help with menus or just play laowai, point at stuff and hope for the best. if you can read some chinese and wanna look for restaurants, use [大众点评](https://h5.dianping.com/app/app-m-user-growth/index.html).
 
-### street food
+### Street food
 
 this is where it’s at. dumplings (baozi包子、jiaozi饺子、xiaolongbao小笼包), skewers (chuan串), hotpot (huoguo火锅). get your hands dirty and try it all. don’t worry *too much* about hygiene, the food’s mostly safe - especially after covid. you might get a *little* stomach upset at first, but you’ll get over it. golden rule: if its not crowded/kinda empty, better look somewhere else.
 
-### delivery
+- quick note, if you have allergies you might wanna write them down in chinese and carry them with you.
+
+### Delivery
 
 if you’re lazy (just like everyone else), [meituan美团](http://www.meituan.com/mobile/) and [eleme饿了么](https://www.ele.me/waimai) deliver to your door. just make sure to use wechat or alipay to pay. *i like meituan.*
 
-### spicy food
+### Spicy food
 
-in chinese, "辣" (là) means spicy. write this word down. if you're not used to spicy food like an italian, beware - the "small spicy 微辣" options can be much stronger than expected. *sichuan food 四川菜 is known for being spicy.* i wouldnt suggest it as your first dish unless you're korean.
+in chinese, "辣" (là) means spicy. write this word down. if you're not used to spicy food like an italian, beware - the "small spicy 微辣" options can be much stronger than expected. *sichuan food 川菜 is known for being spicy.* i wouldnt suggest it as your first dish unless you're korean.
 
 # 6. cultural quirks
 
@@ -147,7 +161,7 @@ despite the amount of people, china's one of the safest countries out there. jus
 
 ### Smoking
 
-if you're sentitive to smoking like me, sorry to tell you, you'll have a bad time with this - lots and lots of smokers everywhere. *most public bathrooms smell like cigarrete.* if you take trains between cities, do NOT take the old style train - people smoke on those.
+if you're sentitive to smoking like me, sorry to tell you, you'll have a bad time with this - lots and lots of smokers everywhere. *most public bathrooms smell like cigarrete.* if you take trains between cities, do NOT take the old style train (the suspiciously cheap ones) - people smoke on those.
 
 NOTE: the smoking situation was far, far worse before covid. i have to admit it's improving.
 
@@ -157,5 +171,5 @@ once you’ve survived the first few weeks, you’ll start getting the hang of t
 
 china’s an experience - overwhelming at first, but you’ll learn to love it. hopefully. most of us do.
 
-*if youre coming soon and freaking out a bit or have a specific question, you may drop a message on my [telegram](https://t.me/yo_o_n).*
+*if youre coming soon and freaking out a bit or have a specific question, you may drop a message on my [telegram](https://t.me/yo_o_n). say you come from here.*
 <!--Written by Jorge Porras (2025)-->
