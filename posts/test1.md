@@ -7,10 +7,74 @@ url: /posts/test1
 
 ---
 
-date: 2025-02-17
 silicon
 T = 300K
 doped with phosphorus
 
 
-$$p_o={n_i^2}
+$$p_o={n_i^2}$$
+
+
+
+to-do
+- website
+  - implement cookies
+  - fix header bar for mobile display
+  - optimize image loading
+  - write full documentation, building steps
+  - consider
+    - add code editor (codemirror, tcc, wasm)
+    - add quiz system, import data from yaml
+    - add 3d rendered for cad files
+
+- flametemp
+  - add equations file
+  - fix, implement precise()
+  - standardize comments
+  - divide functions
+  - fix, implement molar counts
+  - consider
+    - implement Cp functions
+    - import larger thermo tables
+
+- chemcount
+  - standardize comments
+  - standardize library
+  - improve input parsing
+  - consider
+    - adding hash map for periodic table
+    - parsing full formula
+    - devlop chemsolve
+
+- nmat
+  - fix functions
+  - optimize functions
+  - comments
+  - equations docs
+  - documentation
+
+- ml
+  - set up local llm, at least 8b
+  - create api (maybe flask?)
+  - follow ml learning path
+
+- stm
+  - read through docs, talk with team
+  - learn ros2
+  - follow learning path
+
+- misc
+  - learning path
+    - circuits
+    - simulation (ansys), dfa, dfm
+    - ros2
+    - computer vision
+  - lang
+    - kr
+    - jp
+
+- port
+  - ml/llm
+  - cad/ansys
+  - ros
+  - stm
