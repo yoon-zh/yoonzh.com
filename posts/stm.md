@@ -1,157 +1,176 @@
 ---
 layout: post
 title: stm
-card_title: stm learning path
+card_title: STM Learning Path
 url: /posts/stm
-excerpt: from arduino blinking LEDs to a ROS2-integrated, vision-enabled autonomous robot
+excerpt: From blinking LEDS in Arduino to a ROS2-integrated, vision-enabled autonomous robot in STM.
 math: true
-tech_stack: [ROS2, C/C++, STM]
+tech_stack: [STM, C/C++, ROS2]
+date: 2025-02-24
 ---
 
 *Adapted from [^1]*
 
 # Robot Development Course Syllabus
 
-**Target Audience:** Engineering undergrads who want to build a robot.
+**Target Audience:** Engineering undergrads with basic foundations who want to build a robot.
 
-**Tools:** STM32CubeIDE, VSCode, Keil uVision, GitHub.
+**Tools:** STM32CubeIDE, VSCode, FreeRTOS, ROS2, GitHub, OpenCV.
 
 **Robot Platform:** STM32-based dual-C-board robot.
 
 ## Course Structure
-Organized into **20 weeks**, progressing from foundational STM32 concepts to advanced robotic systems. Each week includes a hands-on project reinforcing theory.  
+Organized into **20 weeks**, progressing from foundational STM32 concepts to advanced robotic systems. Each week includes a hands-on project reinforcing theory. Weekly projects build into the final course project.
 
-## Week 1: From Arduino to STM32
+## Week 1: Microcontroller architecture
+- Definition of a microcontroller, types and architecture
+- Basics of CPU, memory, GPIO, interrupts, and peripherals
+- Difference between popular boards like Arduino, STM, and Pi
 
-- STM32 vs. Arduino: Architecture, performance, and toolchain differences.  
-- Workspace navigation: Understanding the provided `MDK-ARM` directory structure (e.g., HAL files in `standard_board_c`, RTOS tasks in `chassis_task.c`).  
-- Setting up STM32CubeIDE, VSCode, and Keil uVision.  
-- Flashing a "Blink LED" program using STM32 HAL.  
+### Weekly Project
+Use GPIO interrupts to toggle an LED when a button is pressed. Modify `bsp_led.c` and `bsp_button.c` to handle edge-triggered interrupts.
 
-### Sample Project
+## Week 2: Understanding STM32
+- STM32 families, registers, and toolchain
+- Using STM32CubeIDE, configuring the board, and generating code
+- Basic circuits in STM32 using buttons, diodes, transistors, and motors
+- STM32F4 block diagram (clock tree, GPIO, DMA)
 
-Modify the existing `bsp_led.c` code to blink an LED at 2Hz. Use Keil to compile and debug.  
-Push the modified code to a GitHub repository with a descriptive commit message.  
+### Weekly Project
+Generate a project in STM32CubeIDE to blink an LED using HAL. Push code to GitHub with a `README.md` explaining the toolchain
 
-## **Week 2: STM32 Architecture & HAL/LL Libraries**  
-
-- STM32F4 block diagram (clock tree, GPIO, DMA).  
-- HAL vs. LL: When to use each (e.g., HAL for rapid prototyping, LL for performance-critical tasks).  
-- Exploring the `stm32f4xx_hal_gpio.c` and `stm32f4xx_ll_gpio.c` files in the workspace.  
-
-### Sample Project
-
-Rewrite the Week 1 LED blinker using LL drivers instead of HAL. Measure the performance difference using Keil’s debugger.
 
 ## Week 3: Clock & Power Management
+- Configuring clock sources (HSI, HSE, PLL)
+- Power modes: Run, Sleep, Stop
+- Analyzing the `system_stm32f4xx.c` file for clock configuration
 
-- Configuring clock sources (HSI, HSE, PLL).  
-- Power modes: Run, Sleep, Stop.  
-- Analyzing the `system_stm32f4xx.c` file for clock configuration.  
+### Weekly Project
+Modify the robot’s clock to run at 168MHz using STM32CubeMX. Verify via oscilloscope using the `bsp_delay.c` module
 
-### Sample Project
-Modify the robot’s clock to run at 168MHz using STM32CubeMX. Verify via oscilloscope using the `bsp_delay.c` module.  
 
-## Week 4: RTOS Integration with FreeRTOS
+## Week 4: HAL/LL libraries
+- Peripheral initialization, GPIO control, and library structure
+- Exploring the `stm32f4xx_hal_gpio.c` and `stm32f4xx_ll_gpio.c` files in the workspace
 
-- Task scheduling, queues, and semaphores.  
-- Exploring the `freertos.c` and `chassis_task.c` files.  
+### Weekly Project
+Rewrite the LED blinker using LL drivers `stm32f4xx_ll_gpio.c`. Compare HAL/LL execution cycles.
 
-### Sample Project
-Create two FreeRTOS tasks: one to blink an LED and another to print "Hello World" via UART using `bsp_usart.c`.  
 
-## Week 5: Communication Protocols (I2C, SPI)
+## Week 5: Motor Types & Drivers
+- DC, stepper, servo motors; brushed vs. brushless motors
+- H-bridges, PWM, and ESC control
+- Reading and writing drivers for a motor
+- Abstraction layers, encoder feedback, and API design
+- Modifying `dm_motor_drv.c` to adjust motor parameters
 
-- I2C/SPI protocol breakdown.  
-- Reading the `bsp_i2c.c` and `bsp_spi.c` drivers.  
+### Weekly Project
+Drive a motor at variable speeds using PWM from `bsp_servo_pwm.c`. Test with `dm_motor_drv.c` to validate motor responsiveness.
 
-### Sample Project
-Read temperature data from an I2C sensor (e.g., BMP280) and log it via UART.  
+## Week 6: PID Control Implementation
+- PID theory, Ziegler-Nichols tuning.
+- Closed-loop control for motor speed/position
+- Double loops, open/closed loop difference
 
-## Week 6: CAN Bus & Data Serialization
+### Weekly Project
+Stabilize motor RPM using the `pid.c` module. Plot real-time results.
 
-- CAN message framing, arbitration, and prioritization.  
-- Using `bsp_can.c` to send/receive motor commands.  
-- Serialization with Protobuf/JSON.  
+## Week 7: Communication Protocols (UART, SPI, I2C)
+- Basic wired communication for sensor/motor interfacing
+- Data framing, buffering, and priority queues
 
-### Sample Project
-Transmit a struct containing motor speeds over CAN using JSON encoding.  
+### Weekly Project
+Read temperature from an I2C sensor (e.g., BMP280 via `bsp_i2c.c`). Log data via UART using `bsp_usart.c`
 
-## Week 7: Motor Control & Drivers
+## Week 8: CAN Bus & Data Serialization
+- CAN protocol and message framing
+- Data in `yaml`, `xml`, `json`
+- Data packets in JSON/Protobuf
 
-- Brushed vs. brushless motors.  
-- PWM signals and H-bridge drivers.  
-- Modifying `dm_motor_drv.c` to adjust motor parameters.  
+### Weekly Project
+Transmit motor speeds over CAN as JSON packets using `bsp_can.c`
 
-### Sample Project
-Drive a motor at 50% speed using PWM from `bsp_servo_pwm.c`.  
+## Week 9: Power Management
+- Battery monitoring and distribution
+- Supercapacitor integration
 
-## Week 8: PID Implementation & Tuning
+### Weekly Project
+Implement battery voltage tracking with `voltage_task.c`. Simulate low-power scenarios with Stop mode
 
-- PID theory, Ziegler-Nichols tuning.  
-- Analyzing the `pid.c` module.  
+## Week 10: Hardware Debugging Tools
+- Oscilloscopes, logic analyzers, and multimeters
+- Signal inspection
 
-### Sample Project
-Implement a PID controller to stabilize a motor’s RPM. Plot results using Keil’s logic analyzer.  
+### Weekly Project
+Capture PWM signals from bsp_servo_pwm.c using a scope. Diagnose signal integrity issues
 
-## Week 9: Kinematics for Gimbal Positioning
+## Week 11: Software Testing
+- Unit tests, simulation, and hardware-in-the-loop (HIL)
 
-- Forward/inverse kinematics for 2-DOF gimbals.  
-- Modifying `gimbal_task.c` to adjust yaw/pitch angles.  
+### Weekly Project
+Write a unit test for the PID controller in `pid.c`. Validate with hardware-in-the-loop testing.
 
-### Sample Project
-Program the gimbal to track a moving point using joystick input from `bsp_rc.c`.  
+## Week 12: Remote Connection
+- Wi-Fi/Bluetooth, network protocols (TCP/UDP), and latency management
+- Stream sensor data over Bluetooth using UART (bsp_usart.c).
 
-## Week 10: IMU Integration & Kalman Filters
+### Weekly Project
+Connect a remote controller to your robot
 
-- IMU data fusion (accelerometer, gyro).  
-- Kalman filtering in `kalman_filter.c`.  
+## Week 13: Robot Kinematics
+- Chassis positioning and movement
+- inverse kinematics for turret/gimbal movement
 
-### Sample Project
-Fuse BMI088 data (`bmi088driver.c`) to estimate robot tilt.  
+### Weekly Project
+Program the gimbal to track a joystick input using `gimbal_task.c` and `bsp_rc.c`
 
-## Week 11: ROS2 Middleware Integration
+## Week 14: Kalman Filters
+- Sensor fusion (IMU + vision) for noise reduction
 
-- ROS2 nodes, topics, and services.  
-- Bridging STM32 and ROS2 via UART/USB (`usbd_cdc_if.c`).  
+### Weekly Project
+Fuse accelerometer/gyro data from `bmi088driver.c` using `kalman_filter.c`
 
-### Sample Project
-Publish IMU data from the STM32 to a ROS2 topic.  
+## Week 15: RTOS Integration
+- Difference between FreeRTOS and ROS2
+- Task scheduling, semaphores, and real-time constraints
+- Implementing RTOS on a robot system
 
-## Week 12: Vision System & OpenCV
+### Weekly Project
+Create two tasks: one for motor control (`dm_motor_drv.c`) and another for sensor polling
 
-- Camera interfacing, object detection.  
-- Using `vision.c` to process images.  
+## Week 16: Vision System Integration
+- OpenCV basics, camera calibration, and object detection
+- ROS2 frameworks for modular sensor pipelines
 
-### Sample Project
-Detect a red ball using a camera and send its coordinates over CAN.  
+### Weekly Project
+Detect a colored object with `vision.c` and publish coordinates over CAN.
 
-## Week 13: Error Recovery & State Machines
+## Week 17: Middleware Integration
+- Message brokers (MQTT), ROS2 nodes, and DDS
+- Sensor integration through ROS2 and RTOS
 
-- Designing fault-tolerant state machines.  
-- Exploring `detect_task.c` for error handling.  
+### Weekly Project
+Publish IMU data to a ROS2 topic via USB-CDC (`usbd_cdc_if.c`)
 
-### Sample Project
-Implement a recovery routine for motor overheating errors.  
+## Week 18: Automated Aiming & Trajectories
+- Ballistics modeling for angled shooting (gravity/wind compensation)
+- Code implementation on automatic target detection and firing calculations
+- Dynamic system coordination (e.g., turret stabilization while moving)
 
-## Week 14-16: System Integration
+### Weekly Project
+Implement projectile trajectory logic in `calculate.c` for angled shots.
 
-- Combining motor control, sensors, and ROS2.  
-- Power budgeting with supercapacitors (`voltage_task.c`).  
+## Week 19: Error Recovery States
+- Fault detection, safe modes, and watchdog timers
 
-### Sample Project
-Autonomous target tracking: Use vision data to aim the gimbal while moving the chassis.  
+### Weekly Project
+Design a recovery routine for motor faults in `detect_task.c`.
 
-## Week 17-20: Final Project
-**Objective**  
-Build a robot that autonomously navigates to a waypoint, identifies a target with vision, and shoots a projectile using trajectory calculation (`calculate.c`).  
+## Week 20: System Integration & Optimization
+- Code profiling, memory management, and power/performance tradeoffs
 
-**Milestones**  
-- Week 17: Chassis movement + odometry.  
-- Week 18: Vision-based target detection.  
-- Week 19: Trajectory calculation for angled shots.  
-- Week 20: Integration and competition.  
-
+### Final Project
+Integrate vision, motor control, and trajectory systems into your robot. 
 
 ## Credits
 
