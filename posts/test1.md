@@ -14,6 +14,8 @@ doped with phosphorus
 
 $$p_o={n_i^2}$$
 
+$$x_c=\frac{\int_{0}^{L} x\omega(x)dx}{\int_{0}^{L}\omega(x)dx}$$
+
 
 
 to-do
@@ -25,7 +27,7 @@ to-do
   - consider
     - add code editor (codemirror, tcc, wasm)
     - add quiz system, import data from yaml
-    - add 3d rendered for cad files
+    - add 3d renderer for cad files
 
 - flametemp
   - add equations file
