@@ -12,13 +12,13 @@ date: 2025-02-13
 
 ## What is it?
 
-A simple library in C for a chemical formula parser that converts strings like $$C_2H_5OH$$ into structured element counts, including total element types.
+A simple library in C for a chemical formula parser that converts strings like `C2H5OH` into structured element counts, including total element types.
 
 ## Features
 
-- Parses chemical formulas such as $$H_2SO_4$$ into element counts
-- Handles parentheses for grouped compounds: $$(NH3)_6$$ → `N:6, H:18`
-- Returns struct `cElement` with total element count `"TTT"` and individual element quantities `N`
+- Parses chemical formulas (e.g., `CoCl3 + 6(NH3)`) into element counts
+- Handles parentheses for grouped compounds (e.g., `6(CO2) → C:3, O:6`)
+- Returns a `cElement` struct with total element count `"TTT"` and individual element quantities
 
 ## Installation
 
@@ -35,16 +35,16 @@ Import the chemcount library in your code:
 #include "chemcount.h"
 ```
  
- Then build into .o file and link into your function.
+Then build into object file and link into your function.
 
 ```bash
 cd chemcount  
-gcc -o chemcount chemcount.c
+gcc -c chemcount.c
 gcc yourprogram.c chemcount.o -o yourprogram
 ```
 
 ## Output Format
-The `cElement` struct is an array of arrays sorted by appearance.
+The `cElement` struct is an array of arrays sorted by order in the input string.
 
 ```c
 cElement[0].name = "TTT";
@@ -61,6 +61,8 @@ for (int i = 0; i < cElement[0].amount+1; i++) {
 
 The other objects in the `cElement` struct contain the string of the element and its amount in the compound.
 
+`chemcount` has a built-in function `printElements(cElement)` to easily visualize the total elements in the `cElement` struct. 
+
 ## Example
 
 ```c
@@ -72,7 +74,7 @@ chemcount("C2H5OH");
  * ["O", 1]
  */
 
-chemcount("CoCl3 (NH3)6");
+chemcount("CoCl3 + 6(NH3)");
 /* Returns:
  * ["TTT", 4]
  * ["Co", 1]
@@ -89,14 +91,14 @@ In the repository you may find a main function containing an example of the usag
 ```bash
 git clone https://github.com/yoonzh/chemcount
 cd chemcount
-gcc -o chemcount chemcount.c
+gcc -c chemcount.c
 gcc main.c chemcount.o -o main
 ./main
 ```
 
 ## Assumptions
-- Case-sensitive: $$Co$$ (cobalt) ≠ $$CO$$ (carbon monoxide).
-- Parentheses: Coefficients outside parentheses apply to all nested elements (e.g., `(H2O)2 → H:4, O:2`).
+- Case-sensitive: `Co` (cobalt) ≠ `CO` (carbon monoxide).
+- Parentheses: Coefficients outside parentheses apply to all nested elements (e.g., `(H2O)2 → H:4, O:2`, `2(O2 + N2) → O:4, N:4`).
 - Implicit "1": Missing counts are treated as 1 (e.g., `OH → O:1, H:1`).
 
 <!--Written by Jorge Porras (2025)-->

@@ -16,6 +16,29 @@ $$p_o={n_i^2}$$
 
 $$x_c=\frac{\int_{0}^{L} x\omega(x)dx}{\int_{0}^{L}\omega(x)dx}$$
 
+---
+
+$$B=\frac{\mu_0}{2\pi}\frac{I}{r}$$
+
+Where $$\mu_o = 4\pi\times 10^{-7} H/m$$, 真空磁导率.
+
+integral of magnetic field through length = current
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 to-do
