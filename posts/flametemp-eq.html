@@ -1,0 +1,169 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-container">
+      <a href="/" class="logo-link">
+        <h1 class="logo">윤志</h1>
+      </a>
+      <p class="logo-subtitle">[云 ~ 찌]</p>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Equations in flametemp()
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">MATLAB</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-02-24T00:00:00+00:00">
+        📅 2025/02/24
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h2 id="flametemp-">flametemp <a href="https://github.com/yoon-zh/flametemp" target="_blank" class="pdf-link"><i class="fab fa-github"></i></a></h2>
+
+<h2 id="equations">Equations</h2>
+<p>1</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">terms</span> <span class="o">=</span> <span class="n">comp</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">comp</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">)/</span><span class="mi">4</span> <span class="o">-</span> <span class="n">comp</span><span class="p">(:,</span> <span class="mi">3</span><span class="p">)/</span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>2</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Pv</span> <span class="o">=</span> <span class="n">psat</span><span class="o">*</span><span class="n">phi</span><span class="p">;</span>
+<span class="n">nH2Or</span> <span class="o">=</span> <span class="p">(</span><span class="n">Pv</span><span class="p">/</span><span class="n">Pt</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_air</span><span class="p">/(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">Pv</span><span class="p">/</span><span class="n">Pt</span><span class="p">));</span>
+</code></pre></div></div>
+<p>cengel pg 727-728, eq 14-9, 14-10</p>
+
+<p>3</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nO2r</span> <span class="o">=</span> <span class="n">n_air</span><span class="p">;</span>
+<span class="n">nN2r</span> <span class="o">=</span> <span class="mf">3.76</span> <span class="o">*</span> <span class="n">n_air</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>4</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%    nCO2       nCO         nH2O        nH2     nO2</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span>         <span class="mi">1</span><span class="p">,</span>          <span class="mi">0</span><span class="p">,</span>          <span class="mi">0</span><span class="p">,</span>      <span class="mi">0</span><span class="p">;</span> <span class="c1">% C</span>
+             <span class="mi">0</span><span class="p">,</span>         <span class="mi">0</span><span class="p">,</span>          <span class="mi">2</span><span class="p">,</span>          <span class="mi">2</span><span class="p">,</span>      <span class="mi">0</span><span class="p">;</span> <span class="c1">% H</span>
+             <span class="mi">2</span><span class="p">,</span>         <span class="mi">1</span><span class="p">,</span>          <span class="mi">1</span><span class="p">,</span>          <span class="mi">0</span><span class="p">,</span>      <span class="mi">2</span><span class="p">;</span> <span class="c1">% O</span>
+             <span class="mi">1</span><span class="o">-</span><span class="n">xCO2</span><span class="p">,</span><span class="o">-</span><span class="n">xCO2</span><span class="p">,</span>          <span class="mi">0</span><span class="p">,</span>          <span class="mi">0</span><span class="p">,</span>      <span class="mi">0</span><span class="p">;</span> <span class="c1">% CO2 conversion</span>
+             <span class="mi">0</span><span class="p">,</span>         <span class="mi">0</span><span class="p">,</span>     <span class="mi">1</span><span class="o">-</span><span class="n">xH2O</span><span class="p">,</span>      <span class="o">-</span><span class="n">xH2O</span><span class="p">,</span>      <span class="mi">0</span><span class="p">];</span> <span class="c1">% H2O conversion</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="n">nC</span><span class="p">;</span>        <span class="n">nH</span><span class="p">;</span>        <span class="n">nO</span><span class="p">;</span>          <span class="mi">0</span><span class="p">;</span>      <span class="mi">0</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>5</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">h_total_air</span> <span class="o">=</span> <span class="n">hf_air</span> <span class="o">+</span> <span class="n">h_air</span> <span class="o">-</span> <span class="n">hamb_air</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>6</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">h_N2ideal</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_r</span><span class="o">.*</span><span class="n">h_r</span> <span class="o">-</span> <span class="n">n_p</span><span class="o">.*</span><span class="n">h_pBase</span><span class="p">)</span><span class="o">.</span><span class="p">/</span><span class="n">n_p</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>7</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_flame</span> <span class="o">=</span> <span class="n">LagrangeIntp</span><span class="p">(</span><span class="n">h_tofind</span><span class="p">,</span> <span class="n">T_tofind</span><span class="p">,</span> <span class="n">h_flame</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>let 
+xCO2 = nCO2/(nCO2 + nCO)
+xH2O = nH2O/(nH2O + nH2)
+the values are given:
+xCO2 = 0.85;
+xH2O = 0.93;
+with the above, balance this equation:
+1 CH3OH(l) + 4.5 (O2 + 3.76N2) + 0.086081 H2O =&gt; CO2 + CO + H2O + H2 + O2 + N2</p>
+
+<p>HUMID AIR
+nH2Or = molesH2OinAir(n_air, phi, T, Pt)
+How many moles of H2O (n_H2O) are in the air under the following conditions? :
+n_air = 4.5 % Dry air
+phi = 0.6; % Relative humidity
+air_temp = 25; % °C
+pressure = 101.325; % kPa</p>
+
+<p>Pv = psat*phi;
+nH2Or = (Pv/Pt) * n_air/(1-(Pv/Pt));</p>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

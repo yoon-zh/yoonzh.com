@@ -93,6 +93,7 @@
 <h2 id="course-structure">Course Structure</h2>
 <p>Organized into <strong>20 weeks</strong>, progressing from foundational STM32 concepts to advanced robotic systems. Each week includes a hands-on project reinforcing theory. Weekly projects build into the final course project.</p>
 
+<hr />
 <h2 id="week-1-microcontroller-architecture">Week 1: Microcontroller architecture</h2>
 <ul>
   <li>Definition of a microcontroller, types and architecture</li>
@@ -101,8 +102,9 @@
 </ul>
 
 <h3 id="weekly-project">Weekly Project</h3>
-<p>Use GPIO interrupts to toggle an LED when a button is pressed. Modify <code class="language-text highlighter-rouge">bsp_led.c</code> and <code class="language-text highlighter-rouge">bsp_button.c</code> to handle edge-triggered interrupts.</p>
+<p>Install STM software and create a <code class="language-text highlighter-rouge">Hello World</code> using your STM32.</p>
 
+<hr />
 <h2 id="week-2-understanding-stm32">Week 2: Understanding STM32</h2>
 <ul>
   <li>STM32 families, registers, and toolchain</li>
@@ -112,8 +114,9 @@
 </ul>
 
 <h3 id="weekly-project-1">Weekly Project</h3>
-<p>Generate a project in STM32CubeIDE to blink an LED using HAL. Push code to GitHub with a <code class="language-text highlighter-rouge">README.md</code> explaining the toolchain</p>
+<p>Generate a project in STM32CubeIDE to blink an LED using HAL. Push code to GitHub with a <code class="language-text highlighter-rouge">README.md</code> explaining the toolchain.</p>
 
+<hr />
 <h2 id="week-3-clock--power-management">Week 3: Clock &amp; Power Management</h2>
 <ul>
   <li>Configuring clock sources (HSI, HSE, PLL)</li>
@@ -122,8 +125,9 @@
 </ul>
 
 <h3 id="weekly-project-2">Weekly Project</h3>
-<p>Modify the robot’s clock to run at 168MHz using STM32CubeMX. Verify via oscilloscope using the <code class="language-text highlighter-rouge">bsp_delay.c</code> module</p>
+<p>Modify the robot’s clock to run at 168MHz using STM32CubeMX. Verify via oscilloscope using the <code class="language-text highlighter-rouge">bsp_delay.c</code> module.</p>
 
+<hr />
 <h2 id="week-4-halll-libraries">Week 4: HAL/LL libraries</h2>
 <ul>
   <li>Peripheral initialization, GPIO control, and library structure</li>
@@ -133,9 +137,11 @@
 <h3 id="weekly-project-3">Weekly Project</h3>
 <p>Rewrite the LED blinker using LL drivers <code class="language-text highlighter-rouge">stm32f4xx_ll_gpio.c</code>. Compare HAL/LL execution cycles.</p>
 
+<hr />
 <h2 id="week-5-motor-types--drivers">Week 5: Motor Types &amp; Drivers</h2>
 <ul>
   <li>DC, stepper, servo motors; brushed vs. brushless motors</li>
+  <li>Driver ICs (A4988, TMC2209), torque curves.</li>
   <li>H-bridges, PWM, and ESC control</li>
   <li>Reading and writing drivers for a motor</li>
   <li>Abstraction layers, encoder feedback, and API design</li>
@@ -143,8 +149,9 @@
 </ul>
 
 <h3 id="weekly-project-4">Weekly Project</h3>
-<p>Drive a motor at variable speeds using PWM from <code class="language-text highlighter-rouge">bsp_servo_pwm.c</code>. Test with <code class="language-text highlighter-rouge">dm_motor_drv.c</code> to validate motor responsiveness.</p>
+<p>Write a stepper motor driver using LL drivers (<code class="language-text highlighter-rouge">stm32f4xx_ll_tim.c</code>) for precise movement. Test with exact angles (45°, 90°) to validate motor responsiveness.</p>
 
+<hr />
 <h2 id="week-6-pid-control-implementation">Week 6: PID Control Implementation</h2>
 <ul>
   <li>PID theory, Ziegler-Nichols tuning.</li>
@@ -155,6 +162,7 @@
 <h3 id="weekly-project-5">Weekly Project</h3>
 <p>Stabilize motor RPM using the <code class="language-text highlighter-rouge">pid.c</code> module. Plot real-time results.</p>
 
+<hr />
 <h2 id="week-7-communication-protocols-uart-spi-i2c">Week 7: Communication Protocols (UART, SPI, I2C)</h2>
 <ul>
   <li>Basic wired communication for sensor/motor interfacing</li>
@@ -162,8 +170,9 @@
 </ul>
 
 <h3 id="weekly-project-6">Weekly Project</h3>
-<p>Read temperature from an I2C sensor (e.g., BMP280 via <code class="language-text highlighter-rouge">bsp_i2c.c</code>). Log data via UART using <code class="language-text highlighter-rouge">bsp_usart.c</code></p>
+<p>Read temperature from an I2C sensor (e.g., BMP280 via <code class="language-text highlighter-rouge">bsp_i2c.c</code>). Log data via UART using <code class="language-text highlighter-rouge">bsp_usart.c</code>.</p>
 
+<hr />
 <h2 id="week-8-can-bus--data-serialization">Week 8: CAN Bus &amp; Data Serialization</h2>
 <ul>
   <li>CAN protocol and message framing</li>
@@ -172,8 +181,9 @@
 </ul>
 
 <h3 id="weekly-project-7">Weekly Project</h3>
-<p>Transmit motor speeds over CAN as JSON packets using <code class="language-text highlighter-rouge">bsp_can.c</code></p>
+<p>Transmit motor speeds over CAN as JSON packets using <code class="language-text highlighter-rouge">bsp_can.c</code>.</p>
 
+<hr />
 <h2 id="week-9-power-management">Week 9: Power Management</h2>
 <ul>
   <li>Battery monitoring and distribution</li>
@@ -181,8 +191,9 @@
 </ul>
 
 <h3 id="weekly-project-8">Weekly Project</h3>
-<p>Implement battery voltage tracking with <code class="language-text highlighter-rouge">voltage_task.c</code>. Simulate low-power scenarios with Stop mode</p>
+<p>Implement battery voltage tracking with <code class="language-text highlighter-rouge">voltage_task.c</code>. Simulate low-power scenarios with Stop mode.</p>
 
+<hr />
 <h2 id="week-10-hardware-debugging-tools">Week 10: Hardware Debugging Tools</h2>
 <ul>
   <li>Oscilloscopes, logic analyzers, and multimeters</li>
@@ -190,42 +201,53 @@
 </ul>
 
 <h3 id="weekly-project-9">Weekly Project</h3>
-<p>Capture PWM signals from bsp_servo_pwm.c using a scope. Diagnose signal integrity issues</p>
+<p>Capture PWM signals from <code class="language-text highlighter-rouge">bsp_servo_pwm.c</code> using a scope. Diagnose signal integrity issues.</p>
 
+<hr />
 <h2 id="week-11-software-testing">Week 11: Software Testing</h2>
 <ul>
-  <li>Unit tests, simulation, and hardware-in-the-loop (HIL)</li>
+  <li>Unit tests, simulation, and frameworks (Google Test).</li>
+  <li>Hardware-in-the-loop (HIL) with Renode.</li>
+  <li>GitHub Actions CI/CD pipelines.</li>
 </ul>
 
 <h3 id="weekly-project-10">Weekly Project</h3>
-<p>Write a unit test for the PID controller in <code class="language-text highlighter-rouge">pid.c</code>. Validate with hardware-in-the-loop testing.</p>
+<p>Write a unit test for the PID controller in <code class="language-text highlighter-rouge">pid.c</code> and motor drivers. Validate with HIL testing. Set up CI to run tests on push.</p>
 
+<hr />
 <h2 id="week-12-remote-connection">Week 12: Remote Connection</h2>
 <ul>
   <li>Wi-Fi/Bluetooth, network protocols (TCP/UDP), and latency management</li>
-  <li>Stream sensor data over Bluetooth using UART (bsp_usart.c).</li>
+  <li>Joystick input parsing (HID/ADC).</li>
+  <li>Stream sensor data over Bluetooth using UART (<code class="language-text highlighter-rouge">bsp_usart.c</code>).</li>
 </ul>
 
 <h3 id="weekly-project-11">Weekly Project</h3>
-<p>Connect a remote controller to your robot</p>
+<p>Connect a joystick (USB/ADC) to STM32. Send PWM signals to motors via remote commands.</p>
 
+<hr />
 <h2 id="week-13-robot-kinematics">Week 13: Robot Kinematics</h2>
 <ul>
+  <li>Differential drive kinematics (odometry, wheel slip).</li>
   <li>Chassis positioning and movement</li>
   <li>inverse kinematics for turret/gimbal movement</li>
 </ul>
 
 <h3 id="weekly-project-12">Weekly Project</h3>
-<p>Program the gimbal to track a joystick input using <code class="language-text highlighter-rouge">gimbal_task.c</code> and <code class="language-text highlighter-rouge">bsp_rc.c</code></p>
+<p>Program the chassis and gimbal to track separate joystick inputs using <code class="language-text highlighter-rouge">chassis_task.c</code> and <code class="language-text highlighter-rouge">gimbal_task.c</code>.</p>
 
-<h2 id="week-14-kalman-filters">Week 14: Kalman Filters</h2>
+<hr />
+<h2 id="week-14-sensor-fusion">Week 14: Sensor Fusion</h2>
 <ul>
-  <li>Sensor fusion (IMU + vision) for noise reduction</li>
+  <li>Kalman filters, complementary filters for noise reduction.</li>
+  <li>IMU noise modeling (Allan variance).</li>
+  <li>Fusion with encoder/vision data.</li>
 </ul>
 
 <h3 id="weekly-project-13">Weekly Project</h3>
-<p>Fuse accelerometer/gyro data from <code class="language-text highlighter-rouge">bmi088driver.c</code> using <code class="language-text highlighter-rouge">kalman_filter.c</code></p>
+<p>Fuse BMI088 IMU data with encoder readings for chassis odometry using <code class="language-text highlighter-rouge">kalman_filter.c</code>.</p>
 
+<hr />
 <h2 id="week-15-rtos-integration">Week 15: RTOS Integration</h2>
 <ul>
   <li>Difference between FreeRTOS and ROS2</li>
@@ -236,6 +258,7 @@
 <h3 id="weekly-project-14">Weekly Project</h3>
 <p>Create two tasks: one for motor control (<code class="language-text highlighter-rouge">dm_motor_drv.c</code>) and another for sensor polling</p>
 
+<hr />
 <h2 id="week-16-vision-system-integration">Week 16: Vision System Integration</h2>
 <ul>
   <li>OpenCV basics, camera calibration, and object detection</li>
@@ -245,15 +268,19 @@
 <h3 id="weekly-project-15">Weekly Project</h3>
 <p>Detect a colored object with <code class="language-text highlighter-rouge">vision.c</code> and publish coordinates over CAN.</p>
 
+<hr />
 <h2 id="week-17-middleware-integration">Week 17: Middleware Integration</h2>
 <ul>
+  <li>ROS2-FreeRTOS bridges (micro-ROS).</li>
   <li>Message brokers (MQTT), ROS2 nodes, and DDS</li>
   <li>Sensor integration through ROS2 and RTOS</li>
+  <li>QoS settings for real-time control.</li>
 </ul>
 
 <h3 id="weekly-project-16">Weekly Project</h3>
-<p>Publish IMU data to a ROS2 topic via USB-CDC (<code class="language-text highlighter-rouge">usbd_cdc_if.c</code>)</p>
+<p>Publish motor speeds to ROS2 and subscribe to joystick topics.</p>
 
+<hr />
 <h2 id="week-18-automated-aiming--trajectories">Week 18: Automated Aiming &amp; Trajectories</h2>
 <ul>
   <li>Ballistics modeling for angled shooting (gravity/wind compensation)</li>
@@ -264,14 +291,18 @@
 <h3 id="weekly-project-17">Weekly Project</h3>
 <p>Implement projectile trajectory logic in <code class="language-text highlighter-rouge">calculate.c</code> for angled shots.</p>
 
+<hr />
 <h2 id="week-19-error-recovery-states">Week 19: Error Recovery States</h2>
 <ul>
-  <li>Fault detection, safe modes, and watchdog timers</li>
+  <li>Watchdog timers (IWDG, WWDG) and safe modes.</li>
+  <li>Fault injection testing.</li>
+  <li>Graceful degradation (e.g., disable motors, enable brakes).</li>
 </ul>
 
 <h3 id="weekly-project-18">Weekly Project</h3>
 <p>Design a recovery routine for motor faults in <code class="language-text highlighter-rouge">detect_task.c</code>.</p>
 
+<hr />
 <h2 id="week-20-system-integration--optimization">Week 20: System Integration &amp; Optimization</h2>
 <ul>
   <li>Code profiling, memory management, and power/performance tradeoffs</li>
@@ -280,6 +311,7 @@
 <h3 id="final-project">Final Project</h3>
 <p>Integrate vision, motor control, and trajectory systems into your robot.</p>
 
+<hr />
 <h2 id="credits">Credits</h2>
 
 <!--Written by Jorge Porras (2025)-->
