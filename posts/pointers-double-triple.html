@@ -85,15 +85,17 @@
 
 <p>so we’ve got a pattern here. the more stars <code class="language-text highlighter-rouge">*</code>, the deeper down the rabbit hole we go. it’s like an inception of pointers, and we all know how that movie ended up: a whole bunch of confusion. but can we actually use this in a practical way?</p>
 
-<h2 id="why-bother-with-it">Why bother with it?</h2>
+<h2 id="why-do-we-care">Why do we care?</h2>
 
-<p>sometimes we need to dynamically allocate memory for complex data structures, like multi-dimensional arrays or structures that involve multiple levels of indirection. pointers to pointers can be thought of as adding dimensions: <code class="language-text highlighter-rouge">int **p</code> → 2D array, <code class="language-text highlighter-rouge">int ***p</code> → 3D array, and so on.</p>
+<p>sometimes we need to dynamically allocate memory for complex data structures, like multi-dimensional arrays or structures that involve multiple levels of indirection. pointers to pointers can be thought of as adding dimensions: <code class="language-text highlighter-rouge">int **p;</code> → 2D array, <code class="language-text highlighter-rouge">int ***p;</code> → 3D array, and so on.</p>
 
 <p>also, passing pointers to pointers around functions lets us modify values at these deeper levels without making copies of the data. very useful for managing memory efficiently, especially when handling large datasets or manipulating multi-level structures.</p>
 
 <h2 id="moving-pointers-around-functions">Moving pointers around functions</h2>
 
 <p>Here’s where the fun begins. passing pointers to functions means we can modify the data they’re pointing to outside the function. basically we can “expand the scope” of a variable giving its pointer to another function and modifying it there.</p>
+
+<hr />
 
 <h2 id="the-right-way">The Right Way</h2>
 
@@ -116,8 +118,8 @@
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
-<p><strong>explanation:</strong>
-We have a pointer to a pointer <code class="language-text highlighter-rouge">int **pp</code>, which stores the address of <code class="language-text highlighter-rouge">p</code>, which stores the address of <code class="language-text highlighter-rouge">a</code>. When we pass <code class="language-text highlighter-rouge">pp</code> to the <code class="language-text highlighter-rouge">update_value()</code> function, we access <code class="language-text highlighter-rouge">a</code> through <code class="language-text highlighter-rouge">**pp</code> and change its value. this works just fine, and our variable <code class="language-text highlighter-rouge">a</code> gets updated outside the function.</p>
+
+<p>We have a pointer to a pointer <code class="language-text highlighter-rouge">int **pp</code>, which stores the address of <code class="language-text highlighter-rouge">p</code>, which stores the address of <code class="language-text highlighter-rouge">a</code>. When we pass <code class="language-text highlighter-rouge">pp</code> to the <code class="language-text highlighter-rouge">update_value()</code> function, we access <code class="language-text highlighter-rouge">a</code> through <code class="language-text highlighter-rouge">**pp</code> and change its value. this works just fine, and our variable <code class="language-text highlighter-rouge">a</code> gets updated outside the function.</p>
 
 <h2 id="the-wrong-way">The Wrong Way</h2>
 
@@ -140,10 +142,13 @@ We have a pointer to a pointer <code class="language-text highlighter-rouge">int
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
-<p><strong>why doesnt it update?</strong>
-in the bad_update function, we did <code class="language-text highlighter-rouge">*ptr = 10;</code>. this is <strong>modifying the pointer itself</strong>, not the value it points to. <code class="language-text highlighter-rouge">ptr</code> is a pointer to <code class="language-text highlighter-rouge">p</code>, so <code class="language-text highlighter-rouge">*ptr</code> modifies the address stored in <code class="language-text highlighter-rouge">p</code>, not the value of <code class="language-text highlighter-rouge">a</code>. the value of <code class="language-text highlighter-rouge">a</code> doesn’t change, and instead, <code class="language-text highlighter-rouge">p</code> ends up pointing to some random address (and god helps you if that address is something important). note that vscode or your editor will probably save you from messing up like that.</p>
+<p><strong>what went wrong?</strong></p>
 
-<h2 id="quick-note-">quick note: <code class="language-text highlighter-rouge">&amp;</code></h2>
+<p>in the <code class="language-text highlighter-rouge">bad_update</code> function, we did <code class="language-text highlighter-rouge">*ptr = 10;</code>. this is <strong>modifying the pointer itself</strong>, not the value it points to. <code class="language-text highlighter-rouge">ptr</code> is a pointer to <code class="language-text highlighter-rouge">p</code>, so <code class="language-text highlighter-rouge">*ptr</code> modifies the address stored in <code class="language-text highlighter-rouge">p</code>, not the value of <code class="language-text highlighter-rouge">a</code>.</p>
+
+<p>the value of <code class="language-text highlighter-rouge">a</code> doesn’t change, and instead, <code class="language-text highlighter-rouge">p</code> ends up pointing to some random address. so trying <code class="language-text highlighter-rouge">*p</code> later in the code won’t take you to <code class="language-text highlighter-rouge">a</code>, but it might crash your program. note that most compilers will probably save you from messing up like that.</p>
+
+<h2 id="quick-note--">quick note: <code class="language-text highlighter-rouge">*</code>, <code class="language-text highlighter-rouge">&amp;</code></h2>
 
 <p>when using pointers we’ll notice the <code class="language-text highlighter-rouge">*</code> being used along the <code class="language-text highlighter-rouge">&amp;</code>. so worth mentioning its difference:</p>
 
@@ -156,17 +161,31 @@ in the bad_update function, we did <code class="language-text highlighter-rouge"
   </li>
 </ul>
 
+<h3 id="-when-defining--when-modifying"><code class="language-text highlighter-rouge">*</code> when defining, <code class="language-text highlighter-rouge">*</code> when modifying</h3>
+<p><code class="language-text highlighter-rouge">*</code> means something <strong>very different</strong> when defining a variable and when used as an operator:</p>
+
+<ul>
+  <li>
+    <p><code class="language-text highlighter-rouge">int *p;</code> → the <code class="language-text highlighter-rouge">*</code> indicates our new variable <code class="language-text highlighter-rouge">p</code> is a pointer. (the <code class="language-text highlighter-rouge">int</code> indicates it shall point to a variable of type <code class="language-text highlighter-rouge">int</code>)</p>
+  </li>
+  <li>
+    <p><code class="language-text highlighter-rouge">*p = 1;</code> → <em>after p is assigned</em> (like in the examples above, <code class="language-text highlighter-rouge">*p = &amp;a</code>), the <code class="language-text highlighter-rouge">*</code> works as a <em>dereference operator</em>, which means <code class="language-text highlighter-rouge">*p</code> is equivalent to <code class="language-text highlighter-rouge">a</code>.</p>
+  </li>
+</ul>
+
+<p>this is why we need to use <code class="language-text highlighter-rouge">**</code> in the <code class="language-text highlighter-rouge">bad_update</code> function: <code class="language-text highlighter-rouge">*ptr = p</code>, and <code class="language-text highlighter-rouge">**ptr = *p = a</code>.</p>
+
 <h3 id="double--double-">double <code class="language-text highlighter-rouge">**</code>, double <code class="language-text highlighter-rouge">&amp;&amp;</code>?</h3>
 
 <p>ill confess it. when working on <a href="/projects/chemcount">chemcount</a> i tried it. made a compsci grad cry that day.</p>
 
-<p>no, we cannot get the address of the address. <code class="language-text highlighter-rouge">&amp;&amp;</code> is for logical <code class="language-text highlighter-rouge">AND</code>.</p>
+<p>no, double <code class="language-text highlighter-rouge">&amp;&amp;</code> does not double-reference. <code class="language-text highlighter-rouge">&amp;&amp;</code> is for logical <code class="language-text highlighter-rouge">AND</code>. <em>and if it wasn’t, <code class="language-text highlighter-rouge">&amp;&amp;</code> would return the address of the address, which doesn’t make sense…</em></p>
 
-<p><em>idk. it just made sense in the moment…</em></p>
+<hr />
 
 <h2 id="challenge">challenge</h2>
 
-<p>the above should be easy enough too. lets look at a challenge:</p>
+<p>the above should be easy enough. lets look at a challenge:</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span>
@@ -189,13 +208,17 @@ in the bad_update function, we did <code class="language-text highlighter-rouge"
 </code></pre></div></div>
 <p><strong>question:</strong> does it print 50?</p>
 
+<p><strong>extra:</strong> if we print <code class="language-text highlighter-rouge">a</code>, <code class="language-text highlighter-rouge">p</code>, <code class="language-text highlighter-rouge">pp</code> and <code class="language-text highlighter-rouge">ppp</code>, which one is <code class="language-text highlighter-rouge">NULL</code>?</p>
+
+<hr />
+
 <h2 id="credits">Credits</h2>
 
 <!--Written by Jorge Porras (2025)-->
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1">
-      <p>ChatGPT <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>ChatGPT (adapted) <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
 </div>

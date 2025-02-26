@@ -1,0 +1,274 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-container">
+      <a href="/" class="logo-link">
+        <h1 class="logo">윤志</h1>
+      </a>
+      <p class="logo-subtitle">[云 ~ 찌]</p>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Search Optimization in C
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">C/C++</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <p>date: 2025-02-25
+<em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+
+<p>Let’s say you’re at a supermarket buying some groceries. This is the basic plan:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="c1">// what you want to buy</span>
+<span class="cp">#define ITEM_COUNT 3
+</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">my_grocery_list</span><span class="p">[</span><span class="n">ITEM_COUNT</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">"apple"</span><span class="p">,</span> <span class="s">"bread"</span><span class="p">,</span> <span class="s">"orange"</span><span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">buy_groceries</span><span class="p">();</span> <span class="c1">// we want to write this function</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now, how to buy groceries quickly? what should you do in <code class="language-text highlighter-rouge">buy_groceries()</code>?</p>
+
+<h3 id="1-nested-for-loops">1. Nested For Loops</h3>
+
+<p>First case: the supermarket sucks, there’s no labels or directions, and the place is a mess.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">supermarket1</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"bread"</span><span class="p">,</span> <span class="s">"milk"</span><span class="p">,</span> <span class="s">"cheese"</span><span class="p">,</span> <span class="s">"apple"</span><span class="p">,</span> <span class="s">"orange"</span><span class="p">,</span>
+    <span class="s">"banana"</span><span class="p">,</span> <span class="s">"apple"</span><span class="p">,</span> <span class="s">"cereal"</span><span class="p">,</span> <span class="s">"carrot"</span><span class="p">,</span> <span class="s">"apple"</span>
+<span class="p">};</span> <span class="c1">// items are all over the place, not organized</span>
+</code></pre></div></div>
+<p>for this case, you’ll have to walk through the entire supermarket <em>linearly</em>, comparing every item on every aisle to see if it’s an apple or whatever you’re looking for.
+this is called a <em>nested <code class="language-text highlighter-rouge">for</code> loop</em>.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">buy_groceries</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">supermarket_items</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">supermarket1</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">supermarket1</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MY_ITEM_COUNT</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">found</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">supermarket_items</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">my_grocery_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">supermarket1</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">found</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%s found at index %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">my_grocery_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">j</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">found</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span> <span class="p">(</span><span class="s">"%s not found</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">my_grocery_list</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><strong>good part:</strong> 
+<strong>problem:</strong> wastes time. it goes through the entire list of groceries, comparing everything to everything. \(O(n^2)\). you’re just wandering around the store like a zombie, checking every single product for apples.</p>
+
+<hr />
+
+<h3 id="2-binary-search---when-things-are-sorted-could-actually-be-useful">2. Binary Search - When Things Are Sorted (Could Actually Be Useful)</h3>
+
+<p>now you go to a supermarket where items are sorted in some way (lets say alphabetically). things are neat and tidy, you’re not wandering aimlessly. now you can use <strong>binary search</strong>, because the store’s aisles are clearly organized, and you can just halve your search space each time.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">supermarket2</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"apple"</span><span class="p">,</span> <span class="s">"apple"</span><span class="p">,</span> <span class="s">"banana"</span><span class="p">,</span> <span class="s">"bread"</span><span class="p">,</span> <span class="s">"carrot"</span><span class="p">,</span>
+    <span class="s">"cereal"</span><span class="p">,</span> <span class="s">"egg"</span><span class="p">,</span> <span class="s">"milk"</span><span class="p">,</span> <span class="s">"orange"</span><span class="p">,</span> <span class="s">"pear"</span>
+<span class="p">};</span> <span class="c1">// items are neatly organized by alphabetic order</span>
+
+<span class="kt">int</span> <span class="nf">binary_search</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">size</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">low</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">high</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// go to the mid of the array</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="c1">// check if it's what you want</span>
+        <span class="kt">int</span> <span class="n">cmp</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">],</span> <span class="n">target</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cmp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// if it is, bingo</span>
+            <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">cmp</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// if arr[mid] is lower, go upper</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span> <span class="c1">// if arr[mid] is greater, go lower</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// not found</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">buy_groceries</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">supermarket_size</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">supermarket2</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">supermarket2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MY_ITEM_COUNT</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">supermarket2</span><span class="p">,</span> <span class="n">supermarket_size</span><span class="p">,</span> <span class="n">my_grocery_list</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%s found at index %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">my_grocery_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">index</span><span class="p">);</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span> <span class="p">(</span><span class="s">"%s not found</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">my_grocery_list</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>problem:</strong> only works if the list is sorted. if your list of groceries is a mess, then tough luck. sorting is <strong>O(n log n)</strong>, and search is <strong>O(log n)</strong>, but if your data is unsorted… back to square one.</p>
+
+<hr />
+
+<h3 id="3-hash-map---supermarket-aisles-with-tags-fast-but-some-overhead">3. Hash Map - Supermarket Aisles With Tags (Fast, but Some Overhead)</h3>
+
+<p>okay, now we’re getting somewhere. we have a <strong>hash map</strong>,  a supermarket with aisles labeled clearly: if you want apples, look up to the big sign above that reads “APPLES”, walk there, and boom you’ve got your apples.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span>
+<span class="cp">#define TABLE_SIZE 10
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">HashNode</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">key</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">HashNode</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">HashNode</span><span class="p">;</span>
+
+<span class="n">HashNode</span><span class="o">*</span> <span class="n">hash_table</span><span class="p">[</span><span class="n">TABLE_SIZE</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">hash</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">hash_val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">'\0'</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">hash_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">hash_val</span> <span class="o">+</span> <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">%</span> <span class="n">TABLE_SIZE</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">hash_val</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">hash_index</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+    <span class="n">HashNode</span><span class="o">*</span> <span class="n">new_node</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">HashNode</span><span class="p">));</span>
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+    <span class="n">new_node</span><span class="o">-&gt;</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">;</span>
+    <span class="n">new_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">hash_table</span><span class="p">[</span><span class="n">hash_index</span><span class="p">];</span>
+    <span class="n">hash_table</span><span class="p">[</span><span class="n">hash_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">search</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">hash_index</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+    <span class="n">HashNode</span><span class="o">*</span> <span class="n">node</span> <span class="o">=</span> <span class="n">hash_table</span><span class="p">[</span><span class="n">hash_index</span><span class="p">];</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// not found</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p><strong>problem:</strong> yeah, it’s fast <strong>O(1)</strong>, but depending on your hash function and data size, you might end up with collisions. which means instead of zipping to the aisle for apples, you’ve got to do a little extra checking.</p>
+
+<hr />
+
+<h3 id="4-trie-">4. Trie ???</h3>
+
+<h2 id="credits">Credits</h2>
+
+<!--Written by Jorge Porras (2025)-->
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>ChatGPT <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
