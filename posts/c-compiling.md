@@ -15,3 +15,8 @@ gcc main.c myfile.o -o main
 ```
 
 The flags will make `gcc` be very picky in the code. so it forces us to write proper code.
+
+```bash
+git checkout -b new_branch_name
+```
+https://stackoverflow.com/questions/17958288/branch-and-checkout-using-a-single-command

@@ -33,6 +33,6 @@ It has been very motivating to see how far we've come in such a short time. I fe
 
 I will continue to develop the website and add more projects and interesting stuff, play around with it and make it a part of me. Of course I am still learning and there will be lots of debugging ahead.
 
-If any of this website proves useful to someone, note that its source code is 100% opensource (MIT License) so feel free to use it. <a href="https://github.com/yoon-zh/yoonzh.com" target="_blank" class="pdf-link"><i class="fab fa-github"></i></a>
+If any of this website layout proves useful to someone, note that its source code is 100% open source (MIT License) so feel free to use it. <a href="https://github.com/yoon-zh/yoonzh.com" target="_blank" class="pdf-link"><i class="fab fa-github"></i></a>
 
 <!--Written by Jorge Porras (2025)-->
