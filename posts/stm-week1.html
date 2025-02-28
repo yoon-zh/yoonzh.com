@@ -68,28 +68,81 @@
   
   <div class="article-meta">
     
-      <time datetime="2025-02-18T00:00:00+00:00">
-        📅 2025/02/18
-      </time>
-    
   </div>
 </header>
 
 <div class="article-content">
-  <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+  <p>date: 2025-02-28</p>
+
+<p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
 
 <h1 id="week-1-from-arduino-to-stm32">Week 1: From Arduino to STM32</h1>
 
-<h2 id="key-concepts-explained">Key Concepts Explained</h2>
+<h2 id="concepts">Concepts</h2>
+<h3 id="1-microcontroller-definition-and-types">1. Microcontroller Definition and Types</h3>
+<p><strong>Definition</strong>: A microcontroller (MCU) is a compact integrated circuit designed to execute specific tasks in embedded systems. It combines a CPU, memory, and programmable I/O peripherals.</p>
 
-<h3 id="1-stm32-vs-arduino">1. STM32 vs. Arduino</h3>
+<p><strong>Types</strong>:</p>
+<ul>
+  <li><strong>8-bit</strong> (e.g., ATmega328 in Arduino Uno): Simple, low power.</li>
+  <li><strong>32-bit</strong> (e.g., STM32F4): Faster, complex operations.</li>
+  <li><strong>Application-Specific</strong> (e.g., ESP32 for Wi-Fi).</li>
+</ul>
+
+<h3 id="2-architecture-components">2. Architecture Components</h3>
+<p><strong>CPU</strong>: Executes instructions. STM32 uses ARM Cortex-M cores.</p>
+
+<p><strong>Memory</strong>:</p>
+<ul>
+  <li><strong>Flash</strong>: Stores program code (e.g., 1MB in STM32F407).</li>
+  <li><strong>RAM</strong>: Temporary data storage (e.g., 192KB in STM32F407).</li>
+</ul>
+
+<p><strong>GPIO</strong>: Pins for digital input/output (e.g., PA0, PC13).<br />
+<strong>Interrupts</strong>: Hardware-triggered events (e.g., button press).<br />
+<strong>Peripherals</strong>: Timers, UART, SPI, I2C, ADC.</p>
+
+<h3 id="3-boards-comparison">3. Boards Comparison</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Feature</strong></th>
+      <th><strong>Arduino</strong></th>
+      <th><strong>STM32</strong></th>
+      <th><strong>Raspberry Pi</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Core</strong></td>
+      <td>8/16-bit AVR</td>
+      <td>32-bit ARM Cortex</td>
+      <td>64-bit ARM Linux</td>
+    </tr>
+    <tr>
+      <td><strong>Speed</strong></td>
+      <td>16 MHz</td>
+      <td>Up to 216 MHz</td>
+      <td>1.5 GHz+</td>
+    </tr>
+    <tr>
+      <td><strong>Use Case</strong></td>
+      <td>Prototyping</td>
+      <td>Real-time systems</td>
+      <td>General computing</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="stm32-vs-arduino">STM32 vs. Arduino</h3>
 <ul>
   <li><strong>Architecture</strong>: Arduino uses AVR/ARM microcontrollers with simplified abstractions. STM32 uses ARM Cortex-M cores with higher clock speeds (e.g., 72MHz vs. 16MHz on Arduino Uno).</li>
   <li><strong>Performance</strong>: STM32 has more memory (e.g., 64KB Flash vs. 32KB) and peripherals (timers, ADCs, communication interfaces).</li>
   <li><strong>Toolchain</strong>: Arduino uses Arduino IDE; STM32 requires STM32CubeIDE/Keil for code generation, compilation, and debugging.</li>
 </ul>
 
-<h3 id="code-comparison">Code Comparison</h3>
+<h3 id="4-code-comparison">4. Code Comparison</h3>
 
 <p>Arduino (Blink LED):</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
@@ -97,9 +150,9 @@
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
-  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
   <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -112,12 +165,12 @@
   
   <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">GPIO_PIN_5</span><span class="p">);</span>
-    <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span> <span class="c1">// 2Hz blink (500ms on/off)</span>
+    <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span> <span class="c1">// 2Hz blink</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h3 id="2-workspace-navigation">2. Workspace Navigation</h3>
+<h3 id="5-workspace-navigation">5. Workspace Navigation</h3>
 <ul>
   <li><strong>MDK-ARM Directory</strong>: Contains Keil project files.
     <ul>
@@ -127,70 +180,84 @@
   </li>
 </ul>
 
-<h3 id="3-toolchain-setup">3. Toolchain Setup</h3>
+<h3 id="6-toolchain-setup">6. Toolchain Setup</h3>
 <ol>
   <li><strong>STM32CubeIDE</strong>: Install from <a href="https://www.st.com">ST Website</a>.</li>
   <li><strong>VSCode</strong>: Install extensions for C/C++ and Git.</li>
   <li><strong>Keil uVision</strong>: Configure device packs for STM32.</li>
 </ol>
 
-<h2 id="mini-exercises">Mini Exercises</h2>
+<h2 id="project-stm32-blinking-led">Project: STM32 blinking LED</h2>
+<p><strong>Objective</strong>: Install STM32CubeIDE and program the STM32 to blink an LED.</p>
 
+<h3 id="instructions">Instructions</h3>
 <ol>
-  <li><strong>Blink Rate Modification</strong>
+  <li><strong>Install Software</strong>:
     <ul>
-      <li>Open <code class="language-text highlighter-rouge">bsp_led.c</code> in Keil. Change <code class="language-text highlighter-rouge">HAL_Delay(1000)</code> to <code class="language-text highlighter-rouge">HAL_Delay(250)</code> to blink at 4Hz.</li>
-      <li><em>Tip</em>: Use <code class="language-text highlighter-rouge">HAL_GPIO_TogglePin()</code> instead of separate <code class="language-text highlighter-rouge">HAL_GPIO_WritePin</code> calls.</li>
+      <li>Download <a href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a>.</li>
+      <li>Install STM32CubeMX (bundled with IDE).</li>
     </ul>
   </li>
-  <li><strong>Explore STM32CubeIDE</strong>
-    <ul>
-      <li>Create a new project for your STM32 board. Locate the GPIO configuration tab.</li>
-    </ul>
-  </li>
-</ol>
-
-<h2 id="project-walkthrough">Project Walkthrough</h2>
-
-<h3 id="blink-led-at-2hz-using-stm32cubeide">Blink LED at 2Hz Using STM32CubeIDE</h3>
-<ol>
   <li><strong>Create Project</strong>:
     <ul>
-      <li>Open STM32CubeIDE → New STM32 Project → Select your microcontroller.</li>
-      <li>Configure LED GPIO (e.g., PA5) as Output in the Pinout view.</li>
+      <li>Launch STM32CubeIDE, click on <em>Start new STM32 project</em>.</li>
+      <li>Select your STM32 model (e.g., STM32F103C8Tx).</li>
+    </ul>
+  </li>
+  <li><strong>Configure GPIO</strong>:
+    <ul>
+      <li>In <em>Pinout &amp; Configuration</em>, select a GPIO pin (e.g., PA5) → Set to <em>GPIO_Output</em>.</li>
     </ul>
   </li>
   <li><strong>Generate Code</strong>:
     <ul>
-      <li>Click “Generate Code” to create boilerplate.</li>
+      <li>Click <em>Generate Code</em> and open <code class="language-text highlighter-rouge">main.c</code> in the IDE.</li>
     </ul>
   </li>
-  <li><strong>Modify <code class="language-text highlighter-rouge">main.c</code></strong>:
-    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Inside the infinite loop in main.c</span>
-<span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">GPIO_PIN_5</span><span class="p">);</span>
-  <span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span> <span class="c1">// 500ms delay for 2Hz</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Build and Flash</strong>:
+  <li><strong>Write Code</strong>:
     <ul>
-      <li>Click the hammer icon to compile. Connect your STM32 via ST-Link.</li>
-      <li>Click the “Run” button to flash the code.</li>
+      <li>Replace the main loop with the example above.
+```c<br />
+#include “stm32f4xx_hal.h”</li>
     </ul>
-  </li>
-  <li><strong>GitHub Submission</strong>:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/your-repo.git
-git add <span class="nb">.</span>
-git commit <span class="nt">-m</span> <span class="s2">"Implemented 2Hz LED blink using STM32 HAL"</span>
-git push
-</code></pre></div>    </div>
   </li>
 </ol>
+
+<p>int main(void) {<br />
+  HAL_Init();<br />
+  __HAL_RCC_GPIOA_CLK_ENABLE();  // Enable GPIOA clock</p>
+
+<p>GPIO_InitTypeDef led = {<br />
+    .Pin = GPIO_PIN_5,           // PA5 (onboard LED)<br />
+    .Mode = GPIO_MODE_OUTPUT_PP, // Push-pull output<br />
+    .Pull = GPIO_NOPULL,<br />
+    .Speed = GPIO_SPEED_FREQ_LOW<br />
+  };<br />
+  HAL_GPIO_Init(GPIOA, &amp;led);</p>
+
+<p>while (1) {<br />
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);<br />
+    HAL_Delay(500);  // 500ms delay<br />
+  }<br />
+}</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+6. **Build and Flash**:
+   - Connect the STM32 via ST-Link.
+   - Click *Run* to flash the program.
+
+
+7. **GitHub Submission**:
+```bash
+git clone https://github.com/your-repo.git
+git add .
+git commit -m "Implemented 2Hz LED blink using STM32 HAL"
+git push
+</code></pre></div></div>
 
 <h2 id="questions">Questions</h2>
 
 <ol>
+  <li>What is the role of Flash memory in an MCU?</li>
   <li>What is the primary difference in architecture between Arduino Uno and STM32?</li>
   <li>Which HAL function is used to introduce a delay in STM32?</li>
   <li>What directory contains RTOS task definitions in the provided workspace?</li>
@@ -201,44 +268,55 @@ git push
 <h2 id="dictionary">Dictionary</h2>
 
 <ul>
-  <li><strong>HAL (Hardware Abstraction Layer)</strong>: Library to abstract hardware operations (e.g., <code class="language-text highlighter-rouge">HAL_GPIO_TogglePin()</code>).</li>
+  <li><strong>HAL (Hardware Abstraction Layer)</strong>: Library to abstract hardware operations for peripheral control (e.g., <code class="language-text highlighter-rouge">HAL_GPIO_TogglePin()</code>).</li>
+  <li><strong>GPIO</strong>: General-Purpose Input/Output – configurable digital pins.</li>
   <li><strong>RTOS (Real-Time Operating System)</strong>: Manages multiple tasks with timing guarantees (e.g., FreeRTOS).</li>
   <li><strong>Toolchain</strong>: Set of tools for code development (STM32CubeIDE, compiler, debugger).</li>
-  <li><strong>GPIO</strong>: General-purpose input/output pin.</li>
+  <li><strong>Interrupt</strong>: Signal that pauses the CPU to handle an event.</li>
+  <li><strong>Clock Speed</strong>: Frequency at which the CPU executes instructions (e.g., 168MHz).</li>
 </ul>
 
 <h2 id="resources">Resources</h2>
 
 <ol>
   <li><a href="https://www.st.com">STM32CubeIDE Installation Guide</a></li>
-  <li><a href="https://www.st.com/en/embedded-software/stm32cube-mcu-packages.html">STM32 HAL Documentation</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Hffw-m9fuxc">STM32CubeIDE Beginner Guide</a></li>
+  <li><a href="https://www.reddit.com/r/stm32f4/comments/95406y/comment/e5ej2av/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">STM32 HAL Documentation Guide</a></li>
   <li><a href="https://git-scm.com/docs/gittutorial">Git Tutorial</a></li>
+  <li><a href="https://developer.arm.com/documentation/ddi0439/b/Introduction">ARM Cortex-M4 Manual</a></li>
+  <li><a href="https://www.freertos.org/Documentation/01-FreeRTOS-quick-start/01-Beginners-guide/01-RTOS-fundamentals">FreeRTOS Beginner Guide</a></li>
 </ol>
 
 <h2 id="debugging">Debugging</h2>
 
+<p><strong>LED Not Blinking</strong>:</p>
 <ul>
-  <li><strong>LED Not Blinking</strong>:
-    <ul>
-      <li>Verify GPIO configuration in <code class="language-text highlighter-rouge">MX_GPIO_Init()</code>.</li>
-      <li>Check if the correct pin (e.g., PA5) is toggled.</li>
-    </ul>
-  </li>
-  <li><strong>Compilation Errors</strong>:
-    <ul>
-      <li>Ensure HAL drivers are included in the project.</li>
-    </ul>
-  </li>
-  <li><strong>Flashing Failed</strong>:
-    <ul>
-      <li>Reconnect ST-Link and restart the IDE.</li>
-    </ul>
-  </li>
+  <li>Verify GPIO configuration in <code class="language-text highlighter-rouge">MX_GPIO_Init()</code>.</li>
+  <li>Check if the correct pin (e.g., PA5) is toggled.</li>
+  <li>Verify <code class="language-text highlighter-rouge">HAL_Delay</code> uses a configured timer (SysTick by default).</li>
+  <li>Check <code class="language-text highlighter-rouge">SystemClock_Config()</code> in <code class="language-text highlighter-rouge">main.c</code> for correct clock source.</li>
+</ul>
+
+<p><strong>Compilation Errors</strong>:</p>
+<ul>
+  <li>Ensure the board is in programming mode (BOOT0 pin high).</li>
+  <li>Ensure HAL drivers are included in the project.</li>
+</ul>
+
+<p><strong>ST-Link Connection Failed</strong>:</p>
+<ul>
+  <li>Reinstall drivers or try a different USB port.</li>
+</ul>
+
+<p><strong>Flashing Failed</strong>:</p>
+<ul>
+  <li>Reconnect ST-Link and restart the IDE.</li>
 </ul>
 
 <h2 id="answers-to-questions">Answers to Questions</h2>
 
 <ol>
+  <li>Flash stores the compiled program code and read-only data.</li>
   <li>STM32 uses ARM Cortex-M cores with higher clock speeds and more peripherals.</li>
   <li><code class="language-text highlighter-rouge">HAL_Delay()</code></li>
   <li><code class="language-text highlighter-rouge">chassis_task.c</code></li>
@@ -247,6 +325,44 @@ git push
 </ol>
 
 <hr />
+
+<h2 id="walkthrough">Walkthrough</h2>
+<h3 id="step-by-step-guide">Step-by-Step Guide</h3>
+<ol>
+  <li><strong>Installation</strong>:
+    <ul>
+      <li>If drivers fail, install <a href="https://www.st.com/en/development-tools/stsw-link009.html">ST-Link drivers</a>.</li>
+    </ul>
+  </li>
+  <li><strong>Pin Configuration</strong>:
+    <ul>
+      <li>In CubeMX, navigate to <em>System Core</em> → <em>GPIO</em> → Select PA5 → Set mode to <em>Output Push Pull</em>.</li>
+    </ul>
+  </li>
+  <li><strong>Clock Configuration</strong>:
+    <ul>
+      <li>Ensure the HSE (external oscillator) is enabled for accurate timing.</li>
+    </ul>
+  </li>
+  <li><strong>Code Generation</strong>:
+    <ul>
+      <li>After generating code, locate <code class="language-text highlighter-rouge">main.c</code> → Add the LED toggle logic inside the <code class="language-text highlighter-rouge">while(1)</code> loop.</li>
+    </ul>
+  </li>
+  <li><strong>Debugging</strong>:
+    <ul>
+      <li>If the LED doesn’t blink:
+        <ul>
+          <li>Check connections with a multimeter.</li>
+          <li>Verify the pin in <code class="language-text highlighter-rouge">GPIO_InitTypeDef</code> matches the hardware.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
 <h2 id="credits">Credits</h2>
 
 <!--Written by Jorge Porras (2025)-->
