@@ -56,7 +56,7 @@
   <!-- _includes/article-content.html -->
 <header class="article-header">
   <h1>
-    stm week 1
+    stm week 2
     
   </h1>
   
@@ -72,7 +72,7 @@
 </header>
 
 <div class="article-content">
-  <p>date: 2025-02-28</p>
+  <p>date: 2025-03-01</p>
 
 <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
 
@@ -187,20 +187,6 @@
   <li><strong>Keil uVision</strong>: Configure device packs for STM32.</li>
 </ol>
 
-<hr />
-
-<h2 id="questions">Questions</h2>
-
-<ol>
-  <li>What is the role of Flash memory in an MCU?</li>
-  <li>What is the primary difference in architecture between Arduino Uno and STM32?</li>
-  <li>Which HAL function is used to introduce a delay in STM32?</li>
-  <li>List two advantages of STM32 over Arduino.</li>
-  <li>What is the purpose of <code class="language-text highlighter-rouge">MX_GPIO_Init()</code> in STM32 code?</li>
-</ol>
-
-<hr />
-
 <h2 id="project-stm32-blinking-led">Project: STM32 blinking LED</h2>
 <p><strong>Objective</strong>: Install STM32CubeIDE and program the STM32 to blink an LED.</p>
 
@@ -215,7 +201,7 @@
   <li><strong>Create Project</strong>:
     <ul>
       <li>Launch STM32CubeIDE, click on <em>Start new STM32 project</em>.</li>
-      <li>Select your STM32 model (e.g., STM32F103C8T6).</li>
+      <li>Select your STM32 model (e.g., STM32F103C8Tx).</li>
     </ul>
   </li>
   <li><strong>Configure GPIO</strong>:
@@ -268,38 +254,15 @@ git commit -m "Implemented 2Hz LED blink using STM32 HAL"
 git push
 </code></pre></div></div>
 
-<h2 id="walkthrough">Walkthrough</h2>
+<h2 id="questions">Questions</h2>
+
 <ol>
-  <li><strong>Installation</strong>:
-    <ul>
-      <li>If drivers fail, install <a href="https://www.st.com/en/development-tools/stsw-link009.html">ST-Link drivers</a>.</li>
-    </ul>
-  </li>
-  <li><strong>Pin Configuration</strong>:
-    <ul>
-      <li>In CubeMX, navigate to <em>System Core</em> → <em>GPIO</em> → Select PA5 → Set mode to <em>Output Push Pull</em>.</li>
-    </ul>
-  </li>
-  <li><strong>Clock Configuration</strong>:
-    <ul>
-      <li>Ensure the HSE (external oscillator) is enabled for accurate timing.</li>
-    </ul>
-  </li>
-  <li><strong>Code Generation</strong>:
-    <ul>
-      <li>After generating code, locate <code class="language-text highlighter-rouge">main.c</code> → Add the LED toggle logic inside the <code class="language-text highlighter-rouge">while(1)</code> loop.</li>
-    </ul>
-  </li>
-  <li><strong>Debugging</strong>:
-    <ul>
-      <li>If the LED doesn’t blink:
-        <ul>
-          <li>Check connections with a multimeter.</li>
-          <li>Verify the pin in <code class="language-text highlighter-rouge">GPIO_InitTypeDef</code> matches the hardware.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
+  <li>What is the role of Flash memory in an MCU?</li>
+  <li>What is the primary difference in architecture between Arduino Uno and STM32?</li>
+  <li>Which HAL function is used to introduce a delay in STM32?</li>
+  <li>What directory contains RTOS task definitions in the provided workspace?</li>
+  <li>List two advantages of STM32 over Arduino.</li>
+  <li>What is the purpose of <code class="language-text highlighter-rouge">MX_GPIO_Init()</code> in STM32 code?</li>
 </ol>
 
 <h2 id="dictionary">Dictionary</h2>
@@ -355,8 +318,46 @@ git push
   <li>Flash stores the compiled program code and read-only data.</li>
   <li>STM32 uses ARM Cortex-M cores with higher clock speeds and more peripherals.</li>
   <li><code class="language-text highlighter-rouge">HAL_Delay()</code></li>
+  <li><code class="language-text highlighter-rouge">chassis_task.c</code></li>
   <li>Higher performance, more memory, advanced peripherals.</li>
   <li>Initializes GPIO pins based on CubeMX configuration.</li>
+</ol>
+
+<hr />
+
+<h2 id="walkthrough">Walkthrough</h2>
+<h3 id="step-by-step-guide">Step-by-Step Guide</h3>
+<ol>
+  <li><strong>Installation</strong>:
+    <ul>
+      <li>If drivers fail, install <a href="https://www.st.com/en/development-tools/stsw-link009.html">ST-Link drivers</a>.</li>
+    </ul>
+  </li>
+  <li><strong>Pin Configuration</strong>:
+    <ul>
+      <li>In CubeMX, navigate to <em>System Core</em> → <em>GPIO</em> → Select PA5 → Set mode to <em>Output Push Pull</em>.</li>
+    </ul>
+  </li>
+  <li><strong>Clock Configuration</strong>:
+    <ul>
+      <li>Ensure the HSE (external oscillator) is enabled for accurate timing.</li>
+    </ul>
+  </li>
+  <li><strong>Code Generation</strong>:
+    <ul>
+      <li>After generating code, locate <code class="language-text highlighter-rouge">main.c</code> → Add the LED toggle logic inside the <code class="language-text highlighter-rouge">while(1)</code> loop.</li>
+    </ul>
+  </li>
+  <li><strong>Debugging</strong>:
+    <ul>
+      <li>If the LED doesn’t blink:
+        <ul>
+          <li>Check connections with a multimeter.</li>
+          <li>Verify the pin in <code class="language-text highlighter-rouge">GPIO_InitTypeDef</code> matches the hardware.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ol>
 
 <hr />
