@@ -1,14 +1,14 @@
 ---
 layout: post
-title: stm-week1
-card_title: stm week 1
-excerpt: "from arduino to stm32"
-url: /posts/stm-week1
+title: stm-week2
+card_title: stm week 2
+excerpt: "Understanding STM32"
+url: /posts/stm-week2
 math: true
 tech_stack: [C/C++]
 ---
 
-date: 2025-02-28
+date: 2025-03-01
 
 *Adapted from [^1]*
 
@@ -87,18 +87,6 @@ int main(void) {
 2. **VSCode**: Install extensions for C/C++ and Git.
 3. **Keil uVision**: Configure device packs for STM32.
 
----
-
-## Questions
-
-1. What is the role of Flash memory in an MCU?
-2. What is the primary difference in architecture between Arduino Uno and STM32?
-3. Which HAL function is used to introduce a delay in STM32?
-4. List two advantages of STM32 over Arduino.
-5. What is the purpose of `MX_GPIO_Init()` in STM32 code?
-
----
-
 ## Project: STM32 blinking LED
 **Objective**: Install STM32CubeIDE and program the STM32 to blink an LED.
 
@@ -109,7 +97,7 @@ int main(void) {
 
 2. **Create Project**:
    - Launch STM32CubeIDE, click on *Start new STM32 project*.
-   - Select your STM32 model (e.g., STM32F103C8T6).
+   - Select your STM32 model (e.g., STM32F103C8Tx).
 
 3. **Configure GPIO**:
    - In *Pinout & Configuration*, select a GPIO pin (e.g., PA5) → Set to *GPIO_Output*.
@@ -154,23 +142,14 @@ git commit -m "Implemented 2Hz LED blink using STM32 HAL"
 git push
 ```
 
-## Walkthrough
-1. **Installation**:  
-   - If drivers fail, install [ST-Link drivers](https://www.st.com/en/development-tools/stsw-link009.html).  
+## Questions
 
-2. **Pin Configuration**:  
-   - In CubeMX, navigate to *System Core* → *GPIO* → Select PA5 → Set mode to *Output Push Pull*.  
-
-3. **Clock Configuration**:  
-   - Ensure the HSE (external oscillator) is enabled for accurate timing.  
-
-4. **Code Generation**:  
-   - After generating code, locate `main.c` → Add the LED toggle logic inside the `while(1)` loop.  
-
-5. **Debugging**:  
-   - If the LED doesn’t blink:  
-     - Check connections with a multimeter.  
-     - Verify the pin in `GPIO_InitTypeDef` matches the hardware.  
+1. What is the role of Flash memory in an MCU?
+2. What is the primary difference in architecture between Arduino Uno and STM32?
+3. Which HAL function is used to introduce a delay in STM32?
+4. What directory contains RTOS task definitions in the provided workspace?
+5. List two advantages of STM32 over Arduino.
+6. What is the purpose of `MX_GPIO_Init()` in STM32 code?
 
 ## Dictionary
 
@@ -212,8 +191,31 @@ git push
 1. Flash stores the compiled program code and read-only data.
 2. STM32 uses ARM Cortex-M cores with higher clock speeds and more peripherals.
 3. `HAL_Delay()`
-4. Higher performance, more memory, advanced peripherals.
-5. Initializes GPIO pins based on CubeMX configuration.
+4. `chassis_task.c`
+5. Higher performance, more memory, advanced peripherals.
+6. Initializes GPIO pins based on CubeMX configuration.
+
+---
+
+## Walkthrough  
+### Step-by-Step Guide  
+1. **Installation**:  
+   - If drivers fail, install [ST-Link drivers](https://www.st.com/en/development-tools/stsw-link009.html).  
+
+2. **Pin Configuration**:  
+   - In CubeMX, navigate to *System Core* → *GPIO* → Select PA5 → Set mode to *Output Push Pull*.  
+
+3. **Clock Configuration**:  
+   - Ensure the HSE (external oscillator) is enabled for accurate timing.  
+
+4. **Code Generation**:  
+   - After generating code, locate `main.c` → Add the LED toggle logic inside the `while(1)` loop.  
+
+5. **Debugging**:  
+   - If the LED doesn’t blink:  
+     - Check connections with a multimeter.  
+     - Verify the pin in `GPIO_InitTypeDef` matches the hardware.  
+
 
 ---
 
