@@ -68,13 +68,15 @@
   
   <div class="article-meta">
     
+      <time datetime="2025-03-02T00:00:00+00:00">
+        📅 2025/03/02
+      </time>
+    
   </div>
 </header>
 
 <div class="article-content">
-  <p>date: 2025-02-28</p>
-
-<p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+  <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
 
 <h1 id="week-1-from-arduino-to-stm32">Week 1: From Arduino to STM32</h1>
 
@@ -135,14 +137,41 @@
   </tbody>
 </table>
 
-<h3 id="stm32-vs-arduino">STM32 vs. Arduino</h3>
+<hr />
+
+<h2 id="understanding-stm32">Understanding STM32</h2>
+
+<h3 id="1-stm32-families">1. STM32 Families</h3>
+<p><strong>Families</strong>: STM32F0 (entry-level), STM32F4 (high-performance), STM32H7 (ultra-high performance). Differences lie in clock speed (up to 550MHz for H7), peripherals, and power efficiency.<br />
+<strong>Registers</strong>: Low-level memory addresses controlling peripherals. For example, <code class="language-text highlighter-rouge">GPIOA-&gt;ODR</code> directly writes to GPIO Port A’s output data register.<br />
+<strong>Toolchain</strong>:</p>
 <ul>
-  <li><strong>Architecture</strong>: Arduino uses AVR/ARM microcontrollers with simplified abstractions. STM32 uses ARM Cortex-M cores with higher clock speeds (e.g., 72MHz vs. 16MHz on Arduino Uno).</li>
-  <li><strong>Performance</strong>: STM32 has more memory (e.g., 64KB Flash vs. 32KB) and peripherals (timers, ADCs, communication interfaces).</li>
-  <li><strong>Toolchain</strong>: Arduino uses Arduino IDE; STM32 requires STM32CubeIDE/Keil for code generation, compilation, and debugging.</li>
+  <li><strong>STM32CubeIDE</strong>: Integrated development environment with code generator.</li>
+  <li><strong>HAL/LL Libraries</strong>: Hardware Abstraction Layer (HAL) simplifies peripheral control; Low-Layer (LL) offers register-level access</li>
+  <li><strong>OpenOCD</strong>: On-chip debugger for flashing code.</li>
 </ul>
 
-<h3 id="4-code-comparison">4. Code Comparison</h3>
+<h3 id="2-stm32cubeide-workflow">2. STM32CubeIDE Workflow</h3>
+<p><strong>Project Creation</strong>: Select MCU model (e.g., STM32F103C8T6), configure pins, generate code.<br />
+<strong>Clock Configuration</strong>: Use the graphical clock tree to set HSI/HSE and PLL multipliers.<br />
+<strong>GPIO Modes</strong>: Output push-pull, open-drain; input with pull-up/down resistors.</p>
+
+<h3 id="3-basic-circuits">3. Basic Circuits</h3>
+<p><strong>LED Circuit</strong>: Connect LED to GPIO pin with a current-limiting resistor (220Ω). Ensure ground is shared with the STM32.<br />
+<strong>Button Input</strong>: Use a pull-down resistor to avoid floating pins.</p>
+
+<h3 id="4-stm32f4-block-diagram">4. STM32F4 Block Diagram</h3>
+<p><strong>Clock Tree</strong>: Multiple sources (HSI, HSE) feed into PLL for core/peripheral clocks.<br />
+<strong>DMA</strong>: Direct Memory Access for peripheral-to-memory transfers without CPU involvement.</p>
+
+<h3 id="5-stm32-vs-arduino">5. STM32 vs. Arduino</h3>
+<p><strong>Architecture</strong>: Arduino uses AVR/ARM microcontrollers with simplified abstractions. STM32 uses ARM Cortex-M cores with higher clock speeds (e.g., 72MHz vs. 16MHz on Arduino Uno).</p>
+
+<p><strong>Performance</strong>: STM32 has more memory (e.g., 64KB Flash vs. 32KB) and peripherals (timers, ADCs, communication interfaces).</p>
+
+<p><strong>Toolchain</strong>: Arduino uses Arduino IDE; STM32 requires STM32CubeIDE/Keil for code generation, compilation, and debugging.</p>
+
+<h3 id="6-code-comparison">6. Code Comparison</h3>
 
 <p>Arduino (Blink LED):</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
@@ -170,21 +199,12 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h3 id="5-workspace-navigation">5. Workspace Navigation</h3>
-<ul>
-  <li><strong>MDK-ARM Directory</strong>: Contains Keil project files.
-    <ul>
-      <li><code class="language-text highlighter-rouge">standard_board_c</code>: Hardware Abstraction Layer (HAL) drivers.</li>
-      <li><code class="language-text highlighter-rouge">chassis_task.c</code>: RTOS tasks for motor control.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="6-toolchain-setup">6. Toolchain Setup</h3>
+<h2 id="toolchain-setup">Toolchain Setup</h2>
 <ol>
-  <li><strong>STM32CubeIDE</strong>: Install from <a href="https://www.st.com">ST Website</a>.</li>
-  <li><strong>VSCode</strong>: Install extensions for C/C++ and Git.</li>
+  <li><strong>STM32CubeIDE/STM32CubeMX</strong>: Install from <a href="https://www.st.com/en/development-tools/stm32-software-development-tools.html">ST Website</a>.</li>
+  <li><strong>VSCode</strong>: Install extensions for C/C++.</li>
   <li><strong>Keil uVision</strong>: Configure device packs for STM32.</li>
+  <li><strong>Git</strong>: Create an account on <a href="https://github.com">GitHub</a> and install <a href="https://git-scm.com/downloads">Git</a> on your terminal or VSCode.</li>
 </ol>
 
 <hr />
@@ -197,6 +217,11 @@
   <li>Which HAL function is used to introduce a delay in STM32?</li>
   <li>List two advantages of STM32 over Arduino.</li>
   <li>What is the purpose of <code class="language-text highlighter-rouge">MX_GPIO_Init()</code> in STM32 code?</li>
+  <li>What is the difference between HAL and LL libraries?</li>
+  <li>Which GPIO register sets pin mode (input/output)?</li>
+  <li>How do you enable a GPIO clock in HAL?</li>
+  <li>What’s the purpose of the STM32 clock tree?</li>
+  <li>Why use a pull-down resistor for a button?</li>
 </ol>
 
 <hr />
@@ -208,8 +233,8 @@
 <ol>
   <li><strong>Install Software</strong>:
     <ul>
-      <li>Download <a href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a>.</li>
-      <li>Install STM32CubeMX (bundled with IDE).</li>
+      <li><a href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a>.</li>
+      <li><a href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a>.</li>
     </ul>
   </li>
   <li><strong>Create Project</strong>:
@@ -230,103 +255,55 @@
   </li>
   <li><strong>Write Code</strong>:
     <ul>
-      <li>Replace the main loop with the example above.
-```c<br />
-#include “stm32f4xx_hal.h”</li>
-    </ul>
-  </li>
-</ol>
-
-<p>int main(void) {<br />
-  HAL_Init();<br />
-  __HAL_RCC_GPIOA_CLK_ENABLE();  // Enable GPIOA clock</p>
-
-<p>GPIO_InitTypeDef led = {<br />
-    .Pin = GPIO_PIN_5,           // PA5 (onboard LED)<br />
-    .Mode = GPIO_MODE_OUTPUT_PP, // Push-pull output<br />
-    .Pull = GPIO_NOPULL,<br />
-    .Speed = GPIO_SPEED_FREQ_LOW<br />
-  };<br />
-  HAL_GPIO_Init(GPIOA, &amp;led);</p>
-
-<p>while (1) {<br />
-    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);<br />
-    HAL_Delay(500);  // 500ms delay<br />
-  }<br />
-}</p>
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-6. **Build and Flash**:
-   - Connect the STM32 via ST-Link.
-   - Click *Run* to flash the program.
-
-
-7. **GitHub Submission**:
-```bash
-git clone https://github.com/your-repo.git
-git add .
-git commit -m "Implemented 2Hz LED blink using STM32 HAL"
-git push
-</code></pre></div></div>
-
-<h2 id="walkthrough">Walkthrough</h2>
-<ol>
-  <li><strong>Installation</strong>:
-    <ul>
-      <li>If drivers fail, install <a href="https://www.st.com/en/development-tools/stsw-link009.html">ST-Link drivers</a>.</li>
-    </ul>
-  </li>
-  <li><strong>Pin Configuration</strong>:
-    <ul>
-      <li>In CubeMX, navigate to <em>System Core</em> → <em>GPIO</em> → Select PA5 → Set mode to <em>Output Push Pull</em>.</li>
-    </ul>
-  </li>
-  <li><strong>Clock Configuration</strong>:
-    <ul>
-      <li>Ensure the HSE (external oscillator) is enabled for accurate timing.</li>
-    </ul>
-  </li>
-  <li><strong>Code Generation</strong>:
-    <ul>
-      <li>After generating code, locate <code class="language-text highlighter-rouge">main.c</code> → Add the LED toggle logic inside the <code class="language-text highlighter-rouge">while(1)</code> loop.</li>
-    </ul>
-  </li>
-  <li><strong>Debugging</strong>:
-    <ul>
-      <li>If the LED doesn’t blink:
-        <ul>
-          <li>Check connections with a multimeter.</li>
-          <li>Verify the pin in <code class="language-text highlighter-rouge">GPIO_InitTypeDef</code> matches the hardware.</li>
-        </ul>
+      <li>Write your code to toggle the LED pin as below:
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>  
+<span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">GPIO_PIN_5</span><span class="p">);</span>  
+<span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>  <span class="c1">// 500ms delay  </span>
+<span class="p">}</span>
+</code></pre></div>        </div>
       </li>
     </ul>
   </li>
+  <li><strong>Build and Flash</strong>:
+    <ul>
+      <li>Connect the STM32 via ST-Link.</li>
+      <li>Click <em>Run</em> to flash the program.</li>
+    </ul>
+  </li>
+  <li><strong>GitHub Submission</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Week 1 project: LED Blink"</span>
+git remote add origin &lt;your-repo-url&gt;
+git push <span class="nt">-u</span> origin main
+</code></pre></div>    </div>
+  </li>
 </ol>
 
-<h2 id="dictionary">Dictionary</h2>
-
+<h3 id="debugging">Debugging</h3>
+<p><strong>Installation</strong>:</p>
 <ul>
-  <li><strong>HAL (Hardware Abstraction Layer)</strong>: Library to abstract hardware operations for peripheral control (e.g., <code class="language-text highlighter-rouge">HAL_GPIO_TogglePin()</code>).</li>
-  <li><strong>GPIO</strong>: General-Purpose Input/Output – configurable digital pins.</li>
-  <li><strong>RTOS (Real-Time Operating System)</strong>: Manages multiple tasks with timing guarantees (e.g., FreeRTOS).</li>
-  <li><strong>Toolchain</strong>: Set of tools for code development (STM32CubeIDE, compiler, debugger).</li>
-  <li><strong>Interrupt</strong>: Signal that pauses the CPU to handle an event.</li>
-  <li><strong>Clock Speed</strong>: Frequency at which the CPU executes instructions (e.g., 168MHz).</li>
+  <li>If drivers fail, install <a href="https://www.st.com/en/development-tools/stsw-link009.html">ST-Link drivers</a>.</li>
 </ul>
 
-<h2 id="resources">Resources</h2>
+<p><strong>Pin Configuration</strong>:</p>
+<ul>
+  <li>In CubeMX, navigate to <em>System Core</em> → <em>GPIO</em> → Select PA5 → Set mode to <em>Output Push Pull</em>.</li>
+</ul>
 
-<ol>
-  <li><a href="https://www.youtube.com/watch?v=Hffw-m9fuxc">STM32CubeIDE Beginner Guide</a></li>
-  <li><a href="https://www.reddit.com/r/stm32f4/comments/95406y/comment/e5ej2av/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">STM32 HAL Documentation Guide</a></li>
-  <li><a href="https://git-scm.com/docs/gittutorial">Git Tutorial</a></li>
-  <li><a href="https://developer.arm.com/documentation/ddi0439/b/Introduction">ARM Cortex-M4 Manual</a></li>
-  <li><a href="https://www.freertos.org/Documentation/01-FreeRTOS-quick-start/01-Beginners-guide/01-RTOS-fundamentals">FreeRTOS Beginner Guide</a></li>
-</ol>
+<p><strong>Clock Configuration</strong>:</p>
+<ul>
+  <li>Ensure the HSE (external oscillator) is enabled for accurate timing.</li>
+</ul>
 
-<h2 id="debugging">Debugging</h2>
+<p><strong>Code Generation</strong>:</p>
+<ul>
+  <li>After generating code, locate <code class="language-text highlighter-rouge">main.c</code> → Add the LED toggle logic inside the <code class="language-text highlighter-rouge">while(1)</code> loop.</li>
+</ul>
 
 <p><strong>LED Not Blinking</strong>:</p>
 <ul>
+  <li>Check connections with a multimeter.</li>
   <li>Verify GPIO configuration in <code class="language-text highlighter-rouge">MX_GPIO_Init()</code>.</li>
   <li>Check if the correct pin (e.g., PA5) is toggled.</li>
   <li>Verify <code class="language-text highlighter-rouge">HAL_Delay</code> uses a configured timer (SysTick by default).</li>
@@ -349,6 +326,30 @@ git push
   <li>Reconnect ST-Link and restart the IDE.</li>
 </ul>
 
+<h2 id="dictionary">Dictionary</h2>
+
+<ul>
+  <li><strong>HAL (Hardware Abstraction Layer)</strong>: Library to abstract hardware operations for peripheral control (e.g., <code class="language-text highlighter-rouge">HAL_GPIO_TogglePin()</code>).</li>
+  <li><strong>GPIO</strong>: General-Purpose Input/Output – configurable digital pins.</li>
+  <li><strong>RTOS (Real-Time Operating System)</strong>: Manages multiple tasks with timing guarantees (e.g., FreeRTOS).</li>
+  <li><strong>Toolchain</strong>: Set of tools for code development (STM32CubeIDE, compiler, debugger).</li>
+  <li><strong>Interrupt</strong>: Signal that pauses the CPU to handle an event.</li>
+  <li><strong>CMSIS</strong>: Cortex Microcontroller Software Interface Standard.</li>
+  <li><strong>Clock Tree</strong>: System of clock sources and multipliers.</li>
+  <li><strong>DMA</strong>: Direct Memory Access (peripheral-to-memory transfers).</li>
+  <li><strong>Clock Speed</strong>: Frequency at which the CPU executes instructions (e.g., 168MHz).</li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+
+<ol>
+  <li><a href="https://www.youtube.com/watch?v=Hffw-m9fuxc">STM32CubeIDE Beginner Guide</a></li>
+  <li><a href="https://www.reddit.com/r/stm32f4/comments/95406y/comment/e5ej2av/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">STM32 HAL Documentation Guide</a></li>
+  <li><a href="https://git-scm.com/docs/gittutorial">Git Tutorial</a></li>
+  <li><a href="https://developer.arm.com/documentation/ddi0439/b/Introduction">ARM Cortex-M4 Manual</a></li>
+  <li><a href="https://www.freertos.org/Documentation/01-FreeRTOS-quick-start/01-Beginners-guide/01-RTOS-fundamentals">FreeRTOS Beginner Guide</a></li>
+</ol>
+
 <h2 id="answers-to-questions">Answers to Questions</h2>
 
 <ol>
@@ -357,6 +358,11 @@ git push
   <li><code class="language-text highlighter-rouge">HAL_Delay()</code></li>
   <li>Higher performance, more memory, advanced peripherals.</li>
   <li>Initializes GPIO pins based on CubeMX configuration.</li>
+  <li>HAL abstracts hardware with high-level functions; LL provides direct register access for optimization.</li>
+  <li><code class="language-text highlighter-rouge">GPIOx_MODER</code> (Mode Register).</li>
+  <li><code class="language-text highlighter-rouge">__HAL_RCC_GPIOA_CLK_ENABLE()</code> for Port A.</li>
+  <li>To configure clock sources (HSI/HSE) and distribute clocks to peripherals.</li>
+  <li>To prevent floating input when the button is unpressed.</li>
 </ol>
 
 <hr />
