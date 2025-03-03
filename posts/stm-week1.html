@@ -56,11 +56,13 @@
   <!-- _includes/article-content.html -->
 <header class="article-header">
   <h1>
-    stm week 1
+    STM Week 1: From Arduino to STM32
     
   </h1>
   
   <div class="tech-tags">
+    
+      <span class="tech-tag">STM</span>
     
       <span class="tech-tag">C/C++</span>
     
@@ -77,8 +79,6 @@
 
 <div class="article-content">
   <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
-
-<h1 id="week-1-from-arduino-to-stm32">Week 1: From Arduino to STM32</h1>
 
 <h2 id="concepts">Concepts</h2>
 <h3 id="1-microcontroller-definition-and-types">1. Microcontroller Definition and Types</h3>
@@ -142,9 +142,11 @@
 <h2 id="understanding-stm32">Understanding STM32</h2>
 
 <h3 id="1-stm32-families">1. STM32 Families</h3>
-<p><strong>Families</strong>: STM32F0 (entry-level), STM32F4 (high-performance), STM32H7 (ultra-high performance). Differences lie in clock speed (up to 550MHz for H7), peripherals, and power efficiency.<br />
-<strong>Registers</strong>: Low-level memory addresses controlling peripherals. For example, <code class="language-text highlighter-rouge">GPIOA-&gt;ODR</code> directly writes to GPIO Port A’s output data register.<br />
-<strong>Toolchain</strong>:</p>
+<p><strong>Families</strong>: STM32F0 (entry-level), STM32F4 (high-performance), STM32H7 (ultra-high performance). Differences lie in clock speed (up to 550MHz for H7), peripherals, and power efficiency.</p>
+
+<p><strong>Registers</strong>: Low-level memory addresses controlling peripherals. For example, <code class="language-text highlighter-rouge">GPIOA-&gt;ODR</code> directly writes to GPIO Port A’s output data register.</p>
+
+<p><strong>Toolchain</strong>:</p>
 <ul>
   <li><strong>STM32CubeIDE</strong>: Integrated development environment with code generator.</li>
   <li><strong>HAL/LL Libraries</strong>: Hardware Abstraction Layer (HAL) simplifies peripheral control; Low-Layer (LL) offers register-level access</li>
@@ -152,17 +154,21 @@
 </ul>
 
 <h3 id="2-stm32cubeide-workflow">2. STM32CubeIDE Workflow</h3>
-<p><strong>Project Creation</strong>: Select MCU model (e.g., STM32F103C8T6), configure pins, generate code.<br />
-<strong>Clock Configuration</strong>: Use the graphical clock tree to set HSI/HSE and PLL multipliers.<br />
-<strong>GPIO Modes</strong>: Output push-pull, open-drain; input with pull-up/down resistors.</p>
+<p><strong>Project Creation</strong>: Select MCU model (e.g., STM32F103C8T6), configure pins, generate code.</p>
+
+<p><strong>Clock Configuration</strong>: Use the graphical clock tree to set HSI/HSE and PLL multipliers.</p>
+
+<p><strong>GPIO Modes</strong>: Output push-pull, open-drain; input with pull-up/down resistors.</p>
 
 <h3 id="3-basic-circuits">3. Basic Circuits</h3>
-<p><strong>LED Circuit</strong>: Connect LED to GPIO pin with a current-limiting resistor (220Ω). Ensure ground is shared with the STM32.<br />
-<strong>Button Input</strong>: Use a pull-down resistor to avoid floating pins.</p>
+<p><strong>LED Circuit</strong>: Connect LED to GPIO pin with a current-limiting resistor (220Ω). Ensure ground is shared with the STM32.</p>
+
+<p><strong>Button Input</strong>: Use a pull-down resistor to avoid floating pins.</p>
 
 <h3 id="4-stm32f4-block-diagram">4. STM32F4 Block Diagram</h3>
-<p><strong>Clock Tree</strong>: Multiple sources (HSI, HSE) feed into PLL for core/peripheral clocks.<br />
-<strong>DMA</strong>: Direct Memory Access for peripheral-to-memory transfers without CPU involvement.</p>
+<p><strong>Clock Tree</strong>: Multiple sources (HSI, HSE) feed into PLL for core/peripheral clocks.</p>
+
+<p><strong>DMA</strong>: Direct Memory Access for peripheral-to-memory transfers without CPU involvement.</p>
 
 <h3 id="5-stm32-vs-arduino">5. STM32 vs. Arduino</h3>
 <p><strong>Architecture</strong>: Arduino uses AVR/ARM microcontrollers with simplified abstractions. STM32 uses ARM Cortex-M cores with higher clock speeds (e.g., 72MHz vs. 16MHz on Arduino Uno).</p>
