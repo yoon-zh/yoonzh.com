@@ -1,17 +1,15 @@
 ---
 layout: post
 title: stm-week1
-card_title: stm week 1
-excerpt: "from arduino to stm32"
+card_title: "STM Week 1: From Arduino to STM32"
+excerpt: "Intro to microcontroller architecture, why STM32, and how to set up your workspace for it."
 url: /posts/stm-week1
 math: true
-tech_stack: [C/C++]
+tech_stack: [STM, C/C++]
 date: 2025-03-02
 ---
 
 *Adapted from [^1]*
-
-# Week 1: From Arduino to STM32
 
 ## Concepts  
 ### 1. Microcontroller Definition and Types
@@ -46,24 +44,30 @@ date: 2025-03-02
 ## Understanding STM32
 
 ### 1. STM32 Families
-**Families**: STM32F0 (entry-level), STM32F4 (high-performance), STM32H7 (ultra-high performance). Differences lie in clock speed (up to 550MHz for H7), peripherals, and power efficiency.  
-**Registers**: Low-level memory addresses controlling peripherals. For example, `GPIOA->ODR` directly writes to GPIO Port A's output data register.  
+**Families**: STM32F0 (entry-level), STM32F4 (high-performance), STM32H7 (ultra-high performance). Differences lie in clock speed (up to 550MHz for H7), peripherals, and power efficiency.
+
+**Registers**: Low-level memory addresses controlling peripherals. For example, `GPIOA->ODR` directly writes to GPIO Port A's output data register.
+
 **Toolchain**:
 - **STM32CubeIDE**: Integrated development environment with code generator.
 - **HAL/LL Libraries**: Hardware Abstraction Layer (HAL) simplifies peripheral control; Low-Layer (LL) offers register-level access
 - **OpenOCD**: On-chip debugger for flashing code.
 
 ### 2. STM32CubeIDE Workflow
-**Project Creation**: Select MCU model (e.g., STM32F103C8T6), configure pins, generate code.  
-**Clock Configuration**: Use the graphical clock tree to set HSI/HSE and PLL multipliers.  
+**Project Creation**: Select MCU model (e.g., STM32F103C8T6), configure pins, generate code.
+
+**Clock Configuration**: Use the graphical clock tree to set HSI/HSE and PLL multipliers.
+
 **GPIO Modes**: Output push-pull, open-drain; input with pull-up/down resistors.
 
 ### 3. Basic Circuits
-**LED Circuit**: Connect LED to GPIO pin with a current-limiting resistor (220Ω). Ensure ground is shared with the STM32.  
+**LED Circuit**: Connect LED to GPIO pin with a current-limiting resistor (220Ω). Ensure ground is shared with the STM32.
+
 **Button Input**: Use a pull-down resistor to avoid floating pins.
 
 ### 4. STM32F4 Block Diagram
-**Clock Tree**: Multiple sources (HSI, HSE) feed into PLL for core/peripheral clocks.  
+**Clock Tree**: Multiple sources (HSI, HSE) feed into PLL for core/peripheral clocks.
+
 **DMA**: Direct Memory Access for peripheral-to-memory transfers without CPU involvement.
 
 ### 5. STM32 vs. Arduino
