@@ -76,31 +76,44 @@
 
 <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
 
-<h1 id="week-3-clock--power-management">Week 3: Clock &amp; Power Management</h1>
-<p><strong>Concepts</strong><br />
-—</p>
+<h1 id="week-3-halll-libraries">Week 3: HAL/LL Libraries</h1>
 
-<h3 id="clock-sources"><strong>Clock Sources</strong></h3>
-<ol>
-  <li><strong>HSI (High-Speed Internal Oscillator)</strong>:
-    <ul>
-      <li>16 MHz RC oscillator. Low accuracy (±1%) but requires no external components.</li>
-      <li>Used as a fallback if HSE fails.</li>
-    </ul>
-  </li>
-  <li><strong>HSE (High-Speed External Oscillator)</strong>:
+<h2 id="concepts">Concepts</h2>
+
+<h3 id="1-clock-sources">1. Clock Sources</h3>
+<p><strong>HSI (High-Speed Internal Oscillator)</strong>:</p>
+<ul>
+  <li>16 MHz RC oscillator. Low accuracy (±1%) but requires no external components.</li>
+  <li>Used as a fallback if HSE fails.
+    <ol>
+      <li><strong>HSE (High-Speed External Oscillator)</strong>:</li>
+    </ol>
     <ul>
       <li>External crystal (4–26 MHz). High accuracy (±0.1%).</li>
-      <li>Required for achieving maximum clock speeds (e.g., 168 MHz).</li>
-    </ul>
-  </li>
-  <li><strong>PLL (Phase-Locked Loop)</strong>:
-    <ul>
+      <li>Required for achieving maximum clock speeds (e.g., 168 MHz).
+        <ol>
+          <li><strong>PLL (Phase-Locked Loop)</strong>:</li>
+        </ol>
+      </li>
       <li>Multiplies HSE/HSI frequency. Example: HSE (8 MHz) → PLL (×21) → 168 MHz.</li>
       <li>Divided into <strong>PLLM</strong> (input divider), <strong>PLLN</strong> (multiplier), and <strong>PLLP</strong> (output divider).</li>
     </ul>
   </li>
-</ol>
+</ul>
+
+<h2 id="questions">Questions</h2>
+
+<h2 id="project">Project:</h2>
+
+<h3 id="walkthrough">Walkthrough</h3>
+
+<h3 id="debugging">Debugging</h3>
+
+<h2 id="dictionary">Dictionary</h2>
+
+<h2 id="resources">Resources</h2>
+
+<h2 id="answers-to-questions">Answers to Questions</h2>
 
 <h3 id="power-modes"><strong>Power Modes</strong></h3>
 <ol>
@@ -178,7 +191,7 @@
 
 <hr />
 
-<h2 id="walkthrough"><strong>Walkthrough</strong></h2>
+<h2 id="walkthrough-1"><strong>Walkthrough</strong></h2>
 <h3 id="step-1-configure-clock-in-stm32cubemx"><strong>Step 1: Configure Clock in STM32CubeMX</strong></h3>
 <ol>
   <li>Open STM32CubeMX → New Project → Select your STM32F4 MCU.</li>
@@ -283,6 +296,8 @@
     </ul>
   </li>
 </ul>
+
+<p>week 9 https://books-library.net/files/books-library.net-07281709Ee1R6.pdf</p>
 
 <hr />
 
