@@ -205,10 +205,17 @@ table {
   }
 
   thead {
-    color: $secondary;
+    color: $primary;
   }
 
   // tbody tr:nth-child(even) {
   //   background-color: rgba($primary, 0.05);
   // }
+}
+
+blockquote {
+  background: $card-bg;
+  border-left: 10px solid $primary;
+  margin: 1.5em 10px;
+  padding: .1em 10px .1em;
 }

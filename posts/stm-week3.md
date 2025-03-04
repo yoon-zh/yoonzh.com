@@ -12,20 +12,36 @@ date: 2025-03-01
 
 *Adapted from [^1]*
 
-# Week 3: Clock & Power Management  
-**Concepts**  
----
+# Week 3: HAL/LL Libraries
 
-### **Clock Sources**  
-1. **HSI (High-Speed Internal Oscillator)**:  
-   - 16 MHz RC oscillator. Low accuracy (±1%) but requires no external components.  
-   - Used as a fallback if HSE fails.  
+## Concepts
+
+### 1. Clock Sources
+**HSI (High-Speed Internal Oscillator)**:
+- 16 MHz RC oscillator. Low accuracy (±1%) but requires no external components.
+- Used as a fallback if HSE fails.
 2. **HSE (High-Speed External Oscillator)**:  
    - External crystal (4–26 MHz). High accuracy (±0.1%).  
    - Required for achieving maximum clock speeds (e.g., 168 MHz).  
 3. **PLL (Phase-Locked Loop)**:  
    - Multiplies HSE/HSI frequency. Example: HSE (8 MHz) → PLL (×21) → 168 MHz.  
    - Divided into **PLLM** (input divider), **PLLN** (multiplier), and **PLLP** (output divider).  
+
+
+## Questions
+
+## Project:
+
+### Walkthrough
+
+### Debugging
+
+## Dictionary
+
+## Resources
+
+## Answers to Questions
+
 
 ### **Power Modes**  
 1. **Run Mode**: Full power (CPU, peripherals active).  
@@ -168,7 +184,8 @@ int main(void) {
 - **Issue**: No signal on oscilloscope.  
   - **Fix**: Confirm GPIO pin is configured as output and oscilloscope ground is connected.
 
-  
+week 9 https://books-library.net/files/books-library.net-07281709Ee1R6.pdf
+
 ---
 
 ## Credits

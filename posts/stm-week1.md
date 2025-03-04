@@ -10,28 +10,30 @@ date: 2025-03-02
 ---
 
 *Adapted from [^1]*
+# Concepts
 
-## Concepts  
-### 1. Microcontroller Definition and Types
-**Definition**: A microcontroller (MCU) is a compact integrated circuit designed to execute specific tasks in embedded systems. It combines a CPU, memory, and programmable I/O peripherals.
+## 1. Microcontroller Definition and Types
+A microcontroller (MCU) is a compact integrated circuit designed to execute specific tasks in embedded systems. It combines a CPU, memory, and programmable I/O peripherals.
 
 **Types**:
 - **8-bit** (e.g., ATmega328 in Arduino Uno): Simple, low power.
 - **32-bit** (e.g., STM32F4): Faster, complex operations.
 - **Application-Specific** (e.g., ESP32 for Wi-Fi).
 
-### 2. Architecture Components
+## 2. Architecture Components
 **CPU**: Executes instructions. STM32 uses ARM Cortex-M cores.
 
 **Memory**:
 - **Flash**: Stores program code (e.g., 1MB in STM32F407).
 - **RAM**: Temporary data storage (e.g., 192KB in STM32F407).
 
-**GPIO**: Pins for digital input/output (e.g., PA0, PC13).  
-**Interrupts**: Hardware-triggered events (e.g., button press).  
+**GPIO**: Pins for digital input/output (e.g., PA0, PC13).
+
+**Interrupts**: Hardware-triggered events (e.g., button press).
+
 **Peripherals**: Timers, UART, SPI, I2C, ADC.
 
-### 3. Boards Comparison
+## 3. Boards Comparison
 
 | **Feature**        | **Arduino**      | **STM32**          | **Raspberry Pi**   |
 |--------------------|------------------|--------------------|--------------------|
@@ -41,9 +43,9 @@ date: 2025-03-02
 
 ---
 
-## Understanding STM32
+# Understanding STM32
 
-### 1. STM32 Families
+## 1. STM32 Families
 **Families**: STM32F0 (entry-level), STM32F4 (high-performance), STM32H7 (ultra-high performance). Differences lie in clock speed (up to 550MHz for H7), peripherals, and power efficiency.
 
 **Registers**: Low-level memory addresses controlling peripherals. For example, `GPIOA->ODR` directly writes to GPIO Port A's output data register.
@@ -53,31 +55,31 @@ date: 2025-03-02
 - **HAL/LL Libraries**: Hardware Abstraction Layer (HAL) simplifies peripheral control; Low-Layer (LL) offers register-level access
 - **OpenOCD**: On-chip debugger for flashing code.
 
-### 2. STM32CubeIDE Workflow
+## 2. STM32CubeIDE Workflow
 **Project Creation**: Select MCU model (e.g., STM32F103C8T6), configure pins, generate code.
 
 **Clock Configuration**: Use the graphical clock tree to set HSI/HSE and PLL multipliers.
 
 **GPIO Modes**: Output push-pull, open-drain; input with pull-up/down resistors.
 
-### 3. Basic Circuits
+## 3. Basic Circuits
 **LED Circuit**: Connect LED to GPIO pin with a current-limiting resistor (220Ω). Ensure ground is shared with the STM32.
 
 **Button Input**: Use a pull-down resistor to avoid floating pins.
 
-### 4. STM32F4 Block Diagram
+## 4. STM32F4 Block Diagram
 **Clock Tree**: Multiple sources (HSI, HSE) feed into PLL for core/peripheral clocks.
 
 **DMA**: Direct Memory Access for peripheral-to-memory transfers without CPU involvement.
 
-### 5. STM32 vs. Arduino
+## 5. STM32 vs. Arduino
 **Architecture**: Arduino uses AVR/ARM microcontrollers with simplified abstractions. STM32 uses ARM Cortex-M cores with higher clock speeds (e.g., 72MHz vs. 16MHz on Arduino Uno).
 
 **Performance**: STM32 has more memory (e.g., 64KB Flash vs. 32KB) and peripherals (timers, ADCs, communication interfaces).
 
 **Toolchain**: Arduino uses Arduino IDE; STM32 requires STM32CubeIDE/Keil for code generation, compilation, and debugging.
 
-### 6. Code Comparison
+## 6. Code Comparison
 
 Arduino (Blink LED):
 ```cpp
@@ -130,10 +132,10 @@ int main(void) {
 
 ---
 
-## Project: STM32 blinking LED
-**Objective**: Install STM32CubeIDE and program the STM32 to blink an LED.
+# Project: STM32 blinking LED
+Install STM32CubeIDE and program the STM32 to blink an LED.
 
-### Instructions
+## Walkthrough
 1. **Install Software**:
    - [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html).
    - [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html).
@@ -166,7 +168,7 @@ git remote add origin <your-repo-url>
 git push -u origin main
 ```
 
-### Debugging
+## Debugging
 **Installation**:
 - If drivers fail, install [ST-Link drivers](https://www.st.com/en/development-tools/stsw-link009.html).
 

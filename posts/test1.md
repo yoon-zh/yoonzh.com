@@ -24,10 +24,10 @@ Where $$\mu_o = 4\pi\times 10^{-7} H/m$$, 真空磁导率.
 
 integral of magnetic field through length = current
 
+https://www.solomotorcontrollers.com/blog/close-loop-vs-open-loop/?srsltid=AfmBOoqnCoW5dhqcaynoSWPie23FkvRDEwSS-ev16zzYOOwnJoaZTfaP
 
 
-
-
+- Data in `yaml`, `xml`, `json`
 
 
 
