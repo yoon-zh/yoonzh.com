@@ -72,90 +72,208 @@
 </header>
 
 <div class="article-content">
-  <ul>
-  <li>nmat
-    <ul>
-      <li>fix functions</li>
-      <li>optimize functions</li>
-      <li>comments</li>
-      <li>equations docs</li>
-      <li>documentation</li>
-    </ul>
-  </li>
+  <p>nmat</p>
+
+<ul>
+  <li>fix functions</li>
+  <li>optimize functions</li>
+  <li>comments</li>
+  <li>equations docs</li>
+  <li>documentation</li>
 </ul>
 
+<h2 id="in-a-nutshell">In a nutshell</h2>
+
+<p>We know analytical calculus (aka handwritten math). But as we know, it becomes difficult once we step out of the classroom into the real world. So we wanna use complex equations with many constraints to find important values. But we do not wanna do it by hand.</p>
+
+<p>What to use then? <strong>Numerical Calculus</strong>. This is basically implementing <em>numerical methods</em>, which means clever algorithms, to find the values we want from certain equations.</p>
+
+<h2 id="why-not-solve-by-hand">Why not solve by hand?</h2>
+<p>For example, let’s say we have a system of 3 equations for variables \(x, y, z\). But there’s a catch: x, y, z show up in derivative forms.</p>
+
+\[\begin{aligned}
+\frac{dx}{dt} &amp;= \sigma (y - x), \\
+\frac{dy}{dt} &amp;= x (\rho - z) - y, \\
+\frac{dz}{dt} &amp;= xy - \beta z,
+\end{aligned}\]
+
+<p>Where \(\sigma = 10,\quad \rho = 28,\quad \beta = \frac{8}{3}\)<br />
+And initial conditions \(x(0) = 1,\quad y(0) = 1,\quad z(0) = 1.\)</p>
+
+<p><em>If you’re curious, the above is a simple example of the Lorenz System<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+
+<p>Honestly, we do not wanna solve it by hand (unless you enjoy the math pain). So we can try to guess what \(x, y, z\) could be. But we would need very educated guesses if we wanna get to a solution someday.</p>
+
+<p>Or, we can use a clever algorithm like Runge-Kutta<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> where we plug our equations into some functions and calculate numbers to get approximated solutions.</p>
+
+<h3 id="is-it-actually-better-than-handmade-solutions">Is it actually better than handmade solutions?</h3>
+
+<p>It depends. For small stuff, you can do it by hand. For complex scenarios, you could try using WolframAlpha or MATLAB Symbolic ToolBox. But when it gets tough, numerical methods are pretty handy and commonly applied.</p>
+
+<p><em>It is a good alternative because computers are good with numbers.</em> So we can give our weird-looking algorithm to the computer via code, compile it, and have it loop through the equation a couple hundred times (which it does very very quickly). And boom, we have the magical numbers.</p>
+
+<p>Note, numerical methods usually mean some sacrifice in precision. Also, you may not get a general solution, since <em>numerical</em> methods work with <em>numbers</em>; our computers deal with <em>numbers</em>.</p>
+
+<p>In short: You need <strong>numbers</strong>, your computer will deal with <strong>numbers</strong>, and you need a good algorithm. <em>Runge-Kutta<sup id="fnref:2:1"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> is crazy good, you’ll be surprised the guy was a genius</em>.</p>
+
 <h1 id="roots-of-equations">Roots of Equations</h1>
+<p>pg 117<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></p>
+
+<p>Let’s say we want to know the root of a function like \(f(x) = e^{-x}-x\). We probably don’t wanna do it by hand</p>
 
 <h2 id="bracketing-methods">Bracketing Methods</h2>
+<p>pg 123</p>
+
 <h3 id="1-bisection">1. Bisection</h3>
+<p>pg 127</p>
+
 <h3 id="2-false-position">2. False-Position</h3>
+<p>pg 135</p>
 
 <h2 id="open-methods">Open Methods</h2>
+<p>pg 145</p>
+
 <h3 id="1-newton-raphson">1. Newton-Raphson</h3>
+<p>pg 151</p>
+
 <h3 id="2-secant">2. Secant</h3>
+<p>pg 157</p>
+
 <h3 id="3-brents-method">3. Brent’s Method</h3>
+<p>pg 162</p>
+
 <h3 id="4-multiple-roots">4. Multiple Roots</h3>
+<p>pg 166</p>
 
 <h2 id="polynomials">Polynomials</h2>
+<p>pg 176</p>
+
 <h3 id="1-mullers-method">1. Muller’s Method</h3>
+<p>pg 183</p>
+
 <h3 id="2-bairstows-method">2. Bairstow’s Method</h3>
+<p>pg 187</p>
 
 <h2 id="examples">Examples</h2>
 
 <h1 id="linear-equations">Linear Equations</h1>
+<p>pg 231</p>
 
 <h2 id="gauss">Gauss</h2>
+<p>pg 245</p>
+
 <h2 id="rref">rref</h2>
+<p>pg 273</p>
+
 <h2 id="gauss-seidel">Gauss-Seidel</h2>
+<p>pg 304</p>
+
 <h2 id="examples-1">Examples</h2>
 
 <h1 id="optimization">Optimization</h1>
+<p>pg 345</p>
 
 <h2>??</h2>
 
 <h1 id="regression">Regression</h1>
+<p>pg 456</p>
 
 <h2 id="least-squares">Least Squares</h2>
+<p>pg 456</p>
+
 <h3 id="linear">Linear</h3>
+<p>pg 456</p>
+
 <h3 id="polynomial">Polynomial</h3>
+<p>pg 472</p>
+
 <h3 id="general">General</h3>
+<p>pg 479</p>
 
 <h2 id="interpolation">Interpolation</h2>
+<p>pg 490</p>
+
 <h3 id="newton">Newton</h3>
+<p>pg 491</p>
+
 <h3 id="lagrange">Lagrange</h3>
+<p>pg 502</p>
 
 <h2 id="fourier">Fourier</h2>
+<p>pg 526</p>
 
-<h1 id="numerical-differentiation">Numerical differentiation</h1>
+<h1 id="numerical-calculus">Numerical Calculus</h1>
+<p>pg 587</p>
 
 <h2 id="trapezoidal">Trapezoidal</h2>
+<p>pg 605</p>
+
 <h2 id="simpson">Simpson</h2>
+<p>pg 615</p>
+
 <h2 id="unequal-segments">Unequal segments</h2>
+<p>pg 624</p>
+
 <h2 id="integration">Integration</h2>
+<p>pg 633</p>
+
 <h2 id="romberg">Romberg</h2>
+<p>pg 634</p>
+
 <h2 id="adaptive">Adaptive</h2>
+<p>pg 640</p>
+
 <h2 id="gauss-1">Gauss</h2>
+<p>pg 642</p>
+
 <h2 id="improper-integrals">Improper integrals</h2>
+<p>pg 650</p>
+
 <h2 id="partial-derivatives">Partial Derivatives</h2>
+<p>pg 662</p>
 
 <h1 id="odes">ODEs</h1>
+<p>pg 699</p>
 
 <h2 id="runge-kutta">Runge Kutta</h2>
+<p>pg 709</p>
+
 <h2 id="stiffness-multistep">Stiffness, multistep</h2>
+<p>pg 755</p>
+
 <h2 id="boundary-value">Boundary value</h2>
+<p>pg 781</p>
+
 <h2 id="eigenvalues">Eigenvalues</h2>
+<p>pg 789</p>
 
 <h1 id="pdes">PDEs</h1>
+<p>pg 845</p>
 
 <h2 id="laplace">Laplace</h2>
-<h2 id="crank-nicolson">Crank-Nicolson</h2>
-<h2 id="finite-element">Finite-Element</h2>
+<p>pg 852</p>
 
-<h3 id="3">3.</h3>
+<h2 id="crank-nicolson">Crank-Nicolson</h2>
+<p>pg 882</p>
+
+<h2 id="finite-element">Finite-Element</h2>
+<p>pg 890</p>
 
 <h2 id="credits">Credits</h2>
-
 <!--Written by Jorge Porras (2025)-->
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Hateley, J. (N.A). The Lorenz System. UC Santa Barbara. https://web.math.ucsb.edu/~jhateley/paper/lorenz.pdf <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Zheng, L., Zhang, X. (2017). Modeling and Analysis of Modern Fluid Problems: Numerical Methods. https://www.sciencedirect.com/topics/mathematics/runge-kutta-method <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:3">
+      <p>Chapra, S; Canale, R (2015). Numerical Methods for Engineers (Seventh Edition). <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 </div>
 </article>

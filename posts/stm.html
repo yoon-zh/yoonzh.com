@@ -138,6 +138,7 @@
 <ul>
   <li>Motor types: DC, stepper, servo, brushed and brushless motors</li>
   <li>Stall current detection</li>
+  <li>Motor transfer functions</li>
   <li>Driver ICs (A4988, TMC2209)</li>
   <li>H-bridges (L298N), PWM duty cycle, ESC control</li>
   <li>Feedback Systems: Encoders (quadrature) vs. potentiometers (for servo angle)</li>
@@ -252,6 +253,7 @@
   <li>Hardware-in-the-loop (HIL) with Renode</li>
   <li>GitHub Actions CI/CD pipelines</li>
   <li>Concurrency pitfalls and race condition debugging</li>
+  <li>MISRA-C compliance checks</li>
 </ul>
 
 <h3 id="weekly-project-10">Weekly Project</h3>
@@ -264,13 +266,14 @@
 
 <h2 id="week-12-remote-connection">Week 12: Remote Connection</h2>
 <ul>
-  <li>Wi-Fi/Bluetooth, network protocols (TCP/UDP), latency management</li>
+  <li>Wi-Fi/Bluetooth, network protocols (TCP/UDP), ethernet</li>
+  <li>Latency management</li>
   <li>Joystick input parsing (HID/ADC)</li>
-  <li>ROS2 introduction</li>
+  <li>ROS2 introduction, setting up <code class="language-text highlighter-rouge">rosbridge_suite</code></li>
 </ul>
 
 <h3 id="weekly-project-11">Weekly Project</h3>
-<p>Build a simple web dashboard to control and monitor your robot.</p>
+<p>Build a simple web dashboard displaying data from ROS2 topics to control and monitor your robot.</p>
 
 <hr />
 
@@ -282,15 +285,15 @@
 </ul>
 
 <h3 id="weekly-project-12">Weekly Project</h3>
-<p>Program the chassis and gimbal to track separate joystick inputs using <code class="language-text highlighter-rouge">chassis_task.c</code> and <code class="language-text highlighter-rouge">gimbal_task.c</code>.</p>
+<p>Program the chassis and gimbal to track separate movement inputs using <code class="language-text highlighter-rouge">chassis_task.c</code> and <code class="language-text highlighter-rouge">gimbal_task.c</code>.</p>
 
 <hr />
 
 <h2 id="week-14-sensor-fusion">Week 14: Sensor Fusion</h2>
 <ul>
   <li>Kalman filters, complementary filters for noise reduction</li>
-  <li>IMU noise modeling (Allan variance)</li>
-  <li>Fusion with encoder/vision data</li>
+  <li>IMU noise modeling, Allan variance, quantizing IMU noise with standard deviation</li>
+  <li>Fusion with encoder/vision data, encoder CPR validation</li>
   <li>Sensor calibration</li>
 </ul>
 
@@ -303,11 +306,11 @@
 <ul>
   <li>Difference between FreeRTOS, Zephyr, and ROS2</li>
   <li>Task scheduling, semaphores, and real-time constraints</li>
-  <li>Implementing RTOS on a robot system with Zephyr</li>
+  <li>Implementing RTOS on a robot system with FreeRTOS</li>
 </ul>
 
 <h3 id="weekly-project-14">Weekly Project</h3>
-<p>Create two tasks: one for motor control (<code class="language-text highlighter-rouge">dm_motor_drv.c</code>) and another for sensor polling</p>
+<p>Create FreeRTOS tasks for motor control (high priority) and sensor polling (low priority). Bridge tasks to ROS2 using micro-ROS (share memory pools).</p>
 
 <hr />
 
@@ -368,7 +371,7 @@
 </ul>
 
 <h3 id="final-project">Final Project</h3>
-<p>Integrate vision, motor control, and trajectory systems into your robot.</p>
+<p>Integrate vision, motor control, and trajectory systems into your robot. Navigate through the gym field, detect and hit targets with 80% accuracy.</p>
 
 <hr />
 
