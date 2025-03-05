@@ -60,6 +60,7 @@ Rewrite the LED blinker using LL drivers `stm32f4xx_ll_gpio.c`. Compare HAL/LL e
 ## Week 4: Motors & Drivers
 - Motor types: DC, stepper, servo, brushed and brushless motors
 - Stall current detection
+- Motor transfer functions
 - Driver ICs (A4988, TMC2209)
 - H-bridges (L298N), PWM duty cycle, ESC control
 - Feedback Systems: Encoders (quadrature) vs. potentiometers (for servo angle)
@@ -150,6 +151,7 @@ Transmit fused sensor data from Week 8 as Protobuf packets over CAN. Add priorit
 - Hardware-in-the-loop (HIL) with Renode
 - GitHub Actions CI/CD pipelines
 - Concurrency pitfalls and race condition debugging
+- MISRA-C compliance checks
 
 ### Weekly Project
 - Capture PWM signals from `bsp_servo_pwm.c` using a scope. Diagnose signal integrity issues.
@@ -158,12 +160,13 @@ Transmit fused sensor data from Week 8 as Protobuf packets over CAN. Add priorit
 ***
 
 ## Week 12: Remote Connection
-- Wi-Fi/Bluetooth, network protocols (TCP/UDP), latency management
+- Wi-Fi/Bluetooth, network protocols (TCP/UDP), ethernet
+- Latency management
 - Joystick input parsing (HID/ADC)
-- ROS2 introduction
+- ROS2 introduction, setting up `rosbridge_suite`
 
 ### Weekly Project
-Build a simple web dashboard to control and monitor your robot.
+Build a simple web dashboard displaying data from ROS2 topics to control and monitor your robot.
 
 ***
 
@@ -173,14 +176,14 @@ Build a simple web dashboard to control and monitor your robot.
 - inverse kinematics for turret/gimbal movement
 
 ### Weekly Project
-Program the chassis and gimbal to track separate joystick inputs using `chassis_task.c` and `gimbal_task.c`.
+Program the chassis and gimbal to track separate movement inputs using `chassis_task.c` and `gimbal_task.c`.
 
 ***
 
 ## Week 14: Sensor Fusion
 - Kalman filters, complementary filters for noise reduction
-- IMU noise modeling (Allan variance)
-- Fusion with encoder/vision data
+- IMU noise modeling, Allan variance, quantizing IMU noise with standard deviation
+- Fusion with encoder/vision data, encoder CPR validation
 - Sensor calibration
 
 ### Weekly Project
@@ -191,10 +194,10 @@ Fuse BMI088 IMU data with encoder readings for chassis odometry using `kalman_fi
 ## Week 15: RTOS Integration
 - Difference between FreeRTOS, Zephyr, and ROS2
 - Task scheduling, semaphores, and real-time constraints
-- Implementing RTOS on a robot system with Zephyr
+- Implementing RTOS on a robot system with FreeRTOS
 
 ### Weekly Project
-Create two tasks: one for motor control (`dm_motor_drv.c`) and another for sensor polling
+Create FreeRTOS tasks for motor control (high priority) and sensor polling (low priority). Bridge tasks to ROS2 using micro-ROS (share memory pools).
 
 ***
 
@@ -245,7 +248,7 @@ Design and test a recovery routine for motor faults in `detect_task.c`.
 - Code profiling, memory management, and power/performance tradeoffs
 
 ### Final Project
-Integrate vision, motor control, and trajectory systems into your robot.
+Integrate vision, motor control, and trajectory systems into your robot. Navigate through the gym field, detect and hit targets with 80% accuracy.
 
 ***
 

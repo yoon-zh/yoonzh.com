@@ -5,8 +5,9 @@ card_title: Void Pointers
 url: /posts/void-pointers
 excerpt: 
 tech_stack: [C/C++]
-date: 2025-02-16
 ---
+
+date: 2025-02-16
 
 still on dev
 
