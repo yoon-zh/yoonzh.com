@@ -12,23 +12,39 @@
     }
   } 
 
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
   .site-header {
+    width: 100%;
+    overflow: hidden;
+
+    
+    .logo-group {
+      flex: 0 1 auto;
+      gap: 1rem;
+    }
+
     .logo-container {
       text-align: center;
       .logo {
         font-size: 2rem;
       }
+
       .logo-subtitle {
         font-size: 1rem;
       }
     }
 
+    .nav-container {
+      max-width: 100%;
+      padding: 0 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
     .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.5rem;
+      
       a {
         font-size: 1.25rem;
         padding: 0.5rem 0;
@@ -80,7 +96,7 @@
   }
   
   .site-header {
-    width: 99%;
+    width: 100%;
     .logo-container{
       .logo-link {
         .logo {
@@ -94,10 +110,12 @@
     }
 
     .nav-container {
-      gap: 1rem;
+      padding: 0 1rem;
+      gap: 0px;
     }
 
     .nav-links {
+      margin-left: 0px;
       gap: 1rem;
     }
   }
