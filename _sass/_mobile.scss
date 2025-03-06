@@ -80,7 +80,7 @@
   }
   
   .site-header {
-    width: 98%;
+    width: 99%;
     .logo-container{
       .logo-link {
         .logo {
@@ -93,8 +93,12 @@
       }
     }
 
+    .nav-container {
+      gap: 1rem;
+    }
+
     .nav-links {
-      gap: 2rem;
+      gap: 1rem;
     }
   }
 
