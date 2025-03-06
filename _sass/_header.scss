@@ -97,17 +97,27 @@
 
   .nav-container {
     font-size: 1.3rem;
-    max-width: auto;
-    margin: 0 auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 0 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
     align-items: center;
+    gap: 2rem;
+  }
+
+  .logo-group {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: min(3rem, 2vw + 1rem);
   }
 
   .nav-links {
     display: flex;
-    margin: 0 3rem;
-    gap: 10%;
+    gap: min(6rem, 4vw + 2rem);
+    margin-left: auto;
+    flex: none;
     
     a {
       color: $text-primary;
