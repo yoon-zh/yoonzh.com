@@ -110,17 +110,19 @@
     }
 
     .nav-container {
-      padding: 0 1rem;
+      padding: 0 2rem;
       gap: 0px;
     }
 
     .nav-links {
       margin-left: 0px;
-      gap: 1rem;
+      gap: 1.5rem;
     }
   }
 
   .page-content {
+    width: 99%;
+    padding: 0;
     .content-section {
       .section-title {
         font-size: 2rem;

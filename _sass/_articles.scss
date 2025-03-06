@@ -49,6 +49,14 @@
       padding-top: 1.5rem;
     }
 
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      width: 100%;
+      margin: 1em 0;
+    }
+
     .katex-display {
       max-width: 100%;
       overflow-x: auto;

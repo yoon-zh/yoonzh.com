@@ -1,0 +1,70 @@
+// _sass/_content.scss
+.page-content {
+    padding-top: 10px 0;
+    min-height: calc(100vh - 150px);
+    padding: 0 5%;
+    max-width: 1200px;
+    width: 94%;
+    margin: 0 auto;
+      
+    h1, h2, h3, h4, h5, h6 {
+      color: $primary;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    a {
+      color: $secondary;
+      text-decoration: none;
+      transition: color 0.3s;
+        
+      &:hover {
+        color: $primary;
+      }
+    }
+    
+    ul, ol {
+      padding-left: 2rem;
+      margin: 1rem 0;
+        
+      li {
+        margin: 0.5rem 0;
+      }
+    }
+  
+    code:not([class]) {
+      padding: 0.2em 0.4em;
+      background-color: $code-bg;
+      border-radius: 10px;
+      font-family: $code-font;
+      font-size: 0.95em;
+    }
+  
+    // Scrolling for paragraphs - to get scrollable images
+    // Consider changing for performance
+    p {
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  
+    img {
+      display: block;
+      // max-width: none;
+      // width: auto;
+      // height: auto;
+    }
+  
+  }
+  
+  .content-section {
+    padding: 0rem 5% 2rem;
+    position: relative;
+    
+    .section-title {
+      margin: 0 0 2rem;
+      @include section-title;
+    }
+  }
+  
