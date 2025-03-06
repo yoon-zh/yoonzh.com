@@ -1,5 +1,6 @@
 ---
 layout: project
+head_title: flametemp
 title: flametemp
 card_title: Adiabatic flame temperature (AFT) calculator
 url: /projects/flametemp

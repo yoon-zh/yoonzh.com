@@ -1,5 +1,6 @@
 ---
 layout: project
+head_title: chemcount
 title: chemcount
 card_title: Chemical Compound Parser
 url: /projects/chemcount

@@ -1,5 +1,6 @@
 ---
 layout: project
+head_title: Website
 title: website
 card_title: Portfolio Website
 url: /projects/website

@@ -1,5 +1,6 @@
 ---
 layout: default
+head_title: About
 title: About Me
 ---
 

@@ -1,5 +1,6 @@
 ---
 layout: project
+head_title: Test
 title: test
 card_title: Test
 url: /projects/test
