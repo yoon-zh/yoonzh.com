@@ -30,7 +30,8 @@
     .nav-links {
       gap: 1.5rem;
       a {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
+        padding: 0.5rem 0;
       }
     }
   }
@@ -78,12 +79,22 @@
     }
   }
   
-  .logo-container{
-    .logo {
-      font-size: 2rem;
+  .site-header {
+    width: 98%;
+    .logo-container{
+      .logo-link {
+        .logo {
+          font-size: 0px;
+        }
+      }
+  
+      .logo-subtitle {
+        font-size: 0px;
+      }
     }
-    .logo-subtitle {
-      font-size: 1rem;
+
+    .nav-links {
+      gap: 2rem;
     }
   }
 

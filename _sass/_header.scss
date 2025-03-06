@@ -9,6 +9,27 @@
   border-bottom: 2px solid rgba($primary, 0.5);
   padding: 1rem 0;
   
+  .logo-image {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid $primary;
+    transition: transform 0.3s ease;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba($primary, 0.5);
+    }
+  }
+
   .logo-container {
     .home-page & {
       animation: slideDown 0.5s ease-out;
@@ -38,7 +59,7 @@
     }
 
     .logo {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
       margin: 0;
       background: linear-gradient(45deg, $primary, $secondary);
       -webkit-background-clip: text;
@@ -69,7 +90,7 @@
     .logo-subtitle {
       color: $text-secondary;
       margin: 0;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       text-align: center;
     }
   }
@@ -85,13 +106,15 @@
 
   .nav-links {
     display: flex;
-    gap: 25%;
+    margin: 0 3rem;
+    gap: 10%;
     
     a {
       color: $text-primary;
       text-decoration: none;
       position: relative;
       padding: 0.5rem 0;
+      font-size: 1.5rem;
       
       &::after {
         content: '';
