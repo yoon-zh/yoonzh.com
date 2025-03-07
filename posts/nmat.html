@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer-when-downgrade">
-  <title>nmat - yoonzh.com</title>
+  <title>nmat - Numerical Methods - yoonzh.com</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -67,7 +67,7 @@
   <!-- _includes/article-content.html -->
 <header class="article-header">
   <h1>
-    nmat
+    nmat - Numerical Methods
     
   </h1>
   
@@ -79,25 +79,19 @@
   
   <div class="article-meta">
     
+      <time datetime="2025-03-06T00:00:00+00:00">
+        📅 2025/03/06
+      </time>
+    
   </div>
 </header>
 
 <div class="article-content">
-  <p>nmat</p>
-
-<ul>
-  <li>fix functions</li>
-  <li>optimize functions</li>
-  <li>comments</li>
-  <li>equations docs</li>
-  <li>documentation</li>
-</ul>
-
-<h2 id="in-a-nutshell">In a nutshell</h2>
+  <h2 id="in-a-nutshell">In a nutshell</h2>
 
 <p>We know analytical calculus (aka handwritten math). But as we know, it becomes difficult once we step out of the classroom into the real world. So we wanna use complex equations with many constraints to find important values. But we do not wanna do it by hand.</p>
 
-<p>What to use then? <strong>Numerical Calculus</strong>. This is basically implementing <em>numerical methods</em>, which means clever algorithms, to find the values we want from certain equations.</p>
+<p>What to use then? <strong>Numerical Calculus</strong>. Basically we use numbers along with certain algorithms to find the values we want.</p>
 
 <h2 id="why-not-solve-by-hand">Why not solve by hand?</h2>
 <p>For example, let’s say we have a system of 3 equations for variables \(x, y, z\). But there’s a catch: x, y, z show up in derivative forms.</p>
@@ -108,7 +102,7 @@
 \frac{dz}{dt} &amp;= xy - \beta z,
 \end{aligned}\]
 
-<p>Where \(\sigma = 10,\quad \rho = 28,\quad \beta = \frac{8}{3}\)<br />
+<p>Where \(\sigma, \rho, \beta\) are some arbitrary constants<br />
 And initial conditions \(x(0) = 1,\quad y(0) = 1,\quad z(0) = 1.\)</p>
 
 <p><em>If you’re curious, the above is a simple example of the Lorenz System<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
@@ -125,18 +119,70 @@ And initial conditions \(x(0) = 1,\quad y(0) = 1,\quad z(0) = 1.\)</p>
 
 <p>Note, numerical methods usually mean some sacrifice in precision. Also, you may not get a general solution, since <em>numerical</em> methods work with <em>numbers</em>; our computers deal with <em>numbers</em>.</p>
 
-<p>In short: You need <strong>numbers</strong>, your computer will deal with <strong>numbers</strong>, and you need a good algorithm. <em>Runge-Kutta<sup id="fnref:2:1"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> is crazy good, you’ll be surprised the guy was a genius</em>.</p>
+<p>In short: You need <strong>numbers</strong>, your computer will deal with <strong>numbers</strong>, and you need a good algorithm to compute those numbers.</p>
+
+<p>Numerical methods can be used in many cases: looking for roots, regression, integrals and derivatives, differential equations, etc… pretty much any calculation that can be done with specific numbers.</p>
+
+<p>Tools like MATLAB already have plenty of these techniques implemented, like the <code class="language-text highlighter-rouge">\</code> operator or the <code class="language-text highlighter-rouge">ode45</code> function. But as a way of self-practice, we’ll go through a few methods worth mentioning and code it ourselves.</p>
+
+<p>Note: I won’t go into the details. If you are <em>really</em> into numerical methods, I recommend <a href="https://archive.org/details/numerical-methods-for-engineers-7th-edit">this book</a>.</p>
 
 <h1 id="roots-of-equations">Roots of Equations</h1>
-<p>pg 117<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></p>
 
-<p>Let’s say we want to know the root of a function like \(f(x) = e^{-x}-x\). We probably don’t wanna do it by hand</p>
+<p><em>Adapted from pg 117<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></em></p>
+
+<p>Let’s say we want to know the root of a function like \(x^2 + x + 1\). Easy enough: quadratic formula, right?<br />
+But let’s step it up: \(f(x) = e^{-x}-x\). Of course, not all cases would behave weirdly, but it is likely we wanna know the values of x for which \(f(x) = 0\). Since this deals with numbers, it is a good way to start with numerical methods on code. So let’s make some code that calculates that.</p>
 
 <h2 id="bracketing-methods">Bracketing Methods</h2>
-<p>pg 123</p>
+
+<p><em>Adapted from pg 123<sup id="fnref:3:1"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></em></p>
+
+<p>Imagine we have \(f(x) = e^{-x}-x\). And we wanna know when \(f(x)=0\). You can try it by hand (spoiler alert: it’s hard, you won’t get a solution).</p>
+
+<p>A simple simple way to know is to simply print its graph.</p>
+
+<p><img src="/images/posts/nmat-roots1.png" alt="image" /></p>
+
+<p><em>Taken from <a href="https://www.wolframalpha.com/input?i2d=true&amp;i=Power%5Be%2C-x%5D-x%3D0">WolframAlpha</a></em></p>
+
+<p>With the graph, we can see the root is around \(x=0.5\). Close enough, but we’d like to have a closer approximation.</p>
+
+<p>Something we can do is exploit a property of roots:</p>
+
+<blockquote>
+  <p><a href="https://mathworld.wolfram.com/IntermediateValueTheorem.html">Intermediate Value Theorem</a>: If a continuous function \(f(x)\) takes on values \(f(x_1), f(x_2)\) at two points \(x_1, x_2\), and if \(f(x_1)\) and \(f(x_2)\) have opposite signs, then there must be at least one root between \(x_1\) and \(x_2\).</p>
+</blockquote>
+
+<p>In English, we can pick two numbers \(x_1, x_2\) and see the sign of \(f(x)\). If \(f(x_1)\) and \(f(x_2)\) have different sign (one is positive and one is negative), we know for sure the root is somewhere between \(x_1\) and \(x_2\).</p>
+
+<p>For example, in the graph we see that \(f(0)\) is positive, and \(f(1)\) is negative. And we know it is continuous (does not jump randomly between 0 and 1). Therefore, we know there is <em>at least</em> one root between 0 and 1.</p>
+
+<p>From here, <strong>bracketing methods</strong> are born: we have a bracket, a <em>range</em> of possible numbers \(x_1, x_2\), where we know there is at least 1 root.</p>
 
 <h3 id="1-bisection">1. Bisection</h3>
-<p>pg 127</p>
+
+<p><em>Adapted from pg 127<sup id="fnref:3:2"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></em></p>
+
+<p>The brute-force approach:</p>
+
+<ol>
+  <li>Guess an upper and lower bound, \(x_{upper}, x_{lower}\)</li>
+  <li>Calculate \(f(x_{upper}), f(x_{lower})\)</li>
+  <li>If \(f(x_{upper}) \times f(x_{lower}) &lt; 0\), there is <strong>at least 1</strong> root between \(x_{upper}, x_{lower}\)</li>
+  <li>Use the bisection equation:</li>
+</ol>
+
+\[x_{guess} = \frac{x_{upper} + x_{lower}}{2}\]
+
+<p>Let \(m = f(x_{guess}) \times f(x_{lower})\)</p>
+<ul>
+  <li>If \(m&lt;0\), the root is in the interval \([x_{lower}, x_{guess}]\).<br />
+Set \(x_{upper} = x_{guess}\) and go back to step 4.</li>
+  <li>If \(m&gt;0\), the root is in the interval \([x_{guess}, x_{upper}]\).<br />
+Set \(x_{lower} = x_{guess}\) and go back to step 4.</li>
+  <li>If \(m=0\), the root is in \(x_{guess}\). We have our solution.</li>
+</ul>
 
 <h3 id="2-false-position">2. False-Position</h3>
 <p>pg 135</p>
@@ -270,6 +316,16 @@ And initial conditions \(x(0) = 1,\quad y(0) = 1,\quad z(0) = 1.\)</p>
 <h2 id="finite-element">Finite-Element</h2>
 <p>pg 890</p>
 
+<p>nmat</p>
+
+<ul>
+  <li>fix functions</li>
+  <li>optimize functions</li>
+  <li>comments</li>
+  <li>equations docs</li>
+  <li>documentation</li>
+</ul>
+
 <h2 id="credits">Credits</h2>
 <!--Written by Jorge Porras (2025)-->
 <div class="footnotes" role="doc-endnotes">
@@ -278,10 +334,10 @@ And initial conditions \(x(0) = 1,\quad y(0) = 1,\quad z(0) = 1.\)</p>
       <p>Hateley, J. (N.A). The Lorenz System. UC Santa Barbara. https://web.math.ucsb.edu/~jhateley/paper/lorenz.pdf <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>Zheng, L., Zhang, X. (2017). Modeling and Analysis of Modern Fluid Problems: Numerical Methods. https://www.sciencedirect.com/topics/mathematics/runge-kutta-method <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+      <p>Zheng, L., Zhang, X. (2017). Modeling and Analysis of Modern Fluid Problems: Numerical Methods. https://www.sciencedirect.com/topics/mathematics/runge-kutta-method <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>Chapra, S; Canale, R (2015). Numerical Methods for Engineers (Seventh Edition). <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>Chapra, S; Canale, R (2015). Numerical Methods for Engineers (Seventh Edition). https://archive.org/details/numerical-methods-for-engineers-7th-edit <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:3:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:3:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a></p>
     </li>
   </ol>
 </div>
