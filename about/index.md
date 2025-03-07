@@ -1,10 +1,9 @@
 ---
-layout: default
+layout: about
 head_title: About
+card_title: About Me
 title: About Me
 ---
-
-# [yoon 云 - zhi 찌]
 
 Likes robots. Looking to build one. Studying for that now.
 

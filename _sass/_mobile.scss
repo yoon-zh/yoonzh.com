@@ -80,6 +80,14 @@
   .content-section {
     padding: 1.5rem 3% 3rem;
   }
+
+  .pepito1 {
+    height: 30vh;
+
+    .pepito1-title {
+      font-size: 3rem;
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -142,6 +150,14 @@
           font-size: 1.5rem;
         }
       }
+    }
+  }
+
+  .pepito1 {
+    height: 20vh;
+
+    .pepito1-title {
+      font-size: 1.7rem;
     }
   }
 }

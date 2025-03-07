@@ -16,20 +16,23 @@
       line-height: 1.1;
       text-shadow: 0 0 20px rgba($primary, 0.3);
     }
-    
-    .cta-button {
-      background: $primary;
-      color: $dark-bg;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.3s, background 0.3s;
-      
-      &:hover {
-        transform: translateY(-3px);
-        background: color.adjust($primary, $lightness: 10%);
-      }
-    }
+  }
+}
+
+.pepito1 {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  background: linear-gradient(45deg, rgba($darker-bg, 0.95), rgba($darker-bg, 0.5)),
+              url('/images/pepito-square.jpg') center/cover;
+  justify-content: center;
+
+  .pepito1-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    text-shadow: 0 0 20px rgba($primary, 0.3);
+    text-align: center;
   }
 }
