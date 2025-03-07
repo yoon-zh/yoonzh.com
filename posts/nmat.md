@@ -101,6 +101,10 @@ Let $$m = f(x_{guess}) \times f(x_{lower})$$
   Set $$x_{lower} = x_{guess}$$ and go back to step 4.
 - If $$m=0$$, the root is in $$x_{guess}$$. We have our solution.
 
+### Error calculation
+
+
+
 ### 2. False-Position
 pg 135
 
