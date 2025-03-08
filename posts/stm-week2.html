@@ -153,35 +153,31 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
+<h2 id="questions">Questions</h2>
+
+<ol>
+  <li>What happens if APB1’s clock exceeds 42 MHz?</li>
+  <li>How does Stop mode differ from Sleep mode?</li>
+  <li>If HSE fails, which clock source does the STM32 use?</li>
+</ol>
+
+<hr />
+
 <h1 id="project-setting-stm-clock-speed">Project: Setting STM Clock Speed</h1>
 <p>Configure the STM32 to run at 168 MHz using STM32CubeMX. Validate timing accuracy using <code class="language-text highlighter-rouge">bsp_delay.c</code> and an oscilloscope.</p>
 
 <h2 id="steps">Steps</h2>
 <ol>
-  <li><strong>Clock Configuration</strong>:
+  <li>Clock Configuration:
     <ul>
       <li>Set HSE as the clock source</li>
       <li>Configure PLL to generate 168 MHz</li>
       <li>Adjust AHB/APB prescalers for safe peripheral operation</li>
     </ul>
   </li>
-  <li><strong>Delay Module</strong>:
-    <ul>
-      <li>Use <code class="language-text highlighter-rouge">bsp_delay.c</code> to create a 1 Hz signal (500 ms high, 500 ms low) on a GPIO pin</li>
-    </ul>
-  </li>
-  <li><strong>Verification</strong>:
-    <ul>
-      <li>Measure the GPIO pin’s frequency with an oscilloscope (expected: 1 Hz ±1%)</li>
-    </ul>
-  </li>
+  <li>Delay Module: Use <code class="language-text highlighter-rouge">bsp_delay.c</code> to create a 1 Hz signal (500 ms high, 500 ms low) on a GPIO pin</li>
+  <li>Measure the GPIO pin’s frequency with an oscilloscope (expected: 1 Hz ±1%)</li>
 </ol>
-
-<p><strong>Deliverables</strong>:</p>
-<ul>
-  <li>STM32CubeMX project file (.ioc)</li>
-  <li>GitHub repository with code and oscilloscope screenshot</li>
-</ul>
 
 <hr />
 
@@ -189,7 +185,7 @@
 
 <h3 id="step-1-configure-clock-in-stm32cubemx">Step 1: Configure Clock in STM32CubeMX</h3>
 <ol>
-  <li>Open STM32CubeMX → New Project → Select your STM32F4 MCU</li>
+  <li>Open STM32CubeMX → New Project &gt; Select your STM32F4 MCU</li>
   <li><strong>Clock Configuration Tab</strong>:
     <ul>
       <li>Set <strong>HSE</strong> to “Crystal/Ceramic Resonator” (assumes 8 MHz external crystal)</li>
@@ -236,14 +232,6 @@
 
 <hr />
 
-<h2 id="questions">Questions</h2>
-
-<ol>
-  <li>What happens if APB1’s clock exceeds 42 MHz?</li>
-  <li>How does Stop mode differ from Sleep mode?</li>
-  <li>If HSE fails, which clock source does the STM32 use?</li>
-</ol>
-
 <h2 id="debugging">Debugging</h2>
 
 <p><strong>GPIO toggle is too slow</strong></p>
@@ -272,6 +260,7 @@
 </ul>
 
 <h2 id="resources">Resources</h2>
+
 <ol>
   <li><a href="https://www.st.com/resource/en/application_note/an4776-generalpurpose-timer-cookbook-for-stm32-microcontrollers-stmicroelectronics.pdf">STM32 Clock Configuration Guide</a></li>
   <li><a href="https://community.st.com/t5/stm32-mcus/part-1-introduction-to-the-stm32-microcontroller-clock-system/ta-p/605369">STM32 Clock System Introduction</a></li>

@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer-when-downgrade">
-  <title>stm week 3 - yoonzh.com</title>
+  <title>STM Week 3: HAL/LL Libraries - yoonzh.com</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -67,7 +67,7 @@
   <!-- _includes/article-content.html -->
 <header class="article-header">
   <h1>
-    stm week 3
+    STM Week 3: HAL/LL Libraries
     
   </h1>
   
@@ -79,236 +79,262 @@
   
   <div class="article-meta">
     
+      <time datetime="2025-03-08T00:00:00+00:00">
+        📅 2025/03/08
+      </time>
+    
   </div>
 </header>
 
 <div class="article-content">
-  <p>date: 2025-03-01</p>
+  <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
 
-<p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+<h1 id="concepts">Concepts</h1>
 
-<h1 id="week-3-halll-libraries">Week 3: HAL/LL Libraries</h1>
+<h2 id="1-hal-hardware-abstraction-layer">1. HAL (Hardware Abstraction Layer)</h2>
+<p>A middleware library that abstracts hardware complexity, providing portable APIs for peripheral control (e.g., <code class="language-text highlighter-rouge">HAL_GPIO_WritePin()</code>)</p>
 
-<h2 id="concepts">Concepts</h2>
-
-<h3 id="1-clock-sources">1. Clock Sources</h3>
-<p><strong>HSI (High-Speed Internal Oscillator)</strong>:</p>
+<p>Structure:</p>
 <ul>
-  <li>16 MHz RC oscillator. Low accuracy (±1%) but requires no external components.</li>
-  <li>Used as a fallback if HSE fails.
-    <ol>
-      <li><strong>HSE (High-Speed External Oscillator)</strong>:</li>
-    </ol>
-    <ul>
-      <li>External crystal (4–26 MHz). High accuracy (±0.1%).</li>
-      <li>Required for achieving maximum clock speeds (e.g., 168 MHz).
-        <ol>
-          <li><strong>PLL (Phase-Locked Loop)</strong>:</li>
-        </ol>
-      </li>
-      <li>Multiplies HSE/HSI frequency. Example: HSE (8 MHz) → PLL (×21) → 168 MHz.</li>
-      <li>Divided into <strong>PLLM</strong> (input divider), <strong>PLLN</strong> (multiplier), and <strong>PLLP</strong> (output divider).</li>
-    </ul>
-  </li>
+  <li><strong>Modular</strong>: Each peripheral (GPIO, UART, TIM) has dedicated <code class="language-text highlighter-rouge">.c/.h</code> files (e.g., <code class="language-text highlighter-rouge">stm32f4xx_hal_gpio.c</code>)</li>
+  <li><strong>Callbacks</strong>: Event-driven design (e.g., <code class="language-text highlighter-rouge">HAL_GPIO_EXTI_Callback()</code> for interrupts)</li>
+  <li><strong>Overhead</strong>: Includes error checks, state management, and generic initialization</li>
 </ul>
+
+<h2 id="2-ll-low-layer-libraries">2. LL (Low-Layer) Libraries</h2>
+<p>Lightweight, register-level drivers for direct hardware access with minimal overhead</p>
+
+<p>Structure:</p>
+<ul>
+  <li><strong>Direct Register Access</strong>: Functions map to hardware registers (e.g., <code class="language-text highlighter-rouge">LL_GPIO_SetOutputPin()</code> writes directly to <code class="language-text highlighter-rouge">GPIOx-&gt;BSRR</code>)</li>
+  <li><strong>No State Management</strong>: Stateless functions for maximum speed</li>
+  <li><strong>CMSIS-Compliant</strong>: Built on top of CMSIS-Core for ARM Cortex-M</li>
+</ul>
+
+<h2 id="3-hal-vs-ll-comparison">3. HAL vs. LL Comparison</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Feature</strong></th>
+      <th><strong>HAL</strong></th>
+      <th><strong>LL</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Abstraction</strong></td>
+      <td>High (portable across STM32 families)</td>
+      <td>Low (device-specific)</td>
+    </tr>
+    <tr>
+      <td><strong>Code Size</strong></td>
+      <td>Larger (boilerplate code)</td>
+      <td>Smaller</td>
+    </tr>
+    <tr>
+      <td><strong>Execution Speed</strong></td>
+      <td>Slower (overhead from checks)</td>
+      <td>Faster (direct register access)</td>
+    </tr>
+    <tr>
+      <td><strong>Use Case</strong></td>
+      <td>Rapid prototyping</td>
+      <td>Time-critical applications</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="1-hal-gpio-toggle">1. HAL GPIO Toggle</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// HAL: Toggle LED on PA5</span>
+<span class="n">HAL_GPIO_WritePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">GPIO_PIN_5</span><span class="p">,</span> <span class="n">GPIO_PIN_SET</span><span class="p">);</span>
+<span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="n">HAL_GPIO_WritePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">GPIO_PIN_5</span><span class="p">,</span> <span class="n">GPIO_PIN_RESET</span><span class="p">);</span>
+<span class="n">HAL_Delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="2-ll-gpio-toggle">2. LL GPIO Toggle</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// LL: Toggle LED on PA5</span>
+<span class="n">LL_GPIO_SetOutputPin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_5</span><span class="p">);</span>
+<span class="n">LL_mDelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="n">LL_GPIO_ResetOutputPin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_5</span><span class="p">);</span>
+<span class="n">LL_mDelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="3-button-interrupt-with-ll">3. Button Interrupt with LL</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// LL EXTI Configuration (in MX_GPIO_Init)</span>
+<span class="n">LL_EXTI_InitTypeDef</span> <span class="n">EXTI_InitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">EXTI_InitStruct</span><span class="p">.</span><span class="n">Line_0_31</span> <span class="o">=</span> <span class="n">LL_EXTI_LINE_0</span><span class="p">;</span> <span class="c1">// PA0</span>
+<span class="n">EXTI_InitStruct</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">LL_EXTI_MODE_IT</span><span class="p">;</span>
+<span class="n">EXTI_InitStruct</span><span class="p">.</span><span class="n">Trigger</span> <span class="o">=</span> <span class="n">LL_EXTI_TRIGGER_RISING</span><span class="p">;</span>
+<span class="n">EXTI_InitStruct</span><span class="p">.</span><span class="n">LineCommand</span> <span class="o">=</span> <span class="n">ENABLE</span><span class="p">;</span>
+<span class="n">LL_EXTI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">EXTI_InitStruct</span><span class="p">);</span>
+
+<span class="c1">// Enable NVIC Interrupt</span>
+<span class="n">NVIC_SetPriority</span><span class="p">(</span><span class="n">EXTI0_IRQn</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">NVIC_EnableIRQ</span><span class="p">(</span><span class="n">EXTI0_IRQn</span><span class="p">);</span>
+
+<span class="c1">// Interrupt Handler (in stm32f4xx_it.c)</span>
+<span class="kt">void</span> <span class="nf">EXTI0_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">LL_EXTI_IsActiveFlag_0_31</span><span class="p">(</span><span class="n">LL_EXTI_LINE_0</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">LL_EXTI_ClearFlag_0_31</span><span class="p">(</span><span class="n">LL_EXTI_LINE_0</span><span class="p">);</span>
+    <span class="c1">// Toggle LED</span>
+    <span class="n">LL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_5</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <h2 id="questions">Questions</h2>
 
-<h2 id="project">Project:</h2>
+<ol>
+  <li>Why is LL faster than HAL?</li>
+  <li>How do you enable an EXTI interrupt in LL?</li>
+  <li>What is the HAL function equivalent to <code class="language-text highlighter-rouge">LL_GPIO_SetOutputPin()</code>?</li>
+  <li>How to measure HAL overhead?</li>
+</ol>
 
-<h3 id="walkthrough">Walkthrough</h3>
+<hr />
 
-<h3 id="debugging">Debugging</h3>
+<h1 id="project-led-blinker-with-ll-drivers">Project: LED Blinker with LL Drivers</h1>
+<p>Rewrite the LED Blinker from Week 1 to use LL instead of HAL.</p>
+<ul>
+  <li>Replace HAL with LL for GPIO and delay functions</li>
+  <li>Implement a button interrupt using LL EXTI</li>
+  <li>Compare HAL/LL execution cycles using STM32CubeMonitor</li>
+</ul>
+
+<h2 id="steps">Steps</h2>
+<ol>
+  <li>Create a New Project in STM32CubeIDE:
+    <ul>
+      <li>Select your STM32F4 board</li>
+      <li>In Project Manager &gt; Advanced Settings, set <code class="language-text highlighter-rouge">GPIO</code> and <code class="language-text highlighter-rouge">EXTI</code> to <code class="language-text highlighter-rouge">LL</code></li>
+      <li>Generate code</li>
+    </ul>
+  </li>
+  <li>Implement LED Blinking with LL:
+    <ul>
+      <li>Replace <code class="language-text highlighter-rouge">HAL_GPIO_WritePin()</code> with <code class="language-text highlighter-rouge">LL_GPIO_Set/ResetOutputPin()</code></li>
+      <li>Use <code class="language-text highlighter-rouge">LL_mDelay()</code> for delays</li>
+    </ul>
+  </li>
+  <li>Configure Button Interrupt with LL:
+    <ul>
+      <li>Use <code class="language-text highlighter-rouge">LL_EXTI_Init()</code> to set up PA0 as an interrupt source</li>
+      <li>Enable the NVIC interrupt</li>
+    </ul>
+  </li>
+  <li>Measure Execution Cycles:
+    <ul>
+      <li>Use <code class="language-text highlighter-rouge">LL_GPIO_TogglePin()</code> in a loop without delays</li>
+      <li>Connect STM32CubeMonitor to measure GPIO toggling frequency</li>
+    </ul>
+  </li>
+  <li>Analyze HAL Overhead:
+    <ul>
+      <li>Compare the toggle frequency between HAL and LL implementations</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="walkthrough">Walkthrough</h2>
+<h3 id="step-1-cubemx-configuration">Step 1: CubeMX Configuration</h3>
+<ol>
+  <li>Open CubeMX and create a new project for your STM32F4 board</li>
+  <li>Navigate to System Core &gt; GPIO
+    <ul>
+      <li>Set PA5 as <code class="language-text highlighter-rouge">LL_GPIO Output</code></li>
+      <li>Set PA0 as <code class="language-text highlighter-rouge">LL_EXTI_GPIO</code></li>
+    </ul>
+  </li>
+  <li>In <code class="language-text highlighter-rouge">NVIC Settings</code>, enable <code class="language-text highlighter-rouge">EXTI0 interrupt</code></li>
+</ol>
+
+<h3 id="step-2-code">Step 2: Code</h3>
+<ol>
+  <li>In <code class="language-text highlighter-rouge">main.c</code>, replace HAL delays with LL:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Replace HAL_Delay with LL_mDelay</span>
+<span class="n">LL_mDelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Implement the button interrupt handler in <code class="language-text highlighter-rouge">stm32f4xx_it.c</code>:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">EXTI0_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">LL_EXTI_IsActiveFlag_0_31</span><span class="p">(</span><span class="n">LL_EXTI_LINE_0</span><span class="p">))</span> <span class="p">{</span>
+ <span class="n">LL_EXTI_ClearFlag_0_31</span><span class="p">(</span><span class="n">LL_EXTI_LINE_0</span><span class="p">);</span>
+ <span class="n">LL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_5</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="step-3-measuring-performance">Step 3: Measuring Performance</h3>
+<ol>
+  <li>Add a debug pin (e.g., PA6) and toggle it in a loop:
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">LL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_6</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Connect STM32CubeMonitor to PA6 and measure the toggle frequency</li>
+</ol>
+
+<hr />
+
+<h2 id="debugging">Debugging</h2>
+
+<p><strong>LED Not Blinking</strong></p>
+<ul>
+  <li>Check if LL drivers are included in the project (Project &gt; Properties &gt; C/C++ Build &gt; Settings &gt; MCU GCC Compiler &gt; Include Paths)</li>
+</ul>
+
+<p><strong>Button Interrupt Not Triggering</strong></p>
+<ul>
+  <li>Verify <code class="language-text highlighter-rouge">LL_EXTI_Init()</code> configuration and NVIC enabling</li>
+</ul>
+
+<p><strong>STM32CubeMonitor Not Capturing Data</strong></p>
+<ul>
+  <li>Ensure the debug probe is connected and the correct pin is monitored</li>
+</ul>
+
+<p><strong>High HAL Overhead</strong></p>
+<ul>
+  <li>Use LL for time-critical sections and HAL for non-critical tasks</li>
+</ul>
 
 <h2 id="dictionary">Dictionary</h2>
 
+<ul>
+  <li><strong>HAL</strong>: Hardware Abstraction Layer (STM32’s high-level API)</li>
+  <li><strong>LL</strong>: Low-Layer library (STM32’s register-level API)</li>
+  <li><strong>EXTI</strong>: External Interrupt/Event Controller</li>
+  <li><strong>NVIC</strong>: Nested Vectored Interrupt Controller</li>
+  <li><strong>CMSIS</strong>: Cortex Microcontroller Software Interface Standard</li>
+</ul>
+
 <h2 id="resources">Resources</h2>
+
+<ol>
+  <li><a href="https://www.st.com/resource/en/user_manual/dm00105879.pdf">STM32F4 LL Driver Documentation</a> <a href="https://www.st.com/content/ccc/resource/technical/document/user_manual/2f/77/25/0f/5c/38/48/80/DM00122015.pdf/files/DM00122015.pdf/jcr:content/translations/en.DM00122015.pdf">(STM32F0)</a></li>
+  <li><a href="https://stackoverflow.com/questions/49596398/about-stm32-hal-quality-and-performance">About HAL performance</a></li>
+  <li><a href="https://www.reddit.com/r/embedded/comments/sg7vey/to_hal_or_not_to_hal_the_definitive_answer/">To HAL or not to HAL</a></li>
+</ol>
 
 <h2 id="answers-to-questions">Answers to Questions</h2>
 
-<h3 id="power-modes"><strong>Power Modes</strong></h3>
 <ol>
-  <li><strong>Run Mode</strong>: Full power (CPU, peripherals active).</li>
-  <li><strong>Sleep Mode</strong>: CPU halted, peripherals active. Wake via interrupts.</li>
-  <li><strong>Stop Mode</strong>: Core voltage domain powered off. Wake via external interrupts or RTC.</li>
+  <li>LL uses direct register access without state checks</li>
+  <li>Configure <code class="language-text highlighter-rouge">LL_EXTI_Init()</code> and enable the NVIC IRQ</li>
+  <li><code class="language-text highlighter-rouge">HAL_GPIO_WritePin()</code></li>
+  <li>Compare GPIO toggle cycles between HAL and LL implementations</li>
 </ol>
-
-<h3 id="clock-tree-analysis"><strong>Clock Tree Analysis</strong></h3>
-<ul>
-  <li><strong>SYSCLK</strong>: System clock (max 168 MHz). Sources: HSI, HSE, PLL.</li>
-  <li><strong>AHB Prescaler</strong>: Divides SYSCLK for AHB bus (e.g., 168 MHz → 168 MHz).</li>
-  <li><strong>APB1/APB2 Prescalers</strong>: Divides AHB for peripherals (APB1 max 42 MHz, APB2 max 84 MHz).</li>
-</ul>
-
-<p><strong>Example Code</strong></p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// system_stm32f4xx.c (auto-generated by STM32CubeMX)  </span>
-<span class="kt">void</span> <span class="nf">SystemClock_Config</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>  
-  <span class="n">RCC_OscInitTypeDef</span> <span class="n">RCC_OscInitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>  
-  <span class="n">RCC_ClkInitTypeDef</span> <span class="n">RCC_ClkInitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>  
-
-  <span class="c1">// Configure HSE (8 MHz) → PLL → 168 MHz  </span>
-  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">OscillatorType</span> <span class="o">=</span> <span class="n">RCC_OSCILLATORTYPE_HSE</span><span class="p">;</span>  
-  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">HSEState</span> <span class="o">=</span> <span class="n">RCC_HSE_ON</span><span class="p">;</span>  
-  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLState</span> <span class="o">=</span> <span class="n">RCC_PLL_ON</span><span class="p">;</span>  
-  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLSource</span> <span class="o">=</span> <span class="n">RCC_PLLSOURCE_HSE</span><span class="p">;</span>  
-  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLM</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>     <span class="c1">// HSE (8 MHz) / 8 = 1 MHz  </span>
-  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLN</span> <span class="o">=</span> <span class="mi">336</span><span class="p">;</span>   <span class="c1">// 1 MHz × 336 = 336 MHz  </span>
-  <span class="n">RCC_OscInitStruct</span><span class="p">.</span><span class="n">PLL</span><span class="p">.</span><span class="n">PLLP</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>      <span class="c1">// 336 MHz / 2 = 168 MHz (SYSCLK)  </span>
-  <span class="n">HAL_RCC_OscConfig</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RCC_OscInitStruct</span><span class="p">);</span>  
-
-  <span class="c1">// Configure clock dividers  </span>
-  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">ClockType</span> <span class="o">=</span> <span class="n">RCC_CLOCKTYPE_SYSCLK</span> <span class="o">|</span> <span class="n">RCC_CLOCKTYPE_HCLK</span> <span class="o">|</span>  
-                                <span class="n">RCC_CLOCKTYPE_PCLK1</span> <span class="o">|</span> <span class="n">RCC_CLOCKTYPE_PCLK2</span><span class="p">;</span>  
-  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">SYSCLKSource</span> <span class="o">=</span> <span class="n">RCC_SYSCLKSOURCE_PLLCLK</span><span class="p">;</span>  
-  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">AHBCLKDivider</span> <span class="o">=</span> <span class="n">RCC_SYSCLK_DIV1</span><span class="p">;</span>     <span class="c1">// 168 MHz  </span>
-  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">APB1CLKDivider</span> <span class="o">=</span> <span class="n">RCC_HCLK_DIV4</span><span class="p">;</span>      <span class="c1">// 42 MHz  </span>
-  <span class="n">RCC_ClkInitStruct</span><span class="p">.</span><span class="n">APB2CLKDivider</span> <span class="o">=</span> <span class="n">RCC_HCLK_DIV2</span><span class="p">;</span>      <span class="c1">// 84 MHz  </span>
-  <span class="n">HAL_RCC_ClockConfig</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RCC_ClkInitStruct</span><span class="p">,</span> <span class="n">FLASH_LATENCY_5</span><span class="p">);</span>  
-<span class="p">}</span>  
-</code></pre></div></div>
-
-<hr />
-
-<p><strong>Project</strong></p>
-
-<p><strong>Objective</strong>: Configure the STM32 to run at 168 MHz using STM32CubeMX. Validate timing accuracy using <code class="language-text highlighter-rouge">bsp_delay.c</code> and an oscilloscope.</p>
-
-<p><strong>Steps</strong>:</p>
-<ol>
-  <li><strong>Clock Configuration</strong>:
-    <ul>
-      <li>Set HSE as the clock source.</li>
-      <li>Configure PLL to generate 168 MHz.</li>
-      <li>Adjust AHB/APB prescalers for safe peripheral operation.</li>
-    </ul>
-  </li>
-  <li><strong>Delay Module</strong>:
-    <ul>
-      <li>Use <code class="language-text highlighter-rouge">bsp_delay.c</code> to create a 1 Hz signal (500 ms high, 500 ms low) on a GPIO pin.</li>
-    </ul>
-  </li>
-  <li><strong>Verification</strong>:
-    <ul>
-      <li>Measure the GPIO pin’s frequency with an oscilloscope (expected: 1 Hz ±1%).</li>
-    </ul>
-  </li>
-</ol>
-
-<p><strong>Deliverables</strong>:</p>
-<ul>
-  <li>STM32CubeMX project file (.ioc).</li>
-  <li>GitHub repository with code and oscilloscope screenshot.</li>
-</ul>
-
-<hr />
-
-<h2 id="walkthrough-1"><strong>Walkthrough</strong></h2>
-<h3 id="step-1-configure-clock-in-stm32cubemx"><strong>Step 1: Configure Clock in STM32CubeMX</strong></h3>
-<ol>
-  <li>Open STM32CubeMX → New Project → Select your STM32F4 MCU.</li>
-  <li><strong>Clock Configuration Tab</strong>:
-    <ul>
-      <li>Set <strong>HSE</strong> to “Crystal/Ceramic Resonator” (assumes 8 MHz external crystal).</li>
-      <li>Set <strong>PLL Source Mux</strong> to HSE.</li>
-      <li>Configure <strong>PLLM</strong> = 8, <strong>PLLN</strong> = 336, <strong>PLLP</strong> = 2 → SYSCLK = 168 MHz.</li>
-      <li>Set <strong>AHB Prescaler</strong> = 1 (168 MHz), <strong>APB1</strong> = 4 (42 MHz), <strong>APB2</strong> = 2 (84 MHz).</li>
-    </ul>
-  </li>
-  <li>Generate code with “Project → Generate Code”.</li>
-</ol>
-
-<h3 id="step-2-implement-delay-module"><strong>Step 2: Implement Delay Module</strong></h3>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// bsp_delay.c  </span>
-<span class="cp">#include</span> <span class="cpf">"stm32f4xx_hal.h"</span><span class="c1">  </span><span class="cp">
-</span>
-<span class="kt">void</span> <span class="nf">delay_ms</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">ms</span><span class="p">)</span> <span class="p">{</span>  
-  <span class="kt">uint32_t</span> <span class="n">start</span> <span class="o">=</span> <span class="n">HAL_GetTick</span><span class="p">();</span>  
-  <span class="k">while</span> <span class="p">(</span><span class="n">HAL_GetTick</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">ms</span><span class="p">);</span>  
-<span class="p">}</span>  
-
-<span class="c1">// main.c  </span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>  
-  <span class="n">HAL_Init</span><span class="p">();</span>  
-  <span class="n">SystemClock_Config</span><span class="p">();</span>  
-  <span class="n">__HAL_RCC_GPIOA_CLK_ENABLE</span><span class="p">();</span>  
-  <span class="n">GPIO_InitTypeDef</span> <span class="n">GPIO_InitStruct</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>  
-  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Pin</span> <span class="o">=</span> <span class="n">GPIO_PIN_5</span><span class="p">;</span>  
-  <span class="n">GPIO_InitStruct</span><span class="p">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="n">GPIO_MODE_OUTPUT_PP</span><span class="p">;</span>  
-  <span class="n">HAL_GPIO_Init</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">GPIO_InitStruct</span><span class="p">);</span>  
-
-  <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>  
-    <span class="n">HAL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">GPIO_PIN_5</span><span class="p">);</span>  
-    <span class="n">delay_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>  
-  <span class="p">}</span>  
-<span class="p">}</span>  
-</code></pre></div></div>
-
-<h3 id="step-3-oscilloscope-verification"><strong>Step 3: Oscilloscope Verification</strong></h3>
-<ul>
-  <li>Connect the oscilloscope probe to GPIO Pin PA5.</li>
-  <li>Measure period: Should be 1 sec (500 ms high + 500 ms low).</li>
-  <li>If timing is incorrect, check PLL settings and <code class="language-text highlighter-rouge">HAL_RCC_ClockConfig()</code> in <code class="language-text highlighter-rouge">system_stm32f4xx.c</code>.</li>
-</ul>
-
-<hr />
-
-<h2 id="quizzes"><strong>Quizzes</strong></h2>
-<ol>
-  <li>
-    <p><strong>Q</strong>: What happens if APB1’s clock exceeds 42 MHz?<br />
-<strong>A</strong>: Peripheral registers may corrupt, leading to undefined behavior.</p>
-  </li>
-  <li>
-    <p><strong>Q</strong>: How does Stop mode differ from Sleep mode?<br />
-<strong>A</strong>: Stop mode turns off the core voltage domain, reducing power further but requiring longer wake-up time.</p>
-  </li>
-  <li>
-    <p><strong>Q</strong>: If HSE fails, which clock source does the STM32 use?<br />
-<strong>A</strong>: HSI (16 MHz).</p>
-  </li>
-</ol>
-
-<hr />
-
-<p><strong>Dictionary</strong></p>
-<ul>
-  <li><strong>HSI/HSE</strong>: Internal/external clock sources.</li>
-  <li><strong>PLL</strong>: Clock multiplier for higher frequencies.</li>
-  <li><strong>SYSCLK</strong>: Primary system clock.</li>
-  <li><strong>AHB/APB</strong>: Buses for peripherals and memory.</li>
-  <li><strong>Prescaler</strong>: Divides clock frequency.</li>
-</ul>
-
-<hr />
-
-<p><strong>Additional Resources</strong></p>
-<ul>
-  <li><a href="https://www.st.com/resource/en/application_note/dm00119316.pdf">STM32F4 Clock Configuration Guide</a></li>
-  <li><a href="https://www.youtube.com/watch?v=u4zyptPLlJI">Oscilloscope Basics Tutorial</a></li>
-</ul>
-
-<hr />
-
-<p><strong>Debugging</strong></p>
-<ul>
-  <li><strong>Issue</strong>: GPIO toggle is too slow.
-    <ul>
-      <li><strong>Fix</strong>: Verify <code class="language-text highlighter-rouge">SystemCoreClock</code> in <code class="language-text highlighter-rouge">system_stm32f4xx.c</code> is 168000000.</li>
-    </ul>
-  </li>
-  <li><strong>Issue</strong>: Code crashes after clock configuration.
-    <ul>
-      <li><strong>Fix</strong>: Ensure <strong>Flash Latency</strong> is set to 5 wait states (required for 168 MHz).</li>
-    </ul>
-  </li>
-  <li><strong>Issue</strong>: No signal on oscilloscope.
-    <ul>
-      <li><strong>Fix</strong>: Confirm GPIO pin is configured as output and oscilloscope ground is connected.</li>
-    </ul>
-  </li>
-</ul>
-
-<p>week 9 https://books-library.net/files/books-library.net-07281709Ee1R6.pdf</p>
 
 <hr />
 
