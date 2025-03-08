@@ -66,29 +66,31 @@ void SystemClock_Config(void) {
 }
 ```
 
+## Questions
+  
+1. What happens if APB1’s clock exceeds 42 MHz?
+2. How does Stop mode differ from Sleep mode?
+3. If HSE fails, which clock source does the STM32 use?
+
+***
+
 # Project: Setting STM Clock Speed
 Configure the STM32 to run at 168 MHz using STM32CubeMX. Validate timing accuracy using `bsp_delay.c` and an oscilloscope.
 
 ## Steps
-1. **Clock Configuration**:
-   - Set HSE as the clock source
-   - Configure PLL to generate 168 MHz
-   - Adjust AHB/APB prescalers for safe peripheral operation
-2. **Delay Module**:
-   - Use `bsp_delay.c` to create a 1 Hz signal (500 ms high, 500 ms low) on a GPIO pin
-3. **Verification**:
-   - Measure the GPIO pin’s frequency with an oscilloscope (expected: 1 Hz ±1%)
-
-**Deliverables**:
-- STM32CubeMX project file (.ioc)
-- GitHub repository with code and oscilloscope screenshot
+1. Clock Configuration:
+  - Set HSE as the clock source
+  - Configure PLL to generate 168 MHz
+  - Adjust AHB/APB prescalers for safe peripheral operation
+2. Delay Module: Use `bsp_delay.c` to create a 1 Hz signal (500 ms high, 500 ms low) on a GPIO pin
+3. Measure the GPIO pin’s frequency with an oscilloscope (expected: 1 Hz ±1%)
 
 ***
 
 ## Walkthrough
 
 ### Step 1: Configure Clock in STM32CubeMX
-1. Open STM32CubeMX → New Project → Select your STM32F4 MCU
+1. Open STM32CubeMX → New Project > Select your STM32F4 MCU
 2. **Clock Configuration Tab**:
    - Set **HSE** to “Crystal/Ceramic Resonator” (assumes 8 MHz external crystal)
    - Set **PLL Source Mux** to HSE
@@ -130,13 +132,6 @@ int main(void) {
 
 ***
 
-## Questions
-  
-1. What happens if APB1’s clock exceeds 42 MHz?
-2. How does Stop mode differ from Sleep mode?
-3. If HSE fails, which clock source does the STM32 use?
-
-
 ## Debugging
 
 **GPIO toggle is too slow**
@@ -159,10 +154,12 @@ int main(void) {
 
 
 ## Resources
+
 1. [STM32 Clock Configuration Guide](https://www.st.com/resource/en/application_note/an4776-generalpurpose-timer-cookbook-for-stm32-microcontrollers-stmicroelectronics.pdf)
 2. [STM32 Clock System Introduction](https://community.st.com/t5/stm32-mcus/part-1-introduction-to-the-stm32-microcontroller-clock-system/ta-p/605369)
 3. [Oscilloscope Basics Tutorial](https://www.youtube.com/watch?v=hUIgAu3QQWQ)
 4. [Everything about Oscilloscopes Playlist](https://www.youtube.com/playlist?list=PL746BF38BC2E068E0)
+
 
 ## Answers to Questions
 

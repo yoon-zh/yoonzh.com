@@ -217,11 +217,13 @@ git push -u origin main
 
 ## Resources
 
-1. [STM32CubeIDE Beginner Guide](https://www.youtube.com/watch?v=Hffw-m9fuxc)
-2. [STM32 HAL Documentation Guide](https://www.reddit.com/r/stm32f4/comments/95406y/comment/e5ej2av/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
-3. [Git Tutorial](https://git-scm.com/docs/gittutorial)
-4. [ARM Cortex-M4 Manual](https://developer.arm.com/documentation/ddi0439/b/Introduction)
-5. [FreeRTOS Beginner Guide](https://www.freertos.org/Documentation/01-FreeRTOS-quick-start/01-Beginners-guide/01-RTOS-fundamentals)
+1. [Book: Mastering STM32](https://www.embedic.com/uploads/files/20201008/Mastering%20STM32.pdf?srsltid=AfmBOopP2ohnXIMIrm6YGQYa0jq9Qj6gulZp-r_MR4B31VK5ONyLhnTD)
+2. [STM32CubeIDE Beginner Guide](https://www.youtube.com/watch?v=Hffw-m9fuxc)
+3. [STM32 HAL Documentation Guide](https://www.reddit.com/r/stm32f4/comments/95406y/comment/e5ej2av/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+4. [Git Tutorial](https://git-scm.com/docs/gittutorial)
+5. [ARM Cortex-M4 Manual](https://developer.arm.com/documentation/ddi0439/b/Introduction)
+6. [STM32F103xB Manual](https://www.st.com/resource/en/datasheet/cd00161566.pdf)
+7. [Bare Metal Programming Series](https://www.youtube.com/watch?v=uQQsDWLRDuI&list=PLP29wDx6QmW7HaCrRydOnxcy8QmW0SNdQ)
 
 
 ## Answers to Questions

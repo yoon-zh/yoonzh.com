@@ -19,4 +19,4 @@ The flags will make `gcc` be very picky in the code. so it forces us to write pr
 ```bash
 git checkout -b new_branch_name
 ```
-https://stackoverflow.com/questions/17958288/branch-and-checkout-using-a-single-command
+<https://stackoverflow.com/questions/17958288/branch-and-checkout-using-a-single-command>

@@ -17,7 +17,11 @@ date: 2025-03-04
 - Reading and writing drivers for a motor
 - Abstraction layers, encoder feedback, and API design
 
----
+week 9 https://books-library.net/files/books-library.net-07281709Ee1R6.pdf
+
+[FreeRTOS Beginner Guide](https://www.freertos.org/Documentation/01-FreeRTOS-quick-start/01-Beginners-guide/01-RTOS-fundamentals)
+
+***
 
 ## Credits
 

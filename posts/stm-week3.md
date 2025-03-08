@@ -1,194 +1,204 @@
 ---
 layout: post
 title: stm-week3
-card_title: stm week 3
-excerpt: "Clock & Power Management"
+card_title: "STM Week 3: HAL/LL Libraries"
+excerpt: "STM has "
 url: /posts/stm-week3
 math: true
 tech_stack: [C/C++]
+date: 2025-03-08
 ---
-
-date: 2025-03-01
 
 *Adapted from [^1]*
 
-# Week 3: HAL/LL Libraries
+# Concepts
 
-## Concepts
+## 1. HAL (Hardware Abstraction Layer)
+A middleware library that abstracts hardware complexity, providing portable APIs for peripheral control (e.g., `HAL_GPIO_WritePin()`)
 
-### 1. Clock Sources
-**HSI (High-Speed Internal Oscillator)**:
-- 16 MHz RC oscillator. Low accuracy (±1%) but requires no external components.
-- Used as a fallback if HSE fails.
-2. **HSE (High-Speed External Oscillator)**:  
-   - External crystal (4–26 MHz). High accuracy (±0.1%).  
-   - Required for achieving maximum clock speeds (e.g., 168 MHz).  
-3. **PLL (Phase-Locked Loop)**:  
-   - Multiplies HSE/HSI frequency. Example: HSE (8 MHz) → PLL (×21) → 168 MHz.  
-   - Divided into **PLLM** (input divider), **PLLN** (multiplier), and **PLLP** (output divider).  
+Structure:
+- **Modular**: Each peripheral (GPIO, UART, TIM) has dedicated `.c/.h` files (e.g., `stm32f4xx_hal_gpio.c`)
+- **Callbacks**: Event-driven design (e.g., `HAL_GPIO_EXTI_Callback()` for interrupts)
+- **Overhead**: Includes error checks, state management, and generic initialization
 
+## 2. LL (Low-Layer) Libraries
+Lightweight, register-level drivers for direct hardware access with minimal overhead
+
+Structure:
+- **Direct Register Access**: Functions map to hardware registers (e.g., `LL_GPIO_SetOutputPin()` writes directly to `GPIOx->BSRR`)
+- **No State Management**: Stateless functions for maximum speed
+- **CMSIS-Compliant**: Built on top of CMSIS-Core for ARM Cortex-M
+
+## 3. HAL vs. LL Comparison
+
+| **Feature**          | **HAL**                               | **LL**                          |  
+|----------------------|---------------------------------------|---------------------------------|  
+| **Abstraction**      | High (portable across STM32 families) | Low (device-specific)           |  
+| **Code Size**        | Larger (boilerplate code)             | Smaller                         |  
+| **Execution Speed**  | Slower (overhead from checks)         | Faster (direct register access) |  
+| **Use Case**         | Rapid prototyping                     | Time-critical applications      |  
+
+***
+
+## Examples
+
+### 1. HAL GPIO Toggle
+```c  
+// HAL: Toggle LED on PA5
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+HAL_Delay(500);
+HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+HAL_Delay(500);
+```
+
+### 2. LL GPIO Toggle
+```c
+// LL: Toggle LED on PA5
+LL_GPIO_SetOutputPin(GPIOA, LL_GPIO_PIN_5);
+LL_mDelay(500);
+LL_GPIO_ResetOutputPin(GPIOA, LL_GPIO_PIN_5);
+LL_mDelay(500);
+```
+
+### 3. Button Interrupt with LL
+```c
+// LL EXTI Configuration (in MX_GPIO_Init)
+LL_EXTI_InitTypeDef EXTI_InitStruct = {0};
+EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_0; // PA0
+EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
+EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_RISING;
+EXTI_InitStruct.LineCommand = ENABLE;
+LL_EXTI_Init(&EXTI_InitStruct);
+
+// Enable NVIC Interrupt
+NVIC_SetPriority(EXTI0_IRQn, 0);
+NVIC_EnableIRQ(EXTI0_IRQn);
+
+// Interrupt Handler (in stm32f4xx_it.c)
+void EXTI0_IRQHandler(void) {
+  if (LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_0)) {
+    LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_0);
+    // Toggle LED
+    LL_GPIO_TogglePin(GPIOA, LL_GPIO_PIN_5);
+  }
+}
+```
 
 ## Questions
 
-## Project:
+1. Why is LL faster than HAL?
+2. How do you enable an EXTI interrupt in LL?
+3. What is the HAL function equivalent to `LL_GPIO_SetOutputPin()`?
+4. How to measure HAL overhead?
 
-### Walkthrough
+***
 
-### Debugging
+# Project: LED Blinker with LL Drivers
+Rewrite the LED Blinker from Week 1 to use LL instead of HAL.
+- Replace HAL with LL for GPIO and delay functions
+- Implement a button interrupt using LL EXTI
+- Compare HAL/LL execution cycles using STM32CubeMonitor
+
+## Steps
+1. Create a New Project in STM32CubeIDE:
+  - Select your STM32F4 board
+  - In Project Manager > Advanced Settings, set `GPIO` and `EXTI` to `LL`
+  - Generate code
+
+2. Implement LED Blinking with LL:
+  - Replace `HAL_GPIO_WritePin()` with `LL_GPIO_Set/ResetOutputPin()`
+  - Use `LL_mDelay()` for delays
+
+3. Configure Button Interrupt with LL:
+  - Use `LL_EXTI_Init()` to set up PA0 as an interrupt source
+  - Enable the NVIC interrupt
+
+4. Measure Execution Cycles:
+  - Use `LL_GPIO_TogglePin()` in a loop without delays
+  - Connect STM32CubeMonitor to measure GPIO toggling frequency
+
+5. Analyze HAL Overhead:
+  - Compare the toggle frequency between HAL and LL implementations
+
+***
+
+## Walkthrough
+### Step 1: CubeMX Configuration
+1. Open CubeMX and create a new project for your STM32F4 board
+2. Navigate to System Core > GPIO
+   - Set PA5 as `LL_GPIO Output`
+   - Set PA0 as `LL_EXTI_GPIO`
+3. In `NVIC Settings`, enable `EXTI0 interrupt`
+
+### Step 2: Code
+1. In `main.c`, replace HAL delays with LL:
+```c
+// Replace HAL_Delay with LL_mDelay
+LL_mDelay(500);
+```
+
+2. Implement the button interrupt handler in `stm32f4xx_it.c`:
+```c
+void EXTI0_IRQHandler(void) {
+  if (LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_0)) {
+    LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_0);
+    LL_GPIO_TogglePin(GPIOA, LL_GPIO_PIN_5);
+  }
+}
+```
+
+### Step 3: Measuring Performance
+1. Add a debug pin (e.g., PA6) and toggle it in a loop:
+```c
+while (1) {
+  LL_GPIO_TogglePin(GPIOA, LL_GPIO_PIN_6);
+}
+```
+2. Connect STM32CubeMonitor to PA6 and measure the toggle frequency
+
+***
+
+## Debugging
+
+**LED Not Blinking**
+- Check if LL drivers are included in the project (Project > Properties > C/C++ Build > Settings > MCU GCC Compiler > Include Paths)
+
+**Button Interrupt Not Triggering**
+- Verify `LL_EXTI_Init()` configuration and NVIC enabling
+
+**STM32CubeMonitor Not Capturing Data**
+- Ensure the debug probe is connected and the correct pin is monitored
+
+**High HAL Overhead**
+- Use LL for time-critical sections and HAL for non-critical tasks
+
 
 ## Dictionary
 
+- **HAL**: Hardware Abstraction Layer (STM32’s high-level API)
+- **LL**: Low-Layer library (STM32’s register-level API)
+- **EXTI**: External Interrupt/Event Controller
+- **NVIC**: Nested Vectored Interrupt Controller
+- **CMSIS**: Cortex Microcontroller Software Interface Standard
+
 ## Resources
+
+1. [STM32F4 LL Driver Documentation](https://www.st.com/resource/en/user_manual/dm00105879.pdf) [(STM32F0)](https://www.st.com/content/ccc/resource/technical/document/user_manual/2f/77/25/0f/5c/38/48/80/DM00122015.pdf/files/DM00122015.pdf/jcr:content/translations/en.DM00122015.pdf)
+2. [About HAL performance](https://stackoverflow.com/questions/49596398/about-stm32-hal-quality-and-performance)
+3. [To HAL or not to HAL](https://www.reddit.com/r/embedded/comments/sg7vey/to_hal_or_not_to_hal_the_definitive_answer/)
+
 
 ## Answers to Questions
 
+1. LL uses direct register access without state checks
+2. Configure `LL_EXTI_Init()` and enable the NVIC IRQ
+3. `HAL_GPIO_WritePin()`
+4. Compare GPIO toggle cycles between HAL and LL implementations
 
-### **Power Modes**  
-1. **Run Mode**: Full power (CPU, peripherals active).  
-2. **Sleep Mode**: CPU halted, peripherals active. Wake via interrupts.  
-3. **Stop Mode**: Core voltage domain powered off. Wake via external interrupts or RTC.  
-
-### **Clock Tree Analysis**  
-- **SYSCLK**: System clock (max 168 MHz). Sources: HSI, HSE, PLL.  
-- **AHB Prescaler**: Divides SYSCLK for AHB bus (e.g., 168 MHz → 168 MHz).  
-- **APB1/APB2 Prescalers**: Divides AHB for peripherals (APB1 max 42 MHz, APB2 max 84 MHz).  
-
-**Example Code**  
-```c  
-// system_stm32f4xx.c (auto-generated by STM32CubeMX)  
-void SystemClock_Config(void) {  
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};  
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};  
-
-  // Configure HSE (8 MHz) → PLL → 168 MHz  
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;  
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;  
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;  
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;  
-  RCC_OscInitStruct.PLL.PLLM = 8;     // HSE (8 MHz) / 8 = 1 MHz  
-  RCC_OscInitStruct.PLL.PLLN = 336;   // 1 MHz × 336 = 336 MHz  
-  RCC_OscInitStruct.PLL.PLLP = 2;      // 336 MHz / 2 = 168 MHz (SYSCLK)  
-  HAL_RCC_OscConfig(&RCC_OscInitStruct);  
-
-  // Configure clock dividers  
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK |  
-                                RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;  
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;  
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;     // 168 MHz  
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;      // 42 MHz  
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;      // 84 MHz  
-  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);  
-}  
-```  
-
----
-
-**Project**  
-
-**Objective**: Configure the STM32 to run at 168 MHz using STM32CubeMX. Validate timing accuracy using `bsp_delay.c` and an oscilloscope.  
-
-**Steps**:  
-1. **Clock Configuration**:  
-   - Set HSE as the clock source.  
-   - Configure PLL to generate 168 MHz.  
-   - Adjust AHB/APB prescalers for safe peripheral operation.  
-2. **Delay Module**:  
-   - Use `bsp_delay.c` to create a 1 Hz signal (500 ms high, 500 ms low) on a GPIO pin.  
-3. **Verification**:  
-   - Measure the GPIO pin’s frequency with an oscilloscope (expected: 1 Hz ±1%).  
-
-**Deliverables**:  
-- STM32CubeMX project file (.ioc).  
-- GitHub repository with code and oscilloscope screenshot.  
-
----
-
-**Walkthrough**  
----  
-### **Step 1: Configure Clock in STM32CubeMX**  
-1. Open STM32CubeMX → New Project → Select your STM32F4 MCU.  
-2. **Clock Configuration Tab**:  
-   - Set **HSE** to “Crystal/Ceramic Resonator” (assumes 8 MHz external crystal).  
-   - Set **PLL Source Mux** to HSE.  
-   - Configure **PLLM** = 8, **PLLN** = 336, **PLLP** = 2 → SYSCLK = 168 MHz.  
-   - Set **AHB Prescaler** = 1 (168 MHz), **APB1** = 4 (42 MHz), **APB2** = 2 (84 MHz).  
-3. Generate code with “Project → Generate Code”.  
-
-### **Step 2: Implement Delay Module**  
-```c  
-// bsp_delay.c  
-#include "stm32f4xx_hal.h"  
-
-void delay_ms(uint32_t ms) {  
-  uint32_t start = HAL_GetTick();  
-  while (HAL_GetTick() - start < ms);  
-}  
-
-// main.c  
-int main(void) {  
-  HAL_Init();  
-  SystemClock_Config();  
-  __HAL_RCC_GPIOA_CLK_ENABLE();  
-  GPIO_InitTypeDef GPIO_InitStruct = {0};  
-  GPIO_InitStruct.Pin = GPIO_PIN_5;  
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;  
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);  
-
-  while (1) {  
-    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);  
-    delay_ms(500);  
-  }  
-}  
-```  
-
-### **Step 3: Oscilloscope Verification**  
-- Connect the oscilloscope probe to GPIO Pin PA5.  
-- Measure period: Should be 1 sec (500 ms high + 500 ms low).  
-- If timing is incorrect, check PLL settings and `HAL_RCC_ClockConfig()` in `system_stm32f4xx.c`.  
-
----
-
-**Quizzes**  
----  
-1. **Q**: What happens if APB1’s clock exceeds 42 MHz?  
-   **A**: Peripheral registers may corrupt, leading to undefined behavior.  
-
-2. **Q**: How does Stop mode differ from Sleep mode?  
-   **A**: Stop mode turns off the core voltage domain, reducing power further but requiring longer wake-up time.  
-
-3. **Q**: If HSE fails, which clock source does the STM32 use?  
-   **A**: HSI (16 MHz).  
-
----
-
-**Dictionary**  
-- **HSI/HSE**: Internal/external clock sources.  
-- **PLL**: Clock multiplier for higher frequencies.  
-- **SYSCLK**: Primary system clock.  
-- **AHB/APB**: Buses for peripherals and memory.  
-- **Prescaler**: Divides clock frequency.  
-
----
-
-**Additional Resources**  
-- [STM32F4 Clock Configuration Guide](https://www.st.com/resource/en/application_note/dm00119316.pdf)  
-- [Oscilloscope Basics Tutorial](https://www.youtube.com/watch?v=u4zyptPLlJI)  
-
----
-
-**Debugging**  
-- **Issue**: GPIO toggle is too slow.  
-  - **Fix**: Verify `SystemCoreClock` in `system_stm32f4xx.c` is 168000000.  
-- **Issue**: Code crashes after clock configuration.  
-  - **Fix**: Ensure **Flash Latency** is set to 5 wait states (required for 168 MHz).  
-- **Issue**: No signal on oscilloscope.  
-  - **Fix**: Confirm GPIO pin is configured as output and oscilloscope ground is connected.
-
-week 9 https://books-library.net/files/books-library.net-07281709Ee1R6.pdf
-
----
+***
 
 ## Credits
 
 [^1]: Deepseek.
+
 <!--Written by Jorge Porras (2025)-->

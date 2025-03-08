@@ -20,10 +20,6 @@ date: 2025-02-17
 - deploy models locally and at scale via APIs, cloud, or edge devices.
 - fine-tune and run local LLMs (deepseek)
 
-## prereq
-
-- python
-- freshman level calc
 
 ### Week 1: Introduction to ML & Deployment
 

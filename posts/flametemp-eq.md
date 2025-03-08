@@ -5,9 +5,10 @@ card_title: Equations in flametemp()
 url: /posts/flametemp-eq
 excerpt: Documentation on equations in flametemp()
 math: true
-tech_stack: [MATLAB]
-date: 2025-02-24
+tech_stack: [MATLAB, Thermodynamics]
 ---
+
+date: 2025-02-24
 
 ## flametemp <a href="https://github.com/yoon-zh/flametemp" target="_blank" class="pdf-link"><i class="fab fa-github"></i></a>
 
