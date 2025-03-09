@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer-when-downgrade">
-  <title>stm week 4 - yoonzh.com</title>
+  <title>STM Week 4: Motors & Drivers - yoonzh.com</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -67,7 +67,7 @@
   <!-- _includes/article-content.html -->
 <header class="article-header">
   <h1>
-    stm week 4
+    STM Week 4: Motors & Drivers
     
   </h1>
   
@@ -79,6 +79,10 @@
   
   <div class="article-meta">
     
+      <time datetime="2025-03-09T00:00:00+00:00">
+        📅 2025/03/09
+      </time>
+    
   </div>
 </header>
 
@@ -86,6 +90,208 @@
   <p>date: 2025-03-04</p>
 
 <p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></em></p>
+
+<p>DRAFT</p>
+
+<h1 id="concepts">Concepts</h1>
+
+<h2 id="1-motor-types">1. Motor Types</h2>
+<p><strong>Brushed DC Motors</strong>:</p>
+<ul>
+  <li>Use brushes for commutation</li>
+  <li>Simple, cheap, but require maintenance</li>
+  <li>Speed controlled by PWM voltage; direction by reversing polarity (H-bridge)</li>
+</ul>
+
+<p><strong>Brushless DC (BLDC)</strong>:</p>
+<ul>
+  <li>Electronically commutated (ESC required)</li>
+  <li>Efficient, high-speed</li>
+</ul>
+
+<p><strong>Stepper Motors</strong>:</p>
+<ul>
+  <li>Move in discrete steps (e.g., 1.8° per step)</li>
+  <li>Used for precise positioning</li>
+</ul>
+
+<p><strong>Servo Motors</strong>:</p>
+<ul>
+  <li>Integrated control circuit + motor</li>
+  <li>Accepts PWM pulses (1–2ms pulse width) for angular control (0°–180°)</li>
+</ul>
+
+<h2 id="2-stall-current-detection">2. Stall Current Detection</h2>
+<ul>
+  <li>When a motor is mechanically blocked, current spikes (“stall current”)</li>
+  <li>Detected via a shunt resistor or current sensor (e.g., ACS712). Critical for overload protection</li>
+</ul>
+
+<h2 id="3-motor-transfer-functions">3. Motor Transfer Functions</h2>
+<p>Mathematical model:</p>
+
+\[\frac{\omega(s)}{V(s)} = \frac{K}{(Ls + R)(Js + b)}\]
+
+<p>Where \(\omega\) is angular velocity, and \(V\) the input voltage</p>
+
+<p>Simplified, this helps design PID controllers for speed/position</p>
+
+<h2 id="4-driver-ics--h-bridges">4. Driver ICs &amp; H-Bridges</h2>
+<p><strong>L298N (H-Bridge)</strong></p>
+<ul>
+  <li>Controls DC motor direction/speed</li>
+  <li><code class="language-text highlighter-rouge">IN1/IN2</code> pins set direction; <code class="language-text highlighter-rouge">EN</code> pin uses PWM for speed</li>
+</ul>
+
+<p><strong>A4988/TMC2209</strong>:</p>
+<ul>
+  <li>Stepper motor drivers</li>
+  <li>Use STEP/DIR signals</li>
+  <li>TMC2209 offers quieter operation</li>
+</ul>
+
+<p><strong>PWM Duty Cycle</strong>:</p>
+<ul>
+  <li>Duty cycle (%) = (CCR / ARR) * 100</li>
+  <li>Controls average voltage to motor</li>
+</ul>
+
+<h2 id="5-feedback-systems">5. Feedback Systems</h2>
+<p><strong>Quadrature Encoders</strong>:</p>
+<ul>
+  <li>Two-phase output to track direction and position (e.g., 1000 PPR)</li>
+</ul>
+
+<p><strong>Potentiometers</strong>:</p>
+<ul>
+  <li>Used in servos for closed-loop angle feedback</li>
+</ul>
+
+<h2 id="6-api-design--version-control">6. API Design &amp; Version Control</h2>
+<p><strong>Abstraction Layer</strong>:</p>
+<ul>
+  <li>Create functions like <code class="language-text highlighter-rouge">motor_init()</code>, <code class="language-text highlighter-rouge">motor_set_speed()</code>, <code class="language-text highlighter-rouge">motor_set_angle()</code> to hide hardware details</li>
+</ul>
+
+<p><strong>Version Control</strong>:</p>
+<ul>
+  <li>Use Git (plus different branches) to track code changes</li>
+</ul>
+
+<hr />
+
+<h1 id="weekly-project-implementation">Weekly Project Implementation</h1>
+<h2 id="1-brushed-dc-motor-with-h-bridge-l298n">1. Brushed DC Motor with H-Bridge (L298N)</h2>
+<p>Hardware Setup:</p>
+<ul>
+  <li>Connect L298N <code class="language-text highlighter-rouge">IN1</code>, <code class="language-text highlighter-rouge">IN2</code> to STM32 GPIOs (e.g., PA0, PA1)</li>
+  <li>Connect <code class="language-text highlighter-rouge">EN</code> pin to PWM output (e.g., TIM2_CH1 on PA5)</li>
+  <li>Power motor from external supply (not STM32’s 5V)</li>
+</ul>
+
+<h3 id="stm32-code">STM32 Code</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// PWM Setup (TIM2, 1kHz frequency)</span>
+<span class="n">LL_TIM_InitTypeDef</span> <span class="n">tim_init</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">tim_init</span><span class="p">.</span><span class="n">Prescaler</span> <span class="o">=</span> <span class="mi">79</span><span class="p">;</span> <span class="c1">// 80 MHz / (79+1) = 1 MHz</span>
+<span class="n">tim_init</span><span class="p">.</span><span class="n">CounterMode</span> <span class="o">=</span> <span class="n">LL_TIM_COUNTERMODE_UP</span><span class="p">;</span>
+<span class="n">tim_init</span><span class="p">.</span><span class="n">Autoreload</span> <span class="o">=</span> <span class="mi">999</span><span class="p">;</span> <span class="c1">// 1 MHz / 1000 = 1 kHz</span>
+<span class="n">LL_TIM_Init</span><span class="p">(</span><span class="n">TIM2</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tim_init</span><span class="p">);</span>
+<span class="n">LL_TIM_EnableARRPreload</span><span class="p">(</span><span class="n">TIM2</span><span class="p">);</span>
+<span class="n">LL_TIM_OC_SetCompareCH1</span><span class="p">(</span><span class="n">TIM2</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span> <span class="c1">// 50% duty (CCR=500)</span>
+<span class="n">LL_TIM_EnableCounter</span><span class="p">(</span><span class="n">TIM2</span><span class="p">);</span>
+<span class="n">LL_TIM_EnableAllOutputs</span><span class="p">(</span><span class="n">TIM2</span><span class="p">);</span>
+
+<span class="c1">// GPIO Direction Control (IN1=HIGH, IN2=LOW)</span>
+<span class="n">LL_GPIO_SetOutputPin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_0</span><span class="p">);</span>
+<span class="n">LL_GPIO_ResetOutputPin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_1</span><span class="p">);</span>
+
+<span class="c1">// Adjust speed via PWM duty cycle</span>
+<span class="kt">void</span> <span class="nf">set_motor_speed</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">duty</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">LL_TIM_OC_SetCompareCH1</span><span class="p">(</span><span class="n">TIM2</span><span class="p">,</span> <span class="n">duty</span> <span class="o">*</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// duty 0-100 maps to 0-1000 ARR</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="2-servo-motor-calibration">2. Servo Motor Calibration</h2>
+<p>Hardware Setup: Servo signal pin to STM32 PWM output (e.g., TIM3_CH1 on PA6)</p>
+
+<h3 id="stm32-code-1">STM32 Code:</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Servo PWM (50Hz, 20ms period)</span>
+<span class="n">LL_TIM_InitTypeDef</span> <span class="n">tim_init</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">tim_init</span><span class="p">.</span><span class="n">Prescaler</span> <span class="o">=</span> <span class="mi">15999</span><span class="p">;</span> <span class="c1">// 80 MHz / (15999+1) = 5 KHz</span>
+<span class="n">tim_init</span><span class="p">.</span><span class="n">CounterMode</span> <span class="o">=</span> <span class="n">LL_TIM_COUNTERMODE_UP</span><span class="p">;</span>
+<span class="n">tim_init</span><span class="p">.</span><span class="n">Autoreload</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span> <span class="c1">// 5 KHz / 100 = 50 Hz (20ms)</span>
+<span class="n">LL_TIM_Init</span><span class="p">(</span><span class="n">TIM3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tim_init</span><span class="p">);</span>
+<span class="n">LL_TIM_OC_SetCompareCH1</span><span class="p">(</span><span class="n">TIM3</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// 1ms pulse (0°)</span>
+<span class="n">LL_TIM_EnableCounter</span><span class="p">(</span><span class="n">TIM3</span><span class="p">);</span>
+
+<span class="c1">// Set servo angle (0°–180°)</span>
+<span class="kt">void</span> <span class="nf">set_servo_angle</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">angle</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">uint32_t</span> <span class="n">ccr</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="p">(</span><span class="n">angle</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">180</span><span class="p">;</span> <span class="c1">// 5 (0°) to 25 (180°)</span>
+  <span class="n">LL_TIM_OC_SetCompareCH1</span><span class="p">(</span><span class="n">TIM3</span><span class="p">,</span> <span class="n">ccr</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="3-unified-motor-api">3. Unified Motor API</h2>
+
+<h3 id="example-header-file-motorh">Example Header File (<code class="language-text highlighter-rouge">motor.h</code>):</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span> <span class="n">MOTOR_DC</span><span class="p">,</span> <span class="n">MOTOR_SERVO</span> <span class="p">}</span> <span class="n">MotorType</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="n">MotorType</span> <span class="n">type</span><span class="p">;</span>
+  <span class="n">TIM_TypeDef</span> <span class="o">*</span><span class="n">timer</span><span class="p">;</span>
+  <span class="kt">uint32_t</span> <span class="n">channel</span><span class="p">;</span>
+  <span class="n">GPIO_TypeDef</span> <span class="o">*</span><span class="n">gpio1</span><span class="p">,</span> <span class="o">*</span><span class="n">gpio2</span><span class="p">;</span>
+  <span class="kt">uint32_t</span> <span class="n">pin1</span><span class="p">,</span> <span class="n">pin2</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Motor</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">motor_init</span><span class="p">(</span><span class="n">Motor</span> <span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">motor_set_speed</span><span class="p">(</span><span class="n">Motor</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">speed</span><span class="p">);</span> <span class="c1">// For DC</span>
+<span class="kt">void</span> <span class="nf">motor_set_angle</span><span class="p">(</span><span class="n">Motor</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">angle</span><span class="p">);</span> <span class="c1">// For Servo</span>
+</code></pre></div></div>
+
+<h3 id="example-usage">Example Usage</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Motor</span> <span class="n">dc_motor</span> <span class="o">=</span> <span class="p">{</span><span class="n">MOTOR_DC</span><span class="p">,</span> <span class="n">TIM2</span><span class="p">,</span> <span class="n">LL_TIM_CHANNEL_CH1</span><span class="p">,</span> <span class="n">GPIOA</span><span class="p">,</span> <span class="n">GPIOA</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_0</span><span class="p">,</span> <span class="n">LL_GPIO_PIN_1</span><span class="p">};</span>
+<span class="n">Motor</span> <span class="n">servo</span> <span class="o">=</span> <span class="p">{</span><span class="n">MOTOR_SERVO</span><span class="p">,</span> <span class="n">TIM3</span><span class="p">,</span> <span class="n">LL_TIM_CHANNEL_CH1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+
+<span class="n">motor_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dc_motor</span><span class="p">);</span>
+<span class="n">motor_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">servo</span><span class="p">);</span>
+
+<span class="n">motor_set_speed</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dc_motor</span><span class="p">,</span> <span class="mi">70</span><span class="p">);</span> <span class="c1">// 70% speed</span>
+<span class="n">motor_set_angle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">servo</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span> <span class="c1">// 90° position</span>
+</code></pre></div></div>
+
+<h3 id="critical-steps">Critical Steps</h3>
+<ol>
+  <li><strong>Timer Configuration</strong>:
+    <ul>
+      <li>Use CubeMX or manual LL code to set PWM frequency (1kHz for DC, 50Hz for servo)</li>
+      <li>Enable GPIO clocks and timer clocks (<code class="language-text highlighter-rouge">LL_AHB1_GRP1_EnableClock</code> / <code class="language-text highlighter-rouge">LL_APB1_GRP1_EnableClock</code>)</li>
+    </ul>
+  </li>
+  <li><strong>H-Bridge Wiring</strong>:
+    <ul>
+      <li>Double-check L298N connections (motor power ≠ STM32 power)</li>
+    </ul>
+  </li>
+  <li><strong>Testing</strong>:
+    <ul>
+      <li>Test PWM with an LED before connecting motors</li>
+      <li>Use a logic analyzer or oscilloscope to verify pulse widths</li>
+    </ul>
+  </li>
+</ol>
+
+<p>DRAFT</p>
+
+<p>https://www.engr.siu.edu/staff/spezia/Web438A/Lecture%20Notes/lesson14et438a.pdf</p>
+
+<p>https://ctms.engin.umich.edu/CTMS/index.php?example=MotorSpeed&amp;section=SystemModeling</p>
+
+<p>https://www.reddit.com/r/ControlTheory/comments/1agwhvi/finding_transfer_function_for_dc_motor/</p>
 
 <ul>
   <li>Driver ICs (A4988, TMC2209)</li>
