@@ -2,6 +2,7 @@
 layout: post
 title: nmat
 card_title: nmat - Numerical Methods
+excerpt: "Quick guide on numerical methods and their implementation."
 url: /posts/nmat
 math: true
 tech_stack: [MATLAB]

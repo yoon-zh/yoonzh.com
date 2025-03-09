@@ -2,7 +2,7 @@
 layout: post
 title: stm-week3
 card_title: "STM Week 3: HAL/LL Libraries"
-excerpt: "STM has "
+excerpt: "STM has two main drivers for their boards: HAL and LL. Check out what they are and how to use them in a beginner level."
 url: /posts/stm-week3
 math: true
 tech_stack: [C/C++]
@@ -184,8 +184,9 @@ while (1) {
 ## Resources
 
 1. [STM32F4 LL Driver Documentation](https://www.st.com/resource/en/user_manual/dm00105879.pdf) [(STM32F0)](https://www.st.com/content/ccc/resource/technical/document/user_manual/2f/77/25/0f/5c/38/48/80/DM00122015.pdf/files/DM00122015.pdf/jcr:content/translations/en.DM00122015.pdf)
-2. [About HAL performance](https://stackoverflow.com/questions/49596398/about-stm32-hal-quality-and-performance)
-3. [To HAL or not to HAL](https://www.reddit.com/r/embedded/comments/sg7vey/to_hal_or_not_to_hal_the_definitive_answer/)
+2. [HAL vs LL](https://community.st.com/t5/stm32-mcus-products/hal-vs-ll/td-p/432434)
+3. [About HAL performance](https://stackoverflow.com/questions/49596398/about-stm32-hal-quality-and-performance)
+4. [To HAL or not to HAL](https://www.reddit.com/r/embedded/comments/sg7vey/to_hal_or_not_to_hal_the_definitive_answer/)
 
 
 ## Answers to Questions
