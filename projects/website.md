@@ -18,6 +18,12 @@ A new project built from scratch to showcase my work and connect with people in 
 
 Built with Jekyll and hosted on GitHub Pages.
 
+### 1. Get a domain
+
+Choose a name for the website, and see if it is available. You can buy domain names [here](https://www.namecheap.com/).
+
+### 2. 
+
 ## Local Setup
 ```bash
 bundle install

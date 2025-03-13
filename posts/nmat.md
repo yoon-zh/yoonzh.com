@@ -51,6 +51,19 @@ Tools like MATLAB already have plenty of these techniques implemented, like the 
 
 Note: I won't go into the details. If you are *really* into numerical methods, I recommend [this book](https://archive.org/details/numerical-methods-for-engineers-7th-edit).
 
+### Error and precision
+
+Using numerical methods usually implies some sacrifice in precision. However, we should be clear about how much we're willing to give in, considering more precision = more iterations. Something we can do is have the program calculate how much the values are changing in each iteration, and have it stop when a new value changes less than 5%, or any number you'd like.
+
+Let's define the approximate error like this:
+
+$$e_{i+1} = \left| \frac{x_{i+1}-x_i}{x_{i+1}} \right|$$
+
+Where $$x_n$$ is the values calculated by our method.  
+Multiply the above equation by 100 if you like percentages.
+
+I'll be using the above for the methods developed below.
+
 # Roots of Equations
 
 *Adapted from pg 117[^3]*
@@ -64,7 +77,7 @@ But let's step it up: $$f(x) = e^{-x}-x$$. Of course, not all cases would behave
 
 Imagine we have $$f(x) = e^{-x}-x$$. And we wanna know when $$f(x)=0$$. You can try it by hand (spoiler alert: it's hard, you won't get a solution).
 
-A simple simple way to know is to simply print its graph.
+Or, a simple simple way to know is to simply print its graph.
 
 ![image](/images/posts/nmat-roots1.png)
 
@@ -72,11 +85,11 @@ A simple simple way to know is to simply print its graph.
 
 With the graph, we can see the root is around $$x=0.5$$. Close enough, but we'd like to have a closer approximation.
 
-Something we can do is exploit a property of roots:
+Something we can do is use some theory to help us make an algorithm:
 
 > [Intermediate Value Theorem](https://mathworld.wolfram.com/IntermediateValueTheorem.html): If a continuous function $$f(x)$$ takes on values $$f(x_1), f(x_2)$$ at two points $$x_1, x_2$$, and if $$f(x_1)$$ and $$f(x_2)$$ have opposite signs, then there must be at least one root between $$x_1$$ and $$x_2$$.
 
-In English, we can pick two numbers $$x_1, x_2$$ and see the sign of $$f(x)$$. If $$f(x_1)$$ and $$f(x_2)$$ have different sign (one is positive and one is negative), we know for sure the root is somewhere between $$x_1$$ and $$x_2$$.
+In English, we can pick two numbers $$x_1, x_2$$ and see the sign of $$f(x)$$. If $$f(x_1)$$ and $$f(x_2)$$ have different sign (one is positive and one is negative), we know for sure there is a root somewhere between $$x_1$$ and $$x_2$$.
 
 For example, in the graph we see that $$f(0)$$ is positive, and $$f(1)$$ is negative. And we know it is continuous (does not jump randomly between 0 and 1). Therefore, we know there is *at least* one root between 0 and 1.
 
@@ -101,9 +114,6 @@ Let $$m = f(x_{guess}) \times f(x_{lower})$$
 - If $$m>0$$, the root is in the interval $$[x_{guess}, x_{upper}]$$.  
   Set $$x_{lower} = x_{guess}$$ and go back to step 4.
 - If $$m=0$$, the root is in $$x_{guess}$$. We have our solution.
-
-### Error calculation
-
 
 
 ### 2. False-Position

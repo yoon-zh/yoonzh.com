@@ -16,21 +16,21 @@ $$p_o={n_i^2}$$
 
 $$x_c=\frac{\int_{0}^{L} x\omega(x)dx}{\int_{0}^{L}\omega(x)dx}$$
 
----
+***
 
-$$B=\frac{\mu_0}{2\pi}\frac{I}{r}$$
+$$B=\frac{\mu_0 I}{2\pi r}$$
 
 Where $$\mu_o = 4\pi\times 10^{-7} H/m$$, 真空磁导率.
 
 integral of magnetic field through length = current
 
-https://www.solomotorcontrollers.com/blog/close-loop-vs-open-loop/?srsltid=AfmBOoqnCoW5dhqcaynoSWPie23FkvRDEwSS-ev16zzYOOwnJoaZTfaP
+<https://www.solomotorcontrollers.com/blog/close-loop-vs-open-loop/?srsltid=AfmBOoqnCoW5dhqcaynoSWPie23FkvRDEwSS-ev16zzYOOwnJoaZTfaP>
 
 
 - Data in `yaml`, `xml`, `json`
 
 
-
+$$P(A|C) = \frac{P(A \cap C)}{P(C)}$$
 
 
 
