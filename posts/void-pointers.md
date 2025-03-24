@@ -9,52 +9,65 @@ tech_stack: [C/C++]
 
 date: 2025-02-16
 
-still on dev
+# Void Pointers: The Swiss Army Knife of Pointers
 
-`void* p;`
+Void pointers are like the mysterious wildcard in the pointer world. Used when you need a pointer that can point to **any data type**, but the trade-off is that they’re type-agnostic, which means you can't directly dereference them without knowing what type they point to.
 
-??
+handy when you want to write flexible functions that can handle multiple types without being bogged down by specific data types. But as with anything powerful, they come with their fair share of complexity and potential bugs if misused.
 
+To use a void pointer properly, we must cast it to the appropriate type before dereferencing. otherwise, the compiler will complain.
 
+### Example
 
 ```c
 #include <stdio.h>
-#include <stdlib.h>
 
-void satan_swap(void***** d, void***** e) {
-    // your code here...
+void print_value(void *ptr, int type) {
+  switch(type) {
+    case 1:
+      printf("integer: %d\n", *(int *)ptr);
+      break;
+    case 2:
+      printf("float: %.2f\n", *(float *)ptr);
+      break;
+    case 3:
+      printf("double: %.4f\n", *(double *)ptr);
+      break;
+    default:
+      puts("unknown type.")
+      break;
+  }
 }
 
 int main() {
-    int value = 888;
-    int *a = &value;
+    int i = 5;
+    float f = 3.14;
+    double d = 2.718;
 
-    void **b = (void**)&a;
-    void ***c = (void***)&b;
+    void *ptr;
 
-    // Allocate new_value via c (triple void pointer)
-    int *new_value = malloc(sizeof(int));
-    *new_value = 999;
-    *(int**)*c = new_value;
+    // Pass the void pointer to the function with type 1 (int)
+    ptr = &i;
+    print_value(ptr, 1);
 
-    int evil = 69;
-    int *evil1 = &evil;
-    void **evil2 = (void**)&evil1;
-    void ***evil3 = (void***)&evil2;
-    void ****d = (void****)&evil3;
+    // Pass the void pointer to the function with type 2 (float)
+    ptr = &f;
+    print_value(ptr, 2);
 
-    satan_swap((void*****)&c, (void*****)&d);
+    // Pass the void pointer to the function with type 3 (double)
+    ptr = &d;
+    print_value(ptr, 3);
 
-    *(*(*(int***)*d)) = 420;
-
-    printf("value: %d\n", value);
-    printf("new_value: %d\n", *new_value);
-    printf("evil: %d\n", evil);
-
-    // printf("\nAddresses:\na: %p\nb: %p\nc: %p\nd: %p\n", 
-    //        (void*)a, (void*)b, (void*)c, (void*)d);
-
-    free(new_value);
     return 0;
 }
 ```
+
+Here we have a `void *ptr` that can hold the address of any data type, whether it’s an `int`, `float`, or `double`. Then, `print_value()` checks the type argument passed to it and casts the `void *` pointer to the correct type before dereferencing it to print the value.
+
+### The catch
+
+While this code may look fine, there’s a potential issue lurking in the casting process. What if we passed the wrong type to the function? For example, what if we passed a `float` but told the function it was an `int`? This would lead to undefined behavior, potentially causing crashes or garbage values, since dereferencing the wrong type results in accessing incorrect memory.
+
+In the above example, try mixing up the `type` argument. What happens when you pass the wrong type to the `print_value` function? Say, send a float and tell `print_value()` it is an int, what does it print?
+
+In short, use void pointers if you'll be using different data types and you 100% know what you're doing. Add extensive checkups if so. Otherwise, stick to normal pointers.
