@@ -37,8 +37,9 @@ const char* supermarket1[] = {
     "banana", "apple", "cereal", "carrot", "apple"
 }; // items are all over the place, not organized
 ```
+
 for this case, you'll have to walk through the entire supermarket *linearly*, comparing every item on every aisle to see if it's an apple or whatever you're looking for.
-this is called a *nested `for` loop*.
+this is called a **nested `for` loop**.
 
 ```c
 void buy_groceries() {
@@ -58,12 +59,13 @@ void buy_groceries() {
     }
 }
 ```
-**good part:** 
-**problem:** wastes time. it goes through the entire list of groceries, comparing everything to everything. $$O(n^2)$$. you're just wandering around the store like a zombie, checking every single product for apples.
+**good part:** we'll eventually find our apples, one step at a time. or we'll be sure if there's no apples, since we would've seen it all.
 
----
+**problem:** wastes time. it goes through the entire list of groceries, comparing everything to everything. $$O(n^2)$$. we're just wandering around the store like a zombie, checking every single product for apples.
 
-### 2. Binary Search - When Things Are Sorted (Could Actually Be Useful)
+***
+
+### 2. Binary Search - When Things Are Sorted
 
 now you go to a supermarket where items are sorted in some way (lets say alphabetically). things are neat and tidy, you're not wandering aimlessly. now you can use **binary search**, because the store’s aisles are clearly organized, and you can just halve your search space each time.
 
@@ -110,13 +112,17 @@ void buy_groceries() {
 }
 ```
 
-**problem:** only works if the list is sorted. if your list of groceries is a mess, then tough luck. sorting is **O(n log n)**, and search is **O(log n)**, but if your data is unsorted... back to square one.
+**good part:** much more efficient. $$O(log n)$$. saves time. if something's missing, you'll know without walking through the entire place.
 
----
+**problem:** only works if the items are sorted. if the store or your list of groceries is a mess, then tough luck.
 
-### 3. Hash Map - Supermarket Aisles With Tags (Fast, but Some Overhead)
+***
 
-okay, now we're getting somewhere. we have a **hash map**,  a supermarket with aisles labeled clearly: if you want apples, look up to the big sign above that reads "APPLES", walk there, and boom you've got your apples.
+### 3. Hash Map - Supermarket Aisles With Tags
+
+okay, now we're getting somewhere. we have a **hash map**, a supermarket with aisles labeled clearly: if you want apples, look up to the big sign above that reads "apples", walk there, and boom you've got your apples.
+
+note, some overhead ahead (pun intended):
 
 ```c
 #include <stdio.h>
@@ -165,9 +171,15 @@ int search(char* key) {
 
 ```
 
-**problem:** yeah, it’s fast **O(1)**, but depending on your hash function and data size, you might end up with collisions. which means instead of zipping to the aisle for apples, you’ve got to do a little extra checking.
+**good part:** crazy efficient, $$O(1)$$. imagine a google search. you type "apples", you get apples. you type "bread", you get bread.
 
----
+**problem:** needs some preparation and a bit of brain. in short, you need a *hash function*. also, depending on your hash function and data size, you might end up with collisions. which means instead of zipping to the aisle for apples, you’ve got to do a little extra checking.
+
+### now, how does this work?
+
+the key is using a hash function. this usually means parsing an input into a number to be used as an index of an array.
+
+***
 
 ### 4. Trie ???
 

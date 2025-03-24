@@ -5,9 +5,8 @@ card_title: Void Pointers
 url: /posts/void-pointers
 excerpt: 
 tech_stack: [C/C++]
----
-
 date: 2025-02-16
+---
 
 # Void Pointers: The Swiss Army Knife of Pointers
 
@@ -40,9 +39,9 @@ void print_value(void *ptr, int type) {
 }
 
 int main() {
-    int i = 5;
+    int i = 7;
     float f = 3.14;
-    double d = 2.718;
+    double d = 2.71828;
 
     void *ptr;
 
@@ -69,5 +68,7 @@ Here we have a `void *ptr` that can hold the address of any data type, whether i
 While this code may look fine, there’s a potential issue lurking in the casting process. What if we passed the wrong type to the function? For example, what if we passed a `float` but told the function it was an `int`? This would lead to undefined behavior, potentially causing crashes or garbage values, since dereferencing the wrong type results in accessing incorrect memory.
 
 In the above example, try mixing up the `type` argument. What happens when you pass the wrong type to the `print_value` function? Say, send a float and tell `print_value()` it is an int, what does it print?
+
+***
 
 In short, use void pointers if you'll be using different data types and you 100% know what you're doing. Add extensive checkups if so. Otherwise, stick to normal pointers.

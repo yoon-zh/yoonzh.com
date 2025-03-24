@@ -3,7 +3,7 @@ layout: post
 title: pointers-double-triple
 card_title: Double and Triple pointers in C
 url: /posts/pointers-double-triple
-excerpt: Pointers. Some love them, most kinda hate them. What happens when we throw in double and triple pointers?
+excerpt: Connecting pointers and functions in harmony, why we might use them, how to use them?
 tech_stack: [C/C++]
 date: 2025-02-16
 ---
@@ -20,10 +20,11 @@ let’s start simple: a regular pointer in C is a variable that stores the memor
 
 so we've got a pattern here. the more stars `*`, the deeper down the rabbit hole we go. it's like an inception of pointers, and we all know how that movie ended up: a whole bunch of confusion. but can we actually use this in a practical way?
 
-
 ## Why do we care?
 
 sometimes we need to dynamically allocate memory for complex data structures, like multi-dimensional arrays or structures that involve multiple levels of indirection. pointers to pointers can be thought of as adding dimensions: `int **p;` → 2D array, `int ***p;` → 3D array, and so on.
+
+for example, lets say we have a string, which is an array of chars. that is a 1D array. now, what about an array of strings? this is an array of arrays (of chars). namely, a 2D array, so we need a double pointer. this also applies to structs.
 
 also, passing pointers to pointers around functions lets us modify values at these deeper levels without making copies of the data. very useful for managing memory efficiently, especially when handling large datasets or manipulating multi-level structures.
 
@@ -31,7 +32,7 @@ also, passing pointers to pointers around functions lets us modify values at the
 
 Here’s where the fun begins. passing pointers to functions means we can modify the data they're pointing to outside the function. basically we can "expand the scope" of a variable giving its pointer to another function and modifying it there.
 
----
+***
 
 ## The Right Way
 
@@ -109,7 +110,7 @@ ill confess it. when working on [chemcount](/projects/chemcount) i tried it. mad
 
 no, double `&&` does not double-reference. `&&` is for logical `AND`. *and if it wasn't, `&&` would return the address of the address, which doesn't make sense...*
 
----
+***
 
 ## challenge
 
@@ -139,7 +140,7 @@ int main() {
 
 **extra:** if we print `a`, `p`, `pp` and `ppp`, which one is `NULL`?
 
----
+***
 
 ## Credits
 
