@@ -254,7 +254,6 @@
   <span class="c1">% Consider a as dependant of t</span>
   <span class="n">ode_fun</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="n">ode_pendulum</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
   <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="nb">ode45</span><span class="p">(</span><span class="n">ode_fun</span><span class="p">,</span> <span class="n">trange</span><span class="p">,</span> <span class="n">conds</span><span class="p">);</span>
-  <span class="nb">disp</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
   <span class="n">print_subplot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">conds</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
 <span class="k">end</span>
 
