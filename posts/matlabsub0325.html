@@ -347,6 +347,14 @@
 
 <hr />
 
+<h1 id="problem-5">Problem 5</h1>
+
+<p>filename: dbg53.m</p>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">odefun</span> <span class="o">=</span> <span class="o">@</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">[</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="mi">20</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="mi">25</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)];</span>
+<span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="nb">ode45</span><span class="p">(</span><span class="n">odefun</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">(:,</span><span class="mi">1</span><span class="p">));</span> <span class="c1">% Plot u(t)</span>
+</code></pre></div></div>
+
 </div>
 </article>
   </main>
