@@ -276,11 +276,3 @@ grid on;
 ```
 
 ***
-
-# Problem 5
-
-filename: problem5.m
-
-```matlab
-
-```
