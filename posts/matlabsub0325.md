@@ -4,12 +4,14 @@ title: matlabsub0325
 card_title: "MATLAB Submission Scripts"
 math: true
 url: /posts/matlabsub0325
-date: 2025-03-13
+date: 2025-04-02
 ---
 
 Any inquiries or concerns, please contact me via email: [yoon_zh@outlook.com](mailto:yoon_zh@outlook.com)
 
 To clarify, yes - this is my code.
+
+Why copy from here instead of the PDF? The `.tex` format messes up some of the code (for example, changing the `''` into a different character) and copying the code is difficult. Here, you can simply click the `Copy` button in the top left corner of the codeblock and paste in your MATLAB to run locally.
 
 ***
 
@@ -62,6 +64,19 @@ clc
 clearvars
 close all
 
+%% Call functions below
+% Problem 2-1
+ans2_1 = problem_2_1();
+printans(ans2_1);
+
+% Problem 2-2
+ans2_2 = problem_2_2();
+printans(ans2_2);
+
+% Problem 2-3
+ans2_3 = simple_resistor_circuit();
+printans(ans2_3);
+
 %% Initialize the matrix AA
 function AA = initvar()
   AA = [1,  5, -3,  8;
@@ -71,24 +86,24 @@ function AA = initvar()
 end
 
 %% Problem 2-1
-function ans2 = problem_2()
+function ans2_1 = problem_2_1()
   AA = initvar();
-  ans2.v = AA(3,:)';
-  ans2.w = AA(:,2);
-  ans2.BB = AA(1:3, 2:4);
-  ans2.CC = AA(2:3, 1:2);
-  ans2.DD = reshape(ans2.CC', 1, []); % transpose CC for column-wise op
+  ans2_1.v = AA(3,:)';
+  ans2_1.w = AA(:,2);
+  ans2_1.BB = AA(1:3, 2:4);
+  ans2_1.CC = AA(2:3, 1:2);
+  ans2_1.DD = reshape(ans2_1.CC', 1, []); % transpose CC for column-wise op
 end
 
 %% Problem 2-2
-function ans2 = problem_2_2()
-  ans2.array1 = zeros(4,5) + 30;
-  ans2.rowvector = linspace(1,10,10)';
-  ans2.array2 = inneficient_for_loop(4,5);
+function ans2_2 = problem_2_2()
+  ans2_2.array1 = zeros(4,5) + 30;
+  ans2_2.rowvector = linspace(1,10,10);
+  ans2_2.array2 = inneficient_for_loops(4,5);
 end
 
 % Initialize a 4x4 array with 20 as all elements
-function array2 = inneficient_for_loop(row,col)
+function array2 = inneficient_for_loops(row,col)
   array2 = zeros(row,col);
   for i = 1:row
     for j = 1:col
@@ -99,8 +114,8 @@ end
 
 %% Problem 2-3
 function ans2_3 = simple_resistor_circuit()
-  %% The lazy way (if the equation is really difficult)
-  %% Uncomment to try
+  % % The lazy way (if the equation is really difficult)
+  % % Uncomment to try
   % syms i1 i2 i3
   % eqns = [12 + 10*i1 + 2*(i1-i2) + 5*(i1 - i3) + 7*i1 == 0;...
   %              5*i2 + 3*(i2-i3) + 2*(i2-i1) == 0;...
@@ -131,19 +146,6 @@ function printans(ans_struct)
     disp('================================')
   end
 end
-
-%% Call functions above
-% Problem 2-1
-ans2_1 = problem_2();
-printans(ans2_1);
-
-% Problem 2-2
-ans2_2 = problem_2_2();
-printans(ans2_2);
-
-% Problem 2-3
-ans2_3 = simple_resistor_circuit();
-printans(ans2_3);
 ```
 
 ***
@@ -153,7 +155,70 @@ printans(ans2_3);
 filename: problem3.m
 
 ```matlab
+clc
+clearvars
+close all
 
+%% Initialize values
+
+% Initial values of a
+init_a = {3, 5, @(t) 0.5*t};
+
+% Initial values θ(0), θ'(0)
+init_conds = {
+    [0.5; 0]
+    [3;   0]
+    [3;   0]
+}; % θ(0) θ'(0)
+
+% Range of t
+trange = [0 10];
+
+%% Solve ODE, print figure
+figure('Name','Pendulum');
+for i = 1:3
+  a = init_a{i};
+  conds = init_conds{i};
+
+  % Consider a as dependant of t
+  ode_fun = @(t,y) ode_pendulum(t,y,a);
+  [t, y] = ode45(ode_fun, trange, conds);
+  disp(size(t))
+  print_subplot(t, y, i, a, conds(1));
+end
+
+
+%% Define ODE
+function dydt = ode_pendulum(t, y, a_val)
+  % Define constants
+  g = 9.81;
+  L = 2;
+
+  % Parse a
+  if isa(a_val, 'function_handle') % If a is a function of t
+    a = a_val(t); % Evaluate a at "t"
+  else % If a is constant, just copy the number
+    a = a_val;
+  end
+
+  % Let y(1) = θ(t),  y(2) = θ'(t)
+  dydt = [
+    y(2)
+    ((a - g) / L) * sin(y(1))
+  ];
+end
+
+%% Print graphs
+function print_subplot(t, y, i, a, theta_0)
+  if isa(a, 'function_handle')
+    a = func2str(a);
+  end
+  subplot(3,1,i)
+  plot(t, y(:,1), '-')
+  title(sprintf('a = %s, \\theta(0) = %g', string(a), theta_0))
+  xlabel('Time (s)')
+  ylabel('\theta(t), rad')
+end
 ```
 
 ***
@@ -163,7 +228,51 @@ filename: problem3.m
 filename: problem4.m
 
 ```matlab
+clc
+clearvars
+close all
 
+% Define time vectors for t < 0 and t >= 0
+t_neg = [-20*1e-6, 0];          % From -20 to 0 μs
+t_pos = linspace(0, 1e-4, 500); % From 0 to 100 μs
+
+% Convert time to microseconds (for printing plots)
+t_neg_micro = t_neg * 1e6;
+t_pos_micro = t_pos * 1e6;
+
+% Compute i_L
+i_L_neg = 0.36 * ones(size(t_neg));
+i_L_pos = 0.36 * exp(-50000 * t_pos);
+
+% Compute i_1
+i_1_neg = 0.2 * ones(size(t_neg));
+i_1_pos = -0.24 * exp(-50000 * t_pos);
+
+%% Plot i_L and i_1 in subplots
+figure;
+
+% Subplot for i_L
+subplot(2, 1, 1);
+hold on;
+plot(t_neg_micro, i_L_neg, 'b', 'LineWidth', 1.5);
+plot(t_pos_micro, i_L_pos, 'b', 'LineWidth', 1.5);
+hold off;
+title('Inductor Current i_L(t)');
+xlabel('Time (μs)');
+ylabel('Current (A)');
+grid on;
+
+% Subplot for i_1
+subplot(2, 1, 2);
+hold on;
+plot(t_neg_micro, i_1_neg, 'r', 'LineWidth', 1.5);
+plot(t_neg_micro(end), i_1_neg(end), 'ro', 'LineWidth', 1.5) % The current jumps
+plot(t_pos_micro, i_1_pos, 'r', 'LineWidth', 1.5);
+hold off;
+title('Current i_1(t)');
+xlabel('Time (μs)');
+ylabel('Current (A)');
+grid on;
 ```
 
 ***
