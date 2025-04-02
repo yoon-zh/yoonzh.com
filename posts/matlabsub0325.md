@@ -183,7 +183,6 @@ for i = 1:3
   % Consider a as dependant of t
   ode_fun = @(t,y) ode_pendulum(t,y,a);
   [t, y] = ode45(ode_fun, trange, conds);
-  disp(size(t))
   print_subplot(t, y, i, a, conds(1));
 end
 
