@@ -74,58 +74,77 @@
   
   <div class="article-meta">
     
+      <time datetime="2025-02-16T00:00:00+00:00">
+        📅 2025/02/16
+      </time>
+    
   </div>
 </header>
 
 <div class="article-content">
-  <p>date: 2025-02-16</p>
+  <h1 id="void-pointers-the-swiss-army-knife-of-pointers">Void Pointers: The Swiss Army Knife of Pointers</h1>
 
-<p>still on dev</p>
+<p>Void pointers are like the mysterious wildcard in the pointer world. Used when you need a pointer that can point to <strong>any data type</strong>, but the trade-off is that they’re type-agnostic, which means you can’t directly dereference them without knowing what type they point to.</p>
 
-<p><code class="language-text highlighter-rouge">void* p;</code></p>
+<p>handy when you want to write flexible functions that can handle multiple types without being bogged down by specific data types. But as with anything powerful, they come with their fair share of complexity and potential bugs if misused.</p>
 
-<p>??</p>
+<p>To use a void pointer properly, we must cast it to the appropriate type before dereferencing. otherwise, the compiler will complain.</p>
+
+<h3 id="example">Example</h3>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span>
-<span class="kt">void</span> <span class="nf">satan_swap</span><span class="p">(</span><span class="kt">void</span><span class="o">*****</span> <span class="n">d</span><span class="p">,</span> <span class="kt">void</span><span class="o">*****</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// your code here...</span>
+<span class="kt">void</span> <span class="nf">print_value</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span><span class="p">(</span><span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"integer: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"float: %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">float</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"double: %.4f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">double</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="nl">default:</span>
+      <span class="n">puts</span><span class="p">(</span><span class="s">"unknown type."</span><span class="p">)</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">888</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">3</span><span class="p">.</span><span class="mi">14</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">71828</span><span class="p">;</span>
 
-    <span class="kt">void</span> <span class="o">**</span><span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
-    <span class="kt">void</span> <span class="o">***</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">***</span><span class="p">)</span><span class="o">&amp;</span><span class="n">b</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
 
-    <span class="c1">// Allocate new_value via c (triple void pointer)</span>
-    <span class="kt">int</span> <span class="o">*</span><span class="n">new_value</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
-    <span class="o">*</span><span class="n">new_value</span> <span class="o">=</span> <span class="mi">999</span><span class="p">;</span>
-    <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">**</span><span class="p">)</span><span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">new_value</span><span class="p">;</span>
+    <span class="c1">// Pass the void pointer to the function with type 1 (int)</span>
+    <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">;</span>
+    <span class="n">print_value</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
-    <span class="kt">int</span> <span class="n">evil</span> <span class="o">=</span> <span class="mi">69</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="o">*</span><span class="n">evil1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">evil</span><span class="p">;</span>
-    <span class="kt">void</span> <span class="o">**</span><span class="n">evil2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">evil1</span><span class="p">;</span>
-    <span class="kt">void</span> <span class="o">***</span><span class="n">evil3</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">***</span><span class="p">)</span><span class="o">&amp;</span><span class="n">evil2</span><span class="p">;</span>
-    <span class="kt">void</span> <span class="o">****</span><span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="o">****</span><span class="p">)</span><span class="o">&amp;</span><span class="n">evil3</span><span class="p">;</span>
+    <span class="c1">// Pass the void pointer to the function with type 2 (float)</span>
+    <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">f</span><span class="p">;</span>
+    <span class="n">print_value</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 
-    <span class="n">satan_swap</span><span class="p">((</span><span class="kt">void</span><span class="o">*****</span><span class="p">)</span><span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*****</span><span class="p">)</span><span class="o">&amp;</span><span class="n">d</span><span class="p">);</span>
+    <span class="c1">// Pass the void pointer to the function with type 3 (double)</span>
+    <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">;</span>
+    <span class="n">print_value</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 
-    <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">***</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">))</span> <span class="o">=</span> <span class="mi">420</span><span class="p">;</span>
-
-    <span class="n">printf</span><span class="p">(</span><span class="s">"value: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"new_value: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">new_value</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"evil: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">evil</span><span class="p">);</span>
-
-    <span class="c1">// printf("\nAddresses:\na: %p\nb: %p\nc: %p\nd: %p\n", </span>
-    <span class="c1">//        (void*)a, (void*)b, (void*)c, (void*)d);</span>
-
-    <span class="n">free</span><span class="p">(</span><span class="n">new_value</span><span class="p">);</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<p>Here we have a <code class="language-text highlighter-rouge">void *ptr</code> that can hold the address of any data type, whether it’s an <code class="language-text highlighter-rouge">int</code>, <code class="language-text highlighter-rouge">float</code>, or <code class="language-text highlighter-rouge">double</code>. Then, <code class="language-text highlighter-rouge">print_value()</code> checks the type argument passed to it and casts the <code class="language-text highlighter-rouge">void *</code> pointer to the correct type before dereferencing it to print the value.</p>
+
+<h3 id="the-catch">The catch</h3>
+
+<p>While this code may look fine, there’s a potential issue lurking in the casting process. What if we passed the wrong type to the function? For example, what if we passed a <code class="language-text highlighter-rouge">float</code> but told the function it was an <code class="language-text highlighter-rouge">int</code>? This would lead to undefined behavior, potentially causing crashes or garbage values, since dereferencing the wrong type results in accessing incorrect memory.</p>
+
+<p>In the above example, try mixing up the <code class="language-text highlighter-rouge">type</code> argument. What happens when you pass the wrong type to the <code class="language-text highlighter-rouge">print_value</code> function? Say, send a float and tell <code class="language-text highlighter-rouge">print_value()</code> it is an int, what does it print?</p>
+
+<hr />
+
+<p>In short, use void pointers if you’ll be using different data types and you 100% know what you’re doing. Add extensive checkups if so. Otherwise, stick to normal pointers.</p>
 
 </div>
 </article>

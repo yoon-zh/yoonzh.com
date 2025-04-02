@@ -110,8 +110,9 @@
     <span class="s">"banana"</span><span class="p">,</span> <span class="s">"apple"</span><span class="p">,</span> <span class="s">"cereal"</span><span class="p">,</span> <span class="s">"carrot"</span><span class="p">,</span> <span class="s">"apple"</span>
 <span class="p">};</span> <span class="c1">// items are all over the place, not organized</span>
 </code></pre></div></div>
+
 <p>for this case, you’ll have to walk through the entire supermarket <em>linearly</em>, comparing every item on every aisle to see if it’s an apple or whatever you’re looking for.
-this is called a <em>nested <code class="language-text highlighter-rouge">for</code> loop</em>.</p>
+this is called a <strong>nested <code class="language-text highlighter-rouge">for</code> loop</strong>.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">buy_groceries</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">supermarket_items</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">supermarket1</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">supermarket1</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
@@ -130,12 +131,13 @@ this is called a <em>nested <code class="language-text highlighter-rouge">for</c
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
-<p><strong>good part:</strong> 
-<strong>problem:</strong> wastes time. it goes through the entire list of groceries, comparing everything to everything. \(O(n^2)\). you’re just wandering around the store like a zombie, checking every single product for apples.</p>
+<p><strong>good part:</strong> we’ll eventually find our apples, one step at a time. or we’ll be sure if there’s no apples, since we would’ve seen it all.</p>
+
+<p><strong>problem:</strong> wastes time. it goes through the entire list of groceries, comparing everything to everything. \(O(n^2)\). we’re just wandering around the store like a zombie, checking every single product for apples.</p>
 
 <hr />
 
-<h3 id="2-binary-search---when-things-are-sorted-could-actually-be-useful">2. Binary Search - When Things Are Sorted (Could Actually Be Useful)</h3>
+<h3 id="2-binary-search---when-things-are-sorted">2. Binary Search - When Things Are Sorted</h3>
 
 <p>now you go to a supermarket where items are sorted in some way (lets say alphabetically). things are neat and tidy, you’re not wandering aimlessly. now you can use <strong>binary search</strong>, because the store’s aisles are clearly organized, and you can just halve your search space each time.</p>
 
@@ -181,13 +183,17 @@ this is called a <em>nested <code class="language-text highlighter-rouge">for</c
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><strong>problem:</strong> only works if the list is sorted. if your list of groceries is a mess, then tough luck. sorting is <strong>O(n log n)</strong>, and search is <strong>O(log n)</strong>, but if your data is unsorted… back to square one.</p>
+<p><strong>good part:</strong> much more efficient. \(O(log n)\). saves time. if something’s missing, you’ll know without walking through the entire place.</p>
+
+<p><strong>problem:</strong> only works if the items are sorted. if the store or your list of groceries is a mess, then tough luck.</p>
 
 <hr />
 
-<h3 id="3-hash-map---supermarket-aisles-with-tags-fast-but-some-overhead">3. Hash Map - Supermarket Aisles With Tags (Fast, but Some Overhead)</h3>
+<h3 id="3-hash-map---supermarket-aisles-with-tags">3. Hash Map - Supermarket Aisles With Tags</h3>
 
-<p>okay, now we’re getting somewhere. we have a <strong>hash map</strong>,  a supermarket with aisles labeled clearly: if you want apples, look up to the big sign above that reads “APPLES”, walk there, and boom you’ve got your apples.</p>
+<p>okay, now we’re getting somewhere. we have a <strong>hash map</strong>, a supermarket with aisles labeled clearly: if you want apples, look up to the big sign above that reads “apples”, walk there, and boom you’ve got your apples.</p>
+
+<p>note, some overhead ahead (pun intended):</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
@@ -235,7 +241,13 @@ this is called a <em>nested <code class="language-text highlighter-rouge">for</c
 
 </code></pre></div></div>
 
-<p><strong>problem:</strong> yeah, it’s fast <strong>O(1)</strong>, but depending on your hash function and data size, you might end up with collisions. which means instead of zipping to the aisle for apples, you’ve got to do a little extra checking.</p>
+<p><strong>good part:</strong> crazy efficient, \(O(1)\). imagine a google search. you type “apples”, you get apples. you type “bread”, you get bread.</p>
+
+<p><strong>problem:</strong> needs some preparation and a bit of brain. in short, you need a <em>hash function</em>. also, depending on your hash function and data size, you might end up with collisions. which means instead of zipping to the aisle for apples, you’ve got to do a little extra checking.</p>
+
+<h3 id="now-how-does-this-work">now, how does this work?</h3>
+
+<p>the key is using a hash function. this usually means parsing an input into a number to be used as an index of an array.</p>
 
 <hr />
 

@@ -100,6 +100,8 @@
 
 <p>sometimes we need to dynamically allocate memory for complex data structures, like multi-dimensional arrays or structures that involve multiple levels of indirection. pointers to pointers can be thought of as adding dimensions: <code class="language-text highlighter-rouge">int **p;</code> → 2D array, <code class="language-text highlighter-rouge">int ***p;</code> → 3D array, and so on.</p>
 
+<p>for example, lets say we have a string, which is an array of chars. that is a 1D array. now, what about an array of strings? this is an array of arrays (of chars). namely, a 2D array, so we need a double pointer. this also applies to structs.</p>
+
 <p>also, passing pointers to pointers around functions lets us modify values at these deeper levels without making copies of the data. very useful for managing memory efficiently, especially when handling large datasets or manipulating multi-level structures.</p>
 
 <h2 id="moving-pointers-around-functions">Moving pointers around functions</h2>
