@@ -276,3 +276,12 @@ grid on;
 ```
 
 ***
+
+# Problem 5
+
+filename: dbg53.m
+```matlab
+odefun = @(t, y) [y(2); 20*t - 25*y(2) - 10*y(1)];
+[t, y] = ode45(odefun, [0 1], [1; 1]);
+plot(t, y(:,1)); % Plot u(t)
+```
