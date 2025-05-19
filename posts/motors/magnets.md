@@ -69,7 +69,9 @@ Where $$\mu_o$$ is vacuum permeability, $$\vec{J}$$ electric charge density
 *Adapted from [^1],[^4]*
 
 
+## Lenz Law - Eddy Currents
 
+Assume there is a conducting material in shape of a closed circuit. 
 
 ## Credits
 

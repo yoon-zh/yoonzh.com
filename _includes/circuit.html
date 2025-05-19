@@ -1,0 +1,10 @@
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-{{ include.id }}" data-circuit-container>
+  <script type="application/json" data-circuit-content>
+  {% if include.from_data %}
+    {{ site.data.circuits[include.id] | jsonify }}
+  {% else %}
+    {{ include.content }}
+  {% endif %}
+  </script>
+</div>

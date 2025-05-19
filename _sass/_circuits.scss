@@ -1,0 +1,32 @@
+// _sass/_circuits.scss
+.circuit-container {
+  position: relative;
+  min-height: 200px;
+  margin: 2rem 0;
+  
+  svg {
+    display: block;
+    overflow: visible;
+    width: 100%;
+    border: 1px solid #eee;
+    background: white;
+    padding: 20px;
+
+    path, line {
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    text {
+      fill: currentColor;
+      font-family: monospace;
+    }
+  }
+  
+  .circuit-error {
+    color: #dc3545;
+    border: 2px dashed currentColor;
+    padding: 1rem;
+  }
+}

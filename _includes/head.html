@@ -18,4 +18,9 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body);"></script>
   {% endif %}
+  {% if page.circuit %}
+  <script src="https://nturley.github.io/netlistsvg/elk.bundled.js"></script>
+  <script src="https://nturley.github.io/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="{{ '/scripts/circuits.js' | relative_url }}"></script>
+  {% endif %}
 </head>

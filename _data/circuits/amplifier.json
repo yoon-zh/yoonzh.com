@@ -1,0 +1,38 @@
+{
+  "modules": {
+    "amplifier": {
+      "ports": {
+        "in": {"direction": "input", "bits": [1]},
+        "out": {"direction": "output", "bits": [2]},
+        "vdd": {"direction": "input", "bits": [3]}
+      },
+      "cells": {
+        "V1": {
+          "type": "vdc",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "attributes": {"value": "12V"}
+        },
+        "R1": {
+          "type": "r",
+          "connections": {
+            "1": [2],
+            "2": [3]
+          },
+          "attributes": {"value": "10k"}
+        },
+        "M1": {
+          "type": "nmos",
+          "connections": {
+            "D": [2],
+            "G": [1],
+            "S": [0],
+            "B": [0]
+          }
+        }
+      }
+    }
+  }
+}
