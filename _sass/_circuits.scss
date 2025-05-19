@@ -12,17 +12,17 @@
     width: auto;
     height: auto;
     border: 1px solid #eee;
-    background: $code-bg;
+    background: $text-primary;
     padding: 5px;
 
     path, line {
-      stroke: currentColor;
+      stroke: #000;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
     text {
-      fill: currentColor;
+      fill: #000;
       font-family: monospace;
     }
   }
