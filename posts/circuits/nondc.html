@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer-when-downgrade">
-  <title>Home - yoonzh.com</title>
+  <title>Non DC - yoonzh.com</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -17,10 +17,19 @@
   <meta name="apple-mobile-web-app-title" content="윤志" />
   <link rel="manifest" href="/site.webmanifest" />
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+  <script src="https://nturley.github.io/netlistsvg/elk.bundled.js"></script>
+  <script src="https://nturley.github.io/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="/scripts/circuits.js"></script>
   
 </head>
 </head>
-<body class="home-page">
+<body class="">
   <!-- _includes/header.html -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
@@ -58,88 +67,62 @@
 </header>
   
   <main class="page-content">
-    <!-- _layouts/home.html -->
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">Home | 首页 </h1>
-    <p class="hero-subtitle">#define jiā 홈페이지 [homepage] 초기 화면</p>
+    <!-- _layouts/project.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Non DC
+    
+  </h1>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-05-19T00:00:00+00:00">
+        📅 2025/05/19
+      </time>
+    
   </div>
-</section>
+</header>
 
-<section class="content-section">
-  <!-- _includes/card-grid.html -->
-<h2 class="section-title">Featured Projects</h2>
+<div class="article-content">
+  <h2 id="capacitors">Capacitors</h2>
 
+<p>Units: Farads (F)</p>
 
-<div class="card-list">
+\[q = CV\]
+
+\[i = C\frac{dv}{dt}\]
+
+\[V = \frac{1}{C} \int i\ dt\]
+
+<h3 id="rc-series">RC (series)</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-capacitor_series" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
   
-    <article class="content-card">
-      <a href="/projects/website.html" class="card-link">
-        
-        
-        <div class="card-body">
-          <div class="card-header">
-            <h3>Portfolio Website</h3>
-            
-          </div>
-          <p class="card-excerpt">Personal website built with Jekyll to showcase my projects</p>          
-          
-            <div class="card-tags">
-              
-                <span class="tag">Web Development</span>
-              
-            </div>
-          
-        </div>
-      </a>
-    </article>
+    {"modules":{"capacitor_series":{"cells":{"V":{"type":"v","connections":{"+":[1],"-":[3]},"port_directions":{"+":"input","-":"output"}},"R":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"C":{"type":"c_v","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[3]}}}}}}
   
-    <article class="content-card">
-      <a href="/projects/flametemp.html" class="card-link">
-        
-        
-        <div class="card-body">
-          <div class="card-header">
-            <h3>Adiabatic flame temperature (AFT) calculator</h3>
-            
-          </div>
-          <p class="card-excerpt">Adiabatic Flame Temperature calculator in MATLAB</p>          
-          
-            <div class="card-tags">
-              
-                <span class="tag">MATLAB</span>
-              
-                <span class="tag">Thermodynamics</span>
-              
-            </div>
-          
-        </div>
-      </a>
-    </article>
-  
-    <article class="content-card">
-      <a href="/projects/chemcount.html" class="card-link">
-        
-        
-        <div class="card-body">
-          <div class="card-header">
-            <h3>Chemical Compound Parser</h3>
-            
-          </div>
-          <p class="card-excerpt">Chemical Compound Parser Library in C</p>          
-          
-            <div class="card-tags">
-              
-                <span class="tag">C/C++</span>
-              
-            </div>
-          
-        </div>
-      </a>
-    </article>
-  
+  </script>
 </div>
-</section>
+
+<h3 id="c--r-parallel">C || R (parallel)</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-capacitor_parallel" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"capacitor_series":{"cells":{"V":{"type":"v","connections":{"+":[1],"-":[2]},"port_directions":{"+":"input","-":"output"}},"R":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"C":{"type":"c_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[2]}}}}}}
+  
+  </script>
+</div>
+
+<h2 id="inductors">Inductors</h2>
+
+
+</div>
+</article>
   </main>
 
   <!-- _includes/footer.html -->

@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer-when-downgrade">
-  <title>Website - yoonzh.com</title>
+  <title>Motors 101: Magnets - yoonzh.com</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -16,6 +16,11 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="윤志" />
   <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
   
   
 </head>
@@ -63,64 +68,96 @@
   <!-- _includes/article-content.html -->
 <header class="article-header">
   <h1>
-    Portfolio Website
-    
-      <a href="https://github.com/yoon-zh/yoonzh.com" class="github-icon" target="_blank">
-        <span class="github-mini">
-          <i class="fab fa-github"></i>
-        </span>
-      </a>
+    Motors 101: Magnets
     
   </h1>
   
-  <div class="tech-tags">
-    
-      <span class="tech-tag">Web Development</span>
-    
-  </div>
-  
   <div class="article-meta">
     
-      <time datetime="2025-02-14T00:00:00+00:00">
-        📅 2025/02/14
+      <time datetime="2025-04-16T00:00:00+00:00">
+        📅 2025/04/16
       </time>
     
   </div>
 </header>
 
 <div class="article-content">
-  <h2 id="what-is-it">What is it?</h2>
+  <hr />
 
-<p>A new project built from scratch to showcase my work and connect with people in a dynamic way.</p>
+<h1 id="maxwells-equations">Maxwell’s Equations</h1>
 
-<h2 id="development">Development</h2>
+<p><em>Adapted from <sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>,<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">2</a></sup></em></p>
 
-<p>Built with Jekyll and hosted on GitHub Pages.</p>
+<p>Let \(\vec{E}\) be an electric field, \(\vec{B}\) a magnetic field.</p>
 
-<h3 id="1-get-a-domain">1. Get a domain</h3>
+<p>Gauss for electricity</p>
 
-<p>Choose a name for the website, and see if it is available. You can buy domain names <a href="https://www.namecheap.com/">here</a>.</p>
+\[div\ \vec{E}
+= \oint \vec{E} \cdot d\vec{A}
+= \frac{\rho}{\varepsilon_o}\]
 
-<h3 id="2">2.</h3>
+<p>Where \(\rho\) is electric charge density, \(\varepsilon_o\) vacuum permittivity.</p>
 
-<h2 id="local-setup">Local Setup</h2>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
-</span>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>
+<hr />
 
-<h2 id="personal-notes">Personal notes</h2>
+<p>Faraday</p>
 
-<p>This website is still being set up. It’s a very new project and a learning process for me since I did not know anything about website development a week ago (today is 2025/02/14). In fact I didn’t even planned on doing it whatsoever but a special person motivated me to do it so here it is.</p>
+\[curl\ \vec{E} 
+= \oint \vec{E} \cdot d\vec{s}
+= -\frac{\partial{\vec{B}}}{\partial t}\]
 
-<p>From getting the domain, linking the IP, setting up a basic HTML that gpt gave me, to installing ruby and setting up Jekyll, moving to markdown files and arranging the style and format of the page…</p>
+<hr />
 
-<p>It has been very motivating to see how far we’ve come in such a short time. I feel I haven’t really worked on building my portfolio during the previous years but arranging the website and organizing my stuff here is very empowering.</p>
+<p>Gauss for magnetism</p>
 
-<p>I will continue to develop the website and add more projects and interesting stuff, play around with it and make it a part of me. Of course I am still learning and there will be lots of debugging ahead.</p>
+\[div\ \vec{B} 
+= \oint \vec{B} \cdot d\vec{A}
+= 0\]
 
-<p>If any of this website layout proves useful to someone, note that its source code is 100% open source (MIT License) so feel free to use it. <a href="https://github.com/yoon-zh/yoonzh.com" target="_blank" class="pdf-link"><i class="fab fa-github"></i></a></p>
+<hr />
 
-<!--Written by Jorge Porras (2025)-->
+<p>Ampère-Maxwell</p>
+
+\[curl\ \vec{B}
+= \oint \vec{B} \cdot d\vec{s}
+= \mu_o \vec{J} + \mu_o \varepsilon_o \frac{\partial{\vec{E}}}{\partial t}\]
+
+<p>Where \(\mu_o\) is vacuum permeability, \(\vec{J}\) electric charge density</p>
+
+<ul>
+  <li>\(\mu_o = 4\pi \times 10^{-7}\) H/m</li>
+  <li>\(\varepsilon_o = 8.85 \times 10^{-12}\) F/m</li>
+  <li>\(\vec{J}\) ?</li>
+</ul>
+
+<hr />
+
+<h2 id="equations">Equations</h2>
+
+<p><em>Adapted from <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">3</a></sup>,<sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup></em></p>
+
+<h2 id="lenz-law---eddy-currents">Lenz Law - Eddy Currents</h2>
+
+<p>Assume there is a conducting material in shape of a closed circuit.</p>
+
+<h2 id="credits">Credits</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:2">
+      <p>Umans, S. (2014). <em>Electric Machinery.</em> McGraw Hill: 7th Ed. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Walker, J. et. al, (2014). <em>Fundamentals of Physics.</em> Wiley: 10th Ed. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:1">
+      <p>Chapman, S. (2012). <em>Electric Machinery Fundamentals.</em> McGraw Hill: 5th Ed. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Bu, Q. (2025). <em>Introduction to Mechatronics</em> (Lecture Notes). <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 </div>
 </article>
