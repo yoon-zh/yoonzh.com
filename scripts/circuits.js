@@ -24,6 +24,14 @@ function initCircuits() {
       const svgDoc = parser.parseFromString(svg, 'image/svg+xml');
       const svgElement = svgDoc.documentElement;
       svgElement.setAttribute('class', 'circuit-svg');
+
+      const originalWidth = parseFloat(svgElement.getAttribute('width'));
+      const originalHeight = parseFloat(svgElement.getAttribute('height'));
+      const scaleFactor = 1.5;
+      svgElement.setAttribute('viewBox', `0 0 ${originalWidth} ${originalHeight}`);
+      svgElement.setAttribute('width', originalWidth * scaleFactor);
+      svgElement.setAttribute('height', originalHeight * scaleFactor);
+
       container.innerHTML = '';
       container.appendChild(svgElement);
     }
