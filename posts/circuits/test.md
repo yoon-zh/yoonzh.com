@@ -24,14 +24,13 @@ $$
 V = \frac{1}{C} \int i\ dt
 $$
 
-{% include circuit.html id="amplifier" from_data=true %}
+### RC (series)
 
+{% include circuit.html id="capacitor_series" from_data=true %}
 
-{% include circuit.html id="resistor_divider" from_data=true %}
+### C || R (parallel)
 
-C in series with R
-
-C parallel to R
+{% include circuit.html id="capacitor_parallel" from_data=true %}
 
 
 ## Inductors

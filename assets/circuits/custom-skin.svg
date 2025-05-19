@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:s="https://github.com/nturley/netlistsvg">
+  <s:properties
+    constants="false"
+    splitsAndJoins="false"
+    genericsLaterals="true">
+    <s:layoutEngine
+        org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers="5"
+        org.eclipse.elk.layered.compaction.postCompaction.strategy="4"
+        org.eclipse.elk.spacing.nodeNode= "35"
+        org.eclipse.elk.direction="DOWN"/>
+  </s:properties>
+<style>
+svg {
+  stroke: #000;
+  fill: none;
+}
+text {
+  fill: #000;
+  stroke: none;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: "Courier New", monospace;
+}
+.nodelabel {
+  text-anchor: middle;
+}
+.inputPortLabel {
+  text-anchor: end;
+}
+.splitjoinBody {
+  fill: #000;
+}
+.symbol {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+.detail {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  fill: #000;
+}
+</style>
+
+<g s:type="v_independent" s:width="32" s:height="32" transform="translate(5, 20)">
+  <s:alias val="vdc"/>
+  <circle cx="16" cy="16" r="12" class="symbol"/>
+  <path d="M16,8 V24 M12,12 L20,12 M12,20 L20,20" class="detail"/>
+  <path d="M16,0 V8 M16,24 V32" class="connect"/>
+  <g s:x="16" s:y="0" s:pid="+" s:position="top"/>
+  <g s:x="16" s:y="32" s:pid="-" s:position="bottom"/>
+</g>
+
+<g s:type="v_ac" s:width="32" s:height="32" transform="translate(60, 20)">
+  <s:alias val="vac"/>
+  <circle cx="16" cy="16" r="12" class="symbol"/>
+  <path d="M10,16 Q16,8 22,16 Q16,24 10,16" class="detail"/>
+  <path d="M16,0 V8 M16,24 V32" class="connect"/>
+  <g s:x="16" s:y="0" s:pid="+" s:position="top"/>
+  <g s:x="16" s:y="32" s:pid="-" s:position="bottom"/>
+</g>
+
+</svg>
