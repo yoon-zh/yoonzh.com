@@ -14,7 +14,7 @@ function initCircuits() {
         netlistData,
         {
           elk: {
-            defaultPadding: 20,
+            defaultPadding: 10,
             algorithms: ['layered']
           }
         }
@@ -24,7 +24,6 @@ function initCircuits() {
       const svgDoc = parser.parseFromString(svg, 'image/svg+xml');
       const svgElement = svgDoc.documentElement;
       svgElement.setAttribute('class', 'circuit-svg');
-      svgElement.style.width = '100%';
       container.innerHTML = '';
       container.appendChild(svgElement);
     }

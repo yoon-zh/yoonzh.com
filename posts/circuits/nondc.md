@@ -1,10 +1,10 @@
 ---
 layout: hidden
-title: test
+title: nondc
 card_title: "Non DC"
 math: true
 circuit: true
-url: /posts/circuits/test
+url: /posts/circuits/nondc
 date: 2025-05-19
 ---
 
