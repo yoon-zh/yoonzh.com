@@ -12,17 +12,17 @@
     width: auto;
     height: auto;
     border: 1px solid #eee;
-    background: $text-primary;
+    background: $card-bg;
     padding: 5px;
 
     path, line {
-      stroke: #000;
+      stroke: $text-primary;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
     text {
-      fill: #000;
+      fill: $text-primary;
       font-family: monospace;
     }
   }
