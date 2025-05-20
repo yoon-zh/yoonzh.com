@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer-when-downgrade">
-  <title> - yoonzh.com</title>
+  <title>C Compiling - yoonzh.com</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -16,6 +16,11 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="윤志" />
   <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
   
   
 </head>
@@ -58,12 +63,41 @@
 </header>
   
   <main class="page-content">
-    <p>-</p>
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    C Compiling
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">C/C++</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+  </div>
+</header>
 
-<p>.</p>
+<div class="article-content">
+  <h1 id="gcc">GCC</h1>
 
-<h6 id="camilo-gei">camilo gei</h6>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-Wall</span> <span class="nt">-Werror</span> <span class="nt">-Wextra</span> <span class="nt">-pedantic</span> <span class="nt">-g</span> <span class="nt">-std</span><span class="o">=</span>c99 <span class="nt">-c</span> myfile.c myfile.o
+gcc main.c myfile.o <span class="nt">-o</span> main
+</code></pre></div></div>
 
+<p>The flags will make <code class="language-text highlighter-rouge">gcc</code> be very picky with the code. so it forces us to write proper code.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> new_branch_name
+</code></pre></div></div>
+<p><a href="https://stackoverflow.com/questions/17958288/branch-and-checkout-using-a-single-command">https://stackoverflow.com/questions/17958288/branch-and-checkout-using-a-single-command</a></p>
+
+</div>
+</article>
   </main>
 
   <!-- _includes/footer.html -->
