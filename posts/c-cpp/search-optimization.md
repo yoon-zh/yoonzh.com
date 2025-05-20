@@ -2,7 +2,7 @@
 layout: post
 title: search-optimization
 card_title: Search Optimization in C
-url: /posts/search-optimization
+url: /posts/c-cpp/search-optimization
 excerpt: Search for an item in an array. For loops? Binary search? Hash maps? Quick guide here.
 tech_stack: [C/C++]
 math: true

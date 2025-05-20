@@ -3,7 +3,7 @@ layout: post
 title: test1
 card_title: test 1
 math: true
-url: /posts/test1
+url: /posts/uni/test1
 
 ---
 

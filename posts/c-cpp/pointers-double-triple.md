@@ -2,7 +2,7 @@
 layout: post
 title: pointers-double-triple
 card_title: Double and Triple pointers in C
-url: /posts/pointers-double-triple
+url: /posts/c-cpp/pointers-double-triple
 excerpt: Connecting pointers and functions in harmony, why we might use them, how to use them?
 tech_stack: [C/C++]
 date: 2025-02-16

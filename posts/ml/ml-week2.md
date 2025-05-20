@@ -3,7 +3,7 @@ layout: post
 title: ml-week2
 card_title: ML week 2
 excerpt: "Understand tensors, perform tensor operations, and compute gradients using automatic differentiation."
-url: /posts/ml-week2
+url: /posts/ml/ml-week2
 math: true
 tech_stack: [ML, Python]
 date: 2025-02-18

@@ -3,7 +3,7 @@ layout: post
 title: stm-week3
 card_title: "STM Week 3: HAL/LL Libraries"
 excerpt: "STM has two main drivers for their boards: HAL and LL. Check out what they are and how to use them in a beginner level."
-url: /posts/stm-week3
+url: /posts/stm/stm-week3
 math: true
 tech_stack: [C/C++]
 date: 2025-03-08

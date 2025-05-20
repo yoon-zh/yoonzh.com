@@ -1,11 +1,12 @@
 ---
-layout: hidden
+layout: post
 title: induction
 card_title: "Induction Motors"
 math: true
 url: /posts/motors/induction
-date: 2025-04-15
+tech_stack: [Motors]
 ---
+date: 2025-04-15
 
 Induction Motors
 

@@ -2,7 +2,7 @@
 layout: post
 title: stm
 card_title: STM Learning Path
-url: /posts/stm
+url: /posts/stm/stm
 excerpt: From blinking LEDS in Arduino to a ROS2-integrated, vision-enabled autonomous robot in STM.
 math: true
 tech_stack: [STM, C/C++, ROS2]

@@ -2,10 +2,10 @@
 layout: post
 title: ml
 card_title: ml learning path
-url: /posts/ml
+url: /posts/ml/ml
 excerpt: ml
 math: true
-tech_stack: [Python, ML]
+tech_stack: [ML, Python]
 ---
 
 date: 2025-02-17

@@ -3,7 +3,7 @@ layout: post
 title: stm-week1
 card_title: "STM Week 1: From Arduino to STM32"
 excerpt: "Intro to microcontroller architecture, why STM32, and how to set up your workspace for it."
-url: /posts/stm-week1
+url: /posts/stm/stm-week1
 math: true
 tech_stack: [STM]
 date: 2025-03-02

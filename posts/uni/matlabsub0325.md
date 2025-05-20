@@ -3,7 +3,7 @@ layout: hidden
 title: matlabsub0325
 card_title: "MATLAB Submission Scripts"
 math: true
-url: /posts/matlabsub0325
+url: /posts/uni/matlabsub0325
 date: 2025-04-02
 ---
 

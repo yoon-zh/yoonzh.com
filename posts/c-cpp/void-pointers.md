@@ -2,7 +2,7 @@
 layout: post
 title: void-pointers
 card_title: Void Pointers
-url: /posts/void-pointers
+url: /posts/c-cpp/void-pointers
 excerpt: 
 tech_stack: [C/C++]
 date: 2025-02-16

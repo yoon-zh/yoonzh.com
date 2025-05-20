@@ -1,11 +1,12 @@
 ---
-layout: hidden
+layout: post
 title: magnets
 card_title: "Motors 101: Magnets"
 math: true
 url: /posts/motors/magnets
-date: 2025-04-16
+tech_stack: [Motors]
 ---
+date: 2025-04-16
 
 ***
 

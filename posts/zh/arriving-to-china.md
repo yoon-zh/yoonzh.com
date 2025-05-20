@@ -2,7 +2,7 @@
 layout: post
 title: arriving-to-china
 card_title: Arriving to China
-url: /posts/arriving-to-china
+url: /posts/zh/arriving-to-china
 excerpt: "New to China? Exchange student? Coming for a couple months? Here are some tips from my experience to help you make it go smooth."
 tech_stack: [中文]
 date: 2025-02-17

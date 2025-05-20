@@ -3,7 +3,7 @@ layout: post
 title: stm-week2
 card_title: "STM Week 2: Clock & Power Management"
 excerpt: "A cool feature of STM is its clock and power management system. Learn about the HSI, HSE, and other useful stuff."
-url: /posts/stm-week2
+url: /posts/stm/stm-week2
 math: true
 tech_stack: [STM]
 date: 2025-03-07

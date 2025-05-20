@@ -3,7 +3,7 @@ layout: post
 title: ml-week1
 card_title: ML week 1
 excerpt: "Understand core ML concepts, deploy a simple model via an API, and identify deployment challenges."
-url: /posts/ml-week1
+url: /posts/ml/ml-week1
 math: true
 tech_stack: [ML, Python]
 date: 2025-02-18

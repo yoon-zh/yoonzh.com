@@ -1,11 +1,12 @@
 ---
-layout: hidden
+layout: post
 title: dc
 card_title: "DC Motors"
 math: true
 url: /posts/motors/dc
-date: 2025-04-15
+tech_stack: [Motors]
 ---
+date: 2025-04-15
 
 DC motors
 brushed

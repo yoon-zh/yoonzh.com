@@ -3,7 +3,7 @@ layout: post
 title: stm-week4
 card_title: "STM Week 4: Motors & Drivers"
 excerpt: "Quick guide on motors, types, which to pick for your projects, and how to implement their code."
-url: /posts/stm-week4
+url: /posts/stm/stm-week4
 math: true
 tech_stack: [C/C++]
 date: 2025-03-09

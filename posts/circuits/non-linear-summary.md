@@ -6,6 +6,7 @@ math: true
 circuit: true
 url: /posts/circuits/non-linear-summary
 excerpt: "Brief summary for non-linear circuits, including capacitors, inductors, and AC sources."
+tech_stack: [EE]
 date: 2025-05-20
 ---
 
@@ -42,5 +43,9 @@ w7
 {% include circuit.html id="ac-ex" from_data=true %}
 
 w9
+
+the circuit rendering is not ideal.
+
+looking for alternatives.
 
 ***

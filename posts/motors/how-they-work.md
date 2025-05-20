@@ -1,11 +1,12 @@
 ---
-layout: hidden
+layout: post
 title: how-they-work
 card_title: "Motors 101"
 math: true
 url: /posts/motors/how-they-work
-date: 2025-04-15
+tech_stack: [Motors]
 ---
+date: 2025-04-15
 
 ## In a nutsell: Magnets
 

@@ -1,12 +1,13 @@
 ---
-layout: hidden
+layout: post
 title: ac
 card_title: "AC Motors"
 math: true
 url: /posts/motors/ac
-date: 2025-04-15
+tech_stack: [Motors]
 ---
 
+date: 2025-04-15
 AC motors
 induced?
 
