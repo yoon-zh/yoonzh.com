@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="no-referrer-when-downgrade">
-  <title>Non-linear Summary - yoonzh.com</title>
+  <title>test1 - yoonzh.com</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -72,7 +72,7 @@
   <!-- _includes/article-content.html -->
 <header class="article-header">
   <h1>
-    Non-linear Summary
+    test1
     
   </h1>
   
@@ -84,92 +84,12 @@
   
   <div class="article-meta">
     
-      <time datetime="2025-05-20T00:00:00+00:00">
-        📅 2025/05/20
-      </time>
-    
   </div>
 </header>
 
 <div class="article-content">
-  <hr />
-
-<h2 id="capacitors-and-inductors">Capacitors and Inductors</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Characteristics</th>
-      <th>Capacitor</th>
-      <th>Inductor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Unit</td>
-      <td>Farad (F)</td>
-      <td>Henry (H)</td>
-    </tr>
-    <tr>
-      <td>Voltage \(V\)</td>
-      <td>\(V_C = \frac{1}{C} \int i\ dt\)</td>
-      <td>\(V_L = L\frac{di}{dt}\)</td>
-    </tr>
-    <tr>
-      <td>Current \(i\)</td>
-      <td>\(i_C = C\frac{dv}{dt}\)</td>
-      <td>\(i_L = \frac{1}{L} \int Vdt\)</td>
-    </tr>
-    <tr>
-      <td>Prevents jumps</td>
-      <td>Of voltage</td>
-      <td>Of current</td>
-    </tr>
-    <tr>
-      <td>Series</td>
-      <td>\(\sum \frac{1}{C_n}\)</td>
-      <td>\(\sum L_n\)</td>
-    </tr>
-    <tr>
-      <td>Parallel</td>
-      <td>\(\sum C_n\)</td>
-      <td>\(\sum \frac{1}{L_n}\)</td>
-    </tr>
-    <tr>
-      <td>Time constant \(\tau\)</td>
-      <td>\(\tau_C = RC\)</td>
-      <td>\(\tau_L = \frac{L}{R}\)</td>
-    </tr>
-    <tr>
-      <td>Impedance</td>
-      <td>\(\Z_C = \frac{1}{j\omega C}\)</td>
-      <td>\(\Z_L = j\omega L\)</td>
-    </tr>
-    <tr>
-      <td>DC (\(\omega = 0\))</td>
-      <td>\(\Z_C = \infty\) (open)</td>
-      <td>\(\Z_L = 0\) (short)</td>
-    </tr>
-    <tr>
-      <td>AC (\(\omega\) high)</td>
-      <td>\(\Z_C \approx 0\) (short)</td>
-      <td>\(\Z_C \approx \infty\) (open)</td>
-    </tr>
-    <tr>
-      <td>Phasor sine wave</td>
-      <td>Leads</td>
-      <td>Lags</td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote>
-  <p>General Forms for C and L:</p>
-
-\[V = V(\infty) + (V(0)^+ - V(\infty)) e^{\frac{-t}{\tau}}\]
-
-\[i = i(\infty) + (i(0)^+ - i(\infty)) e^{\frac{-t}{\tau}}\]
-</blockquote>
+  <p>date: 2025-05-20
+***</p>
 
 <h3 id="dc-example">DC Example</h3>
 
@@ -197,99 +117,7 @@
 
 <p>w9</p>
 
-<h2 id="phasors">Phasors</h2>
-<p>Phasor sources are in cosines:</p>
-
-\[\sin \theta = \cos(\theta - \frac{\pi}{2}) = \cos(\theta - 90°)\]
-
-\[v(t) = V_m \cos(\omega t + \theta),\ \ i(t) = I_m \cos(\omega t + \theta);\]
-
-\[v(t) = V_m \angle \theta = V_m (\cos \theta + j \sin \theta)\]
-
 <hr />
-
-\[A + jB = C\cos(\omega t + \theta)\]
-
-\[C = \sqrt{A^2 + B^2}\]
-
-\[\theta = \arctan \frac{B}{A}\]
-
-<hr />
-
-<h2 id="impedance">Impedance</h2>
-
-\[Z = R + jX\]
-
-<p>Where R is the resistance and X is the reactance.</p>
-
-<h2 id="root-mean-square-rms">Root Mean Square (RMS)</h2>
-
-<p>Also known as effective voltage and current, it represents the power an AC source delivers to a load (resistor).</p>
-
-\[V_{rms} = \frac{V_L}{\sqrt{2}}\]
-
-\[I_{rms} = \frac{I_L}{\sqrt{2}}\]
-
-<p>For example:</p>
-
-<ul>
-  <li>The U.S. uses AC 120V 60Hz, providing the same power as a DC 120V source.</li>
-  <li>China uses AC 220V 50Hz, providing the same power as a DC 220V source.</li>
-</ul>
-
-<p>If a load R is connected to various current phases \(I_n\), then:</p>
-
-\[I_{RMS} = \sqrt{\sum I^2_n}\]
-
-<h2 id="average-power">Average Power</h2>
-
-<blockquote>
-  <p>Resistors:</p>
-
-\[P_{Ravg} = \frac{1}{2} V_R I_R \cos \theta\]
-
-\[P_{Ravg} = V_{rms} I_{rms} \cos \theta\]
-
-  <p>Where \(V_R, I_R\) is the amplitude of the AC voltage/current.</p>
-</blockquote>
-
-<blockquote>
-  <p>Capacitors &amp; Inductances: Average power \(P_{avg} = 0\)</p>
-</blockquote>
-
-<p>Apparent Power: \(P_{app} = V_{rms} I_{rms}\)</p>
-
-<h2 id="maximum-power-transfer">Maximum Power Transfer</h2>
-
-<p>Assume a Thévenin Circuit with AC volt source \(V_{TH}\) in series with an impedance \(\Z_{TH}\) and a load \(\Z_{L}\).</p>
-
-<!-- _includes/circuit.html -->
-<div class="circuit-container" id="circuit-avgpower" data-circuit-container="">
-  <script type="application/json" data-circuit-content="">
-  
-    {"modules":{"avgpower":{"cells":{"Vth":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"Zth":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"ZL":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}}}}}}
-  
-  </script>
-</div>
-
-<blockquote>
-  <p>If \(\Z_L = \Z^*_{TH},\ \Z_L\) receives maximum power.</p>
-</blockquote>
-
-<p>This means the resistances are the same, and the reactances have opposite sign:</p>
-
-\[R_L = R_{TH}\]
-
-\[X_L = -X_{TH}\]
-
-<h2 id="complex-power">Complex Power</h2>
-
-<p>Average Power \(P = V_{rms} I_{rms} \cos(\theta-\phi)\)</p>
-
-<p>Reactive Power \(Q = V_{rms} I_{rms} \sin(\theta-\phi)\)</p>
-
-\[S = P + jQ = V_{rms} I^*_{rms} = V_{rms} I_{rms} e^{j(\theta - \phi)}\]
-
 
 </div>
 </article>
