@@ -50,7 +50,8 @@
     }
 
     table {
-      display: block;
+      display: table;
+      table-layout: fixed;
       overflow-x: auto;
       white-space: nowrap;
       width: 100%;
