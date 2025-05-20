@@ -1,0 +1,39 @@
+{
+  "modules": {
+    "rc": {
+      "cells": {
+        "R": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "C": {
+          "type": "c_v",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "port_directions": {
+            "A": "input"
+          },
+          "connections": {
+            "A": [2]
+          }
+        }
+      }
+    }
+  }
+}
