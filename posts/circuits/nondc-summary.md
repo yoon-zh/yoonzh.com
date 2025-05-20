@@ -32,12 +32,14 @@ date: 2025-05-20
 
 ### DC Example
 
-{% include circuit.html id="rc" from_data=true %}
+{% include circuit.html id="dc-ex" from_data=true %}
 
+w7
 
 ### AC Example
 
-{% include circuit.html id="capacitor_series" from_data=true %}
+{% include circuit.html id="ac-ex" from_data=true %}
 
+w9
 
 ***

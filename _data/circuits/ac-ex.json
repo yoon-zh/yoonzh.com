@@ -1,0 +1,138 @@
+{
+  "modules": {
+    "ac-ex": {
+      "cells": {
+        "I1": {
+          "type": "i",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          },
+          "attributes": {
+            "value":"1∠0°A"
+          }
+        },
+        "R1": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"5 Ω"
+          }
+        },
+        "C1": {
+          "type": "c_v",
+          "connections": {
+            "A": [1],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"-10j Ω"
+          }
+        },
+        "C2": {
+          "type": "c_h",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"-5j Ω"
+          }
+        },
+        "L1": {
+          "type": "l_h",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"10j Ω"
+          }
+        },
+        "L2": {
+          "type": "l_v",
+          "connections": {
+            "A": [2],
+            "B": [-1]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"5j Ω"
+          }
+        },
+        "R2": {
+          "type": "r_v",
+          "connections": {
+            "A": [2],
+            "B": [-1]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"10 Ω"
+          }
+        },
+        "I2": {
+          "type": "i",
+          "connections": {
+            "+": [2],
+            "-": [-1]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          },
+          "attributes": {
+            "value":"0.5∠-90°A"
+          }
+        },
+        "gnd1": {
+          "type": "gnd",
+          "port_directions": {
+            "A": "input"
+          },
+          "connections": {
+            "A": [0]
+          }
+        },
+        "gnd2": {
+          "type": "gnd",
+          "port_directions": {
+            "A": "input"
+          },
+          "connections": {
+            "A": [-1]
+          }
+        }
+      }
+    }
+  }
+}
