@@ -1,0 +1,216 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Non-DC Summary - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+  <script src="https://nturley.github.io/netlistsvg/elk.bundled.js"></script>
+  <script src="https://nturley.github.io/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="/scripts/circuits.js"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/project.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Non-DC Summary
+    
+  </h1>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-05-20T00:00:00+00:00">
+        📅 2025/05/20
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <hr />
+
+<h2 id="capacitors-and-inductors">Capacitors and Inductors</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Characteristics</th>
+      <th>Capacitor</th>
+      <th>Inductor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Unit</td>
+      <td>Farad (F)</td>
+      <td>Henry (H)</td>
+    </tr>
+    <tr>
+      <td>Voltage \(V\)</td>
+      <td>\(V_C = \frac{1}{C} \int i\ dt\)</td>
+      <td>\(V_L = L\frac{di}{dt}\)</td>
+    </tr>
+    <tr>
+      <td>Current \(i\)</td>
+      <td>\(i_C = C\frac{dv}{dt}\)</td>
+      <td>\(i_L = \frac{1}{L} \int Vdt\)</td>
+    </tr>
+    <tr>
+      <td>Series</td>
+      <td>\(\sum \frac{1}{C_n}\)</td>
+      <td>\(\sum L_n\)</td>
+    </tr>
+    <tr>
+      <td>Parallel</td>
+      <td>\(\sum C_n\)</td>
+      <td>\(\sum \frac{1}{L_n}\)</td>
+    </tr>
+    <tr>
+      <td>Time constant \(\tau\)</td>
+      <td>\(\tau_C = RC\)</td>
+      <td>\(\tau_L = \frac{L}{R}\)</td>
+    </tr>
+    <tr>
+      <td>Impedance</td>
+      <td>\(\Z_C = \frac{1}{j\omega C}\)</td>
+      <td>\(\Z_L = j\omega L\)</td>
+    </tr>
+    <tr>
+      <td>DC (\(\omega = 0\))</td>
+      <td>\(\Z_C = \infty\) (open)</td>
+      <td>\(\Z_L = 0\) (short)</td>
+    </tr>
+    <tr>
+      <td>AC (\(\omega\) high)</td>
+      <td>\(\Z_C \approx 0\) (short)</td>
+      <td>\(\Z_C \approx \infty\) (open)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>General Forms for C and L:</p>
+
+\[V = V(\infty) + (V(0)^+ - V(\infty)) e^{\frac{-t}{\tau}}\]
+
+\[i = i(\infty) + (i(0)^+ - i(\infty)) e^{\frac{-t}{\tau}}\]
+</blockquote>
+
+<h3 id="dc-example">DC Example</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-dc-ex" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"dc-ex":{"cells":{"V1":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"},"attributes":{"value":"120 V"}},"R1":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"10 Ω"}},"t=0":{"type":"xtal","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"50 Ω"}},"C":{"type":"c_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"V2":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"},"attributes":{"value":"120 V"}},"R3":{"type":"r_v","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"60 Ω"}},"R4":{"type":"r_v","connections":{"A":[5],"B":[0]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"200 Ω"}},"gnd":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>w7</p>
+
+<h3 id="ac-example">AC Example</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-ac-ex" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"ac-ex":{"cells":{"I1":{"type":"i","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"},"attributes":{"value":"1∠0°A"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[0]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"5 Ω"}},"C1":{"type":"c_v","connections":{"A":[1],"B":[0]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"-10j Ω"}},"C2":{"type":"c_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"-5j Ω"}},"L1":{"type":"l_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"10j Ω"}},"L2":{"type":"l_v","connections":{"A":[2],"B":[-1]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"5j Ω"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[-1]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"10 Ω"}},"I2":{"type":"i","connections":{"+":[2],"-":[-1]},"port_directions":{"+":"input","-":"output"},"attributes":{"value":"0.5∠-90°A"}},"gnd1":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[0]}},"gnd2":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[-1]}}}}}}
+  
+  </script>
+</div>
+
+<p>w9</p>
+
+<hr />
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
