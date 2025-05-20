@@ -1,10 +1,11 @@
 ---
-layout: hidden
-title: nondc-summary
-card_title: "Non-DC Summary"
+layout: post
+title: non-linear-summary
+card_title: "Non-linear Summary"
 math: true
 circuit: true
-url: /posts/circuits/nondc-summary
+url: /posts/circuits/non-linear-summary
+excerpt: "Brief summary for non-linear circuits, including capacitors, inductors, and AC sources."
 date: 2025-05-20
 ---
 
