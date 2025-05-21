@@ -73,6 +73,15 @@
         h3 {
           padding-top: 0.5rem;
         }
+        table {
+          display: block;
+          min-width: none;
+
+          thead, tbody {
+            min-width: 768px;
+          }
+
+        }
       }
     }
   }

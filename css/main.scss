@@ -143,9 +143,9 @@ table {
     color: $primary;
   }
 
-  // tbody tr:nth-child(even) {
-  //   background-color: rgba($primary, 0.05);
-  // }
+  tbody tr:nth-child(even) {
+    background-color: rgba($primary, 0.05);
+  }
 }
 
 blockquote {
