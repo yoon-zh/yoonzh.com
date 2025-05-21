@@ -1,0 +1,78 @@
+{
+  "modules": {
+    "phasor1": {
+      "cells": {
+        "V1": {
+          "type": "v",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          },
+          "attributes": {
+            "value":"120∠0° rms"
+          }
+        },
+        "R1": {
+          "type": "r_h",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"1 Ω"
+          }
+        },
+        "R2": {
+          "type": "r_v",
+          "connections": {
+            "A": [2],
+            "B": [3]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"5 Ω"
+          }
+        },
+        "L1": {
+          "type": "l_v",
+          "connections": {
+            "A": [3],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"j10 Ω"
+          }
+        },
+        "C1": {
+          "type": "c_v",
+          "connections": {
+            "A": [2],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value":"-j10 Ω"
+          }
+        }
+      }
+    }
+  }
+}

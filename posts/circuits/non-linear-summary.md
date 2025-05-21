@@ -139,3 +139,26 @@ Reactive Power $$Q = V_{rms} I_{rms} \sin(\theta-\phi)$$
 
 $$S = P + jQ = V_{rms} I^*_{rms} = V_{rms} I_{rms} e^{j(\theta - \phi)}$$
 
+## Power Table
+
+| Power           | Equation                                | Description                                                                 |
+|----------------|-----------------------------------------|-----------------------------------------------------------------------------|
+| Average $$P$$ | $$V_{rms} I_{rms} \cos(\theta)$$ | Real (Watts) |
+| Reactive $$Q$$| $$V_{rms} I_{rms} \sin(\theta)$$ | Exchange with C, L |
+| Complex $$S$$ | $$P + jQ = V_{rms} I_{rms}^*$$ | Real + Reactive |
+| Apparent $$S$$| $$V_{rms} I_{rms}$$ | Total magnitude |
+
+
+### Phasor Example
+
+{% include circuit.html id="phasor1" from_data=true %}
+
+Complex power for:
+- $$R1: 26.6$$ VA
+- $$C1: -j1331$$ VA
+- $$R2 + L1: 532 + j1065$$ VA
+- $$V1: -559 + j266$$ VA
+
+pg 453
+
+***
