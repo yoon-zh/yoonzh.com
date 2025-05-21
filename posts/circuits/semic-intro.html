@@ -1,0 +1,300 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Semiconductors Intro - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+  <script src="https://neilturley.dev/netlistsvg/elk.bundled.js"></script>
+  <script src="https://neilturley.dev/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="/scripts/circuits.js"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Semiconductors Intro
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">EE</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <p>date: 2025-05-20</p>
+
+<hr />
+
+<h2 id="p-n">P-N</h2>
+
+<p>[2] Ch3</p>
+
+<ul>
+  <li>P stands for positive (+): Carries holes (misses \(e^-\))</li>
+  <li>N stands for negative (-): Carries \(e^-\)</li>
+</ul>
+
+<p>Silicon has 4 valence \(e^-\), and is the typical semiconductor base. It is doped with:</p>
+<ul>
+  <li>Boron, owns 3 valence \(e^-\), lacks a \(e^-\): P type (anode)</li>
+  <li>Phosphorous, owns 5 valence \(e^-\), donates one: N type (cathode)</li>
+</ul>
+
+<blockquote>
+  <p>Put P and N together: Diode (aka PN junction)</p>
+</blockquote>
+
+<h2 id="diodes-simplified">Diodes, simplified</h2>
+
+<p>Let the diode have a fixed voltage drop \(v_D\) (also known as cut-in voltage \(v_{\gamma}\)).</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-diode1" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"diode1":{"cells":{"Vin":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"R":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"D":{"type":"d_v","connections":{"+":[2],"-":[0]},"port_directions":{"+":"input","-":"output"}}}}}}
+  
+  </script>
+</div>
+
+<blockquote>
+  <p>If \((V_{in} &gt; v_D) :\  V_{out} = V_{in} - v_D\) -&gt; Behaves like a resistor</p>
+
+  <p>Else: \(i_D = 0\) -&gt; Open circuit</p>
+</blockquote>
+
+<p>Standard values: \(v_{\gamma} = 0.7\) for simple diodes, \(v_{\gamma} = 1.8V\) for red LEDs.</p>
+
+<h3 id="zener-diodes">Zener Diodes</h3>
+
+<p>Normal diodes get damaged if a high reverse voltage is applied. A zener diode is designed to allow reverse current by operating at a special voltage \(V_Z\):</p>
+
+<blockquote>
+  <p>If \((V_{in} &gt; v_D) :\  V_{out} = V_{in} - v_D\)</p>
+
+  <p>If \((V_{in} &lt; -V_Z):\  V_{out} = V_Z\)</p>
+
+  <p>Else: \(i_D = 0\) -&gt; Open circuit</p>
+</blockquote>
+
+<p>\(V_Z\) is usually set to be much higher than \(v_{\gamma}\), over 6V.</p>
+
+<h2 id="ac-to-dc">AC to DC</h2>
+
+<p>Rectification:</p>
+<ul>
+  <li>Diode rectifier</li>
+  <li>Filter</li>
+  <li>Voltage regulator</li>
+</ul>
+
+<h3 id="diode-rectifier">Diode rectifier</h3>
+
+<p>Type 1: Four diodes in diamond</p>
+<ul>
+  <li>The current flows through 2 diodes</li>
+</ul>
+
+\[V_{out} = V_{in} - 2v_{\gamma}\]
+
+<p>Type 2: Two diodes at each end</p>
+<ul>
+  <li>The current flows through 1 diode</li>
+  <li>The receiving winding is center-tapped to ground, in parallel to load</li>
+</ul>
+
+\[V_{out} = V_{in} - v_{\gamma}\]
+
+<h3 id="filter">Filter</h3>
+
+<p>A capacitor between \(V_{out}\) and ground, parallel to the load.</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-capacitor_parallel" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"capacitor_series":{"cells":{"V":{"type":"v","connections":{"+":[1],"-":[2]},"port_directions":{"+":"input","-":"output"}},"R":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"C":{"type":"c_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[2]}}}}}}
+  
+  </script>
+</div>
+
+<p>It creates ripple voltage:</p>
+
+\[V_r = \frac{V_M}{2fRC}\]
+
+<p>Where \(V_M\) is the maximum voltage at \(V_{out}\).</p>
+
+<h3 id="voltage-regulator">Voltage Regulator</h3>
+
+<p>An ideal diode has a constant voltage. So we put one in parallel to our load to get DC.</p>
+
+<p>The voltage drop for a normal diode \(v_{\gamma}\) is usually low. So we use a Zener diode in reverse bias to use the high voltage \(V_Z\).</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-zener1" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"zener1":{"cells":{"Vin":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"Ri":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"D":{"type":"d_sk_v","connections":{"+":[0],"-":[2]},"port_directions":{"+":"input","-":"output"}},"RL":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}}}}}}
+  
+  </script>
+</div>
+
+<p>A voltage regulator has a safe operating range (min and max \(V_Z\)). \(R_i\) helps protect the diode.</p>
+
+<blockquote>
+  <p>Let \(I_Z\) be the current through the diode.</p>
+
+\[I_Z(min) = \frac{V_{in}(min) - V_Z}{R_i} - I_L (max)\]
+
+\[I_Z(max) = \frac{V_{in}(max) - V_Z}{R_i} - I_L (min)\]
+</blockquote>
+
+<p>Example: let \(V_Z = 9\ V,\ V_{in} = (11, 13.6)\ V,\ I_{RL} (max) = 100\ mA.\) If \(I_Z (min) = 0.1 I_Z (max)\), what should be \(R_i\)?</p>
+
+<h2 id="transformer-overview">Transformer overview</h2>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-transformer-full" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"transformer-full":{"cells":{"Vin":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"Transformer":{"type":"transformer_1p_1s","connections":{"L1.1":[1],"L1.2":[0],"L2.1":[2],"L2.2":[3]},"port_directions":{"L1.1":"input","L1.2":"output","L2.1":"input","L2.2":"output"}},"D1":{"type":"d_v","connections":{"+":[-1],"-":[2]},"port_directions":{"+":"input","-":"output"}},"D2":{"type":"d_v","connections":{"+":[2],"-":[4]},"port_directions":{"+":"input","-":"output"}},"D3":{"type":"d_v","connections":{"+":[-1],"-":[3]},"port_directions":{"+":"input","-":"output"}},"D4":{"type":"d_v","connections":{"+":[3],"-":[4]},"port_directions":{"+":"input","-":"output"}},"C":{"type":"c_v","connections":{"A":[4],"B":[-1]},"port_directions":{"A":"input","B":"output"}},"R":{"type":"r_h","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Z":{"type":"d_sk_v","connections":{"+":[-1],"-":[5]},"port_directions":{"+":"input","-":"output"}},"RL":{"type":"r_v","connections":{"A":[5],"B":[-1]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[-1]}}}}}}
+  
+  </script>
+</div>
+
+<hr />
+
+<h2 id="other-diode-uses">Other diode uses</h2>
+
+<h3 id="clipper-circuit">Clipper circuit</h3>
+
+<p>Clip the input voltage to a limit</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-clipper" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"clipper":{"cells":{"Vin":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"R":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"D":{"type":"d_v","connections":{"+":[2],"-":[3]},"port_directions":{"+":"input","-":"output"}},"Vb":{"type":"v","connections":{"+":[3],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Let \(V_B\) be a constant DC volt source, with polarity against the diode.</p>
+
+<p>The voltage between the diode and ground remains the same, since \(v_{\gamma}\) and \(V_B\) do not change.</p>
+
+<h3 id="clamper-circuit">Clamper circuit</h3>
+
+<p>Shift a DC voltage without changing its “shape”</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-clamper" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"clamper":{"cells":{"Vin":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"C":{"type":"c_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"D":{"type":"d_v","connections":{"+":[2],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","port_directions":{"A":"input"},"connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<h3 id="logic-gates">Logic gates</h3>
+
+<p>See logic gates.</p>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

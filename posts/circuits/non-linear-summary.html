@@ -463,12 +463,12 @@
       <td>\(F(s) \cdot G(s)\)</td>
     </tr>
     <tr>
-      <td>Final Value</td>
+      <td>Final Value Theorem</td>
       <td>\(\lim_{t \to \infty} f(t)\)</td>
       <td>\(\lim_{s \to 0} sF(s)\) (if poles in left half-plane)</td>
     </tr>
     <tr>
-      <td>Initial Value</td>
+      <td>Initial Value Theorem</td>
       <td>\(\lim_{t \to 0^+} f(t)\)</td>
       <td>\(\lim_{s \to \infty} sF(s)\)</td>
     </tr>
@@ -544,49 +544,89 @@
 
 <h3 id="reactive-element-transforms">Reactive Element Transforms</h3>
 
+<p>In S-domain, we talk about impedances \(Z\) just like in phasors.</p>
+
+<h3 id="inductor">Inductor</h3>
+
 <table>
   <thead>
     <tr>
-      <th>Time Domain Relationship</th>
-      <th>s-Domain Relationship</th>
+      <th>Inductor</th>
+      <th>Time Domain</th>
+      <th>s-Domain</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Inductor</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Voltage: \(v_L(t) = L \frac{di_L(t)}{dt}\)</td>
+      <td>Voltage</td>
+      <td>\(v_L(t) = L \frac{di_L(t)}{dt}\)</td>
       <td>\(V_L(s) = L[sI_L(s) - i_L(0^-)]\)</td>
     </tr>
     <tr>
-      <td>Current: \(i_L(t) = \frac{1}{L} \int_0^t v_L(\tau)d\tau + i_L(0^-)\)</td>
+      <td>Current</td>
+      <td>\(i_L(t) = \frac{1}{L} \int_0^t v_L(\tau)d\tau + i_L(0^-)\)</td>
       <td>\(I_L(s) = \frac{V_L(s)}{sL} + \frac{i_L(0^-)}{s}\)</td>
     </tr>
     <tr>
-      <td>Impedance: \(Z_L(s)\)</td>
+      <td>Impedance</td>
+      <td>\(Z_L(s)\)</td>
       <td>\(sL\)</td>
     </tr>
+  </tbody>
+</table>
+
+<h3 id="capacitor">Capacitor</h3>
+
+<table>
+  <thead>
     <tr>
-      <td>Capacitor</td>
-      <td> </td>
+      <th>Capacitor</th>
+      <th>Time Domain</th>
+      <th>s-Domain</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-      <td>Voltage: \(v_C(t) = \frac{1}{C} \int_0^t i_C(\tau)d\tau + v_C(0^-)\)</td>
+      <td>Voltage</td>
+      <td>\(v_C(t) = \frac{1}{C} \int_0^t i_C(\tau)d\tau + v_C(0^-)\)</td>
       <td>\(V_C(s) = \frac{I_C(s)}{sC} + \frac{v_C(0^-)}{s}\)</td>
     </tr>
     <tr>
-      <td>Current: \(i_C(t) = C \frac{dv_C(t)}{dt}\)</td>
+      <td>Current</td>
+      <td>\(i_C(t) = C \frac{dv_C(t)}{dt}\)</td>
       <td>\(I_C(s) = C[sV_C(s) - v_C(0^-)]\)</td>
     </tr>
     <tr>
-      <td>Impedance: \(Z_C(s)\)</td>
+      <td>Impedance</td>
+      <td>\(Z_C(s)\)</td>
       <td>\(\frac{1}{sC}\)</td>
     </tr>
   </tbody>
 </table>
 
+<h3 id="example">Example</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-s-domain-ex" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"s-domain-ex":{"cells":{"Vin":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"R1":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"RE":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"Cpi":{"type":"c_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"Rpi":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gvpi":{"type":"i","connections":{"+":[2],"-":[3]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"Cmu":{"type":"c_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RL":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}}}}}}
+  
+  </script>
+</div>
+
+\[Zeq = \frac{R_E r_{\pi}}{R_E + r_{\pi} + sR_E r_{\pi} C_{\pi}}\]
+
+<hr />
+
+<h4 id="pending">Pending:</h4>
+<ul>
+  <li>3-Phase [c12]</li>
+  <li>Mutual Inductance (transformers) [c13]</li>
+  <li>Transfer functions</li>
+  <li>Op amps</li>
+  <li>Two-port networks</li>
+</ul>
 
 </div>
 </article>
