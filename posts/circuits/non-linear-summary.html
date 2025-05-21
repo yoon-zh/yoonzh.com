@@ -290,6 +290,62 @@
 
 \[S = P + jQ = V_{rms} I^*_{rms} = V_{rms} I_{rms} e^{j(\theta - \phi)}\]
 
+<h2 id="power-table">Power Table</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Power</th>
+      <th>Equation</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Average \(P\)</td>
+      <td>\(V_{rms} I_{rms} \cos(\theta)\)</td>
+      <td>Real (Watts)</td>
+    </tr>
+    <tr>
+      <td>Reactive \(Q\)</td>
+      <td>\(V_{rms} I_{rms} \sin(\theta)\)</td>
+      <td>Exchange with C, L</td>
+    </tr>
+    <tr>
+      <td>Complex \(S\)</td>
+      <td>\(P + jQ = V_{rms} I_{rms}^*\)</td>
+      <td>Real + Reactive</td>
+    </tr>
+    <tr>
+      <td>Apparent \(S\)</td>
+      <td>\(V_{rms} I_{rms}\)</td>
+      <td>Total magnitude</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="phasor-example">Phasor Example</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-phasor1" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"phasor1":{"cells":{"V1":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"},"attributes":{"value":"120∠0° rms"}},"R1":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"1 Ω"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"5 Ω"}},"L1":{"type":"l_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"j10 Ω"}},"C1":{"type":"c_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"-j10 Ω"}}}}}}
+  
+  </script>
+</div>
+
+<p>Complex power for:</p>
+<ul>
+  <li>\(R1: 26.6\) VA</li>
+  <li>\(C1: -j1331\) VA</li>
+  <li>\(R2 + L1: 532 + j1065\) VA</li>
+  <li>\(V1: -559 + j266\) VA</li>
+</ul>
+
+<p>pg 453</p>
+
+<hr />
 
 </div>
 </article>
