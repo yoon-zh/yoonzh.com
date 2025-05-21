@@ -67,7 +67,7 @@ however, expect your taxi to smell like cigarrette...
 
 ### do NOT expect public wifi
 
-the only places that *might* have wifi consistently are starbucks星巴克, mcdonalds麦当劳, airports (sometimes), and your university campus. getting a phone number with a decent amount of data is key. *i use over 100 GB monthly, at roughly 60 yuan.*
+the only places that *might* have wifi consistently are starbucks星巴克, mcdonalds麦当劳, airports (sometimes), and your university campus. getting a phone number with a decent amount of data is key. *i use over 100 GB monthly, at roughly 9 USD.*
 
 ### Medical check-up
 
@@ -79,7 +79,7 @@ you’re probably not fluent in chinese (or maybe you are, flex). but you're gon
 
 ### "this app is not available in your region"
 
-if using iphone, create a new apple id and set its country to china. *i suggest making a new, separate account from your home country if you can.* 
+if using iphone, create a new apple id and set its country to china. *i suggest making a new, separate account from your home country.* 
 
 if using android or other, check this [reddit post](https://www.reddit.com/r/chinalife/comments/18evxyh/what_android_app_store_do_you_use_for_chinese_apps/) (google is banned, so not many chinese apps on google store). i'd suggest asking a local if this is your case.
 
@@ -91,19 +91,25 @@ the currency is the yuan: ¥ - CNY - RMB - 元 - 人民币... prices are cheap u
 
 ### paying by phone
 
-no cash, no physical cards, no apple pay - **only wechat/alipay**, make sure you have them downloaded and a card binded to feed the money.
+no cash, no physical cards, no apple pay: **only wechat/alipay**, make sure you have them downloaded and a card binded.
 
 ### withdrawing money
 
-you *might* have some trouble with international cards. not all foreign cards work everywhere. *in my experience, ICBC and HSBC ATMs are reliable, others not so much*.
+you *might* have some trouble with international cards. not all foreign cards work everywhere. *in my experience, ICBC and HSBC ATMs are reliable*.
 
 if you're staying for a couple months, get a local bank account after getting a phone number. *i have ICBC, it works ok.*
 
 ### living costs
 
-expect some variation. smaller cities are pretty cheap, but in places like beijing or shanghai, costs can skyrocket. on average, rent might run you anywhere from ¥2000 to ¥8000/month, depending on where you are and if your university provides housing. *i pay 1800 per month in suzhou苏州, as of 2025*. food is cheap, especially street food, but western stuff can burn a hole in your wallet if youre not careful.
+expect some variation. smaller cities are pretty cheap, but in places like beijing or shanghai, costs can skyrocket. on average, rent might run you anywhere from ¥2000 to ¥8000/month, depending on where you are and if your university provides housing. *i pay 1800 per month in suzhou苏州, as of 2025*.
 
-*i get away with about ¥4500 a month pretty comfortably.*
+food is cheap, especially street food, but western stuff can burn a hole in your wallet if youre not careful.
+- average chinese meal: ¥20 - 40
+- nice meal in a shopping mall: ¥60 - 80
+- western style: ¥80+
+
+of course, it depends on how picky you are about food. meals with friends are usually cheaper. *i get away with about ¥4500 a month, including rent, food and transportation.*
+
 
 ### sim cards
 
@@ -181,6 +187,16 @@ when ordering, you may notice they call you when they arrive. if you dont speak 
 in chinese, "辣" (là) means spicy. write this word down. chinese food can vary a lot, but spicy food is relatively common. 
 
 if you're not used to spicy food (for example, you're italian), beware - the "small spicy 微辣" options can be much stronger than expected. *sichuan food 川菜 is known for being spicy.* i wouldnt suggest it as your first dish.
+
+### Coffee, Tea, Drinks
+
+China's a golden mine for coffee and tea lovers. expect ¥15 (2 USD) in average per cup, both for coffee and tea. alcohol in bars may start around ¥30, although i dont drink so im not sure.
+
+for coffee, look for Luckin瑞幸咖啡, Manner, Algebraist... china's full of caffeine addicts, so choices are plenty. *starbucks still charges ¥40 a cup (same US prices), so id avoid it.*
+
+for tea, look for HeyTea喜茶, ChaPanda茶百道, A Little Tea一点点... but honestly just try it all. china's full of tea, so look for one that you like.
+
+note: in china, red beans are mainly used in sweet food. you may stumble upon them in a drink or ice cream. i personally dont like it, so be aware if your tea or ice cream says 红豆.
 
 # 6. cultural quirks
 
