@@ -28,16 +28,16 @@ unless you wanna set up a server yourself, i suggest [letsvpn](https://d1gx3j8kw
 if you want more options, look at this [reddit post](https://www.reddit.com/r/chinalife/comments/187vfnl/working_vpns_for_china_read_me_first/?rdt=34861). just dont get nord or express, they wont work.
 
 
-## Other apps you NEED
+## Apps you NEED
 
 - [WeChat 微信](https://www.wechat.com/): used for EVERYTHING. messaging, payments, social media, even booking taxis. get it and set it up before you land.
 - [Alipay 支付宝](https://mobile.alipay.com): payment app, everything about money. paying bills, ordering food, bus/metro QRs, booking hotels, yada yada. bind your foreign bank card before flying, saves lots of headache.
-- [Amap 高德地图](https://mobile.amap.com/): chinese map. *dont use google maps, it is not accurate here*. two popular map apps are  [amap](https://mobile.amap.com/) and baidu maps: [(iOS)](https://apps.apple.com/us/app/百度地图-路线规划-出行必备/id452186370) - [(android)](https://play.google.com/store/apps/details?id=com.baidu.BaiduMap&hl=zh). *and no, unfortunately theres no english (if you read zero chinese, maybe try apple maps)...*
+- [Amap 高德地图](https://mobile.amap.com/): chinese map. *dont use google maps, it is not accurate here*. two popular map apps are  [amap](https://mobile.amap.com/) and baidu maps: [(iOS)](https://apps.apple.com/us/app/百度地图-路线规划-出行必备/id452186370) - [(android)](https://play.google.com/store/apps/details?id=com.baidu.BaiduMap&hl=zh). *if you have apple, you can also use apple maps.*
 - Translator app: i suggest [deepL](https://www.deepl.com/app?utm_source=windows&utm_campaign=share-with-friends&utm_medium=app). other translators should be fine too, as long as you have wifi or data. if you're studying chinese or staying for more than a few weeks, pleco (dictionary) is your best friend. [(iOS)](https://apps.apple.com/us/app/pleco-chinese-dictionary/id341922306) - [(android)](https://play.google.com/store/apps/details?id=com.pleco.chinesesystem)
 
-keep in mind EVERYTHING here is done and paid in phone, expect no cash. so setting up wechat微信 and alipay支付宝 is crucial. **get both**.
+> everything here is done and paid in phone, expect no cash. so setting up wechat微信 and alipay支付宝 is crucial. get both.
 
-*bringing cash is not that necessary*. at most, maybe bring RMB 500 for an emergency, like if your phone doesnt work and you're stuck at the airport.
+*bringing cash is not that necessary*. maybe bring RMB 500 for an emergency, like if your phone doesnt work and you're stuck at the airport.
 
 ## E-SIM
 
@@ -77,9 +77,11 @@ if you're an X1 student (studying for more than 6 months), you have to take a me
 
 you’re probably not fluent in chinese (or maybe you are, flex). but you're gonna be in situations where even basic chinese will be super helpful. dont expect people to know english. get familiar with some phrases. try [HelloChinese](https://www.hellochinese.cc/). *i dont like duolingo for chinese.*
 
+if you're into learning chinese, pleco (dictionary) is your best friend. [(iOS)](https://apps.apple.com/us/app/pleco-chinese-dictionary/id341922306) - [(android)](https://play.google.com/store/apps/details?id=com.pleco.chinesesystem)
+
 ### "this app is not available in your region"
 
-if using iphone, create a new apple id and set its country to china. *i suggest making a new, separate account from your home country.* 
+if using iphone, create a new apple id and set its country to china. *i suggest making a new, separate account from your main one.* 
 
 if using android or other, check this [reddit post](https://www.reddit.com/r/chinalife/comments/18evxyh/what_android_app_store_do_you_use_for_chinese_apps/) (google is banned, so not many chinese apps on google store). i'd suggest asking a local if this is your case.
 
@@ -101,7 +103,7 @@ if you're staying for a couple months, get a local bank account after getting a 
 
 ### living costs
 
-expect some variation. smaller cities are pretty cheap, but in places like beijing or shanghai, costs can skyrocket. on average, rent might run you anywhere from ¥2000 to ¥8000/month, depending on where you are and if your university provides housing. *i pay 1800 per month in suzhou苏州, as of 2025*.
+expect some variation. smaller cities are pretty cheap, but in places like beijing or shanghai, costs can skyrocket. on average, rent might run you anywhere from ¥2000 to ¥8000/month, depending on where you are and if your university provides housing. *i pay ¥1800 per month in suzhou苏州, as of 2025*.
 
 food is cheap, especially street food, but western stuff can burn a hole in your wallet if youre not careful.
 - average chinese meal: ¥20 - 40
@@ -113,16 +115,20 @@ of course, it depends on how picky you are about food. meals with friends are us
 
 ### sim cards
 
-get a local sim card for your phone as soon as possible. **phone numbers are VERY important here.** the major carriers (china mobile 中国移动, china unicom 中国联通) all offer student-friendly deals, and they’ll hook you up with a number and data plan. **talk with your university about this**. mine has some sort of local agreement and they give me a ¥60 plan with 100 GB of data per month. pretty good if you ask me.
+> get a local sim card for your phone as soon as you arrive. phone numbers are VERY important here.
+
+the major carriers (china mobile 中国移动, china unicom 中国联通) all offer student-friendly deals, and they’ll hook you up with a number and data plan. **talk with your university about this**. mine has some sort of local agreement and they give me a ¥60 plan with 100 GB of data per month. pretty good if you ask me.
 
 ### taobao 淘宝
 
-you may have heard how packages and deliveries here are super cheap. yes, it's true. get [taobao淘宝](https://login.taobao.com/member/login.jhtml).
+you may have heard that packages and deliveries here are super cheap. yes, it's true. get [taobao淘宝](https://login.taobao.com/member/login.jhtml).
 
-if you live in dorms, your packages may arrive to a [cainiao菜鸟驿站](https://www.cainiao.com/technology-cainiao-app.html) station instead of your door, so download the app.
+if you live in dorms, your packages may arrive to a [cainiao station菜鸟驿站](https://www.cainiao.com/technology-cainiao-app.html) instead of your door, so ask your reception and download the app if so.
 
 
 # 4. getting around
+
+expect metro in all major cities. expect bullet trains to *everywhere* in the country. expect cheap taxis and buses. china's public transportation is S tier.
 
 ### from the airport to your place
 
@@ -132,12 +138,7 @@ if coming for studies or work, talk with your university/office, they usually he
 
 if you speak chinese, you could take the city metro 地铁, or train 高铁 if going between cities (ex, arriving to beijing北京 but going to tianjin天津).
 
-for train tickets, i use [12306](https://www.12306.cn) (english available). you can also use [trip](https://www.trip.com/pages/appdownload/?locale=en-XX&curr=USD) (foreign version) or [ctrip携程旅行](https://app.ctrip.com/app/) (local version).
-
-> you NEED your passport when taking trains, just like flights.
-
-
-### public transport
+### public transport: metro & bus
 
 metros and buses are everywhere, and they’re dirt cheap: ¥2–¥5 per ride (less than a dollar). you can set it up on [Alipay 支付宝](https://mobile.alipay.com): in main menu, press the "transport" button, open the card, and use a QR code. or, you can get a physical transport card and reload it as needed. 
 
@@ -147,17 +148,29 @@ china’s version of uber, but better and cheaper. download it [here](https://ww
 
 if you can read chinese, you can do fancier stuff like setting up taxis from [Amap 高德地图](https://mobile.amap.com/) too.
 
+### bullet trains 高铁 and flights
+
+the official platform for trains is [12306](https://www.12306.cn) (english available). you can also use [trip](https://www.trip.com/pages/appdownload/?locale=en-XX&curr=USD) (foreign version) or [ctrip携程旅行](https://app.ctrip.com/app/) (local version).
+
+> you NEED your passport when taking trains, just like flights.
+
+for nearby cities, a one-way bullet train ticket goes for ¥50-100. make sure to use them when visiting nearby cities (say, shanghai上海 > suzhou苏州 > hangzhou杭州). for longer distances, you may wanna compare with flights.
+
+i buy national flights in [ctrip携程旅行](https://app.ctrip.com/app/). if you need english, you may use [trip](https://www.trip.com/pages/appdownload/?locale=en-XX&curr=USD).
+
 ### driving
 
 don't expect to drive a car here, you'll need a local license驾照 regardless of your nationality. converting an overseas license into a local one is usually not straightforward, read more [here](https://english.shanghai.gov.cn/en-Transportation/20240102/07a427babba44f72aed9de96cf5f434a.html).
 
-*however,* you'll notice the massive amount of bikes (and e-bikes) around the street. for the yellow ones, you can rent them with meituan美团. the blue ones are from alipay支付宝. ask your university/office for more info.
+*however,* you'll notice the massive amount of bikes (and e-bikes) around the street. for the yellow ones, you can rent them with [meituan美团](http://www.meituan.com/mobile/). the blue ones are from [Alipay 支付宝](https://mobile.alipay.com). ask your university/office for more info.
 
 ### e-bikes
 
 some foreign students buy e-bikes like the chinese. you *can buy one and use it* (ive heard it starts from ¥3000), you dont need a license as of 2025. but keep in mind *most are illegal* (their legal speed limit is 25 km/h, but stores mod them to increase the cap and show 25).
 
 > if you get into an accident while driving an illegal e-bike, your insurance may not cover you. make sure to know your stuff if you're buying an e-bike.
+
+a safer choice is renting, just like the normal bikes. so there are both standard bikes and e-bikes you can rent via [meituan美团](http://www.meituan.com/mobile/) and [Alipay 支付宝](https://mobile.alipay.com).
 
 # 5. food & dining
 
@@ -178,7 +191,7 @@ this is where it’s at. dumplings (baozi包子、jiaozi饺子、xiaolongbao小�
 
 ### Delivery
 
-if you’re lazy (just like everyone else), [meituan美团](http://www.meituan.com/mobile/) and [eleme饿了么](https://www.ele.me/waimai) deliver to your door. use wechat or alipay to pay. depending where you order, they may deliver to some lockers (外卖柜), so keep an eye on where they are. *i like meituan.*
+[meituan美团](http://www.meituan.com/mobile/) and [eleme饿了么](https://www.ele.me/waimai) deliver to your door. depending where you order, they may deliver to some lockers (外卖柜), so keep an eye on where they are. *i like meituan.*
 
 when ordering, you may notice they call you when they arrive. if you dont speak chinese, you may just ignore it. if they call twice, the driver might have gotten lost. look for a chinese person to help you answer if so.
 
