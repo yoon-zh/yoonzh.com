@@ -132,7 +132,7 @@ expect metro in all major cities. expect bullet trains to *everywhere* in the co
 
 ### from the airport to your place
 
-if new to china, set up [didi](https://www.didiglobal.com/download) and get a taxi. 
+if new to china, set up [didi](https://www.didiglobal.com/download) and get a taxi. or you can also go to the designated taxi area and pick one (more expensive than didi).
 
 if coming for studies or work, talk with your university/office, they usually help booking a pickup, sometimes they pick you up themselves.
 
