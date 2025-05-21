@@ -1,0 +1,131 @@
+{
+  "modules": {
+    "transformer-full": {
+      "cells": {
+        "Vin": {
+          "type": "v",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "Transformer": {
+          "type": "transformer_1p_1s",
+          "connections": {
+            "L1.1": [1],
+            "L1.2": [0],
+            "L2.1": [2],
+            "L2.2": [3]
+          },
+          "port_directions": {
+            "L1.1": "input",
+            "L1.2": "output",
+            "L2.1": "input",
+            "L2.2": "output"
+          }
+        },
+        "D1": {
+          "type": "d_v",
+          "connections": {
+            "+": [-1],
+            "-": [2]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "D2": {
+          "type": "d_v",
+          "connections": {
+            "+": [2],
+            "-": [4]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "D3": {
+          "type": "d_v",
+          "connections": {
+            "+": [-1],
+            "-": [3]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "D4": {
+          "type": "d_v",
+          "connections": {
+            "+": [3],
+            "-": [4]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "C": {
+          "type": "c_v",
+          "connections": {
+            "A": [4],
+            "B": [-1]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "R": {
+          "type": "r_h",
+          "connections": {
+            "A": [4],
+            "B": [5]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Z": {
+          "type": "d_sk_v",
+          "connections": {
+            "+": [-1],
+            "-": [5]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "RL": {
+          "type": "r_v",
+          "connections": {
+            "A": [5],
+            "B": [-1]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "port_directions": {
+            "A": "input"
+          },
+          "connections": {
+            "A": [-1]
+          }
+        }
+      }
+    }
+  }
+}

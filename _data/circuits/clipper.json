@@ -1,0 +1,61 @@
+{
+  "modules": {
+    "clipper": {
+      "cells": {
+        "Vin": {
+          "type": "v",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "R": {
+          "type": "r_h",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "D": {
+          "type": "d_v",
+          "connections": {
+            "+": [2],
+            "-": [3]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "Vb": {
+          "type": "v",
+          "connections": {
+            "+": [3],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "port_directions": {
+            "A": "input"
+          },
+          "connections": {
+            "A": [0]
+          }
+        }
+      }
+    }
+  }
+}

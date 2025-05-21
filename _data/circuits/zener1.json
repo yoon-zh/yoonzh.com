@@ -1,0 +1,52 @@
+{
+  "modules": {
+    "zener1": {
+      "cells": {
+        "Vin": {
+          "type": "v",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "Ri": {
+          "type": "r_h",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "D": {
+          "type": "d_sk_v",
+          "connections": {
+            "+": [0],
+            "-": [2]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "RL": {
+          "type": "r_v",
+          "connections": {
+            "A": [2],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        }
+      }
+    }
+  }
+}
