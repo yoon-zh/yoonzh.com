@@ -1,0 +1,107 @@
+{
+  "modules": {
+    "s-domain-ex": {
+      "cells": {
+        "Vin": {
+          "type": "v",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "R1": {
+          "type": "r_h",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "RE": {
+          "type": "r_v",
+          "connections": {
+            "A": [2],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Cpi": {
+          "type": "c_v",
+          "connections": {
+            "A": [2],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Rpi": {
+          "type": "r_v",
+          "connections": {
+            "A": [2],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "gvpi": {
+          "type": "i",
+          "connections": {
+            "+": [2],
+            "-": [3]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "RC": {
+          "type": "r_v",
+          "connections": {
+            "A": [3],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Cmu": {
+          "type": "c_v",
+          "connections": {
+            "A": [3],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "RL": {
+          "type": "r_v",
+          "connections": {
+            "A": [3],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        }
+      }
+    }
+  }
+}
