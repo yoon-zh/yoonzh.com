@@ -23,8 +23,8 @@
         onload="renderMathInElement(document.body);"></script>
   
   
-  <script src="https://nturley.github.io/netlistsvg/elk.bundled.js"></script>
-  <script src="https://nturley.github.io/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script src="https://neilturley.dev/netlistsvg/elk.bundled.js"></script>
+  <script src="https://neilturley.dev/netlistsvg/built/netlistsvg.bundle.js"></script>
   <script type="module" src="/scripts/circuits.js"></script>
   
 </head>
@@ -346,6 +346,247 @@
 <p>pg 453</p>
 
 <hr />
+
+<h2 id="s-domain">S-domain</h2>
+
+<h3 id="laplace-transform-table">Laplace transform table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>f(t)</th>
+      <th>F(s) = L(f(t))</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Unit step function, \(u(t)\)</td>
+      <td>\(\frac{1}{s}\)</td>
+    </tr>
+    <tr>
+      <td>Dirac delta function, \(\delta(t)\)</td>
+      <td>\(1\)</td>
+    </tr>
+    <tr>
+      <td>Ramp function, \(t\ u(t)\)</td>
+      <td>\(\frac{1}{s^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(e^{-at}\ u(t)\)</td>
+      <td>\(\frac{1}{s + a}\)</td>
+    </tr>
+    <tr>
+      <td>\(t\ e^{-at}\ u(t)\)</td>
+      <td>\(\frac{1}{(s + a)^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(t^n\ u(t)\) (n = integer)</td>
+      <td>\(\frac{n!}{s^{n+1}}\)</td>
+    </tr>
+    <tr>
+      <td>\(\sin(\omega t)\ u(t)\)</td>
+      <td>\(\frac{\omega}{s^2 + \omega^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(\cos(\omega t)\ u(t)\)</td>
+      <td>\(\frac{s}{s^2 + \omega^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(e^{-at} \sin(\omega t)\ u(t)\)</td>
+      <td>\(\frac{\omega}{(s + a)^2 + \omega^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(e^{-at} \cos(\omega t)\ u(t)\)</td>
+      <td>\(\frac{s + a}{(s + a)^2 + \omega^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(t\ \sin(\omega t)\ u(t)\)</td>
+      <td>\(\frac{2\omega s}{(s^2 + \omega^2)^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(t\ \cos(\omega t)\ u(t)\)</td>
+      <td>\(\frac{s^2 - \omega^2}{(s^2 + \omega^2)^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(\frac{1}{\omega^2}(1 - \cos(\omega t))\ u(t)\)</td>
+      <td>\(\frac{1}{s(s^2 + \omega^2)}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="laplace-transform-properties">Laplace Transform Properties</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Operation</th>
+      <th>Laplace Transform</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Linearity</td>
+      <td>\(a f(t) + b g(t)\)</td>
+      <td>\(a F(s) + b G(s)\)</td>
+    </tr>
+    <tr>
+      <td>Time Shifting</td>
+      <td>\(f(t - k)u(t - k)\)</td>
+      <td>\(e^{-ks}F(s)\)</td>
+    </tr>
+    <tr>
+      <td>Frequency Shifting</td>
+      <td>\(e^{at}f(t)\)</td>
+      <td>\(F(s - a)\)</td>
+    </tr>
+    <tr>
+      <td>Time Derivative</td>
+      <td>\(f'(t)\)</td>
+      <td>\(sF(s) - f(0^-)\)</td>
+    </tr>
+    <tr>
+      <td>Second Derivative</td>
+      <td>\(f''(t)\)</td>
+      <td>\(s^2F(s) - sf(0^-) - f'(0^-)\)</td>
+    </tr>
+    <tr>
+      <td>Integral</td>
+      <td>\(\int_0^t f(\tau) d\tau\)</td>
+      <td>\(\frac{1}{s}F(s)\)</td>
+    </tr>
+    <tr>
+      <td>Convolution</td>
+      <td>\(f(t) * g(t)\)</td>
+      <td>\(F(s) \cdot G(s)\)</td>
+    </tr>
+    <tr>
+      <td>Final Value</td>
+      <td>\(\lim_{t \to \infty} f(t)\)</td>
+      <td>\(\lim_{s \to 0} sF(s)\) (if poles in left half-plane)</td>
+    </tr>
+    <tr>
+      <td>Initial Value</td>
+      <td>\(\lim_{t \to 0^+} f(t)\)</td>
+      <td>\(\lim_{s \to \infty} sF(s)\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For time shifting, \(k &gt; 0\) or else \(f(t)\) diverges (no Laplace transform).</p>
+
+<h3 id="common-laplace-transforms">Common Laplace Transforms</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time Domain: \(f(t)\)</th>
+      <th>Frequency Domain: \(F(s)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(u(t)\)</td>
+      <td>\(\frac{1}{s}\)</td>
+    </tr>
+    <tr>
+      <td>\(u(t - k)\)</td>
+      <td>\(\frac{e^{-ks}}{s}\)</td>
+    </tr>
+    <tr>
+      <td>\(\delta(t)\)</td>
+      <td>\(1\)</td>
+    </tr>
+    <tr>
+      <td>\(\delta(t - k)\)</td>
+      <td>\(e^{-ks}\)</td>
+    </tr>
+    <tr>
+      <td>\(t^n u(t)\) (\(n \geq 0\))</td>
+      <td>\(\frac{n!}{s^{n+1}}\)</td>
+    </tr>
+    <tr>
+      <td>\(e^{-at}u(t)\)</td>
+      <td>\(\frac{1}{s + a}\)</td>
+    </tr>
+    <tr>
+      <td>\(t^n e^{-at}u(t)\)</td>
+      <td>\(\frac{n!}{(s + a)^{n+1}}\)</td>
+    </tr>
+    <tr>
+      <td>\(\sin(\omega t)u(t)\)</td>
+      <td>\(\frac{\omega}{s^2 + \omega^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(\cos(\omega t)u(t)\)</td>
+      <td>\(\frac{s}{s^2 + \omega^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(e^{-at}\sin(\omega t)u(t)\)</td>
+      <td>\(\frac{\omega}{(s + a)^2 + \omega^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(e^{-at}\cos(\omega t)u(t)\)</td>
+      <td>\(\frac{s + a}{(s + a)^2 + \omega^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(\sinh(\alpha t)u(t)\)</td>
+      <td>\(\frac{\alpha}{s^2 - \alpha^2}\)</td>
+    </tr>
+    <tr>
+      <td>\(\cosh(\alpha t)u(t)\)</td>
+      <td>\(\frac{s}{s^2 - \alpha^2}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="reactive-element-transforms">Reactive Element Transforms</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time Domain Relationship</th>
+      <th>s-Domain Relationship</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Inductor</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Voltage: \(v_L(t) = L \frac{di_L(t)}{dt}\)</td>
+      <td>\(V_L(s) = L[sI_L(s) - i_L(0^-)]\)</td>
+    </tr>
+    <tr>
+      <td>Current: \(i_L(t) = \frac{1}{L} \int_0^t v_L(\tau)d\tau + i_L(0^-)\)</td>
+      <td>\(I_L(s) = \frac{V_L(s)}{sL} + \frac{i_L(0^-)}{s}\)</td>
+    </tr>
+    <tr>
+      <td>Impedance: \(Z_L(s)\)</td>
+      <td>\(sL\)</td>
+    </tr>
+    <tr>
+      <td>Capacitor</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Voltage: \(v_C(t) = \frac{1}{C} \int_0^t i_C(\tau)d\tau + v_C(0^-)\)</td>
+      <td>\(V_C(s) = \frac{I_C(s)}{sC} + \frac{v_C(0^-)}{s}\)</td>
+    </tr>
+    <tr>
+      <td>Current: \(i_C(t) = C \frac{dv_C(t)}{dt}\)</td>
+      <td>\(I_C(s) = C[sV_C(s) - v_C(0^-)]\)</td>
+    </tr>
+    <tr>
+      <td>Impedance: \(Z_C(s)\)</td>
+      <td>\(\frac{1}{sC}\)</td>
+    </tr>
+  </tbody>
+</table>
+
 
 </div>
 </article>
