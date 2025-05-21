@@ -162,3 +162,75 @@ Complex power for:
 pg 453
 
 ***
+
+## S-domain
+
+### Laplace transform table
+
+| f(t)                          | F(s) = L(f(t))                |
+|-------------------------------|-------------------------------|
+| Unit step function, $$u(t)$$  | $$\frac{1}{s}$$               |
+| Dirac delta function, $$\delta(t)$$ | $$1$$                   |
+| Ramp function, $$t\ u(t)$$    | $$\frac{1}{s^2}$$             |
+| $$e^{-at}\ u(t)$$             | $$\frac{1}{s + a}$$           |
+| $$t\ e^{-at}\ u(t)$$          | $$\frac{1}{(s + a)^2}$$       |
+| $$t^n\ u(t)$$ (n = integer)   | $$\frac{n!}{s^{n+1}}$$        |
+| $$\sin(\omega t)\ u(t)$$      | $$\frac{\omega}{s^2 + \omega^2}$$                    |
+| $$\cos(\omega t)\ u(t)$$      | $$\frac{s}{s^2 + \omega^2}$$                         |
+| $$e^{-at} \sin(\omega t)\ u(t)$$ | $$\frac{\omega}{(s + a)^2 + \omega^2}$$           |
+| $$e^{-at} \cos(\omega t)\ u(t)$$ | $$\frac{s + a}{(s + a)^2 + \omega^2}$$            |
+| $$t\ \sin(\omega t)\ u(t)$$      | $$\frac{2\omega s}{(s^2 + \omega^2)^2}$$          |
+| $$t\ \cos(\omega t)\ u(t)$$      | $$\frac{s^2 - \omega^2}{(s^2 + \omega^2)^2}$$     |
+| $$ \frac{1}{\omega^2}(1 - \cos(\omega t))\ u(t) $$ | $$\frac{1}{s(s^2 + \omega^2)}$$ |
+
+***
+
+
+### Laplace Transform Properties  
+
+| Property | Operation       | Laplace Transform               |
+|------------------------------|--------------------------------------|
+| Linearity | $$a f(t) + b g(t)$$ | $$a F(s) + b G(s)$$                |
+| Time Shifting | $$f(t - k)u(t - k)$$ | $$e^{-ks}F(s)$$ |
+| Frequency Shifting | $$e^{at}f(t)$$ | $$F(s - a)$$                      |
+| Time Derivative | $$f'(t)$$    | $$sF(s) - f(0^-)$$                 |
+| Second Derivative | $$f''(t)$$ | $$s^2F(s) - sf(0^-) - f'(0^-)$$   |
+| Integral | $$\int_0^t f(\tau) d\tau$$ | $$\frac{1}{s}F(s)$$             |
+| Convolution | $$f(t) * g(t)$$  | $$F(s) \cdot G(s)$$                |
+| Final Value | $$\lim_{t \to \infty} f(t)$$ | $$\lim_{s \to 0} sF(s)$$ (if poles in left half-plane) |
+| Initial Value | $$\lim_{t \to 0^+} f(t)$$ | $$\lim_{s \to \infty} sF(s)$$ |
+
+For time shifting, $$k > 0$$ or else $$f(t)$$ diverges (no Laplace transform).
+
+### Common Laplace Transforms
+
+| Time Domain: $$f(t)$$            | Frequency Domain: $$F(s)$$           |
+|----------------------------------|--------------------------------------|
+| $$u(t)$$                         | $$\frac{1}{s}$$                      |
+| $$u(t - k)$$                     | $$\frac{e^{-ks}}{s}$$                |
+| $$\delta(t)$$                    | $$1$$                                |
+| $$\delta(t - k)$$                | $$e^{-ks}$$                          |
+| $$t^n u(t)$$ ($$n \geq 0$$)      | $$\frac{n!}{s^{n+1}}$$               |
+| $$e^{-at}u(t)$$                  | $$\frac{1}{s + a}$$                  |
+| $$t^n e^{-at}u(t)$$              | $$\frac{n!}{(s + a)^{n+1}}$$         |
+| $$\sin(\omega t)u(t)$$           | $$\frac{\omega}{s^2 + \omega^2}$$    |
+| $$\cos(\omega t)u(t)$$           | $$\frac{s}{s^2 + \omega^2}$$         |
+| $$e^{-at}\sin(\omega t)u(t)$$    | $$\frac{\omega}{(s + a)^2 + \omega^2}$$ |
+| $$e^{-at}\cos(\omega t)u(t)$$    | $$\frac{s + a}{(s + a)^2 + \omega^2}$$ |
+| $$\sinh(\alpha t)u(t)$$          | $$\frac{\alpha}{s^2 - \alpha^2}$$    |
+| $$\cosh(\alpha t)u(t)$$          | $$\frac{s}{s^2 - \alpha^2}$$         |
+
+
+### Reactive Element Transforms
+
+| Time Domain Relationship     | s-Domain Relationship           |
+|----------------------------------|--------------------------------------|
+| Inductor                     |                                      |
+| Voltage: $$v_L(t) = L \frac{di_L(t)}{dt}$$ | $$V_L(s) = L[sI_L(s) - i_L(0^-)]$$ |
+| Current: $$i_L(t) = \frac{1}{L} \int_0^t v_L(\tau)d\tau + i_L(0^-)$$ | $$I_L(s) = \frac{V_L(s)}{sL} + \frac{i_L(0^-)}{s}$$ |
+| Impedance: $$Z_L(s)$$            | $$sL$$                               |
+| Capacitor                    |                                      |
+| Voltage: $$v_C(t) = \frac{1}{C} \int_0^t i_C(\tau)d\tau + v_C(0^-)$$ | $$V_C(s) = \frac{I_C(s)}{sC} + \frac{v_C(0^-)}{s}$$ |
+| Current: $$i_C(t) = C \frac{dv_C(t)}{dt}$$ | $$I_C(s) = C[sV_C(s) - v_C(0^-)]$$ |
+| Impedance: $$Z_C(s)$$            | $$\frac{1}{sC}$$                     |
+
