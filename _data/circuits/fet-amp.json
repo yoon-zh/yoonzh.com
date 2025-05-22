@@ -1,0 +1,78 @@
+{
+  "modules": {
+    "fet-amp": {
+      "ports": {
+        "Vout": {"direction": "output", "bits": [3]}
+      },
+      "cells": {
+        "VDD": {
+          "type": "vcc",
+          "connections": {
+            "A": [1]
+          },
+          "attributes": {
+            "name": "Vdd"
+          }
+        },
+        "RD": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [3]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "nmos": {
+          "type": "q_npn",
+          "connections": {
+            "C": [3],
+            "B": [2],
+            "E": [0]
+          },
+          "port_directions": {
+            "B": "input",
+            "C": "input",
+            "E": "output"
+          }
+        },
+        "Vi": {
+          "type": "v",
+          "connections": {
+            "+": [2],
+            "-": [4]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "VGSQ": {
+          "type": "v",
+          "connections": {
+            "+": [4],
+            "-": [-1]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "gnd1": {
+          "type": "gnd",
+          "connections": {
+            "A": [0]
+          }
+        },
+        "gnd2": {
+          "type": "gnd",
+          "connections": {
+            "A": [-1]
+          }
+        }
+      }
+    }
+  }
+}

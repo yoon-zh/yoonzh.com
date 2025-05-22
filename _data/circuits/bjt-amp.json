@@ -1,0 +1,89 @@
+{
+  "modules": {
+    "bjt-amp": {
+      "ports": {
+        "Vout": {"direction": "output", "bits": [-10]}
+      },
+      "cells": {
+        "VCC": {
+          "type": "vcc",
+          "connections": {
+            "A": [1]
+          },
+          "attributes": {
+            "name": "Vcc"
+          }
+        },
+        "RD": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [-10]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "npn": {
+          "type": "q_npn",
+          "connections": {
+            "C": [-10],
+            "B": [2],
+            "E": [0]
+          },
+          "port_directions": {
+            "B": "input",
+            "C": "input",
+            "E": "output"
+          }
+        },
+        "RB": {
+          "type": "r_v",
+          "connections": {
+            "A": [2],
+            "B": [4]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Vi": {
+          "type": "v",
+          "connections": {
+            "+": [4],
+            "-": [5]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "VGSQ": {
+          "type": "v",
+          "connections": {
+            "+": [5],
+            "-": [-1]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "gnd1": {
+          "type": "gnd",
+          "connections": {
+            "A": [0]
+          }
+        },
+        "gnd2": {
+          "type": "gnd",
+          "connections": {
+            "A": [-1]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "modules": {
+    "fet-ss": {
+      "ports": {
+        "Vin": {"direction": "output", "bits": [-11]},
+        "Vout": {"direction": "output", "bits": [-12]}
+      },
+      "cells": {
+        "RD.": {
+          "type": "r_v",
+          "connections": {
+            "A": [-12],
+            "B": [11]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "ro": {
+          "type": "r_v",
+          "connections": {
+            "A": [-12],
+            "B": [11]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "gmVgs": {
+          "type": "i",
+          "connections": {
+            "+": [-12],
+            "-": [11]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "Vs": {
+          "type": "v",
+          "connections": {
+            "+": [-11],
+            "-": [11]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        }
+      }
+    }
+  }
+}

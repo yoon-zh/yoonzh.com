@@ -305,3 +305,7 @@ Then the analysis is the same as before.
 ## BJT Logic Gates
 
 See [Logic Gates with BJTs](digital#:~:text=Logic%20Gates%20with%20BJTs)
+
+# Amplifiers
+
+See amplifiers [here](transistor-amp)
