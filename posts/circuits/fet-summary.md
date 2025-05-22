@@ -22,7 +22,7 @@ Field
 Effect  
 Transistor
 
-# Operation Regions
+## Operation Regions
 
 > Transition point
 > - NMOS: $$V_{DS} (sat) = V_{GS} - V_{TN}$$
@@ -40,6 +40,8 @@ Transistor
 | Triode            | $$V_{DS} < V_{DS}(sat)$$ | $$V_{SD} < V_{SD}(sat)$$ |
 | Cutoff            | $$V_{GS} < V_{TN}$$ | $$\lvert V_{SG} \rvert < \lvert V_{TP} \rvert$$ |
 
+Ideally, we want NMOS and PMOS to be in saturation mode.
+
 ## Solving Process
 
 1. Assume operation region (default: saturation)
@@ -48,9 +50,17 @@ Transistor
   - If yes, analysis is complete.
   - If not, change operation region and analyze again.
 
-> KVL is your best friend. Below are some examples for circuits, you can easily get this equations with KVL.
+***
 
-## NMOS
+> Remember: Current does NOT flow into the gate:
+>
+> $$ i_G = 0$$
+
+***
+
+Below are some examples for circuits. Here, KVL is your best friend. You can easily get this equations with KVL.
+
+### NMOS
 
 The symbol is not an NMOS but the renderer does not have it (to change !important).
 
@@ -101,7 +111,7 @@ With the new value of $$V_{DS}$$, verify that $$V_{DS} < V_{DS}(sat)$$. If yes, 
 If not, verify your calculations.
 
 
-## PMOS
+### PMOS
 
 {% include circuit.html id="pmos-commonsource" from_data=true %}
 
@@ -152,3 +162,34 @@ See [FET logic gates](digital)
 ***
 
 # BJT
+
+Bipolar  
+Junction  
+Transistor
+
+Remember [p-n junctions](semic-intro)? BJTs consist of:
+- npn
+- pnp
+
+## Operation Regions
+
+![image](/images/posts/circuits/bjt-graph.png)
+
+> Transition point
+> - NMOS: $$V_{DS} (sat) = V_{GS} - V_{TN}$$
+> - PMOS: $$V_{SD} (sat) = V_{SG} - V_{TP}$$
+
+| Operation Region  | NMOS | PMOS |
+|-------------------|------|------|
+| Saturation        | $$i_D = K_n (V_{DS}(sat))^2$$ | $$i_D = K_n (V_{SG}(sat))^2$$ |
+| Forward Bias      | $$i_D = K_n (2V_{DS}(sat) \times V_{DS} - V^2_{DS})$$ | $$i_D = K_n (2V_{SG}(sat) \times V_{SD} - V^2_{SD})$$ |
+| Cutoff            | $$i_D = 0$$ | $$i_D = 0$$ |
+
+| Condition         | NMOS | PMOS |
+|-------------------|------|------|
+| Saturation        | $$V_{CE} > V_{CE}(sat)$$ | $$V_{SD} \geq V_{SD}(sat)$$ |
+| Triode            | $$V_{DS} < V_{DS}(sat)$$ | $$V_{SD} < V_{SD}(sat)$$ |
+| Cutoff            | $$V_{GS} < V_{TN}$$ | $$\lvert V_{SG} \rvert < \lvert V_{TP} \rvert$$ |
+
+
+
