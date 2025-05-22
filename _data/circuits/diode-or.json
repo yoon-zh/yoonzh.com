@@ -1,0 +1,89 @@
+{
+  "modules": {
+    "diode-or": {
+      "ports": {
+        "A OR B": {"direction": "output","bits": [0]}
+      },
+      "cells": {
+        "A": {
+          "type": "v",
+          "connections": {
+            "+": [1],
+            "-": [-1]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "B": {
+          "type": "v",
+          "connections": {
+            "+": [2],
+            "-": [-2]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "DA": {
+          "type": "d_v",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "DB": {
+          "type": "d_v",
+          "connections": {
+            "+": [2],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "R": {
+          "type": "r_v",
+          "connections": {
+            "A": [0],
+            "B": [-3]
+          }
+        },
+        "gndA": {
+          "type": "gnd",
+          "port_directions": {
+            "A": "input"
+          },
+          "connections": {
+            "A": [-1]
+          }
+        },
+        "gndB": {
+          "type": "gnd",
+          "port_directions": {
+            "A": "input"
+          },
+          "connections": {
+            "A": [-2]
+          }
+        },
+        "gndO": {
+          "type": "gnd",
+          "port_directions": {
+            "A": "input"
+          },
+          "connections": {
+            "A": [-3]
+          }
+        }
+      }
+    }
+  }
+}

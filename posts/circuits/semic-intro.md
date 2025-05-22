@@ -128,4 +128,4 @@ Shift a DC voltage without changing its "shape"
 
 ### Logic gates
 
-See logic gates.
+See [diode logic gates](digital)
