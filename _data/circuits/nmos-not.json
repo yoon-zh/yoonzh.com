@@ -1,0 +1,51 @@
+{
+  "modules": {
+    "nmos-not": {
+      "ports": {
+        "A": {"direction": "input","bits": [2]},
+        "NOT A": {"direction": "output","bits": [1]}
+      },
+      "cells": {
+        "VDD": {
+          "type": "vcc",
+          "connections": {
+            "A": [0]
+          },
+          "attributes": {
+            "name": "Vdd"
+          }
+        },
+        "RD": {
+          "type": "r_v",
+          "connections": {
+            "A": [0],
+            "B": [1]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "nmos": {
+          "type": "q_npn",
+          "connections": {
+            "C": [1],
+            "B": [2],
+            "E": [3]
+          },
+          "port_directions": {
+            "B": "input",
+            "C": "input",
+            "E": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "connections": {
+            "A": [3]
+          }
+        }
+      }
+    }
+  }
+}

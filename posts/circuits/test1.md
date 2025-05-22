@@ -22,4 +22,8 @@ w7
 
 w9
 
+{% include circuit.html id="common_emitter" from_data=true %}
+
+{% include circuit.html id="resistor_divider" from_data=true %}
+
 ***

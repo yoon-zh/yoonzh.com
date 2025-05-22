@@ -45,4 +45,28 @@ Let $$Vs = 5\ V$$, and $$V_A, V_B = (0, 5)\ V$$.
 
 ***
 
+## Logic Gates with MOSFETS
+
+### NOT
+
+{% include circuit.html id="nmos-not" from_data=true %}
+
+| $$V_A$$ | $$V_{output}$$ |
+|---------|----------------|
+| LOW     | HIGH           |
+| HIGH    | LOW            |
+
+### NOR
+
+{% include circuit.html id="nmos-nor" from_data=true %}
+
+| $$V_A$$ | $$V_B$$ | $$V_{output}$$ |
+|---------|---------|----------------|
+| 0 V     | 0 V     | HIGH           |
+| 0 V     | 5 V     | LOW            |
+| 5 V     | 0 V     | LOW            |
+| 5 V     | 5 V     | LOW            |
+
+***
+
 other content pending.
