@@ -88,9 +88,276 @@
 </header>
 
 <div class="article-content">
-  <p>date: 2025-05-20</p>
+  <p>date: 2025-05-22</p>
 
 <hr />
+
+<h1 id="mosfet">MOSFET</h1>
+
+<p>Metal<br />
+Oxide<br />
+Semiconductor<br />
+Field<br />
+Effect<br />
+Transistor</p>
+
+<h2 id="operation-regions">Operation Regions</h2>
+
+<blockquote>
+  <p>Transition point</p>
+  <ul>
+    <li>NMOS: \(V_{DS} (sat) = V_{GS} - V_{TN}\)</li>
+    <li>PMOS: \(V_{SD} (sat) = V_{SG} - V_{TP}\)</li>
+  </ul>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation Region</th>
+      <th>NMOS</th>
+      <th>PMOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Saturation</td>
+      <td>\(i_D = K_n (V_{DS}(sat))^2\)</td>
+      <td>\(i_D = K_n (V_{SG}(sat))^2\)</td>
+    </tr>
+    <tr>
+      <td>Triode</td>
+      <td>\(i_D = K_n (2V_{DS}(sat) \times V_{DS} - V^2_{DS})\)</td>
+      <td>\(i_D = K_n (2V_{SG}(sat) \times V_{SD} - V^2_{SD})\)</td>
+    </tr>
+    <tr>
+      <td>Cutoff</td>
+      <td>\(i_D = 0\)</td>
+      <td>\(i_D = 0\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Condition</th>
+      <th>NMOS</th>
+      <th>PMOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Saturation</td>
+      <td>\(V_{DS} \geq V_{DS}(sat)\)</td>
+      <td>\(V_{SD} \geq V_{SD}(sat)\)</td>
+    </tr>
+    <tr>
+      <td>Triode</td>
+      <td>\(V_{DS} &lt; V_{DS}(sat)\)</td>
+      <td>\(V_{SD} &lt; V_{SD}(sat)\)</td>
+    </tr>
+    <tr>
+      <td>Cutoff</td>
+      <td>\(V_{GS} &lt; V_{TN}\)</td>
+      <td>\(\lvert V_{SG} \rvert &lt; \lvert V_{TP} \rvert\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Ideally, we want NMOS and PMOS to be in saturation mode.</p>
+
+<h2 id="solving-process">Solving Process</h2>
+
+<ol>
+  <li>Assume operation region (default: saturation)</li>
+  <li>Analyze following saturation model, get \(i_D, V_{DS}\)</li>
+  <li>Verify conditions for assumed region are met: \(V_{DS} \geq V_{DS}(sat)\)
+    <ul>
+      <li>If yes, analysis is complete.</li>
+      <li>If not, change operation region and analyze again.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<blockquote>
+  <p>Remember: Current does NOT flow into the gate:</p>
+
+\[i_G = 0\]
+</blockquote>
+
+<hr />
+
+<p>Below are some examples for circuits. Here, KVL is your best friend. You can easily get this equations with KVL.</p>
+
+<h3 id="nmos">NMOS</h3>
+
+<p>The symbol is not an NMOS but the renderer does not have it (to change !important).</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-nmos-commonsource" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"nmos-commonsource":{"cells":{"VDD":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vdd"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RD":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"nmos":{"type":"q_npn","connections":{"C":[3],"B":[2],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Assume \(V_{DD},\ V_{TN},\ K_n\) and the resistor values are given.</p>
+
+\[V_{GS} = V_G - V_S,\ V_S = 0\]
+
+\[V_{GS} = V_G = \frac{R2}{R1 + R2} V_{DD}\]
+
+<p>If \(V_{GS} \leq V_{TN}\), then the NMOS is in the cutoff region, \(i_D = 0,\ V_{DS} = V_{DD}\).</p>
+
+<p>If not, continue:</p>
+
+\[V_{DS}(sat) = V_{GS} - V_{TN}\]
+
+<p>Assume \(V_{DS} \geq V_{DS}(sat)\):</p>
+
+\[i_D = K_n (V_{DS}(sat))^2\]
+
+\[V_{DS} = V_{DD} - i_D R_D\]
+
+<p>If \(V_{DS} \geq V_{DS}(sat)\), then the NMOS is indeed in saturation, the analysis is complete.</p>
+
+<p>If not, then the NMOS is in triode region:</p>
+
+\[i_D = K_n (2V_{DS}(sat) \times V_{DS} - V^2_{DS})\]
+
+\[V_{DS} = V_{DD} - i_D R_D\]
+
+<p>With the new value of \(V_{DS}\), verify that \(V_{DS} &lt; V_{DS}(sat)\). If yes, analysis is complete.</p>
+
+<p>If not, verify your calculations.</p>
+
+<h3 id="pmos">PMOS</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-pmos-commonsource" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"pmos-commonsource":{"cells":{"VDD":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vdd"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"pmos":{"type":"q_pnp","port_directions":{"C":"input","B":"input","E":"output"},"connections":{"C":[1],"B":[2],"E":[3]}},"RD":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Assume \(V_{DD},\ V_{TP},\ K_n\) and the resistor values are given.</p>
+
+\[V_{SG} = \frac{R1}{R1 + R2} V_{DD}\]
+
+<p>If \(\lvert V_{SG} \rvert &lt; \lvert V_{TP} \rvert\), then the PMOS is in the cutoff region, \(i_D = 0,\ V_{SD} = V_{DD}\).</p>
+
+<p>If not, continue:</p>
+
+\[V_{SD}(sat) = V_{SG} + V_{TP}\]
+
+<p>Assume \(V_{SD} \geq V_{SD}(sat)\):</p>
+
+\[i_D = K_n (V_{SG}(sat))^2\]
+
+\[V_{SD} = V_{DD} - i_D R_D\]
+
+<p>If \(V_{SD} \geq V_{SD}(sat)\), then the PMOS is indeed in saturation, the analysis is complete.</p>
+
+<p>If not, then the PMOS is in triode region:</p>
+
+\[i_D = K_n (2V_{SD}(sat) \times V_{SD} - V^2_{SD})\]
+
+\[V_{SD} = V_{DD} - i_D R_D\]
+
+<p>With the new value of \(V_{DS}\), verify that \(V_{DS} &lt; V_{DS}(sat)\). If yes, analysis is complete.</p>
+
+<p>If not, verify your calculations.</p>
+
+<h2 id="nmos-pmos-logic-gates">NMOS, PMOS Logic gates</h2>
+
+<p>See <a href="digital">FET logic gates</a></p>
+
+<hr />
+
+<h1 id="bjt">BJT</h1>
+
+<p>Bipolar<br />
+Junction<br />
+Transistor</p>
+
+<p>Remember <a href="semic-intro">p-n junctions</a>? BJTs consist of:</p>
+<ul>
+  <li>npn</li>
+  <li>pnp</li>
+</ul>
+
+<h2 id="operation-regions-1">Operation Regions</h2>
+
+<p><img src="/images/posts/circuits/bjt-graph.png" alt="image" /></p>
+
+<blockquote>
+  <p>Transition point</p>
+  <ul>
+    <li>NMOS: \(V_{DS} (sat) = V_{GS} - V_{TN}\)</li>
+    <li>PMOS: \(V_{SD} (sat) = V_{SG} - V_{TP}\)</li>
+  </ul>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation Region</th>
+      <th>NMOS</th>
+      <th>PMOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Saturation</td>
+      <td>\(i_D = K_n (V_{DS}(sat))^2\)</td>
+      <td>\(i_D = K_n (V_{SG}(sat))^2\)</td>
+    </tr>
+    <tr>
+      <td>Forward Bias</td>
+      <td>\(i_D = K_n (2V_{DS}(sat) \times V_{DS} - V^2_{DS})\)</td>
+      <td>\(i_D = K_n (2V_{SG}(sat) \times V_{SD} - V^2_{SD})\)</td>
+    </tr>
+    <tr>
+      <td>Cutoff</td>
+      <td>\(i_D = 0\)</td>
+      <td>\(i_D = 0\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Condition</th>
+      <th>NMOS</th>
+      <th>PMOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Saturation</td>
+      <td>\(V_{CE} &gt; V_{CE}(sat)\)</td>
+      <td>\(V_{SD} \geq V_{SD}(sat)\)</td>
+    </tr>
+    <tr>
+      <td>Triode</td>
+      <td>\(V_{DS} &lt; V_{DS}(sat)\)</td>
+      <td>\(V_{SD} &lt; V_{SD}(sat)\)</td>
+    </tr>
+    <tr>
+      <td>Cutoff</td>
+      <td>\(V_{GS} &lt; V_{TN}\)</td>
+      <td>\(\lvert V_{SG} \rvert &lt; \lvert V_{TP} \rvert\)</td>
+    </tr>
+  </tbody>
+</table>
+
 
 </div>
 </article>
