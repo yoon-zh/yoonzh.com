@@ -107,16 +107,22 @@ Original circuit:
 {% include circuit.html id="bjt-amp" from_data=true %}
 
 The transistor becomes:
-- A dependent current source $$\beta i_b$$ from Collector to Emitter
+- A dependent current source $$\beta i_b$$ from Collector to Emitter, parallel to a resistor $$r_o$$
 - A resistor $$r_{\pi}$$ from Base to Emitter
 
 Where:
 
 $$
-r_{pi} = \frac{V_T}{I_{CQ}}
+r_{\pi} = \frac{V_T}{I_{BQ}} = \frac{\beta V_T}{I_{CQ}}
 $$
 
 Is the hybrid $$\pi$$ model resistance.
+
+$$
+r_o = \frac{V_A}{I_{CQ}}
+$$
+
+Is the transistor output resistance.
 
 {% include circuit.html id="bjt-ss" from_data=true %}
 
