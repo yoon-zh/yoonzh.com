@@ -6,8 +6,8 @@ math: true
 circuit: true
 url: /posts/circuits/transistor-amp
 tech_stack: [EE]
----
 date: 2025-05-22
+---
 
 ***
 
@@ -170,9 +170,6 @@ Assume NMOS is in saturation, and $$V_{GSQ},\ V_{DD},\ V_{TN},\ K_n,\ R_D$$ are 
   - Get $$v_{out},\ v_{in}$$
   - Voltage gain: $$A_v = \frac{v_{out}}{v_{in}}$$
 
-
-
-
 {% include circuit.html id="nmos-amp2" from_data=true %}
 
 {% include circuit.html id="pmos-amp1" from_data=true %}
@@ -191,3 +188,8 @@ Assume NMOS is in saturation, and $$V_{GSQ},\ V_{DD},\ V_{TN},\ K_n,\ R_D$$ are 
 | Common collector  | $$A_v > 1$$       | $$R_1 \| R_2 \| R_{ib}$$      | $$R_C \| r_o$$ |
 | Common base       | $$A_v \approx 1$$ | $$R_1 \| R_2 \| R_{ib}$$      | $$\frac{r_{\pi}}{\beta + 1} \| R_E \| r_o$$ |
 | Common emitter    | $$A_v > 1$$       | $$\frac{r_{\pi}}{\beta + 1}$$ | $$r_o \| R_C$$  |
+
+
+## Frequency
+
+See transistors frequency [here](fet-frequency).

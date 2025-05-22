@@ -7,9 +7,8 @@ circuit: true
 url: /posts/circuits/semic-intro
 excerpt: "Intro to semiconductors, p-n junctions, diodes, transformers."
 tech_stack: [EE]
+date: 2025-05-22
 ---
-
-date: 2025-05-20
 
 ***
 

@@ -7,9 +7,8 @@ circuit: true
 url: /posts/circuits/digital
 excerpt: "Digital vs. analog, logic gates."
 tech_stack: [EE]
+date: 2025-05-22
 ---
-
-date: 2025-05-20
 
 ***
 
