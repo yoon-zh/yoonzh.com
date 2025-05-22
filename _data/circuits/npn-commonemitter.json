@@ -1,0 +1,71 @@
+{
+  "modules": {
+    "npn-commonemitter": {
+      "cells": {
+        "Vcc": {
+          "type": "v",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "RC": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "npn": {
+          "type": "q_npn",
+          "connections": {
+            "C": [2],
+            "B": [3],
+            "E": [0]
+          },
+          "port_directions": {
+            "B": "input",
+            "C": "input",
+            "E": "output"
+          }
+        },
+        "RB": {
+          "type": "r_h",
+          "connections": {
+            "A": [4],
+            "B": [3]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "VB": {
+          "type": "v",
+          "connections": {
+            "+": [4],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "connections": {
+            "A": [0]
+          }
+        }
+      }
+    }
+  }
+}

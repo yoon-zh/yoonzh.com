@@ -1,0 +1,80 @@
+{
+  "modules": {
+    "npn-div-th-eq": {
+      "cells": {
+        "Vcc": {
+          "type": "vcc",
+          "connections": {
+            "A": [1]
+          },
+          "attributes": {
+            "name":"Vcc"
+          }
+        },
+        "Rc": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [3]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "npn": {
+          "type": "q_npn",
+          "connections": {
+            "C": [3],
+            "B": [2],
+            "E": [4]
+          },
+          "port_directions": {
+            "C": "input",
+            "B": "input",
+            "E": "output"
+          }
+        },
+        "VTH": {
+          "type": "v",
+          "connections": {
+            "+": [5],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "RTH": {
+          "type": "r_h",
+          "connections": {
+            "A": [5],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "RE": {
+          "type": "r_v",
+          "connections": {
+            "A": [4],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "connections": {
+            "A": [0]
+          }
+        }
+      }
+    }
+  }
+}

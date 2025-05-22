@@ -1,0 +1,80 @@
+{
+  "modules": {
+    "pnp-ce-eq": {
+      "cells": {
+        "Vcc": {
+          "type": "v",
+          "connections": {
+            "+": [1],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "RC": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Bib": {
+          "type": "i",
+          "connections": {
+            "+": [2],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "VB": {
+          "type": "v",
+          "connections": {
+            "+": [0],
+            "-": [3]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "RB": {
+          "type": "r_h",
+          "connections": {
+            "A": [3],
+            "B": [4]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "VBE": {
+          "type": "d_v",
+          "connections": {
+            "+": [0],
+            "-": [4]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "connections": {
+            "A": [0]
+          }
+        }
+      }
+    }
+  }
+}

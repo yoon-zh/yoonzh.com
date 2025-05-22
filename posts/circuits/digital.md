@@ -45,7 +45,7 @@ Let $$Vs = 5\ V$$, and $$V_A, V_B = (0, 5)\ V$$.
 
 ***
 
-## Logic Gates with MOSFETS
+## Logic Gates with MOSFETs
 
 ### NOT
 
@@ -68,5 +68,32 @@ Let $$Vs = 5\ V$$, and $$V_A, V_B = (0, 5)\ V$$.
 | 5 V     | 5 V     | LOW            |
 
 ***
+
+## Logic Gates with BJTs
+
+### NOT
+
+{% include circuit.html id="npn-not" from_data=true %}
+
+| $$V_A$$ | $$V_{output}$$ |
+|---------|----------------|
+| $$< V_{BE}(on)$$ | $$V_{CC}$$     |
+| $$V_{CC}$$       | $$V_{CE}(sat)$$            |
+
+### NOR
+
+{% include circuit.html id="npn-nor" from_data=true %}
+
+| $$V_A$$ | $$V_B$$ | $$V_{output}$$ |
+|---------|---------|----------------|
+| 0 V     | 0 V     | $$V_{CC}$$     |
+| 0 V     | 5 V     | $$V_{CE}(sat)$$|
+| 5 V     | 0 V     | $$V_{CE}(sat)$$|
+| 5 V     | 5 V     | $$V_{CE}(sat)$$|
+
+***
+
+
+
 
 other content pending.

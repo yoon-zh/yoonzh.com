@@ -1,0 +1,71 @@
+{
+  "modules": {
+    "npn-nor": {
+      "ports": {
+        "A": {"direction": "input","bits": [1]},
+        "B": {"direction": "input","bits": [2]},
+        "A NOR B": {"direction": "output","bits": [0]}
+      },
+      "cells": {
+        "Vcc": {
+          "type": "vcc",
+          "connections": {
+            "A": [3]
+          },
+          "attributes": {
+            "name": "Vcc"
+          }
+        },
+        "RC": {
+          "type": "r_v",
+          "connections": {
+            "A": [3],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "npn1": {
+          "type": "q_npn",
+          "connections": {
+            "C": [0],
+            "B": [1],
+            "E": [-1]
+          },
+          "port_directions": {
+            "B": "input",
+            "C": "input",
+            "E": "output"
+          }
+        },
+        "npn2": {
+          "type": "q_npn",
+          "connections": {
+            "C": [0],
+            "B": [2],
+            "E": [-2]
+          },
+          "port_directions": {
+            "B": "input",
+            "C": "input",
+            "E": "output"
+          }
+        },
+        "gnd1": {
+          "type": "gnd",
+          "connections": {
+            "A": [-1]
+          }
+        },
+        "gnd2": {
+          "type": "gnd",
+          "connections": {
+            "A": [-2]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "modules": {
+    "npn-volt-div": {
+      "cells": {
+        "Vcc": {
+          "type": "vcc",
+          "connections": {
+            "A": [1]
+          },
+          "attributes": {
+            "name":"Vcc"
+          }
+        },
+        "R1": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "R2": {
+          "type": "r_v",
+          "connections": {
+            "A": [2],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Rc": {
+          "type": "r_v",
+          "connections": {
+            "A": [1],
+            "B": [3]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "npn": {
+          "type": "q_npn",
+          "connections": {
+            "C": [3],
+            "B": [2],
+            "E": [4]
+          },
+          "port_directions": {
+            "C": "input",
+            "B": "input",
+            "E": "output"
+          }
+        },
+        "RE": {
+          "type": "r_v",
+          "connections": {
+            "A": [4],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "connections": {
+            "A": [0]
+          }
+        }
+      }
+    }
+  }
+}
