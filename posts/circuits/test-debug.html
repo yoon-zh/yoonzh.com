@@ -1,0 +1,188 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>test - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+  <script src="https://neilturley.dev/netlistsvg/elk.bundled.js"></script>
+  <script src="https://neilturley.dev/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="/scripts/circuits.js"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    test
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">EE</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-05-23T00:00:00+00:00">
+        📅 2025/05/23
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <hr />
+
+<h1 id="mosfet">MOSFET</h1>
+
+<p>Metal<br />
+Oxide</p>
+
+<h2 id="operation-regions">Operation Regions</h2>
+
+<blockquote>
+  <p>Transition point</p>
+  <ul>
+    <li>NMOS: \(V_{DS} (sat) = V_{GS} - V_{TN}\)</li>
+    <li>PMOS: \(V_{SD} (sat) = V_{SG} - V_{TP}\)</li>
+  </ul>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation Region</th>
+      <th>NMOS</th>
+      <th>PMOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Saturation</td>
+      <td>\(i_D = K_n (V_{DS}(sat))^2\)</td>
+      <td>\(i_D = K_n (V_{SG}(sat))^2\)</td>
+    </tr>
+    <tr>
+      <td>Triode</td>
+      <td>\(i_D = K_n (2V_{DS}(sat) \times V_{DS} - V^2_{DS})\)</td>
+      <td>\(i_D = K_n (2V_{SG}(sat) \times V_{SD} - V^2_{SD})\)</td>
+    </tr>
+    <tr>
+      <td>Cutoff</td>
+      <td>\(i_D = 0\)</td>
+      <td>\(i_D = 0\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-nmos-commonsource" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"nmos-commonsource":{"cells":{"VDD":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vdd"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RD":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"nmos":{"type":"q_npn","connections":{"C":[3],"B":[2],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Assume \(V_{DD},\ V_{TN},\ K_n\) and the resistor values are given.</p>
+
+<p>See <a href="digital#:~:text=Logic%20Gates%20with%20MOSFETs">Logic Gates with MOSFETs</a></p>
+
+<hr />
+
+<p><img src="/images/posts/circuits/bjt-graph.png" alt="image" /></p>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
