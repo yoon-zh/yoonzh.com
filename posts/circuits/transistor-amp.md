@@ -122,7 +122,7 @@ $$
 r_o = \frac{V_A}{I_{CQ}}
 $$
 
-Is the transistor output resistance.
+Is the transistor output resistance, and $$V_A$$ is the early voltage.
 
 {% include circuit.html id="bjt-ss" from_data=true %}
 
@@ -144,7 +144,17 @@ $$
 A_v = \frac{V_o}{V_i} = -\frac{\beta R_C}{r_{\pi}}
 $$
 
-There is also a model with transconductance $$g_m$$, but given that $$i_c = \beta i_b$$ we can use this simpler approach.
+> The dependent current source may also be expressed as
+>
+> $$g_m v_{be}$$
+>
+> Where
+>
+> $$g_m = \frac{I_{CQ}}{V_T}$$
+>
+> Is the transconductance.
+
+There is also a model with transconductance $$g_m$$ but given that $$i_c = \beta i_b$$ we can use this simpler approach.
 
 > For PNPs, switch the direction of the currents.
 
