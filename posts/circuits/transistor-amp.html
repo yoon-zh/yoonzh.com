@@ -1,0 +1,446 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Transistor Amplifiers - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+  <script src="https://neilturley.dev/netlistsvg/elk.bundled.js"></script>
+  <script src="https://neilturley.dev/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="/scripts/circuits.js"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Transistor Amplifiers
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">EE</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-05-22T00:00:00+00:00">
+        📅 2025/05/22
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <hr />
+
+<h1 id="large-signal-dc-analysis">Large Signal (DC Analysis)</h1>
+
+<p>We only consider the values from the circuit that do not change with time. We call this the Q-Point.</p>
+
+<ul>
+  <li>AC Volt sources: \(\int V\ dt\) has no constants -&gt; short circuit</li>
+  <li>AC Current sources: \(\int I\ dt\) has no constants -&gt; open circuit</li>
+</ul>
+
+<p>Consider the impedance of capacitors and inductors:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Capacitor</td>
+      <td>Inductor</td>
+    </tr>
+    <tr>
+      <td>\(\Z_C = \frac{1}{j\omega C}\)</td>
+      <td>\(\Z_L = j\omega L\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em><a href="non-linear-summary">See more here</a></em></p>
+
+<p>With only DC sources, \(\omega = 0\):</p>
+
+<ul>
+  <li>Capacitor: \(\Z_C = \infty\) -&gt; open circuit</li>
+  <li>Inductor: \(\Z_L = 0\) -&gt; short circuit</li>
+</ul>
+
+<blockquote>
+  <p>Assume the input is a sine wave. A large signal analysis gives the middle point (Q-point) where the sine wave moves.</p>
+</blockquote>
+
+<p>With the simplified circuit, analyze as usual (step by step <a href="fet-summary#:~:text=in%20saturation%20mode.-,Solving%20Process,-Assume%20operation%20region">here</a>).</p>
+
+<h1 id="small-signal-ac-analysis">Small Signal (AC Analysis)</h1>
+
+<p>Small Signal is like a derivative of the circuit with respect to time.</p>
+
+<ul>
+  <li>DC Volt sources: \(\frac{dV}{dt} = 0\) -&gt; short circuit</li>
+  <li>DC Current sources: \(\frac{dI}{dt} = 0\) -&gt; open circuit</li>
+</ul>
+
+<p>Consider the impedance of capacitors and inductors:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Capacitor</td>
+      <td>Inductor</td>
+    </tr>
+    <tr>
+      <td>\(\Z_C = \frac{1}{j\omega C}\)</td>
+      <td>\(\Z_L = j\omega L\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Assuming \(\omega\) has a high value:</p>
+
+<ul>
+  <li>Capacitor: \(\Z_C = 0\) -&gt; short circuit</li>
+  <li>Inductor: \(\Z_L = \infty\) -&gt; open circuit</li>
+</ul>
+
+<p>This assumption works only for high frequencies. Read more about frequency in amplifiers <a href="fet-frequency">here</a>.</p>
+
+<p>The transistors require an extra step, shown for FETs and BJTs:</p>
+
+<h2 id="fet-small-signal-model">FET Small-Signal Model</h2>
+
+<p>Original circuit:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-fet-amp" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"fet-amp":{"ports":{"Vout":{"direction":"output","bits":[3]}},"cells":{"VDD":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vdd"}},"RD":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"nmos":{"type":"q_npn","connections":{"C":[3],"B":[2],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"Vi":{"type":"v","connections":{"+":[2],"-":[4]},"port_directions":{"+":"input","-":"output"}},"VGSQ":{"type":"v","connections":{"+":[4],"-":[-1]},"port_directions":{"+":"input","-":"output"}},"gnd1":{"type":"gnd","connections":{"A":[0]}},"gnd2":{"type":"gnd","connections":{"A":[-1]}}}}}}
+  
+  </script>
+</div>
+
+<p>The transistor becomes:</p>
+<ul>
+  <li>A dependent current source \(g_m V_{gs}\) from Drain to Source, parallel to a resistor \(r_o\)</li>
+  <li>An open circuit at the Gate</li>
+</ul>
+
+<p>Where:</p>
+
+\[g_m = 2 K_n (V_{GSQ} - V_{TN})\]
+
+<p>Is the transconductance,</p>
+
+\[r_o = \frac{1}{\lambda I_{DQ}}\]
+
+<p>Is the finite output resistance.</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-fet-ss" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"fet-ss":{"ports":{"Vin":{"direction":"output","bits":[-11]},"Vout":{"direction":"output","bits":[-12]}},"cells":{"RD.":{"type":"r_v","connections":{"A":[-12],"B":[11]},"port_directions":{"A":"input","B":"output"}},"ro":{"type":"r_v","connections":{"A":[-12],"B":[11]},"port_directions":{"A":"input","B":"output"}},"gmVgs":{"type":"i","connections":{"+":[-12],"-":[11]},"port_directions":{"+":"input","-":"output"}},"Vs":{"type":"v","connections":{"+":[-11],"-":[11]},"port_directions":{"+":"input","-":"output"}}}}}}
+  
+  </script>
+</div>
+
+<p>Here, the output voltage is</p>
+
+\[V_o = -g_m V_gs(r_o \| R_D)\]
+
+<p>And the input voltage is</p>
+
+\[V_i = V_{gs}\]
+
+<p>The small-signal voltage gain is defined as</p>
+
+\[A_v = \frac{V_o}{V_i} = -g_m (r_o \| R_D)\]
+
+<h2 id="bjt-small-signal-model">BJT Small-Signal Model</h2>
+
+<p>Original circuit:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-bjt-amp" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"bjt-amp":{"ports":{"Vout":{"direction":"output","bits":[-10]}},"cells":{"VCC":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vcc"}},"RD":{"type":"r_v","connections":{"A":[1],"B":[-10]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[-10],"B":[2],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_v","connections":{"A":[2],"B":[4]},"port_directions":{"A":"input","B":"output"}},"Vi":{"type":"v","connections":{"+":[4],"-":[5]},"port_directions":{"+":"input","-":"output"}},"VGSQ":{"type":"v","connections":{"+":[5],"-":[-1]},"port_directions":{"+":"input","-":"output"}},"gnd1":{"type":"gnd","connections":{"A":[0]}},"gnd2":{"type":"gnd","connections":{"A":[-1]}}}}}}
+  
+  </script>
+</div>
+
+<p>The transistor becomes:</p>
+<ul>
+  <li>A dependent current source \(\beta i_b\) from Collector to Emitter, parallel to a resistor \(r_o\)</li>
+  <li>A resistor \(r_{\pi}\) from Base to Emitter</li>
+</ul>
+
+<p>Where:</p>
+
+\[r_{\pi} = \frac{V_T}{I_{BQ}} = \frac{\beta V_T}{I_{CQ}}\]
+
+<p>Is the hybrid \(\pi\) model resistance.</p>
+
+\[r_o = \frac{V_A}{I_{CQ}}\]
+
+<p>Is the transistor output resistance, and \(V_A\) is the early voltage.</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-bjt-ss" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"bjt-ss":{"ports":{"Vin":{"direction":"output","bits":[-11]},"Vout":{"direction":"output","bits":[-12]}},"cells":{"Bib":{"type":"i","connections":{"+":[-12],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[-12],"B":[0]},"port_directions":{"A":"input","B":"output"}},"ro":{"type":"r_v","connections":{"A":[-12],"B":[0]},"port_directions":{"A":"input","B":"output"}},"Vs":{"type":"v","connections":{"+":[13],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RB":{"type":"r_h","connections":{"A":[13],"B":[-11]},"port_directions":{"A":"input","B":"output"}},"rpi":{"type":"r_v","connections":{"A":[-11],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Here, the output voltage is</p>
+
+\[V_o = -R_C \beta i_b\]
+
+<p>And the input voltage is</p>
+
+\[V_i = i_b r_{\pi}\]
+
+<p>The small-signal voltage gain is defined as</p>
+
+\[A_v = \frac{V_o}{V_i} = -\frac{\beta R_C}{r_{\pi}}\]
+
+<blockquote>
+  <p>The dependent current source may also be expressed as</p>
+
+\[g_m v_{be}\]
+
+  <p>Where</p>
+
+\[g_m = \frac{I_{CQ}}{V_T}\]
+
+  <p>Is the transconductance.</p>
+</blockquote>
+
+<p>There is also a model with transconductance \(g_m\) but given that \(i_c = \beta i_b\) we can use this simpler approach.</p>
+
+<blockquote>
+  <p>For PNPs, switch the direction of the currents.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="examples">Examples</h1>
+
+<p>When in doubt, KVL is your best friend.</p>
+
+<h2 id="fet-amplifiers">FET Amplifiers</h2>
+
+<p>Basic NMOS amplifier:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-fet-amp" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"fet-amp":{"ports":{"Vout":{"direction":"output","bits":[3]}},"cells":{"VDD":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vdd"}},"RD":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"nmos":{"type":"q_npn","connections":{"C":[3],"B":[2],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"Vi":{"type":"v","connections":{"+":[2],"-":[4]},"port_directions":{"+":"input","-":"output"}},"VGSQ":{"type":"v","connections":{"+":[4],"-":[-1]},"port_directions":{"+":"input","-":"output"}},"gnd1":{"type":"gnd","connections":{"A":[0]}},"gnd2":{"type":"gnd","connections":{"A":[-1]}}}}}}
+  
+  </script>
+</div>
+
+<h3 id="solving-steps">Solving Steps</h3>
+
+<p>Assume NMOS is in saturation, and \(V_{GSQ},\ V_{DD},\ V_{TN},\ K_n,\ R_D\) are given.</p>
+
+<ol>
+  <li>DC Analysis: Q Point (Large Signal)
+    <ul>
+      <li>AC: Short Volt, Open Current Sources</li>
+      <li>Short Inductors, Open Capacitors</li>
+      <li>Get \(I_{DQ},\ V_{DSQ}\)</li>
+      <li>Verify \(V_{DSQ} &gt; V_{DSQ}(sat)\) (otherwise, non-linear)</li>
+    </ul>
+  </li>
+  <li>AC Analysis (small signal)
+    <ul>
+      <li>DC: Short Volt, Open Current Sources</li>
+      <li>Open Inductors, Short Capacitors</li>
+      <li>Replace NMOS by small-signal model</li>
+      <li>Get \(v_{out},\ v_{in}\)</li>
+      <li>Voltage gain: \(A_v = \frac{v_{out}}{v_{in}}\)</li>
+    </ul>
+  </li>
+</ol>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-nmos-amp2" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"nmos-amp2":{"cells":{"VDD":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vdd"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RD":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"nmos":{"type":"q_npn","connections":{"C":[3],"B":[2],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"C":{"type":"c_h","connections":{"A":[4],"B":[2]},"port_directions":{"A":"input","B":"output"}},"Rsi":{"type":"r_h","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Vi":{"type":"v","connections":{"+":[5],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-pmos-amp1" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"nmos-amp2":{"cells":{"VDD":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vdd"}},"VEE":{"type":"vee","connections":{"A":[0]},"attributes":{"name":"-Vdd"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"Rs":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"pmos":{"type":"q_pnp","connections":{"C":[3],"B":[2],"E":[4]},"port_directions":{"C":"input","B":"output","E":"output"}},"RD":{"type":"r_v","connections":{"A":[4],"B":[0]},"port_directions":{"A":"input","B":"output"}},"C":{"type":"c_h","connections":{"A":[2],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Vi":{"type":"v","connections":{"+":[5],"-":[-1]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[-1]}}}}}}
+  
+  </script>
+</div>
+
+<h3 id="fet-amplifier-comparison">FET Amplifier Comparison</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Configuration</td>
+      <td>\(A_v\)</td>
+      <td>Input R</td>
+      <td>Output R</td>
+    </tr>
+    <tr>
+      <td>Common source</td>
+      <td>\(A_v &gt; 1\)</td>
+      <td>\(R_{TH}\)</td>
+      <td>\(R_D\)</td>
+    </tr>
+    <tr>
+      <td>Common drain</td>
+      <td>\(A_v \approx 1\)</td>
+      <td>\(R_{TH}\)</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>Common source</td>
+      <td>\(A_v \geq 1\)</td>
+      <td>\(\frac{1}{g_m}\)</td>
+      <td>\(R_D\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="bjt-amplifier-comparison">BJT Amplifier Comparison</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Configuration</td>
+      <td>\(A_v\)</td>
+      <td>Input R</td>
+      <td>Output R</td>
+    </tr>
+    <tr>
+      <td>Common collector</td>
+      <td>\(A_v &gt; 1\)</td>
+      <td>\(R_1 | R_2 | R_{ib}\)</td>
+      <td>\(R_C | r_o\)</td>
+    </tr>
+    <tr>
+      <td>Common base</td>
+      <td>\(A_v \approx 1\)</td>
+      <td>\(R_1 | R_2 | R_{ib}\)</td>
+      <td>\(\frac{r_{\pi}}{\beta + 1} | R_E | r_o\)</td>
+    </tr>
+    <tr>
+      <td>Common emitter</td>
+      <td>\(A_v &gt; 1\)</td>
+      <td>\(\frac{r_{\pi}}{\beta + 1}\)</td>
+      <td>\(r_o | R_C\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="frequency">Frequency</h2>
+
+<p>See transistors frequency <a href="fet-frequency">here</a>.</p>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

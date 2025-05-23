@@ -276,7 +276,7 @@ Transistor</p>
 
 <h2 id="nmos-pmos-logic-gates">NMOS, PMOS Logic gates</h2>
 
-<p>See <a href="digital">FET logic gates</a></p>
+<p>See <a href="digital#:~:text=Logic%20Gates%20with%20MOSFETs">Logic Gates with MOSFETs</a></p>
 
 <hr />
 
@@ -299,8 +299,8 @@ Transistor</p>
 <blockquote>
   <p>Transition point</p>
   <ul>
-    <li>NMOS: \(V_{DS} (sat) = V_{GS} - V_{TN}\)</li>
-    <li>PMOS: \(V_{SD} (sat) = V_{SG} - V_{TP}\)</li>
+    <li>NPN: \(V_{CE} (sat)\) (Usually 0.2 V)</li>
+    <li>PNP: \(V_{EC} (sat)\)</li>
   </ul>
 </blockquote>
 
@@ -308,25 +308,25 @@ Transistor</p>
   <thead>
     <tr>
       <th>Operation Region</th>
-      <th>NMOS</th>
-      <th>PMOS</th>
+      <th>NPN</th>
+      <th>PNP</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Saturation</td>
-      <td>\(i_D = K_n (V_{DS}(sat))^2\)</td>
-      <td>\(i_D = K_n (V_{SG}(sat))^2\)</td>
+      <td>\(V_{CE} = V_{CE}(sat)\)</td>
+      <td>\(V_{EC} = V_{EC}(sat)\)</td>
     </tr>
     <tr>
       <td>Forward Bias</td>
-      <td>\(i_D = K_n (2V_{DS}(sat) \times V_{DS} - V^2_{DS})\)</td>
-      <td>\(i_D = K_n (2V_{SG}(sat) \times V_{SD} - V^2_{SD})\)</td>
+      <td>\(i_C = \beta i_B\)</td>
+      <td>\(i_C = \beta i_B\)</td>
     </tr>
     <tr>
       <td>Cutoff</td>
-      <td>\(i_D = 0\)</td>
-      <td>\(i_D = 0\)</td>
+      <td>\(i_C = 0,\ i_B = 0\)</td>
+      <td>\(i_C = 0,\ i_B = 0\)</td>
     </tr>
   </tbody>
 </table>
@@ -335,29 +335,203 @@ Transistor</p>
   <thead>
     <tr>
       <th>Condition</th>
-      <th>NMOS</th>
-      <th>PMOS</th>
+      <th>NPN</th>
+      <th>PNP</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Saturation</td>
-      <td>\(V_{CE} &gt; V_{CE}(sat)\)</td>
-      <td>\(V_{SD} \geq V_{SD}(sat)\)</td>
+      <td>\(\beta i_B &gt; i_C\)</td>
+      <td>\(\beta i_B &gt; i_C\)</td>
     </tr>
     <tr>
-      <td>Triode</td>
-      <td>\(V_{DS} &lt; V_{DS}(sat)\)</td>
-      <td>\(V_{SD} &lt; V_{SD}(sat)\)</td>
+      <td>Forward Bias</td>
+      <td>\(V_{CE} &gt; V_{CE}(sat)\)</td>
+      <td>\(V_{EC} &gt; V_{EC}(sat)\)</td>
     </tr>
     <tr>
       <td>Cutoff</td>
-      <td>\(V_{GS} &lt; V_{TN}\)</td>
-      <td>\(\lvert V_{SG} \rvert &lt; \lvert V_{TP} \rvert\)</td>
+      <td>\(V_{BE} &lt; V_{BE}(on)\)</td>
+      <td>\(V_{EB} &lt; V_{EB}(on)\)</td>
     </tr>
   </tbody>
 </table>
 
+<blockquote>
+  <p>In forward bias:</p>
+
+\[i_C = \beta i_B = \alpha i_E\]
+
+\[i_E = i_B + i_C\]
+
+\[i_E = (1 + \beta) i_B\]
+
+\[\alpha = \frac{\beta}{1 + \beta}\]
+</blockquote>
+
+<h2 id="solving-process-1">Solving Process</h2>
+
+<ol>
+  <li>Assume operation region (default: forward bias)</li>
+  <li>Analyze following forward-bias model, get \(i_B,\ i_C,\ i_E,\ V_{CE}\)</li>
+  <li>Verify conditions for assumed region are met: \(V_{CE} \geq V_{CE}(sat)\)
+    <ul>
+      <li>If yes, analysis is complete.</li>
+      <li>If not, change operation region and analyze again.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Below are some examples:</p>
+
+<h3 id="npn">NPN</h3>
+
+<ul>
+  <li>Collector: Input</li>
+  <li>Base: Input</li>
+  <li>Emitter: Output</li>
+</ul>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>The circuit above can be replaced by an equivalent linear circuit <em>assuming forward bias</em>, where the transistor becomes:</p>
+<ul>
+  <li>A dependent current source \(\beta i_B\) from the Collector to the Emitter</li>
+  <li>A diode pointing from the Base to the Emitter with \(v_{\gamma} = V_{BE}(on)\)</li>
+</ul>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-ce-eq" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-ce-eq":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"Bib":{"type":"i","connections":{"+":[2],"-":[0]},"port_directions":{"+":"input","-":"output"}},"VB":{"type":"v","connections":{"+":[3],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RB":{"type":"r_h","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"VBE":{"type":"d_v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Assume \(V_{B},\ V_{CC},\ V_{BE}(on),\ \beta\) and the resistor values are given.</p>
+
+\[i_B = \frac{V_{B} - V_{BE}(on)}{R_B}\]
+
+<p>If \(i_B &lt; 0\), the NPN is cutoff.</p>
+
+<p>If not, continue:</p>
+
+\[i_C = \beta i_B\]
+
+\[V_{CE} = V_{CC} - i_C R_C\]
+
+<p>If \(V_{CE}(sat)\) is given and \(V_{CE} &gt; V_{CE}(sat)\), the NPN is in forward-bias and the analysis is complete.</p>
+
+<p>If not, the NPN is in saturation:</p>
+
+\[V_{CE} = V_{CE}(sat)\]
+
+\[i_C = \frac{V_{CC} - V_{CE}(sat)}{R_C}\]
+
+<p>If \(i_C &lt; \beta i_B\), the analysis is complete. If not, verify your calculations.</p>
+
+<h3 id="pnp">PNP</h3>
+
+<ul>
+  <li>Collector: Output</li>
+  <li>Base: Output</li>
+  <li>Emitter: Input</li>
+</ul>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-pnp-commonemitter" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"pnp-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[0],"-":[1]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"pnp":{"type":"q_pnp","connections":{"E":[0],"B":[3],"C":[2]},"port_directions":{"E":"input","B":"output","C":"output"}},"RB":{"type":"r_h","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[-1],"-":[4]},"port_directions":{"+":"input","-":"output"}},"gnd1":{"type":"gnd","connections":{"A":[0]}},"gnd2":{"type":"gnd","connections":{"A":[-1]}}}}}}
+  
+  </script>
+</div>
+
+<p>The circuit above can be replaced by an equivalent linear circuit <em>assuming forward bias</em>, where the transistor becomes:</p>
+<ul>
+  <li>A dependent current source \(\beta i_B\) from the Emitter to the Collector</li>
+  <li>A diode pointing from the Emitter to the Base with \(v_{\gamma} = V_{EB}(on)\)</li>
+</ul>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-pnp-ce-eq" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"pnp-ce-eq":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"Bib":{"type":"i","connections":{"+":[2],"-":[0]},"port_directions":{"+":"input","-":"output"}},"VB":{"type":"v","connections":{"+":[0],"-":[3]},"port_directions":{"+":"input","-":"output"}},"RB":{"type":"r_h","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"VBE":{"type":"d_v","connections":{"+":[0],"-":[4]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Assume \(V_{B},\ V_{CC},\ V_{EB}(on),\ \beta\) and the resistor values are given.</p>
+
+\[i_B = \frac{V_{B} - V_{EB}(on)}{R_B}\]
+
+<p>If \(i_B &lt; 0\), the PNP is cutoff.</p>
+
+<p>If not, continue:</p>
+
+\[i_C = \beta i_B\]
+
+\[V_{EC} = V_{CC} - i_C R_C\]
+
+<p>If \(V_{EC}(sat)\) is given and \(V_{EC} &gt; V_{EC}(sat)\), the PNP is in forward-bias and the analysis is complete.</p>
+
+<p>If not, the PNP is in saturation:</p>
+
+\[V_{EC} = V_{EC}(sat)\]
+
+\[i_C = \frac{V_{CC} - V_{EC}(sat)}{R_C}\]
+
+<p>If \(i_C &lt; \beta i_B\), the analysis is complete. If not, verify your calculations.</p>
+
+<h2 id="voltage-dividers">Voltage dividers</h2>
+
+<p>Instead of two independent volt sources, \(V_{CC}\) can be arranged with a pair of resistors to divide the voltage in the Base:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-volt-div" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-volt-div":{"cells":{"Vcc":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vcc"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"Rc":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[3],"B":[2],"E":[4]},"port_directions":{"C":"input","B":"input","E":"output"}},"RE":{"type":"r_v","connections":{"A":[4],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>The voltage and current at the base can be obtained with a Thévenin equivalent:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-div-th-eq" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-div-th-eq":{"cells":{"Vcc":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vcc"}},"Rc":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[3],"B":[2],"E":[4]},"port_directions":{"C":"input","B":"input","E":"output"}},"VTH":{"type":"v","connections":{"+":[5],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RTH":{"type":"r_h","connections":{"A":[5],"B":[2]},"port_directions":{"A":"input","B":"output"}},"RE":{"type":"r_v","connections":{"A":[4],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Where:</p>
+
+\[R_{TH} = R_1 \| R_2 = \frac{R_1 R_2}{R_1 + R_2}\]
+
+\[V_{TH} = \frac{R_2}{R_1 + R_2} V_{CC}\]
+
+<p>Then the analysis is the same as before.</p>
+
+<h2 id="bjt-logic-gates">BJT Logic Gates</h2>
+
+<p>See <a href="digital#:~:text=Logic%20Gates%20with%20BJTs">Logic Gates with BJTs</a></p>
+
+<h1 id="amplifiers">Amplifiers</h1>
+
+<p>See amplifiers <a href="transistor-amp">here</a></p>
 
 </div>
 </article>

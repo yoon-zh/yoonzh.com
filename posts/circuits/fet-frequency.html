@@ -92,6 +92,66 @@
 
 <hr />
 
+<p>Consider the following amplifier:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-bjt-amp-full" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"bjt-amp-full":{"ports":{"Vout":{"direction":"output","bits":[0]}},"cells":{"VCC":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vcc"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[6]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[6],"B":[2],"E":[3]},"port_directions":{"C":"input","B":"input","E":"output"}},"RE":{"type":"r_v","connections":{"A":[3],"B":[-1]},"port_directions":{"A":"input","B":"output"}},"CE":{"type":"c_v","connections":{"A":[3],"B":[-1]},"port_directions":{"A":"input","B":"output"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[-1]},"port_directions":{"A":"input","B":"output"}},"Vi":{"type":"v","connections":{"+":[4],"-":[-1]},"port_directions":{"+":"input","-":"output"}},"Rs":{"type":"r_h","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Cc":{"type":"c_h","connections":{"A":[5],"B":[2]},"port_directions":{"A":"input","B":"output"}},"CL":{"type":"c_h","connections":{"A":[6],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RL":{"type":"r_v","connections":{"A":[0],"B":[-1]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[-1]}}}}}}
+  
+  </script>
+</div>
+
+<p>Notice the capacitors \(C_C,\ C_E,\ C_L\).</p>
+
+<ul>
+  <li>\(C_C\) is an input coupling capacitor</li>
+  <li>\(C_E\) is an output coupling Capacitor</li>
+  <li>\(C_L\) is a bypass capacitor</li>
+</ul>
+
+<p>A bypass capacitor minimizes loss</p>
+
+<h2 id="corner-frequencies">Corner Frequencies</h2>
+
+\[f_L = \frac{1}{2 \pi {\tau}_S}\]
+
+\[f_H = \frac{1}{2 \pi {\tau}_P}\]
+
+\[{\tau}_S = R_{EQ} C_C\]
+
+\[{\tau}_P = R_{EQ} C_L\]
+
+<ul>
+  <li>Low-pass network: low frequency passes, high frequency decays -&gt; bypass capacitor</li>
+  <li>High-pass network: high frequency passes, low frequency decays -&gt; coupling capacitor</li>
+</ul>
+
+<blockquote>
+  <p>Low-pass and high-pass network can be analyzed separately:
+Low frecuency -&gt; bypass = open circuit
+High frequency -&gt; coupling = short</p>
+</blockquote>
+
+<p>In mid-band range:</p>
+<ul>
+  <li>Coupling, bypass capacitors -&gt; short</li>
+  <li>Load, stray, transistor capacitors -&gt; open</li>
+</ul>
+
+<p>Small-signal voltage gain = Mid-band Gain</p>
+
+<p>Voltage transfer function:</p>
+
+\[T(s) = \frac{V_o(s)}{V_i(s)}\]
+
+<p>Use s-domain analysis to get V_o(s) and V_i(s). Then replace s with \(j\omega\).</p>
+
+<h2 id="amplifier-analysis">Amplifier Analysis</h2>
+
+<p>Keep capacitors in small-signal model</p>
+
 </div>
 </article>
   </main>

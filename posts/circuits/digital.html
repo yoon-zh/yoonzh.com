@@ -84,13 +84,15 @@
   
   <div class="article-meta">
     
+      <time datetime="2025-05-22T00:00:00+00:00">
+        📅 2025/05/22
+      </time>
+    
   </div>
 </header>
 
 <div class="article-content">
-  <p>date: 2025-05-20</p>
-
-<hr />
+  <hr />
 
 <h2 id="logic-gates-with-diodes">Logic Gates with Diodes</h2>
 
@@ -188,7 +190,7 @@
 
 <hr />
 
-<h2 id="logic-gates-with-mosfets">Logic Gates with MOSFETS</h2>
+<h2 id="logic-gates-with-mosfets">Logic Gates with MOSFETs</h2>
 
 <h3 id="not">NOT</h3>
 
@@ -259,6 +261,83 @@
       <td>5 V</td>
       <td>5 V</td>
       <td>LOW</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="logic-gates-with-bjts">Logic Gates with BJTs</h2>
+
+<h3 id="not-1">NOT</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-not" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-not":{"ports":{"A":{"direction":"input","bits":[2]},"NOT A":{"direction":"output","bits":[1]}},"cells":{"Vcc":{"type":"vcc","connections":{"A":[0]},"attributes":{"name":"Vcc"}},"RC":{"type":"r_v","connections":{"A":[0],"B":[1]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[1],"B":[2],"E":[3]},"port_directions":{"B":"input","C":"input","E":"output"}},"gnd":{"type":"gnd","connections":{"A":[3]}}}}}}
+  
+  </script>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(V_A\)</th>
+      <th>\(V_{output}\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(&lt; V_{BE}(on)\)</td>
+      <td>\(V_{CC}\)</td>
+    </tr>
+    <tr>
+      <td>\(V_{CC}\)</td>
+      <td>\(V_{CE}(sat)\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="nor-1">NOR</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-nor" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-nor":{"ports":{"A":{"direction":"input","bits":[1]},"B":{"direction":"input","bits":[2]},"A NOR B":{"direction":"output","bits":[0]}},"cells":{"Vcc":{"type":"vcc","connections":{"A":[3]},"attributes":{"name":"Vcc"}},"RC":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"npn1":{"type":"q_npn","connections":{"C":[0],"B":[1],"E":[-1]},"port_directions":{"B":"input","C":"input","E":"output"}},"npn2":{"type":"q_npn","connections":{"C":[0],"B":[2],"E":[-2]},"port_directions":{"B":"input","C":"input","E":"output"}},"gnd1":{"type":"gnd","connections":{"A":[-1]}},"gnd2":{"type":"gnd","connections":{"A":[-2]}}}}}}
+  
+  </script>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(V_A\)</th>
+      <th>\(V_B\)</th>
+      <th>\(V_{output}\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0 V</td>
+      <td>0 V</td>
+      <td>\(V_{CC}\)</td>
+    </tr>
+    <tr>
+      <td>0 V</td>
+      <td>5 V</td>
+      <td>\(V_{CE}(sat)\)</td>
+    </tr>
+    <tr>
+      <td>5 V</td>
+      <td>0 V</td>
+      <td>\(V_{CE}(sat)\)</td>
+    </tr>
+    <tr>
+      <td>5 V</td>
+      <td>5 V</td>
+      <td>\(V_{CE}(sat)\)</td>
     </tr>
   </tbody>
 </table>
