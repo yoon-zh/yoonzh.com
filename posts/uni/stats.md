@@ -61,6 +61,19 @@ date: 2025-04-23
 
 ## Random Variables
 
+
+### Discrete vs Continuous Table
+
+| Properties       | Discrete                               | Continuous                              |
+|----------------------|--------------------------------------------|---------------------------------------------|
+| PMF/PDF          | $$P(X = x)$$                          | $$f(x)$$ with $$P(a \leq X \leq b) = \int_a^b f(x)dx$$ |
+| CDF              | $$\sum_{k \leq x} P(X = k)$$       | $$\int_{-\infty}^x f(t)dt$$          |
+| $$E[X]$$         | $$\sum_x x \cdot P(X = x)$$        | $$\int_{-\infty}^\infty x \cdot f(x)dx$$ |
+| $$\text{Var}(X)$$| $$\sum_x (x - \mu)^2 P(X = x)$$ | $$\int_{-\infty}^\infty (x - \mu)^2 f(x)dx$$ |
+| Uniform Distribution | $$P(X = x) = \frac{1}{n}$$ for $$x \in \{x_1, x_2, ..., x_n\}$$ | $$f(x) = \frac{1}{b - a}$$ for $$a \leq x \leq b$$ |
+
+***
+
 > ### Discrete vs Continuous
 >
 > - Discrete: Takes countable values. Defined via PMF: $$P(X = x)$$
@@ -74,11 +87,11 @@ date: 2025-04-23
 
 ### Mean (Expectation)
 
-> #### Discrete
+> ### Discrete
 >
 > $$E[X] = \sum_{x} x \cdot P(X = x)$$
 
-> #### Continuous
+> ### Continuous
 >
 > $$E[X] = \int_{-\infty}^\infty x \cdot f(x)dx$$
 
@@ -94,47 +107,47 @@ date: 2025-04-23
 
 ### Discrete distributions
 
-> #### Binomial
+> ### Binomial
 >
 > $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \quad \text{for } k = 0,1,...,n$$
 
-> #### Geometric
+> ### Geometric
 >
 > $$P(X = k) = (1-p)^{k-1}p \quad \text{for } k = 1,2,...$$
 
-> #### Poisson
+> ### Poisson
 >
 > $$P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!} \quad \text{for } k = 0,1,...$$
 
 ### Continuous distributions
 
-> #### Uniform
+> ### Uniform
 >
 > $$f(x) = \frac{1}{b - a} \quad \text{for } a \leq x \leq b$$
 
-> #### Exponential
+> ### Exponential
 >
 > $$f(x) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0$$
 
-> #### Normal (Gaussian)
+> ### Normal (Gaussian)
 >
 > $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$
 
-> #### Rayleigh
+> ### Rayleigh
 >
 > $$f(x) = \frac{x}{\sigma^2} e^{-x^2/(2\sigma^2)} \quad \text{for } x \geq 0$$
 
 ### Joint Distributions
 
-> #### Discrete
+> ### Discrete
 >
 > Joint PMF: $$P(X = x, Y = y)$$
 
-> #### Continuous
+> ### Continuous
 >
 > Joint PDF: $$f(x, y) \geq 0$$ with $$P((X,Y) \in D) = \iint_D f(x,y)dxdy$$
 
-> #### Marginal PMF/PDF
+> ### Marginal PMF/PDF
 >
 > - Discrete: $$P(X = x) = \sum_y P(X = x, Y = y)$$
 > - Continuous: $$f_X(x) = \int_{-\infty}^\infty f(x,y)dy$$
