@@ -1,0 +1,418 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Stats Summary - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/project.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Stats Summary
+    
+  </h1>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-04-23T00:00:00+00:00">
+        📅 2025/04/23
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h2 id="counting">Counting</h2>
+
+<blockquote>
+  <h3 id="permutation">Permutation</h3>
+
+\[P(n, r) = \frac{n!}{(n - r)!}\]
+</blockquote>
+
+<blockquote>
+  <h3 id="combination">Combination</h3>
+
+\[C(n, r) = \binom nr = \frac{n!}{r!(n - r)!}\]
+</blockquote>
+
+<hr />
+
+<h2 id="probability">Probability</h2>
+
+<blockquote>
+\[P(A) = P(A \cap B) + P(A \cap B^c)\]
+
+\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]
+</blockquote>
+
+<blockquote>
+  <h3 id="mutually-exclusive">Mutually Exclusive</h3>
+
+  <p>Two events A and B are mutually exclusive if</p>
+
+\[P(A \cap B) = 0\]
+</blockquote>
+
+<blockquote>
+  <h3 id="conditional">Conditional</h3>
+
+\[P(A \mid B) = \frac{P(A \cap B)}{P(B)} \quad \text{if } P(B) &gt; 0\]
+</blockquote>
+
+<blockquote>
+  <h3 id="total-probability">Total Probability</h3>
+
+  <p>If \(B_1, B_2, ..., B_n\) form a partition of the sample space (mutually exclusive and exhaustive), then</p>
+
+\[P(A) = \sum_{i=1}^n P(A \mid B_i)P(B_i)\]
+</blockquote>
+
+<blockquote>
+  <h3 id="bayes">Bayes</h3>
+
+  <p>For a partition \(B_1, B_2, ..., B_n\),</p>
+
+\[P(B_i \mid A) = \frac{P(A \mid B_i)P(B_i)}{\sum_{j=1}^n P(A \mid B_j)P(B_j)}\]
+</blockquote>
+
+<blockquote>
+  <h3 id="independency">Independency</h3>
+
+  <p>If</p>
+
+\[P(A \cap B) = P(A)P(B)\]
+
+  <p>Then A and B are independent, then</p>
+
+\[P(A \mid B) = P(A),\ P(B \mid A) = P(B)\]
+</blockquote>
+
+<hr />
+
+<h2 id="random-variables">Random Variables</h2>
+
+<h3 id="discrete-vs-continuous-table">Discrete vs Continuous Table</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Properties</th>
+      <th>Discrete</th>
+      <th>Continuous</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PMF/PDF</td>
+      <td>\(P(X = x)\)</td>
+      <td>\(f(x)\) with \(P(a \leq X \leq b) = \int_a^b f(x)dx\)</td>
+    </tr>
+    <tr>
+      <td>CDF</td>
+      <td>\(\sum_{k \leq x} P(X = k)\)</td>
+      <td>\(\int_{-\infty}^x f(t)dt\)</td>
+    </tr>
+    <tr>
+      <td>\(E[X]\)</td>
+      <td>\(\sum_x x \cdot P(X = x)\)</td>
+      <td>\(\int_{-\infty}^\infty x \cdot f(x)dx\)</td>
+    </tr>
+    <tr>
+      <td>\(\text{Var}(X)\)</td>
+      <td>\(\sum_x (x - \mu)^2 P(X = x)\)</td>
+      <td>\(\int_{-\infty}^\infty (x - \mu)^2 f(x)dx\)</td>
+    </tr>
+    <tr>
+      <td>Uniform Distribution</td>
+      <td>\(P(X = x) = \frac{1}{n}\) for \(x \in \{x_1, x_2, ..., x_n\}\)</td>
+      <td>\(f(x) = \frac{1}{b - a}\) for \(a \leq x \leq b\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<blockquote>
+  <h3 id="discrete-vs-continuous">Discrete vs Continuous</h3>
+
+  <ul>
+    <li>Discrete: Takes countable values. Defined via PMF: \(P(X = x)\)</li>
+    <li>Continuous: Takes uncountable values. Defined via PDF: \(f(x) \geq 0\) with \(P(a \leq X \leq b) = \int_a^b f(x)dx\)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <h3 id="cdf">CDF</h3>
+
+  <p>Cumulative Distribution Function:</p>
+
+\[F(x) = P(X \leq x) = \begin{cases} \sum_{k \leq x} P(X = k) &amp; \text{(Discrete)} \\ \int_{-\infty}^x f(t)dt &amp; \text{(Continuous)} \end{cases}\]
+</blockquote>
+
+<h3 id="mean-expectation">Mean (Expectation)</h3>
+
+<blockquote>
+  <h3 id="discrete">Discrete</h3>
+
+\[E[X] = \sum_{x} x \cdot P(X = x)\]
+</blockquote>
+
+<blockquote>
+  <h3 id="continuous">Continuous</h3>
+
+\[E[X] = \int_{-\infty}^\infty x \cdot f(x)dx\]
+</blockquote>
+
+<h3 id="variance">Variance</h3>
+
+<blockquote>
+\[\text{Var}(X) = E[(X - \mu)^2] = E[X^2] - (E[X])^2\]
+</blockquote>
+
+<blockquote>
+  <h3 id="properties">Properties</h3>
+
+  <ul>
+    <li>Linearity: \(E[aX + b] = aE[X] + b\)</li>
+    <li>Variance: \(\text{Var}(aX + b) = a^2\text{Var}(X)\)</li>
+    <li>If \(X, Y\) independent: \(\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)\)</li>
+  </ul>
+</blockquote>
+
+<h3 id="discrete-distributions">Discrete distributions</h3>
+
+<blockquote>
+  <h3 id="binomial">Binomial</h3>
+
+\[P(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \quad \text{for } k = 0,1,...,n\]
+</blockquote>
+
+<blockquote>
+  <h3 id="geometric">Geometric</h3>
+
+\[P(X = k) = (1-p)^{k-1}p \quad \text{for } k = 1,2,...\]
+</blockquote>
+
+<blockquote>
+  <h3 id="poisson">Poisson</h3>
+
+\[P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!} \quad \text{for } k = 0,1,...\]
+</blockquote>
+
+<h3 id="continuous-distributions">Continuous distributions</h3>
+
+<blockquote>
+  <h3 id="uniform">Uniform</h3>
+
+\[f(x) = \frac{1}{b - a} \quad \text{for } a \leq x \leq b\]
+</blockquote>
+
+<blockquote>
+  <h3 id="exponential">Exponential</h3>
+
+\[f(x) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0\]
+</blockquote>
+
+<blockquote>
+  <h3 id="normal-gaussian">Normal (Gaussian)</h3>
+
+\[f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}\]
+</blockquote>
+
+<blockquote>
+  <h3 id="rayleigh">Rayleigh</h3>
+
+\[f(x) = \frac{x}{\sigma^2} e^{-x^2/(2\sigma^2)} \quad \text{for } x \geq 0\]
+</blockquote>
+
+<h3 id="joint-distributions">Joint Distributions</h3>
+
+<blockquote>
+  <h3 id="discrete-1">Discrete</h3>
+
+  <p>Joint PMF: \(P(X = x, Y = y)\)</p>
+</blockquote>
+
+<blockquote>
+  <h3 id="continuous-1">Continuous</h3>
+
+  <p>Joint PDF: \(f(x, y) \geq 0\) with \(P((X,Y) \in D) = \iint_D f(x,y)dxdy\)</p>
+</blockquote>
+
+<blockquote>
+  <h3 id="marginal-pmfpdf">Marginal PMF/PDF</h3>
+
+  <ul>
+    <li>Discrete: \(P(X = x) = \sum_y P(X = x, Y = y)\)</li>
+    <li>Continuous: \(f_X(x) = \int_{-\infty}^\infty f(x,y)dy\)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <h3 id="covariance--correlation">Covariance &amp; Correlation</h3>
+
+  <p>Covariance:</p>
+
+\[\text{Cov}(X,Y) = E[XY] - E[X]E[Y]\]
+
+  <p>Correlation:</p>
+
+\[\rho_{X,Y} = \frac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}\]
+
+  <ul>
+    <li>If \(X, Y\) independent: \(\text{Cov}(X,Y) = 0\) (converse not necessarily true)</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="limit-theorems">Limit Theorems</h2>
+
+<blockquote>
+  <h3 id="markovs-inequality">Markov’s Inequality</h3>
+
+  <p>For non-negative random variable \(X\),</p>
+
+\[P(X \geq a) \leq \frac{E[X]}{a} \quad \text{for } a &gt; 0\]
+</blockquote>
+
+<blockquote>
+  <h3 id="chebyshevs-inequality">Chebyshev’s Inequality</h3>
+
+\[P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2} \quad \text{for } k &gt; 0\]
+</blockquote>
+
+<blockquote>
+  <h3 id="central-limit-theorem-clt">Central Limit Theorem (CLT)</h3>
+
+  <p>If \(X_1, X_2, ..., X_n\) are i.i.d. with mean \(\mu\) and variance \(\sigma^2\), then as \(n \to \infty\),</p>
+
+\[\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \approx \mathcal{N}(0,1)\]
+</blockquote>
+
+<hr />
+
+<h2 id="data-analysis">Data Analysis</h2>
+
+<blockquote>
+  <h3 id="measures-of-center">Measures of Center</h3>
+
+  <ul>
+    <li>Mean: \(\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\)</li>
+    <li>Median: Middle value of ordered data</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <h3 id="measures-of-spread">Measures of Spread</h3>
+
+  <ul>
+    <li>Range: \(\text{Max} - \text{Min}\)</li>
+    <li>Variance: \(s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2\)</li>
+    <li>Interquartile Range (IQR): \(Q_3 - Q_1\)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <h3 id="quartiles">Quartiles</h3>
+
+  <ul>
+    <li>Q1: 25th percentile</li>
+    <li>Q3: 75th percentile</li>
+  </ul>
+</blockquote>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

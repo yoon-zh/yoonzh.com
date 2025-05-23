@@ -69,7 +69,7 @@
 </header>
   
   <main class="page-content">
-    <!-- _layouts/post.html -->
+    <!-- _layouts/project.html -->
 <article class="article-detail">
   <!-- _includes/article-content.html -->
 <header class="article-header">
@@ -94,24 +94,7 @@
 </header>
 
 <div class="article-content">
-  <hr />
-
-<h1 id="mosfet">MOSFET</h1>
-
-<p>Metal<br />
-Oxide</p>
-
-<h2 id="operation-regions">Operation Regions</h2>
-
-<blockquote>
-  <p>Transition point</p>
-  <ul>
-    <li>NMOS: \(V_{DS} (sat) = V_{GS} - V_{TN}\)</li>
-    <li>PMOS: \(V_{SD} (sat) = V_{SG} - V_{TP}\)</li>
-  </ul>
-</blockquote>
-
-<table>
+  <table>
   <thead>
     <tr>
       <th>Operation Region</th>
@@ -138,22 +121,13 @@ Oxide</p>
   </tbody>
 </table>
 
-<!-- _includes/circuit.html -->
-<div class="circuit-container" id="circuit-nmos-commonsource" data-circuit-container="">
-  <script type="application/json" data-circuit-content="">
-  
-    {"modules":{"nmos-commonsource":{"cells":{"VDD":{"type":"vcc","connections":{"A":[1]},"attributes":{"name":"Vdd"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RD":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"nmos":{"type":"q_npn","connections":{"C":[3],"B":[2],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
-  
-  </script>
-</div>
+<p>Bug: For small screens, tables are set to <code class="language-text highlighter-rouge">display: block;</code> to allow scrolling without enclosing in a div. However, adding <code class="language-text highlighter-rouge">white-space: nowrap;</code> to the tables when using katex for math equations causes horizontal overflow even if the content overflow is hidden.</p>
 
-<p>Assume \(V_{DD},\ V_{TN},\ K_n\) and the resistor values are given.</p>
-
-<p>See <a href="digital#:~:text=Logic%20Gates%20with%20MOSFETs">Logic Gates with MOSFETs</a></p>
-
-<hr />
-
-<p><img src="/images/posts/circuits/bjt-graph.png" alt="image" /></p>
+<p>To fix:</p>
+<ul>
+  <li>Set tables to <code class="language-text highlighter-rouge">display: block;</code> regardless of screen size, or find a way to contain them in a div without doing it manually.</li>
+  <li>Find a way to set <code class="language-text highlighter-rouge">white-space: nowrap;</code> in katex equations inside tables without causing overflow.</li>
+</ul>
 
 </div>
 </article>
