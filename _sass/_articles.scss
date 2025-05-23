@@ -54,8 +54,8 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       max-width: 100%;
+      // white-space: nowrap;
       table-layout: fixed;
-      white-space: nowrap;
       margin: 1em 0;
       min-width: 100%;
     }
