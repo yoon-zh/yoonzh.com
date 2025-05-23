@@ -9,8 +9,6 @@ tech_stack: [EE]
 date: 2025-05-22
 ---
 
-***
-
 # Large Signal (DC Analysis)
 
 We only consider the values from the circuit that do not change with time. We call this the Q-Point.

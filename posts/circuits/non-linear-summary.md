@@ -10,8 +10,6 @@ tech_stack: [EE]
 date: 2025-05-20
 ---
 
-***
-
 ## Capacitors and Inductors
 
 | Characteristics | Capacitor                        | Inductor                       |

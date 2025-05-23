@@ -7,9 +7,8 @@ circuit: true
 url: /posts/circuits/fet-summary
 excerpt: "MOSFETs, BJTs, amplifiers condensed."
 tech_stack: [EE]
----
-
 date: 2025-05-22
+---
 
 ***
 
