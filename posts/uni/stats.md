@@ -192,6 +192,19 @@ date: 2025-04-23
 >
 > $$\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \approx \mathcal{N}(0,1)$$
 
+> ### CLT Symmetry
+>
+> $$P\left(\left|\frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}}\right| < z\right) = P(-z < Z < z) = \Phi(z) - \Phi(-z)$$
+>
+> By symmetry:
+>
+> $$\Phi(-z) = 1 - \Phi(z)$$
+> 
+> $$\Phi(z) - (1 - \Phi(z)) = 2\Phi(z) - 1$$
+>
+>  - $$2\Phi(z) - 1$$ is the probability within $$[-z, z]$$
+>  - $$2(1 - \Phi(z))$$ is the probability outside $$[-z, z]$$, that is $$P(\lvert Z \rvert \geq z)$$
+
 ***
 
 ## Data Analysis
@@ -209,5 +222,5 @@ date: 2025-04-23
 
 > ### Quartiles
 >
-> - Q1: 25th percentile
-> - Q3: 75th percentile
+> - Q1: 25th percentile (Median of the first $$\frac{1}{2}$$ of data)
+> - Q3: 75th percentile (Median of the last $$\frac{1}{2}$$ of data)
