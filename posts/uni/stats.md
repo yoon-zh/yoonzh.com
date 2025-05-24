@@ -131,7 +131,7 @@ date: 2025-04-23
 
 > ### Normal (Gaussian)
 >
-> $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$
+> $$\Phi(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$$
 
 > ### Rayleigh
 >
@@ -176,11 +176,19 @@ date: 2025-04-23
 
 > ### Chebyshev's Inequality
 >
-> $$P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2} \quad \text{for } k > 0$$
+> For a random variable $$X$$ with mean $$\mu$$ and variance $$\sigma ^2$$,
+>
+> $$P(\lvert X - \mu \rvert \geq k) \leq \frac{\sigma ^2}{k^2}$$
+> 
+> Equivalently:
+> 
+> $$P(\lvert X - \mu \rvert < k) \geq 1 - \frac{\sigma ^2}{k^2}$$
+> 
+> $$P(\lvert X - \mu \rvert < k \sigma) \geq 1 - \frac{1}{k^2}$$
 
 > ### Central Limit Theorem (CLT)
 >
-> If $$X_1, X_2, ..., X_n$$ are i.i.d. with mean $$\mu$$ and variance $$\sigma^2$$, then as $$n \to \infty$$,
+> If $$X_1, X_2, ..., X_n$$ are independent and identically distributed random variables (i.i.d.) with mean $$\mu$$ and variance $$\sigma^2$$, then as $$n \to \infty$$,
 >
 > $$\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \approx \mathcal{N}(0,1)$$
 

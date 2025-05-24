@@ -33,7 +33,7 @@ Consider a sample of $$n$$data: $$[a_1, a_2, ..., a_n]$$. Find:
 > $$\text{Mean} = \frac{1}{n} \sum_{i=1}^n a_i$$
 
 Steps:
-1. Sum all values: $$a_1 + a_2 + \cdots + a_n$$
+1. Sum all values: $$a_1 + a_2 + \timess + a_n$$
 2. Divide by the total number of data points $$n$$
 
 Corner Cases:
@@ -193,4 +193,193 @@ $$
 
 ***
 
-# Uniform Distribution
+# Random Variables
+
+Let $$X_1,\ X_2,\ \ldots, X_n$$ be a set of independent and identically distributed random variables from a sample $$n$$, and has a mean $$m$$. The sample mean is:
+
+$$
+\overline{X}_n = \frac{X_1 + X_2 + \ldots + X_n}{n}
+$$
+
+- Find $$E(\overline{X}_n)$$ and $$Var(\overline{X}_n)$$
+- Use Chebyshev's inequality to find the smallest integer $$t$$, where for any $$n \geq t$$:
+
+$$P(\lvert \overline{X}_n - m \rvert < b) \geq C$$
+
+- For a given value of $$n$$, use the central limit theorem to approximate $$P(\lvert \overline{X}_n - m \rvert < b)$$
+
+
+***
+
+## Solution
+
+> ### 1. Expectation and Variance
+>
+> Given that $$\overline{X}_n$$ is a sample of independent and identically distributed random variables, each with mean $$\mu$$ and variance $$\sigma ^2$$, then
+>
+> $$E(\overline{X}_n) = \mu, \quad \text{Var}(\overline{X}_n) = \frac{\sigma ^2}{n}$$
+>
+>
+> ### 2. From Chebyshev's Inequality
+>
+> $$P(\lvert X - \mu \rvert < k \sqrt{\frac{\sigma ^2}{n}}) \geq 1 - \frac{1}{k^2}$$
+>
+> Get $$k$$ from left side, then replace in right side
+>
+> $$k \sqrt{\frac{\sigma^2}{n}} = b \implies k = \frac{b \sqrt{n}}{\sigma}$$
+>
+> $$1 - \frac{\sigma^2}{b^2 n} \geq C$$
+>
+> Solving for $$n$$,
+>
+> $$n \geq \frac{\sigma^2}{b^2 (1 - C)}$$
+> 
+> The smallest integer $$t$$ is
+>
+> $$t = \left\lceil \frac{\sigma^2}{b^2 (1 - C)} \right\rceil$$
+>
+> ### 3. Central Limit Theorem
+>
+> Rewrite in standardized form:
+>
+> $$\left|\frac{\overline{X}_n - m}{\sigma / \sqrt{n}}\right| < \frac{b \sqrt{n}}{\sigma}$$
+>
+> Then the normal distribution can be used. By symmetry and reordering terms,
+>
+> $$P\left(|\overline{X}_n - m| < b\right) = 2\Phi\left(\frac{b \sqrt{n}}{\sigma}\right) - 1$$
+
+
+## Detailed Process
+
+### 1. $$E(\overline{X}_n)$$ and $$Var(\overline{X}_n)$$
+
+The variables $$X_1, X_2, \ldots, X_n$$ are identically distributed with mean $$m$$. By linearity of expectation,
+
+$$
+E(\overline{X}_n) = \frac{1}{n} \sum_{i=1}^n E(X_i) =\frac{1}{n} \times n \times m = m
+$$
+
+For independent random variables, the variance of the sum is the sum of the variances:
+
+$$
+Var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n Var(X_i)
+$$
+
+Let $$Var(X_i) = \sigma^2$$. Since the variables are identically distributed,
+
+$$
+Var\left(\sum_{i=1}^n X_i\right) = n \sigma^2
+
+$$
+
+For the sample mean:
+
+$$
+Var(\overline{X}_n) = Var\left(\frac{1}{n} \sum_{i=1}^n X_i\right) = \frac{1}{n^2} \times n \sigma^2 = \frac{\sigma^2}{n}
+$$
+
+> Remember: $$\text{Var}(aX + b) = a^2\text{Var}(X)$$
+
+***
+
+### 2. Find the Smallest Integer $$t$$
+
+Recall Chebyshev's Inequality:
+
+> For a random variable $$X$$ with mean $$\mu$$ and variance $$\nu$$,
+>
+> $$P(\lvert X - \mu \rvert \geq k \sqrt{\nu}) \leq \frac{1}{k^2}$$
+> 
+> Equivalently:
+> 
+> $$P(\lvert X - \mu \rvert < k \sqrt{\nu}) \geq 1 - \frac{1}{k^2}$$
+
+Replacing $$X = \overline{X}_n,\ \mu = m,\ \nu = \frac{\sigma^2}{n}$$:
+
+$$
+P\left(|\overline{X}_n - m| < k \sqrt{\frac{\sigma^2}{n}}\right) \geq 1 - \frac{1}{k^2}
+$$
+
+***
+
+We want to find $$t$$ such that for $$n \geq t$$,
+
+$$
+P\left(|\overline{X}_n - a| < b\right) \geq C
+$$
+
+
+Find $$k$$:
+
+$$
+k \sqrt{\frac{\sigma^2}{n}} = b \implies k = \frac{b \sqrt{n}}{\sigma}
+$$
+
+Substitute into the inequality:
+
+$$
+1 - \frac{1}{k^2} \geq C
+$$
+
+$$
+1 - \frac{\sigma^2}{b^2 n} \geq C
+$$
+
+Solving for $$n$$,
+
+$$
+n \geq \frac{\sigma^2}{b^2 (1 - C)}
+$$
+
+The smallest integer $$t$$ is:
+
+$$
+t = \left\lceil \frac{\sigma^2}{b^2 (1 - C)} \right\rceil
+$$
+
+#### Corner Cases
+1. $$C > 1$$: The inequality is trivial (always true), so $$t = 1$$.
+2. $$C \leq 0$$: Invalid, as probabilities cannot be negative.
+
+### 3. Central Limit Theorem
+
+Recall the Central Limit Theorem:
+
+> If $$X_1, X_2, ..., X_n$$ are i.i.d. with mean $$\mu$$ and variance $$\sigma^2$$, then as $$n \to \infty$$,
+>
+> $$\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \approx \mathcal{N}(0,1)$$
+
+
+Rewrite the event $$\lvert \overline{X}_n - m \rvert < b$$ in standardized form:
+
+$$
+\left|\frac{\overline{X}_n - m}{\sigma / \sqrt{n}}\right| < \frac{b \sqrt{n}}{\sigma}
+$$
+
+Let $$Z = \frac{\overline{X}_n - m}{\sigma / \sqrt{n}}$$. By the CLT, $$Z$$ follows a standard normal distribution. Then the probability becomes
+
+$$
+P\left(|Z| < \frac{b \sqrt{n}}{\sigma}\right) = P\left(-\frac{b \sqrt{n}}{\sigma} < Z < \frac{b \sqrt{n}}{\sigma}\right)
+$$
+
+Using symmetry of the normal distribution:
+
+$$
+P\left(|Z| < k\right) = 2\Phi(k) - 1
+$$
+
+where $$\Phi(k)$$ is the cumulative distribution function (CDF) of the standard normal distribution.
+
+Substitute $$k = \frac{b \sqrt{n}}{\sigma}$$:
+
+$$
+P\left(|\overline{X}_n - m| < b\right) = 2\Phi\left(\frac{b \sqrt{n}}{\sigma}\right) - 1
+$$
+
+> Note: In the above equation,
+>
+> $$\sigma = \sqrt{Var\left(X_i\right)}$$
+>
+> The variance used is from each random variable $$X_i$$, NOT from $$\overline{X}_n = \frac{\sigma ^2}{n}$$
+
+***
