@@ -279,7 +279,7 @@
 <blockquote>
   <h3 id="normal-gaussian">Normal (Gaussian)</h3>
 
-\[f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}\]
+\[\Phi(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}\]
 </blockquote>
 
 <blockquote>
@@ -342,13 +342,21 @@
 <blockquote>
   <h3 id="chebyshevs-inequality">Chebyshev’s Inequality</h3>
 
-\[P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2} \quad \text{for } k &gt; 0\]
+  <p>For a random variable \(X\) with mean \(\mu\) and variance \(\sigma ^2\),</p>
+
+\[P(\lvert X - \mu \rvert \geq k) \leq \frac{\sigma ^2}{k^2}\]
+
+  <p>Equivalently:</p>
+
+\[P(\lvert X - \mu \rvert &lt; k) \geq 1 - \frac{\sigma ^2}{k^2}\]
+
+\[P(\lvert X - \mu \rvert &lt; k \sigma) \geq 1 - \frac{1}{k^2}\]
 </blockquote>
 
 <blockquote>
   <h3 id="central-limit-theorem-clt">Central Limit Theorem (CLT)</h3>
 
-  <p>If \(X_1, X_2, ..., X_n\) are i.i.d. with mean \(\mu\) and variance \(\sigma^2\), then as \(n \to \infty\),</p>
+  <p>If \(X_1, X_2, ..., X_n\) are independent and identically distributed random variables (i.i.d.) with mean \(\mu\) and variance \(\sigma^2\), then as \(n \to \infty\),</p>
 
 \[\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \approx \mathcal{N}(0,1)\]
 </blockquote>

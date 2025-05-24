@@ -1,0 +1,530 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Stats Examples - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/project.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Stats Examples
+    
+  </h1>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-04-23T00:00:00+00:00">
+        📅 2025/04/23
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h1 id="simple-data-analysis">Simple Data Analysis</h1>
+
+<p>Consider a sample of \(n\)data: \([a_1, a_2, ..., a_n]\). Find:</p>
+<ul>
+  <li>Mean</li>
+  <li>Median</li>
+  <li>Mode</li>
+  <li>Quartiles \(Q_1,\ Q_3\)</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Measure</th>
+      <th>Key Rule</th>
+      <th>Odd vs. Even</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mean</td>
+      <td>Sum all, divide by \(n\)</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Median</td>
+      <td>Middle value(s) after sorting</td>
+      <td>Odd: Exact middle; Even: Average two middles</td>
+    </tr>
+    <tr>
+      <td>Mode</td>
+      <td>Most frequent value(s)</td>
+      <td>Handle ties/no mode</td>
+    </tr>
+    <tr>
+      <td>Quartiles</td>
+      <td>Split data at \(Q_2\), compute medians of halves</td>
+      <td>Odd \(n\): Exclude \(Q_2\)from halves</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="detailed-process">Detailed Process</h2>
+
+<h3 id="1-mean">1. Mean</h3>
+
+<blockquote>
+\[\text{Mean} = \frac{1}{n} \sum_{i=1}^n a_i\]
+</blockquote>
+
+<p>Steps:</p>
+<ol>
+  <li>Sum all values: \(a_1 + a_2 + \timess + a_n\)</li>
+  <li>Divide by the total number of data points \(n\)</li>
+</ol>
+
+<p>Corner Cases:</p>
+<ul>
+  <li>If \(n = 0\): Undefined (no data)</li>
+</ul>
+
+<h3 id="2-median">2. Median</h3>
+
+<p>Steps:</p>
+<ol>
+  <li>Sort the data in ascending order</li>
+  <li>Check if \(n\) is odd or even:
+    <ul>
+      <li>Odd: Median = Middle value at position \(\frac{n+1}{2}\)<br />
+  <em>Example</em>: For \([1, 3, 5]\)(n=3), median = 3</li>
+      <li>Even: Median = Average of the two middle values at positions \(\frac{n}{2}\)and \(\frac{n}{2} + 1\)<br />
+  <em>Example</em>: For \([1, 3, 5, 7]\)(n=4), median = \(\frac{3 + 5}{2} = 4\)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Corner Cases:</p>
+<ul>
+  <li>If \(n = 1\): Median = the single value</li>
+</ul>
+
+<h3 id="3-mode">3. Mode</h3>
+
+<p>Definition: The most frequently occurring value(s)</p>
+
+<p>Steps:</p>
+<ol>
+  <li>Count the frequency of each unique value</li>
+  <li>Identify the value(s) with the highest frequency</li>
+</ol>
+
+<p>Corner Cases:</p>
+<ul>
+  <li>No mode: All values occur once (e.g., \([1, 2, 3]\))</li>
+  <li>Multiple modes: Multiple values share the highest frequency (e.g., \([1, 1, 2, 2]\)has modes 1 and 2)</li>
+</ul>
+
+<h3 id="4-quartiles-q_1-q_3">4. Quartiles \(Q_1,\ Q_3\)</h3>
+
+<p>Steps:</p>
+<ol>
+  <li>Sort the data</li>
+  <li>Find the median (\(Q_2\))</li>
+  <li>Split the dataset:
+    <ul>
+      <li>Lower half: Values below \(Q_2\)(if \(n\)is odd, exclude \(Q_2\))</li>
+      <li>Upper half: Values above \(Q_2\)(if \(n\)is odd, exclude \(Q_2\))</li>
+    </ul>
+  </li>
+  <li>Compute \(Q_1\)and \(Q_3\):
+    <ul>
+      <li>\(Q_1\)= Median of the lower half</li>
+      <li>\(Q_3\)= Median of the upper half</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Example (Odd n):
+For \([1, 2, 3, 4, 5]\)(n=5):</p>
+<ul>
+  <li>\(Q_2\)= 3</li>
+  <li>Lower half = [1, 2] → \(Q_1\)= 1.5</li>
+  <li>Upper half = [4, 5] → \(Q_3\)= 4.5</li>
+</ul>
+
+<p>Example (Even n):
+For \([1, 2, 3, 4, 5, 6]\)(n=6):</p>
+<ul>
+  <li>\(Q_2\)= 3.5</li>
+  <li>Lower half = [1, 2, 3] → \(Q_1\)= 2</li>
+  <li>Upper half = [4, 5, 6] → \(Q_3\)= 5</li>
+</ul>
+
+<p>Corner Cases:</p>
+<ul>
+  <li>Small datasets (e.g., \(n &lt; 4\)): Quartiles may equal existing data points or require interpolation</li>
+</ul>
+
+<hr />
+
+<hr />
+
+<h1 id="conditional-probability">Conditional Probability</h1>
+
+<p>Consider a set of \(n\) mutually exclusive events \(A_1, A_2, ..., A_n\), where \(P(A_i)\) is known.
+A different event B has a conditional probability, where \(P(B \mid A_i)\) is known for all \(i\).
+What is the conditional probability \(P(A_i \mid B)\) for any \(i \leq n\)?</p>
+
+<h2 id="solution-1">Solution</h2>
+
+<blockquote>
+  <p>1. Law of Total Probability</p>
+
+\[P(B) = P(A_1) P(B \mid A_1) + P(A_2) P(B \mid A_2) + \ldots\]
+
+  <p>In other words,</p>
+
+\[P(B) = \sum_{i=1}^n P(B\mid A_i) P(A_i)\]
+
+  <p>2. Bayes’ Theorem</p>
+
+\[P(A_i \mid B) = \frac{P(B\mid A_i) P(A_i)}{P(B)}\]
+</blockquote>
+
+<h2 id="detailed-process-1">Detailed Process</h2>
+
+<p>1. Verify Exhaustiveness: Ensure the events \(A_1, A_2, \ldots, A_n\) are mutually exclusive and exhaustive.</p>
+
+\[\sum_{i=1}^n P(A_i) = 1\]
+
+<p>If they are not exhaustive, \(P(B)\) depends on \(P(B\mid\text{not} \cup A_i)\), which is unknown. The problem cannot be solved without this information.</p>
+
+<p>2. Law of Total Probability</p>
+
+\[P(B) = \sum_{j=1}^n P(B\mid A_j) P(A_j)\]
+
+<p>3. Bayes’ Theorem</p>
+
+\[P(A_i\mid B) = \frac{P(B\mid A_i) P(A_i)}{P(B)} = \frac{P(B\mid A_i) P(A_i)}{\sum_{j=1}^n P(B\mid A_j) P(A_j)}\]
+
+<h2 id="corner-cases">Corner Cases</h2>
+
+<h3 id="1-non-exhaustive-a_i">1. Non-Exhaustive \(A_i\)</h3>
+
+<p>If \(\sum_{i=1}^n P(A_i) &lt; 1\), the formula for \(P(B)\) is incomplete.</p>
+
+<p>Example:</p>
+<ul>
+  <li>
+\[n = 2,\ P(A_1) = 0.3,\ P(A_2) = 0.3,\ P(\text{neither}) = 0.4\]
+  </li>
+  <li>Without \(P(B\mid\text{neither}),\ P(B)\) cannot be determined</li>
+</ul>
+
+<h3 id="2-zero-denominator">2. Zero Denominator</h3>
+
+<p>If \(P(B) = 0,\ P(A_i\mid B)\) is undefined. This occurs if either:</p>
+<ul>
+  <li>\(P(B\mid A_i) = 0\) for all \(i\)</li>
+  <li>\(P(A_i) = 0\) for all \(i\)</li>
+</ul>
+
+<h3 id="3-zero-numerator">3. Zero Numerator</h3>
+
+<p>If \(P(A_i) = 0\), then \(P(A_i\mid B) = 0\), regardless of \(P(B\mid A_i)\)</p>
+
+<p>If \(P(B\mid A_i) = 0,\ A_i\) does not contribute to \(P(B)\)</p>
+
+<h3 id="4-single-event">4. Single Event</h3>
+
+<p>If \(n = 1\) and \(P(A_1) = 1\), then \(P(B) = P(B\mid A_1)\), so \(P(A_1\mid B) = 1\)</p>
+
+<h2 id="example">Example</h2>
+
+<p>For the events \(A_1, A_2\):</p>
+
+\[P(A_1) = 0.6,\ P(A_2) = 0.4\]
+
+\[P(B\mid A_1) = 0.3,\ P(B\mid A_2) = 0.5\]
+
+<p>Calculate \(P(A_1 \mid B)\).</p>
+
+<hr />
+
+<ol>
+  <li>Total probability of \(B\):</li>
+</ol>
+
+\[P(B) = (0.3)(0.6) + (0.5)(0.4) = 0.18 + 0.20 = 0.38\]
+
+<ol>
+  <li>Compute \(P(A_1\mid B)\):</li>
+</ol>
+
+\[P(A_1\mid B) = \frac{(0.3)(0.6)}{0.38} = \frac{0.18}{0.38} \approx 0.4737\]
+
+<hr />
+
+<hr />
+
+<h1 id="random-variables">Random Variables</h1>
+
+<p>Let \(X_1,\ X_2,\ \ldots, X_n\) be a set of independent and identically distributed random variables from a sample \(n\), and has a mean \(m\). The sample mean is:</p>
+
+\[\overline{X}_n = \frac{X_1 + X_2 + \ldots + X_n}{n}\]
+
+<ul>
+  <li>Find \(E(\overline{X}_n)\) and \(Var(\overline{X}_n)\)</li>
+  <li>Use Chebyshev’s inequality to find the smallest integer \(t\), where for any \(n \geq t\):</li>
+</ul>
+
+\[P(\lvert \overline{X}_n - m \rvert &lt; b) \geq C\]
+
+<ul>
+  <li>For a given value of \(n\), use the central limit theorem to approximate \(P(\lvert \overline{X}_n - m \rvert &lt; b)\)</li>
+</ul>
+
+<hr />
+
+<h2 id="solution-2">Solution</h2>
+
+<blockquote>
+  <h3 id="1-expectation-and-variance">1. Expectation and Variance</h3>
+
+  <p>Given that \(\overline{X}_n\) is a sample of independent and identically distributed random variables, each with mean \(\mu\) and variance \(\sigma ^2\), then</p>
+
+\[E(\overline{X}_n) = \mu, \quad \text{Var}(\overline{X}_n) = \frac{\sigma ^2}{n}\]
+
+  <h3 id="2-from-chebyshevs-inequality">2. From Chebyshev’s Inequality</h3>
+
+\[P(\lvert X - \mu \rvert &lt; k \sqrt{\frac{\sigma ^2}{n}}) \geq 1 - \frac{1}{k^2}\]
+
+  <p>Get \(k\) from left side, then replace in right side</p>
+
+\[k \sqrt{\frac{\sigma^2}{n}} = b \implies k = \frac{b \sqrt{n}}{\sigma}\]
+
+\[1 - \frac{\sigma^2}{b^2 n} \geq C\]
+
+  <p>Solving for \(n\),</p>
+
+\[n \geq \frac{\sigma^2}{b^2 (1 - C)}\]
+
+  <p>The smallest integer \(t\) is</p>
+
+\[t = \left\lceil \frac{\sigma^2}{b^2 (1 - C)} \right\rceil\]
+
+  <h3 id="3-central-limit-theorem">3. Central Limit Theorem</h3>
+
+  <p>Rewrite in standardized form:</p>
+
+\[\left|\frac{\overline{X}_n - m}{\sigma / \sqrt{n}}\right| &lt; \frac{b \sqrt{n}}{\sigma}\]
+
+  <p>Then the normal distribution can be used. By symmetry and reordering terms,</p>
+
+\[P\left(|\overline{X}_n - m| &lt; b\right) = 2\Phi\left(\frac{b \sqrt{n}}{\sigma}\right) - 1\]
+</blockquote>
+
+<h2 id="detailed-process-2">Detailed Process</h2>
+
+<h3 id="1-eoverlinex_n-and-varoverlinex_n">1. \(E(\overline{X}_n)\) and \(Var(\overline{X}_n)\)</h3>
+
+<p>The variables \(X_1, X_2, \ldots, X_n\) are identically distributed with mean \(m\). By linearity of expectation,</p>
+
+\[E(\overline{X}_n) = \frac{1}{n} \sum_{i=1}^n E(X_i) =\frac{1}{n} \times n \times m = m\]
+
+<p>For independent random variables, the variance of the sum is the sum of the variances:</p>
+
+\[Var\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n Var(X_i)\]
+
+<p>Let \(Var(X_i) = \sigma^2\). Since the variables are identically distributed,</p>
+
+\[Var\left(\sum_{i=1}^n X_i\right) = n \sigma^2\]
+
+<p>For the sample mean:</p>
+
+\[Var(\overline{X}_n) = Var\left(\frac{1}{n} \sum_{i=1}^n X_i\right) = \frac{1}{n^2} \times n \sigma^2 = \frac{\sigma^2}{n}\]
+
+<blockquote>
+  <p>Remember: \(\text{Var}(aX + b) = a^2\text{Var}(X)\)</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2-find-the-smallest-integer-t">2. Find the Smallest Integer \(t\)</h3>
+
+<p>Recall Chebyshev’s Inequality:</p>
+
+<blockquote>
+  <p>For a random variable \(X\) with mean \(\mu\) and variance \(\nu\),</p>
+
+\[P(\lvert X - \mu \rvert \geq k \sqrt{\nu}) \leq \frac{1}{k^2}\]
+
+  <p>Equivalently:</p>
+
+\[P(\lvert X - \mu \rvert &lt; k \sqrt{\nu}) \geq 1 - \frac{1}{k^2}\]
+</blockquote>
+
+<p>Replacing \(X = \overline{X}_n,\ \mu = m,\ \nu = \frac{\sigma^2}{n}\):</p>
+
+\[P\left(|\overline{X}_n - m| &lt; k \sqrt{\frac{\sigma^2}{n}}\right) \geq 1 - \frac{1}{k^2}\]
+
+<hr />
+
+<p>We want to find \(t\) such that for \(n \geq t\),</p>
+
+\[P\left(|\overline{X}_n - a| &lt; b\right) \geq C\]
+
+<p>Find \(k\):</p>
+
+\[k \sqrt{\frac{\sigma^2}{n}} = b \implies k = \frac{b \sqrt{n}}{\sigma}\]
+
+<p>Substitute into the inequality:</p>
+
+\[1 - \frac{1}{k^2} \geq C\]
+
+\[1 - \frac{\sigma^2}{b^2 n} \geq C\]
+
+<p>Solving for \(n\),</p>
+
+\[n \geq \frac{\sigma^2}{b^2 (1 - C)}\]
+
+<p>The smallest integer \(t\) is:</p>
+
+\[t = \left\lceil \frac{\sigma^2}{b^2 (1 - C)} \right\rceil\]
+
+<h4 id="corner-cases-1">Corner Cases</h4>
+<ol>
+  <li>\(C &gt; 1\): The inequality is trivial (always true), so \(t = 1\).</li>
+  <li>\(C \leq 0\): Invalid, as probabilities cannot be negative.</li>
+</ol>
+
+<h3 id="3-central-limit-theorem-1">3. Central Limit Theorem</h3>
+
+<p>Recall the Central Limit Theorem:</p>
+
+<blockquote>
+  <p>If \(X_1, X_2, ..., X_n\) are i.i.d. with mean \(\mu\) and variance \(\sigma^2\), then as \(n \to \infty\),</p>
+
+\[\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \approx \mathcal{N}(0,1)\]
+</blockquote>
+
+<p>Rewrite the event \(\lvert \overline{X}_n - m \rvert &lt; b\) in standardized form:</p>
+
+\[\left|\frac{\overline{X}_n - m}{\sigma / \sqrt{n}}\right| &lt; \frac{b \sqrt{n}}{\sigma}\]
+
+<p>Let \(Z = \frac{\overline{X}_n - m}{\sigma / \sqrt{n}}\). By the CLT, \(Z\) follows a standard normal distribution. Then the probability becomes</p>
+
+\[P\left(|Z| &lt; \frac{b \sqrt{n}}{\sigma}\right) = P\left(-\frac{b \sqrt{n}}{\sigma} &lt; Z &lt; \frac{b \sqrt{n}}{\sigma}\right)\]
+
+<p>Using symmetry of the normal distribution:</p>
+
+\[P\left(|Z| &lt; k\right) = 2\Phi(k) - 1\]
+
+<p>where \(\Phi(k)\) is the cumulative distribution function (CDF) of the standard normal distribution.</p>
+
+<p>Substitute \(k = \frac{b \sqrt{n}}{\sigma}\):</p>
+
+\[P\left(|\overline{X}_n - m| &lt; b\right) = 2\Phi\left(\frac{b \sqrt{n}}{\sigma}\right) - 1\]
+
+<blockquote>
+  <p>Note: In the above equation,</p>
+
+\[\sigma = \sqrt{Var\left(X_i\right)}\]
+
+  <p>The variance used is from each random variable \(X_i\), NOT from \(\overline{X}_n = \frac{\sigma ^2}{n}\)</p>
+</blockquote>
+
+<hr />
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
