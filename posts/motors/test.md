@@ -169,6 +169,116 @@ If the $$B\ \text{-}\ H$$ curve is nonlinear and $$\Phi$$ is unknown:
 
 # Transformers
 
+## Ideal transformers
+
+Turns ratio:
+
+$$
+a = \frac{N_p}{N_s} = \frac{v_p (t)}{v_s (t)}
+$$
+
+Where $$N_p,\ N_s$$ are the turns in the wires, and $$v_p (t),\ v_s (t)$$ the voltages.
+
+For the current:
+
+$$
+N_p i_p (t) = N_s i_s (t)
+$$
+
+$$
+\frac{i_p (t)}{i_s (t)} = \frac{1}{a}
+$$
+
+In phasor notation,
+
+$$
+\frac{V_P}{V_S} = \frac{1}{a}
+$$
+
+$$
+\frac{I_P}{I_S} = \frac{1}{a}
+$$
+
+The input voltage and current has the same phase angle as the output.
+
+> Real Power:
+>
+> $$P_{in} = V_P I_P cos {\theta}_P$$
+>
+> Where $${\theta}_P$$ is the angle between $$V_P$$ and $$I_P$$.
+>
+> Similarly for output power,
+>
+> $$P_{out} = V_S I_S cos {\theta}_S$$
+
+> For an ideal transformer, all the following apply:
+>
+> $${\theta}_P = {\theta}_S = \theta$$
+>
+> $$PF_{in} = PF_{out}$$
+>
+> $$P_{in} = P_{out}$$
+>
+> $$Q_{in} = V_P I_P sin \theta = V_S I_S sin \theta = Q_{out}$$
+>
+> $$S_{in} = V_P I_P = V_S I_S = S_{out}$$
+
+A transformer's voltage and current can change the apparent impedance:
+
+$$
+Z_L = \frac{V_S}{I_S} 
+$$
+
+$$
+Z'_L = \frac{V_P}{I_P} = a^2 Z_L = \left(\frac{N_P}{N_S}\right)^2 Z_L
+$$
+
+
+
+## draft
+
+Excitation branch
+
+Turns ratio
+
+Resistances and leakage reactances
+
+High-voltage side, low-voltage side
+
+Terminal Voltage
+
+High-side current
+
+Low-side real power
+
+Low-side reactive power
+
+Power factor lagging/leading
+
+Equivalent T circuit
+
+Input voltage
+
+Copper loss
+
+Core loss
+
+Efficiency
+
+Cantilever equivalent circuit
+
+Output power
+
+30 kVA 60 Hz 2100 V: 420 V
+
+Given resistances and leakage reactances of a distribution transformer, calculate
+- the turns ratio
+- resistances and leakage reactances of the high-voltage side and low-voltage side
+
+Given power delivered to a load on the low-voltage side with some terminal voltage, and some power factor, calculate
+- high-side current
+- low-side power (reactive and real)
+
 *Check RP2 P3
 *Topic3_P1 P11
 *^ P17
