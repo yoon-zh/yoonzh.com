@@ -25,6 +25,25 @@ Before we can choose a motor for our robots and cars, we need a grasp of how it 
   - DC Motors
 - AC Machinery
 
+## Faraday's Law
+
+$$
+e_{ind} = -\frac{d\phi}{dt}
+$$
+
+Where $$e_{ind}$$ is the induced voltage, and $$\phi$$ is the magnetic flux in the coil.
+
+In a coil with $$N$$ turns where a magnetic flux $$\phi$$ is applied through it,
+
+$$
+e_{ind} = -N \frac{d\phi}{dt}
+$$
+
+## Lenz Law
+
+Responsible for the minus sign in Faraday's Law:
+
+Given a flux $$\phi$$ through a coil, the flux induces a voltage and thus, a current known as *eddy current*. The current induced then generates an opposing flux (imagine Newton's action-reaction).
 
 # Anatomy
 
