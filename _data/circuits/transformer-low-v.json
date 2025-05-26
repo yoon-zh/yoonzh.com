@@ -1,0 +1,59 @@
+{
+  "modules": {
+    "transformer-low-v": {
+      "ports": {
+        "Vp/a in": {"direction": "input", "bits": [3]},
+        "Vs in": {"direction": "output", "bits": [6]}
+      },
+      "cells": {
+        "Rcl": {
+          "type": "r_v",
+          "connections": {
+            "A": [3],
+            "B": [4]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Xml": {
+          "type": "l_v",
+          "connections": {
+            "A": [3],
+            "B": [4]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Req": {
+          "type": "r_h",
+          "connections": {
+            "A": [3],
+            "B": [5]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Xeq": {
+          "type": "l_h",
+          "connections": {
+            "A": [5],
+            "B": [6]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value": "--> Is"
+          }
+        }
+      }
+    }
+  }
+}

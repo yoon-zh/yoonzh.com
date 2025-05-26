@@ -1,0 +1,86 @@
+{
+  "modules": {
+    "transformer-first-v": {
+      "ports": {
+        "Vp in": {"direction": "input", "bits": [1]},
+        "Vp out": {"direction": "input", "bits": [4]},
+        "aVs in": {"direction": "output", "bits": [6]},
+        "aVs out": {"direction": "output", "bits": [4]}
+      },
+      "cells": {
+        "RP": {
+          "type": "r_h",
+          "connections": {
+            "A": [1],
+            "B": [2]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value": "--> Ip"
+          }
+        },
+        "jXp": {
+          "type": "l_h",
+          "connections": {
+            "A": [2],
+            "B": [3]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Rc": {
+          "type": "r_v",
+          "connections": {
+            "A": [3],
+            "B": [4]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "jXm": {
+          "type": "l_v",
+          "connections": {
+            "A": [3],
+            "B": [4]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "a^2 Rs": {
+          "type": "r_h",
+          "connections": {
+            "A": [3],
+            "B": [5]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "ja^2 Xs": {
+          "type": "l_h",
+          "connections": {
+            "A": [5],
+            "B": [6]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value": "--> Is/a"
+          }
+        }
+      }
+    }
+  }
+}

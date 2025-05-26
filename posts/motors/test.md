@@ -3,6 +3,7 @@ layout: post
 title: test
 card_title: "testmotors"
 math: true
+circuit: true
 url: /posts/motors/test
 tech_stack: [Motors]
 ---
@@ -169,7 +170,7 @@ If the $$B\ \text{-}\ H$$ curve is nonlinear and $$\Phi$$ is unknown:
 
 # Transformers
 
-## Ideal transformers
+## Ideal Transformers
 
 Turns ratio:
 
@@ -233,9 +234,274 @@ $$
 Z'_L = \frac{V_P}{I_P} = a^2 Z_L = \left(\frac{N_P}{N_S}\right)^2 Z_L
 $$
 
+## Real Transformers
 
+Excitation current: total no-load current in the core.
+
+$$
+i_{ex} = i_m + i_{h+e}
+$$
+
+Where
+
+- $$i_M$$ is the magnetization current required to produce flux in the transformer core
+- $$i_{h+e}$$ is the core-loss current lost to hysteresis and eddy current
+
+$$i_{ex}$$ should be much smaller than full-load current in a good transformer.
+
+$$
+\mathcal{F}_{net} = N_P i_P - N_S i_S = \phi\ \Re
+$$
+
+For a real transformer to be modelled as an ideal, the core must have no hysteresis or eddy currents, as well as zero leakage flux and zero resistance in transformer windings.
+
+Equivalent circuit considering:
+- Copper losses $$I^2 R$$
+- Eddy current losses
+- Hysteresis losses
+- Leakage flux $${\phi}_{LP},\ {\phi}_{LS}$$, producing leakage inductance
+
+Leakage inductance:
+
+$$
+L_P = N^2_P \mathcal{P}
+$$
+
+$$
+L_N = N^2_N \mathcal{P}
+$$
+
+Where $$\mathcal{P}$$ is the permeance of flux path (air).
+
+{% include circuit.html id="real-transformer" from_data=true %}
+
+- $$R_P$$ resistance of primary winding
+- $$X_P$$ reactance due to primary leakage inductance
+- $$R_S$$ resistance of secondary winding
+- $$X_S$$ reactance due to secondary leakage inductance
+- Excitation branch:
+  - $$R_C$$ hysteresis and core losses
+  - $$X_M$$ magnetization current
+
+Model for primary voltage:
+
+{% include circuit.html id="transformer-first-v" from_data=true %}
+
+$$I_{out} = \frac{I_s}{a}$$
+
+Model for secondary voltage:
+
+{% include circuit.html id="transformer-second-v" from_data=true %}
+
+Efficiency
+
+$$
+\eta = \frac{P_{out}}{P_{in}} \times 100\%
+$$
+
+At a given load,
+
+$$
+\eta = \frac{V_S I_S cos \theta}{P_{Cu} + P_{core} + V_S I_S cos \theta} \times 100\%
+$$
+
+***
 
 ## draft
+
+## Excitation branch
+
+In real transformers, the excitation branch accounts for core losses and magnetizing current. It consists of a core loss resistance $$R_C$$ (modeling hysteresis and eddy current losses) and a magnetizing reactance $$X_M$$ (modeling the magnetization current):
+
+$$
+I_P = I_C + I_M
+$$
+
+Where:
+- $$I_C = \frac{V_P}{R_C}$$ (in-phase with voltage)
+- $$I_M = \frac{V_P}{X_M}$$ (lags voltage by 90°)
+
+## Resistances and leakage reactances
+
+Practical transformers have:
+- Winding resistances $$R_P,\ R_S$$ (copper losses)
+- Leakage reactances $$X_P,\ X_S$$ (due to imperfect flux linkage)
+
+These are modeled as series elements with the ideal transformer:
+
+$$
+Z_P = R_P + jX_P \quad \text{(Primary side)}
+$$
+
+$$
+Z_S = R_S + jX_S \quad \text{(Secondary side)}
+$$
+
+## High-voltage side, low-voltage side
+
+- High-voltage (HV) side: Has more turns ($$N_P > N_S$$), operates at higher voltage and lower current
+- Low-voltage (LV) side: Has fewer turns ($$N_S < N_P$$), operates at lower voltage and higher current
+
+The turns ratio determines voltage transformation:
+
+$$
+a = \frac{N_{HV}}{N_{LV}} = \frac{V_{HV}}{V_{LV}}
+$$
+
+## Terminal Voltage
+
+The actual output voltage under load differs from the ideal voltage due to voltage drops:
+
+$$
+V_{terminal} = V_S - I_S(R_S + jX_S)
+$$
+
+## High-side current
+
+The primary current has two components:
+1. Load current reflected from secondary: $$I'_S = \frac{I_S}{a}$$
+2. Excitation current: $$I_{EX} = I_C + I_M$$
+
+$$
+I_P = I'_S + I_{EX}
+$$
+
+## Low-side real power
+
+Real power delivered to load:
+
+$$
+P_{out} = V_S I_S \cos \theta_S
+$$
+
+## Low-side reactive power
+
+Reactive power delivered to load:
+
+$$
+Q_{out} = V_S I_S \sin \theta_S
+$$
+
+## Power factor lagging/leading
+
+- Lagging PF: Inductive load (current lags voltage)
+- Leading PF: Capacitive load (current leads voltage)
+
+Power factor angle $$\theta$$ relates voltage and current:
+
+$$
+\theta = \angle V_S - \angle I_S
+$$
+
+## Equivalent T circuit
+
+The complete transformer model combines series impedances and shunt excitation branch:
+
+$$
+\begin{array}{ccc}
+ & R_P + jX_P & \\
+V_P & \longrightarrow & \text{Ideal Transformer} (a:1) \\
+ & \downarrow R_C \parallel jX_M & \\
+\end{array}
+$$
+
+## Input voltage
+
+The required primary voltage to maintain secondary terminal voltage:
+
+$$
+V_P = aV_S + I_P(R_P + jX_P)
+$$
+
+## Copper loss
+
+Power loss in windings:
+
+$$
+P_{cu} = I_P^2 R_P + I_S^2 R_S = I_P^2 R_P + \left(\frac{I_P}{a}\right)^2 R_S
+$$
+
+## Core loss
+
+Power loss in magnetic core:
+
+$$
+P_{core} = \frac{V_P^2}{R_C}
+$$
+
+## Efficiency
+
+Ratio of output power to input power:
+
+$$
+\eta = \frac{P_{out}}{P_{in}} \times 100\% = \frac{P_{out}}{P_{out} + P_{cu} + P_{core}} \times 100\%
+$$
+
+## Cantilever equivalent circuit
+
+Approximate model with excitation branch moved to primary side:
+
+$$
+\begin{array}{ccc}
+R_P + jX_P & \longrightarrow & \text{Ideal Transformer} (a:1) \\
+ & \downarrow R_C \parallel jX_M & \\
+\end{array}
+$$
+
+## Example: 30 kVA 60 Hz 2100 V:420 V Transformer
+
+Given:
+- 30 kVA, 60 Hz, 2100 V:420 V
+- $$R_P = 1.5 \Omega$$, $$X_P = 2.0 \Omega$$ (HV side)
+- $$R_S = 0.06 \Omega$$, $$X_S = 0.08 \Omega$$ (LV side)
+
+Calculations:
+1. Turns ratio:
+$$
+a = \frac{2100}{420} = 5
+$$
+
+2. Impedance referral:
+
+- LV-side impedances referred to HV side:
+
+$$
+R'_S = a^2 R_S = 25 \times 0.06 = 1.5 \Omega
+$$
+
+$$
+X'_S = a^2 X_S = 25 \times 0.08 = 2.0 \Omega
+$$
+
+Load Calculation:
+For 420 V terminal voltage at 0.8 PF lagging:
+
+1. Low-side current:
+
+$$
+I_S = \frac{30,000}{420} = 71.43 \text{A}
+$$
+
+2. High-side current:
+
+$$
+I_P = \frac{I_S}{a} = \frac{71.43}{5} = 14.29 \text{A}
+$$
+
+3. Low-side powers:
+
+- Real power:
+
+$$
+P = 420 \times 71.43 \times 0.8 = 24,000 \text{W}
+$$
+
+- Reactive power:
+
+$$
+Q = 420 \times 71.43 \times \sqrt{1-0.8^2} = 18,000 \text{VAR}
+$$
+
 
 Excitation branch
 

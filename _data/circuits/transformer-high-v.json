@@ -1,0 +1,59 @@
+{
+  "modules": {
+    "transformer-high-v": {
+      "ports": {
+        "Vp in": {"direction": "input", "bits": [3]},
+        "aVs in": {"direction": "output", "bits": [6]}
+      },
+      "cells": {
+        "Rc": {
+          "type": "r_v",
+          "connections": {
+            "A": [3],
+            "B": [4]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Xm": {
+          "type": "l_v",
+          "connections": {
+            "A": [3],
+            "B": [4]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "ReqH": {
+          "type": "r_h",
+          "connections": {
+            "A": [3],
+            "B": [5]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "XeqH": {
+          "type": "l_h",
+          "connections": {
+            "A": [5],
+            "B": [6]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          },
+          "attributes": {
+            "value": "--> Is/a"
+          }
+        }
+      }
+    }
+  }
+}
