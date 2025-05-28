@@ -1,0 +1,498 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Transformers - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+  <script src="https://neilturley.dev/netlistsvg/elk.bundled.js"></script>
+  <script src="https://neilturley.dev/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="/scripts/circuits.js"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Transformers
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">Motors</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <p>date: 2025-04-26</p>
+
+<h2 id="ideal-transformers">Ideal Transformers</h2>
+
+<p>Turns ratio:</p>
+
+\[a = \frac{N_p}{N_s} = \frac{v_p (t)}{v_s (t)}\]
+
+<p>Where \(N_p,\ N_s\) are the turns in the wires, and \(v_p (t),\ v_s (t)\) the voltages.</p>
+
+<p>For the current:</p>
+
+\[N_p i_p (t) = N_s i_s (t)\]
+
+\[\frac{i_p (t)}{i_s (t)} = \frac{1}{a}\]
+
+<p>In phasor notation,</p>
+
+\[\frac{V_P}{V_S} = \frac{1}{a}\]
+
+\[\frac{I_P}{I_S} = \frac{1}{a}\]
+
+<p>The input voltage and current has the same phase angle as the output.</p>
+
+<blockquote>
+  <p>Real Power:</p>
+
+\[P_{in} = V_P I_P cos {\theta}_P\]
+
+  <p>Where \({\theta}_P\) is the angle between \(V_P\) and \(I_P\).</p>
+
+  <p>Similarly for output power,</p>
+
+\[P_{out} = V_S I_S cos {\theta}_S\]
+</blockquote>
+
+<blockquote>
+  <p>For an ideal transformer, all the following apply:</p>
+
+\[{\theta}_P = {\theta}_S = \theta\]
+
+\[PF_{in} = PF_{out}\]
+
+\[P_{in} = P_{out}\]
+
+\[Q_{in} = V_P I_P sin \theta = V_S I_S sin \theta = Q_{out}\]
+
+\[S_{in} = V_P I_P = V_S I_S = S_{out}\]
+</blockquote>
+
+<p>A transformer’s voltage and current can change the apparent impedance:</p>
+
+\[Z_L = \frac{V_S}{I_S}\]
+
+\[Z'_L = \frac{V_P}{I_P} = a^2 Z_L = \left(\frac{N_P}{N_S}\right)^2 Z_L\]
+
+<h2 id="real-transformers">Real Transformers</h2>
+
+<p>Excitation current: total no-load current in the core.</p>
+
+\[i_{ex} = i_m + i_{h+e}\]
+
+<p>Where</p>
+
+<ul>
+  <li>\(i_M\) is the magnetization current required to produce flux in the transformer core</li>
+  <li>\(i_{h+e}\) is the core-loss current lost to hysteresis and eddy current</li>
+</ul>
+
+<p>\(i_{ex}\) should be much smaller than full-load current in a good transformer.</p>
+
+\[\mathcal{F}_{net} = N_P i_P - N_S i_S = \phi\ \Re\]
+
+<p>For a real transformer to be modelled as an ideal, the core must have no hysteresis or eddy currents, as well as zero leakage flux and zero resistance in transformer windings.</p>
+
+<p>Equivalent circuit considering:</p>
+<ul>
+  <li>Copper losses \(I^2 R\)</li>
+  <li>Eddy current losses</li>
+  <li>Hysteresis losses</li>
+  <li>Leakage flux \({\phi}_{LP},\ {\phi}_{LS}\), producing leakage inductance</li>
+</ul>
+
+<p>Leakage inductance:</p>
+
+\[L_P = N^2_P \mathcal{P}\]
+
+\[L_N = N^2_N \mathcal{P}\]
+
+<p>Where \(\mathcal{P}\) is the permeance of flux path (air).</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-real-transformer" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"real-transformer":{"ports":{"Vp in":{"direction":"input","bits":[1]},"Vp out":{"direction":"input","bits":[4]},"Vs in":{"direction":"output","bits":[7]},"Vs out":{"direction":"output","bits":[8]}},"cells":{"RP":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Ip"}},"jXp":{"type":"l_h","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"}},"Np Ns":{"type":"transformer_1p_1s","connections":{"L1.1":[3],"L1.2":[4],"L2.1":[5],"L2.2":[8]},"port_directions":{"L1.1":"input","L1.2":"output","L2.1":"input","L2.2":"output"}},"Rc":{"type":"r_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"jXm":{"type":"l_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"Rs":{"type":"r_h","connections":{"A":[5],"B":[6]},"port_directions":{"A":"input","B":"output"}},"jXs":{"type":"l_h","connections":{"A":[6],"B":[7]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Is"}}}}}}
+  
+  </script>
+</div>
+
+<ul>
+  <li>\(R_P\) resistance of primary winding</li>
+  <li>\(X_P\) reactance due to primary leakage inductance</li>
+  <li>\(R_S\) resistance of secondary winding</li>
+  <li>\(X_S\) reactance due to secondary leakage inductance</li>
+  <li>Excitation branch:
+    <ul>
+      <li>\(R_C\) hysteresis and core losses</li>
+      <li>\(X_M\) magnetization current</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Model for primary voltage:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-transformer-first-v" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"transformer-first-v":{"ports":{"Vp in":{"direction":"input","bits":[1]},"Vp out":{"direction":"input","bits":[4]},"aVs in":{"direction":"output","bits":[6]},"aVs out":{"direction":"output","bits":[4]}},"cells":{"RP":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Ip"}},"jXp":{"type":"l_h","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"}},"Rc":{"type":"r_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"jXm":{"type":"l_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"a^2 Rs":{"type":"r_h","connections":{"A":[3],"B":[5]},"port_directions":{"A":"input","B":"output"}},"ja^2 Xs":{"type":"l_h","connections":{"A":[5],"B":[6]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Is/a"}}}}}}
+  
+  </script>
+</div>
+
+\[I_{out} = \frac{I_s}{a}\]
+
+<p>Model for secondary voltage:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-transformer-second-v" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"transformer-second-v":{"ports":{"Vp/a in":{"direction":"input","bits":[1]},"Vp/a out":{"direction":"input","bits":[4]},"Vs in":{"direction":"output","bits":[6]},"Vs out":{"direction":"output","bits":[4]}},"cells":{"RP/(a^2)":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> aIp"}},"jXp/(a^2)":{"type":"l_h","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"}},"Rc/(a^2)":{"type":"r_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"jXm/(a^2)":{"type":"l_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"Rs":{"type":"r_h","connections":{"A":[3],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Xs":{"type":"l_h","connections":{"A":[5],"B":[6]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Is"}}}}}}
+  
+  </script>
+</div>
+
+<p>Efficiency</p>
+
+\[\eta = \frac{P_{out}}{P_{in}} \times 100\%\]
+
+<p>At a given load,</p>
+
+\[\eta = \frac{V_S I_S cos \theta}{P_{Cu} + P_{core} + V_S I_S cos \theta} \times 100\%\]
+
+<hr />
+
+<h2 id="problem-type-i">Problem Type I</h2>
+
+<p>Given Data:</p>
+<ul>
+  <li>Transformer Ratings: \(S_{S, rated}\) (apparent power), \(V_{in, rated}/V_{out, rated}\) (input/output voltages)</li>
+  <li>Open-Circuit Test (HV side) \(V_{oc},\ I_{oc},\ P_{oc}\)</li>
+  <li>Short-Circuit Test (HV side) \(V_{sc},\ I_{sc},\ P_{sc}\)</li>
+  <li>Core loss \(P_{core}\)</li>
+  <li>Power factor \(PF\)</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Equivalent circuit referred to high-voltage</li>
+  <li>Equivalent circuit referred to low-voltage</li>
+  <li>Efficiency</li>
+</ul>
+
+<h3 id="1-turns-ratio">1. Turns Ratio</h3>
+
+<p>Given \(V_{in},\ V_{out}\),</p>
+
+\[a = \frac{N_p}{N_s} = \frac{V_{in}}{V_{out}}\]
+
+<p>Where \(a\) is the turns ratio.</p>
+
+<h3 id="2-open-circuit-test-excitation-branch">2. Open-Circuit Test (Excitation Branch)</h3>
+
+<p>The excitation/shunt branch represents core losses \(R_c\) and magnetizing reactance \(X_m\).</p>
+
+<p>1. Phase angle</p>
+
+\[{\theta}_{oc} = \arccos \frac{P_{oc}}{V_{oc} I_{oc}}\]
+
+<p>2. All of the current flows through the excitation branch. Consider its impedance:</p>
+
+\[\frac{1}{R_{CL}} -j \frac{1}{X_{ML}} = \frac{I_{oc}}{V_{oc}} \angle{ -{\theta}_{oc} }\]
+
+\[R_{CL} = \frac{V_{oc}}{I_{oc}} cos{\theta}_{oc},\quad X_{ML} = \frac{V_{oc}}{I_{oc}} sin{\theta}_{oc}\]
+
+<p>Note: \(R_{CL},\ X_{ML}\) are the impedances referred to the low-voltage side. Therefore:</p>
+
+\[R_C = a^2 R_{CL},\quad X_M = a^2 X_{ML}\]
+
+<h3 id="3-short-circuit-test-series-branch">3. Short-Circuit Test (Series Branch)</h3>
+
+<p>The series branch represents winding resistance \(R_{eq}\) and leakage reactance \(X_{eq}\).</p>
+
+<p>1. Phase angle</p>
+
+\[{\theta}_{sc} = \arccos \frac{P_{sc}}{V_{sc} I_{sc}}\]
+
+<p>2. Consider the equivalent series impedance:</p>
+
+\[Z_{eq} = \frac{V_{sc}}{I_{sc}} \angle{ {\theta}_{sc} }\]
+
+\[R_{eqH} = \frac{V_{sc}}{I_{sc}} cos{\theta}_{sc},\quad X_{eqH} = \frac{V_{sc}}{I_{sc}} sin{\theta}_{sc}\]
+
+<p>Note: \(R_{eqH},\ X_{eqH}\) are the impedances referred to the high-voltage side. Therefore:</p>
+
+\[R_{eq} = \frac{R_{eqH}}{a^2},\quad X_{eq} = \frac{X_{eqH}}{a^2}\]
+
+<h3 id="4-equivalent-circuit-for-high-voltage">4. Equivalent Circuit for High-Voltage</h3>
+
+<p>Include:</p>
+<ul>
+  <li>\(V_P\),</li>
+  <li>\(I_P\),</li>
+  <li>\(R_C\),</li>
+  <li>\(X_M\),</li>
+  <li>\(R_{eqH}\),</li>
+  <li>\(X_{eqH}\),</li>
+  <li>\(a\ V_S\),</li>
+  <li>\(\frac{I_S}{a}\).</li>
+</ul>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-transformer-high-v" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"transformer-high-v":{"ports":{"Vp in":{"direction":"input","bits":[3]},"aVs in":{"direction":"output","bits":[6]}},"cells":{"Rc":{"type":"r_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"Xm":{"type":"l_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"ReqH":{"type":"r_h","connections":{"A":[3],"B":[5]},"port_directions":{"A":"input","B":"output"}},"XeqH":{"type":"l_h","connections":{"A":[5],"B":[6]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Is/a"}}}}}}
+  
+  </script>
+</div>
+
+<h3 id="5-equivalent-circuit-for-low-voltage">5. Equivalent Circuit for Low-Voltage</h3>
+
+<p>Include:</p>
+<ul>
+  <li>\(\frac{V_P}{a}\),</li>
+  <li>\(a\ I_P\),</li>
+  <li>\(R_{CL}\),</li>
+  <li>\(X_{ML}\),</li>
+  <li>\(R_{eq}\),</li>
+  <li>\(X_{eq}\),</li>
+  <li>\(V_S\),</li>
+  <li>\(I_S\).</li>
+</ul>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-transformer-low-v" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"transformer-low-v":{"ports":{"Vp/a in":{"direction":"input","bits":[3]},"Vs in":{"direction":"output","bits":[6]}},"cells":{"Rcl":{"type":"r_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"Xml":{"type":"l_v","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"Req":{"type":"r_h","connections":{"A":[3],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Xeq":{"type":"l_h","connections":{"A":[5],"B":[6]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Is"}}}}}}
+  
+  </script>
+</div>
+
+<h3 id="6-efficiency">6. Efficiency</h3>
+
+\[\eta = \frac{P_{out}}{P_{out} + P_{core} + P_{cu}} \times 100\%\]
+
+<p>\(P_{core}\) and \(S_{S, rated}\) are given. We need to find \(P_{out},\ P_{cu}\). For this, we have the voltage at the low-voltage side \(V_{out, rated}\). Since \(S=VI\), we need the current \(I_{out, rated}\):</p>
+
+\[I_{out, rated} = \frac{S_{S, rated}}{V_{out, rated}} \angle{\theta}\]
+
+<p>Given \(PF\), the phase angle \(\theta = \arccos PF\). If lagging, the angle in the current is negative.</p>
+
+<p>The output power is</p>
+
+\[P_{out} = V_s I_s cos \theta = V_{out, rated} I_{out, rated} cos \theta\]
+
+<p>\(P_{cu}\) can be obtained as the power in \(R_{eq}\) that models the copper losses:</p>
+
+\[P_{cu} = (I_{out, rated})^2 R_{eq}\]
+
+<p>Replace \(P_{out},\ P_{cu},\ P_{core}\) in the efficiency equation and it’s done.</p>
+
+<hr />
+
+<h2 id="problem-type-ii">Problem Type II</h2>
+
+<p>Given Data:</p>
+<ul>
+  <li>Transformer Ratings: \(S_{S, rated}\) (apparent power), \(V_{p, rated}/V_{s, rated}\) (input/output voltages)</li>
+  <li>Resistances and leakage reactances \(R_1,\ X_{l1},\ R_2,\ X_{l2}\)</li>
+  <li>Power factor \(PF\)</li>
+  <li>Impedance of excitation branch \(Z = \infty\) (open circuit)</li>
+  <li>Power delivery \(S\) to a load on low-voltage side</li>
+  <li>Terminal voltage \(V_{load}\)</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Turns ratio of transformer</li>
+  <li>Resistances and leakage reactances referred to high and low voltage sides</li>
+  <li>Equivalent circuit referred to high-voltage and low-voltage</li>
+  <li>High-voltage current \(I_p\)</li>
+  <li>Low-voltage real power \(P_s\)</li>
+  <li>Low-voltage reactive power \(Q_s\)</li>
+</ul>
+
+<h3 id="1-turns-ratio-1">1. Turns ratio</h3>
+
+<p>Given \(V_p,\ V_s\),</p>
+
+\[a = \frac{N_p}{N_s} = \frac{V_{in}}{V_{out}}\]
+
+<p>Where \(a\) is the turns ratio.</p>
+
+<h3 id="2-high-voltage-impedances">2. High-voltage impedances</h3>
+
+<p>Leave \(R_1,\ X_{l1}\) intact. For the right side,</p>
+
+\[R_{2H} = a^2 R_2,\quad X_{l2H} = a^2 X_{l2}\]
+
+\[V_{sH} = aV_s,\quad  I_{sH} = \frac{I_s}{a}\]
+
+<h3 id="3-low-voltage-impedances">3. Low-voltage impedances</h3>
+
+<p>Leave \(R_2,\ X_{l2}\) intact. For the left side,</p>
+
+\[R_{1L} = \frac{R_1}{a^2},\quad X_{l1L} = \frac{X_{l1}}{a^2}\]
+
+\[V_{pH} = \frac{V_p}{a},\quad  I_{pH} = aI_p\]
+
+<h3 id="4-equivalent-circuits">4. Equivalent circuits</h3>
+
+<p>High-voltage:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-transformer-ex2-high" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"transformer-ex2-high":{"ports":{"Vp":{"direction":"input","bits":[1]},"aVs":{"direction":"output","bits":[5]}},"cells":{"R1":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Ip"}},"X1":{"type":"l_h","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"}},"a^2 R2":{"type":"r_h","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"a^2 X2":{"type":"l_h","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Is/a"}}}}}}
+  
+  </script>
+</div>
+
+<p>Low-voltage:</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-transformer-ex2-low" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"transformer-ex2-low":{"ports":{"Vp/a":{"direction":"input","bits":[1]},"Vs":{"direction":"output","bits":[5]}},"cells":{"R1/(a^2)":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> aIp"}},"X1/(a^2)":{"type":"l_h","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_h","connections":{"A":[3],"B":[4]},"port_directions":{"A":"input","B":"output"}},"X2":{"type":"l_h","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"},"attributes":{"value":"--> Is"}}}}}}
+  
+  </script>
+</div>
+
+<h3 id="5-high-voltage-current">5. High-voltage current</h3>
+
+<p>Consider a load on the low-voltage side to receive power \(S\) in the low-voltage equivalent circuit. Since a power factor \(PF\) is given,</p>
+
+\[\theta = \arccos{PF}\]
+
+<p>Given the terminal voltage \(V_{load}\), the current in the load (the low-voltage current) is</p>
+
+\[I_s = \frac{S}{V_{load}} \angle{\theta}\]
+
+<p>Note: If \(PF\) is lagging, the angle in the current carries a negative sign.</p>
+
+<p>Then the high-voltage current is obtained using the turns ratio:</p>
+
+\[I_P = \frac{I_s}{a}\]
+
+<h3 id="6-real-and-reactive-power">6. Real and reactive power</h3>
+
+<p>Given \(PF\), the real power (in Watts) is simply</p>
+
+\[P = S \times PF\]
+
+<p>The reactive power is</p>
+
+\[Q = S \sin{\theta}\]
+
+<hr />
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

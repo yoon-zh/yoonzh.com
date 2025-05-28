@@ -361,6 +361,23 @@
 \[\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \approx \mathcal{N}(0,1)\]
 </blockquote>
 
+<blockquote>
+  <h3 id="clt-symmetry">CLT Symmetry</h3>
+
+\[P\left(\left|\frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}}\right| &lt; z\right) = P(-z &lt; Z &lt; z) = \Phi(z) - \Phi(-z)\]
+
+  <p>By symmetry:</p>
+
+\[\Phi(-z) = 1 - \Phi(z)\]
+
+\[\Phi(z) - (1 - \Phi(z)) = 2\Phi(z) - 1\]
+
+  <ul>
+    <li>\(2\Phi(z) - 1\) is the probability within \([-z, z]\)</li>
+    <li>\(2(1 - \Phi(z))\) is the probability outside \([-z, z]\), that is \(P(\lvert Z \rvert \geq z)\)</li>
+  </ul>
+</blockquote>
+
 <hr />
 
 <h2 id="data-analysis">Data Analysis</h2>
@@ -388,8 +405,8 @@
   <h3 id="quartiles">Quartiles</h3>
 
   <ul>
-    <li>Q1: 25th percentile</li>
-    <li>Q3: 75th percentile</li>
+    <li>Q1: 25th percentile (Median of the first \(\frac{1}{2}\) of data)</li>
+    <li>Q3: 75th percentile (Median of the last \(\frac{1}{2}\) of data)</li>
   </ul>
 </blockquote>
 

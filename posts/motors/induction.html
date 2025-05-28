@@ -90,9 +90,59 @@
 
 <p>Induction Motors</p>
 
-<h2 id="efficiency">Efficiency</h2>
+<h2 id="speed-of-magnetic-field">Speed of Magnetic Field</h2>
 
-<p>Let’s consider a thermodynamic approach to calculate the efficiency of our induction motors. We shall consider the various power losses from the cables to the rotor spinning.</p>
+\[n_{\text{sync}} = \frac{120 f_{\text{se}}}{P}\]
+
+<p>Where</p>
+<ul>
+  <li>\(f_{\text{se}}\): Stator frequency in Hz</li>
+  <li>\(P\): Number of poles</li>
+</ul>
+
+<h2 id="slip">Slip</h2>
+
+\[s = \frac{n_{\text{sync}} - n_m}{n_{\text{sync}}}\]
+
+<p>Where</p>
+<ul>
+  <li>\(s\): slip</li>
+  <li>\(n_{\text{sync}}\): speed of magnetic fields</li>
+  <li>\(n_{m}\): mechanical shaft speed</li>
+</ul>
+
+<p>In terms of angular velocity \(\omega\),</p>
+
+\[s = \frac{ {\omega}_{\text{sync}} - {\omega}_m }{ {\omega}_{\text{sync}} }\]
+
+<p>Rotor Frequency</p>
+
+\[f_{\text{re}} = sf_{\text{se}}\]
+
+\[f_{\text{re}} = \frac{P}{120} \left(n_{\text{sync}} - n_m \right)\]
+
+<p>Shaft Load Torque</p>
+
+\[{\tau}_{\text{load}} = \frac{P_{out}}{ {\omega}_m}\]
+
+<h2 id="induction-motor-equivalent-circuit">Induction Motor Equivalent Circuit</h2>
+
+<p>Per-phase equivalent</p>
+
+<p><img src="/images/posts/fig6_12_inductionmotor.png" alt="image" /></p>
+
+<ul>
+  <li>\(R_1\): Stator resistance</li>
+  <li>\(X_1\): Stator leakage reactance</li>
+  <li>\(R_C\): Core resistance?</li>
+  <li>\(X_M\): Magnetizing reactance</li>
+  <li>\(R_2\): Rotor resistance</li>
+  <li>\(X_2\): Rotor leakage reactance</li>
+  <li>\(E_1\): Applied voltage, internal stator voltage</li>
+  <li>\(V_{\phi}\): Input voltage to a phase</li>
+</ul>
+
+<h2 id="power">Power</h2>
 
 <p>Power losses to consider:</p>
 <ul>
@@ -103,21 +153,357 @@
   <li>Stray loss (misc losses)</li>
 </ul>
 
-<p>We can divide the analysis in three stages:</p>
+<blockquote>
+  <h3 id="power-flow">Power flow</h3>
+
+\[P_{\text{in}} \rightarrow P_{\text{SCL}} \rightarrow P_{\text{core}} \rightarrow P_{\text{RCL}} \rightarrow P_{\text{F\&amp;W}} \rightarrow P_{\text{misc}} \rightarrow P_{\text{out}}\]
+
+  <p>Where</p>
+
+  <ul>
+    <li>
+      <p>\(P_{\text{SCL}}\) stator copper loss</p>
+    </li>
+    <li>
+      <p>\(P_{\text{core}}\) core losses</p>
+    </li>
+    <li>
+      <p>\(P_{\text{RCL}}\) rotor copper loss</p>
+    </li>
+    <li>
+      <p>\(P_{\text{F\&amp;W}}\) friction and windage losses</p>
+    </li>
+    <li>
+      <p>\(P_{\text{misc}}\) stray losses</p>
+    </li>
+  </ul>
+
+  <p>Air-gap power:</p>
+
+\[P_{\text{AG}} = P_{\text{in}} - P_{\text{SCL}} - P_{\text{core}}\]
+
+  <p>Converted power:</p>
+
+\[P_{\text{conv}} = P_{\text{AG}} - P_{\text{RCL}}\]
+
+  <p>Output power:</p>
+
+\[P_{\text{out}} = P_{\text{in}} - \left(P_{\text{SCL}} + P_{\text{core}} + P_{\text{RCL}} + P_{\text{F\&amp;W}} + P_{\text{misc}}\right)\]
+
+\[P_{\text{out}} = P_{\text{conv}} - P_{\text{F\&amp;W}} - P_{\text{misc}}\]
+
+  <p>Efficiency:</p>
+
+\[\eta = \frac{P_{\text{out}}}{P_{\text{in}}}\]
+</blockquote>
+
+<blockquote>
+  <h3 id="torque">Torque</h3>
+
+\[\tau_{\text{ind}} = \frac{P_{\text{conv}}}{ {\omega}_m} = \frac{P_{\text{AG}}}{ {\omega}_{\text{sync}}}\]
+</blockquote>
+
+\[P_{\text{SCL}} = 3 I^2_1 R_1\]
+
+\[P_{\text{AG}} = 3 I^2_2 \frac{R_2}{s}\]
+
+\[P_{\text{RCL}} = 3 I^2_2 R_2\]
+
+\[P_{\text{conv}} = 3 I^2_2 R_2 \left(\frac{1-s}{s} \right) = P_{\text{AG}} (1-s)\]
+
+<blockquote>
+  <h3 id="maximum-pullout-torque">Maximum (Pullout) Torque</h3>
+
+\[\tau_{\text{max}} = \frac{3 V^2_{\text{TH}}}{2 {\omega}_{\text{sync}} (R_{\text{TH}} + \sqrt{ R^2_{\text{TH}} + (X_{\text{TH}} + X_2)^2 }) }\]
+
+  <p>The slip at maximum torque is</p>
+
+\[s_{\text{max}\ \tau} = \frac{R_2}{\sqrt{R^2_{\text{TH}} + (X_{\text{TH}} + X_2)^2}}\]
+
+  <p>Where the equivalent Thévenin values are</p>
+
+\[Z_{\text{TH}} = \frac{jX_M (R_1 + jX_1)}{R_1 + j(X_1 + X_M)}\]
+
+\[V_{\text{TH}} = \frac{X_M}{\sqrt{R^2_1 + (X_1 + X_M)^2}} V_{\phi}\]
+</blockquote>
+
+<h2 id="type-1">Type 1</h2>
+
+<p>Given:</p>
 <ul>
-  <li>Crossing the air gap</li>
-  <li>Converting power types</li>
-  <li>Final power output</li>
+  <li>Motor specs: frequency \(f_{se}\), poles \(P\), power \(P_{out}\), Y-connection</li>
+  <li>Slip \(s\)</li>
 </ul>
 
-<p>First, the power needs to “cross” the air gap between the stator and rotor, since the induction motor is not connected to the rotor physically. So let’s consider this the first system.</p>
+<p>Find:</p>
+<ul>
+  <li>Synchronous speed \(n_{\text{sync}}\) in rpm</li>
+  <li>Rotor speed \(n_m\) in rpm</li>
+  <li>Rotor frequency \(f_{re}\) in Hz</li>
+  <li>Shaft torque \({\tau}_{\text{load}}\)</li>
+</ul>
 
-<p>Here we talk about the air gap power \(P_{AG}\): The power from the stator that reaches the rotor through the air gap.</p>
+<h3 id="1-synchronous-speed-n_sync">1. Synchronous Speed \(n_{sync}\)</h3>
 
-\[P_{AG} = P_{in} - P_{SCL} - P{core}\]
+\[n_{\text{sync}} = \frac{120 f_{se}}{P}\]
 
-<p><img src="/images/posts/fig6_12_inductionmotor.png" alt="image" /></p>
+<h3 id="2-rotor-speed-n_m">2. Rotor Speed \(n_m\)</h3>
 
+\[n_m = (1-s) n_{\text{sync}}\]
+
+<h3 id="3-rotor-frequency-f_re">3. Rotor Frequency \(f_{re}\)</h3>
+
+\[f_{re} = sf_{se}\]
+
+<h3 id="4-shaft-torque-tau_load">4. Shaft Torque \({\tau}_{load}\)</h3>
+
+\[{\tau}_{\text{load}} = \frac{P_{out}}{ {\omega}_m}\]
+
+<hr />
+
+<h2 id="type-2">Type 2</h2>
+
+<p>Given:</p>
+<ul>
+  <li>Motor specs:
+    <ul>
+      <li>Voltage \(V_T\)</li>
+      <li>Frequency \(f_{\text{se}}\)</li>
+      <li>Power \(P_{\text{spec}}\)</li>
+      <li>Three-phase</li>
+    </ul>
+  </li>
+  <li>Current \(I_L\)</li>
+  <li>Stator Power Factor \({PF}_S\)</li>
+  <li>Power losses \(P_{\text{SCL}},\ P_{\text{RCL}},\ P_{\text{FW}},\ P_{\text{core}},\ P_{\text{misc}}\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Air-gap power \(P_{\text{AG}}\)</li>
+  <li>Power converted \(P_{\text{conv}}\)</li>
+  <li>Output power \(P_{\text{out}}\)</li>
+  <li>Efficiency \(\eta\)</li>
+</ol>
+
+<h3 id="1-air-gap-power-p_textag">1. Air-gap Power \(P_{\text{AG}}\)</h3>
+
+<p>First we need the input power:</p>
+
+\[P_{\text{in}} = \sqrt{3} V_T I_L \cos{\theta}\]
+
+<p>Note: \(\cos{\theta} = {PF}_S\).</p>
+
+<p>\(P_{\text{SCL}},\ P_{\text{core}}\) are given. Replace below:</p>
+
+\[P_{\text{AG}} = P_{\text{in}} - P_{\text{SCL}} - P_{\text{core}}\]
+
+<h3 id="2-power-converted-p_textconv">2. Power Converted \(P_{\text{conv}}\)</h3>
+
+\[P_{\text{conv}} = P_{\text{AG}} - P_{\text{RCL}}\]
+
+<h3 id="3-output-power-p_textout">3. Output Power \(P_{\text{out}}\)</h3>
+
+\[P_{\text{out}} = P_{\text{conv}} - P_{\text{F\&amp;W}} - P_{\text{misc}}\]
+
+<h3 id="4-efficiency-eta">4. Efficiency \(\eta\)</h3>
+
+\[\eta = \frac{P_{\text{out}}}{P_{\text{in}}}\]
+
+<h2 id="type-3">Type 3</h2>
+
+<p>Given:</p>
+<ul>
+  <li>Motor specs:
+    <ul>
+      <li>Voltage \(V_{\phi}\)</li>
+      <li>Power \(P_{\text{rated}}\)</li>
+      <li>Poles \(P\)</li>
+      <li>Frequency \(f_{\text{se}}\)</li>
+      <li>Y-connection</li>
+    </ul>
+  </li>
+  <li>Equivalent circuit values: \(R_1,\ X_1,\ R_2,\ X_2,\ X_M\)</li>
+  <li>Power losses: \(P_{\text{core}},\ P_{\text{F\&amp;W}},\ P_{\text{misc}}\)</li>
+  <li>Ignoring \(R_C\) in the equivalent circuit</li>
+  <li>Slip</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Line current \(I_L\)</li>
+  <li>Stator power factor \({PF}_S\)</li>
+  <li>Rotor power factor \({PF}_R\)</li>
+  <li>Rotor frequency \(f_{\text{re}}\)</li>
+  <li>Stator copper losses \(P_{\text{SCL}}\)</li>
+  <li>Air-gap power \(P_{\text{AG}}\)</li>
+  <li>Converted power \(P_{\text{conv}}\)</li>
+  <li>Induced torque \(\tau_{\text{ind}}\)</li>
+  <li>Load torque \(\tau_{\text{load}}\)</li>
+  <li>Efficiency \(\eta\)</li>
+  <li>Motor speed \(n_m,\ {\omega}_m\)</li>
+</ol>
+
+<h3 id="1-line-current-i_l">1. Line Current \(I_L\)</h3>
+
+<p>Consider the equivalent impedance of the circuit \(Z_{eq}\):</p>
+
+<ol>
+  <li>\(R_1,\ X_1\) are in series with (2 || 3).</li>
+  <li>\(X_2,\ R_2,\ R_2 \left(\frac{1-s}{s}\right)\) are in series.</li>
+  <li>\(X_M\) is in parallel with (2).</li>
+</ol>
+
+<p>Sum (2) as a series, calculate its parallel with (3), then sum the result in series with (1). Let the resulting impedance be \(Z_{eq}\).</p>
+
+<blockquote>
+  <p>Let the impedances (2 || 3) be \(Z_F\). Write this value down, you need it later for \(P_{\text{AG}}\).</p>
+</blockquote>
+
+<p>Given a Y-connection, calculate \(\frac{V_{\phi}}{\sqrt{3}}\) for the phase voltage. Then use Ohm’s Law for the line current:</p>
+
+\[I_L = I_A = \frac{\frac{V_{\phi}}{\sqrt{3}} \angle{0°}}{Z_{eq}}\]
+
+<p>The voltage is the reference phasor, hence the zero angle. The resulting current should have a negative phasor angle.</p>
+
+<h3 id="2-stator-power-factor-pf_s">2. Stator Power Factor \({PF}_S\)</h3>
+
+\[{PF}_S = cos {\theta}_s\]
+
+<p>Where \({\theta}_s\) is the phasor angle of the current \(I_L\).</p>
+
+<p>If \({\theta}_s &lt; 0\), say the power factor is lagging. It should always be negative for this type of problem.</p>
+
+<h3 id="3-rotor-power-factor-pf_r">3. Rotor Power Factor \({PF}_R\)</h3>
+
+<p>Consider the branch (2) of the circuit: \(X_2,\ R_2,\ R_2 \left(\frac{1-s}{s}\right)\). Find its impedance angle:</p>
+
+\[{\theta}_R = \arctan{\frac{s X_2}{R_2}}\]
+
+<p>Then use this angle for the power factor:</p>
+
+\[{PF}_R = cos {\theta}_R\]
+
+<p>Like \({PF}_S,\ {PF}_R\) should also be lagging.</p>
+
+<h3 id="4-rotor-frequency-f_textre">4. Rotor Frequency \(f_{\text{re}}\)</h3>
+
+\[f_{\text{re}} = s f_{\text{se}}\]
+
+<p>Usually, \(f_{\text{se}}\) is 50 or 60 Hz.</p>
+
+<h3 id="5-stator-copper-losses-p_textscl">5. Stator Copper Losses \(P_{\text{SCL}}\)</h3>
+
+\[P_{\text{SCL}} = 3 I^2_A R_1\]
+
+<h3 id="6-air-gap-power-p_textag">6. Air-gap Power \(P_{\text{AG}}\)</h3>
+
+\[P_{\text{AG}} = 3 I^2_A R_F\]
+
+<p>Where \(R_F\) is the real part of the impedance \(Z_F\) obtained in [1].</p>
+
+<h3 id="7-converted-power-p_textconv">7. Converted Power \(P_{\text{conv}}\)</h3>
+
+\[P_{\text{conv}} = P_{\text{AG}} (1-s)\]
+
+<h3 id="8-induced-torque-tau_textind">8. Induced Torque \(\tau_{\text{ind}}\)</h3>
+
+<p>For the induced torque, we need \({\omega}_{sync}\):</p>
+
+\[n_{\text{sync}} = \frac{120 f_{\text{se}}}{P}\]
+
+<p>Where \(n_{\text{sync}}\) is in rpm.</p>
+
+\[{\omega}_{\text{sync}} = \frac{2 \pi n_{\text{sync}}}{60}\]
+
+<p>Where \({\omega}_{\text{sync}}\) is in rad/s.</p>
+
+<p>Then we find the induced torque:</p>
+
+\[\tau_{\text{ind}} = \frac{P_{\text{AG}}}{ {\omega}_{\text{sync}}}\]
+
+<h3 id="9-load-torque-tau_textload">9. Load Torque \(\tau_{\text{load}}\)</h3>
+
+<p>We need the output power \(P_{\text{out}}\) and output speed \({\omega}_m\):</p>
+
+\[P_{\text{out}} = P_{\text{conv}} - P_{\text{F\&amp;W}} - P_{\text{misc}}\]
+
+<p>For \({\omega}_m\):</p>
+
+\[n_m = n_{\text{sync}} (1-s)\]
+
+\[{\omega}_m = \frac{2 \pi n_m}{60}\]
+
+<p>Then the load torque is</p>
+
+\[{\tau}_{\text{load}} = \frac{P_{out}}{ {\omega}_m}\]
+
+<h3 id="10-efficiency-eta">10. Efficiency \(\eta\)</h3>
+
+\[\eta = \frac{P_{\text{out}}}{P_{\text{in}}} = \frac{P_{\text{out}}}{3 V_{\phi} I_A \cos{ {\theta}_S}}\]
+
+<h3 id="11-motor-speed-n_m-omega_m">11. Motor Speed \(n_m,\ {\omega}_m\)</h3>
+
+<p>We already got \(n_m\) and \({\omega}_m\) in [9].</p>
+
+<h2 id="type-4">Type 4</h2>
+
+<p>Given:</p>
+<ul>
+  <li>Motor specs:
+    <ul>
+      <li>Voltage \(V_{\phi}\)</li>
+      <li>Poles \(P\)</li>
+      <li>Frequency \(f_{\text{se}}\)</li>
+    </ul>
+  </li>
+  <li>Power delivered to a load \(P_{\text{load}}\)</li>
+  <li>Motor speed \(n_m\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Slip \(s\)</li>
+  <li>Induced torque \({\tau}_{\text{ind}}\)</li>
+  <li>Motor speed \(n_m\), if the torque is doubled</li>
+  <li>Power delivered to a load \(P_{\text{load}}\), if the torque is doubled</li>
+</ol>
+
+<h3 id="1-slip-s">1. Slip \(s\)</h3>
+
+<p>We need the synchronous speed \(n_{\text{sync}}\):</p>
+
+\[n_{\text{sync}} = \frac{120 f_{\text{se}}}{P}\]
+
+<p>Then the slip is</p>
+
+\[s = \frac{n_{\text{sync}} - n_m}{n_{\text{sync}}}\]
+
+<h3 id="2-induced-torque-tau_textind">2. Induced Torque \({\tau}_{\text{ind}}\)</h3>
+
+<p>Assuming no mechanical losses \(P_{\text{RCL}} = 0\) and \(P_{\text{conv}} = P_{\text{load}}\),</p>
+
+\[\tau_{\text{ind}} = \frac{P_{\text{conv}}}{ {\omega}_m}\]
+
+<p>Where</p>
+
+\[{\omega}_m = \frac{2 \pi n_m}{60}\]
+
+<h3 id="3-motor-speed-n_m">3. Motor Speed \(n_m\)</h3>
+
+<p>Assuming low-slip region, the induced torque is directly proportional to slip. Therefore, if \(\tau_{\text{ind}}\) doubles, then \(s\) doubles too (approximate value).</p>
+
+<p>Using \(n_{\text{sync}}\) and \(s\) as calculated in [1]:</p>
+
+\[n_m = n_{\text{sync}} (1- 2s)\]
+
+<h3 id="4-load-power-p_textload">4. Load Power \(P_{\text{load}}\)</h3>
+
+<p>If \(\tau_{\text{ind}}\) doubles, then</p>
+
+\[P_{\text{load}} = P_{\text{conv}} = 2\tau_{\text{ind}} {\omega}_{mm}\]
+
+<p>Where \({\omega}_{mm}\) is calculated from \(n_m\) in [3].</p>
 
 </div>
 </article>
