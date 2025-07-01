@@ -30,6 +30,14 @@ bundle install
 bundle exec jekyll serve
 ```
 
+### Circuit Renderer
+
+https://github.com/nturley/netlistsvg/blob/master/lib/default.svg
+
+https://raw.githubusercontent.com/nturley/netlistsvg/d3518f1b5c996a876b72a1a984bb39d3572c47dc/lib/default.svg
+
+https://raw.githubusercontent.com/nturley/netlistsvg/d3518f1b5c996a876b72a1a984bb39d3572c47dc/lib/analog.svg
+
 ## Personal notes
 
 This website is still being set up. It's a very new project and a learning process for me since I did not know anything about website development a week ago (today is 2025/02/14). In fact I didn't even planned on doing it whatsoever but a special person motivated me to do it so here it is.
