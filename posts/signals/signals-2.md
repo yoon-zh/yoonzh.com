@@ -3,8 +3,8 @@ layout: post
 title: signals-2
 card_title: "Signal systems classification"
 math: true
-url: /posts/uni/signals-2
-excerpt: "Memory, invertibility, causality, stability, linearity, and time invariance"
+url: /posts/signals/signals-2
+excerpt: "4: Memory, invertibility, causality, stability, linearity, and time invariance"
 date: 2025-10-16
 ---
 

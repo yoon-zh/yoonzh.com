@@ -3,8 +3,8 @@ layout: post
 title: signals-3
 card_title: "LTI Systems"
 math: true
-url: /posts/uni/signals-3
-excerpt: "Impulse response"
+url: /posts/signals/signals-3
+excerpt: "5: Impulse response"
 date: 2025-10-21
 ---
 

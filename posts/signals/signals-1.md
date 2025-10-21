@@ -3,8 +3,8 @@ layout: post
 title: signals-1
 card_title: "Signals: The basics"
 math: true
-url: /posts/uni/signals-1
-excerpt: "Basic properties, operations, and simple signals"
+url: /posts/signals/signals-1
+excerpt: "1, 2, 3: Basic properties, operations, and simple signals"
 date: 2025-10-16
 ---
 
