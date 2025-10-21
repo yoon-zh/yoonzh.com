@@ -126,4 +126,3 @@ $$u(t)$$ and $$\delta (t)$$ are related:
 > $$\delta (t) = \frac{du(t)}{dt}$$
 >
 > $$u(t) = \int_{-\infty}^{t}\delta(\tau)d\tau$$
-

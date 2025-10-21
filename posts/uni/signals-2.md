@@ -55,9 +55,3 @@ Some tips: $$x(t) + C,\quad x(t), y(t)$$ are not first-order eq, or there are ab
 If a time shift on x causes the same time shift in y, then it is time-invariant.
 
 $$x(t) => y(t), \quad x(t + T) = y(t + T)$$
-
-***
-
-## LTI Systems
-
-Linear Time-Invariant => LTI systems, 
