@@ -1,5 +1,5 @@
 ---
-layout: hidden
+layout: post
 title: signals-2
 card_title: "Signal systems classification"
 math: true

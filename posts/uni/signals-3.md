@@ -1,10 +1,10 @@
 ---
-layout: hidden
+layout: post
 title: signals-3
 card_title: "LTI Systems"
 math: true
 url: /posts/uni/signals-3
-date: 2025-10-16
+date: 2025-10-21
 ---
 
 ## LTI Systems

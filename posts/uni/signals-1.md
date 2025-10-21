@@ -1,5 +1,5 @@
 ---
-layout: hidden
+layout: post
 title: signals-1
 card_title: "Signals: The basics"
 math: true
