@@ -4,6 +4,7 @@ title: signals-1
 card_title: "Signals: The basics"
 math: true
 url: /posts/uni/signals-1
+excerpt: "Basic properties, operations, and simple signals"
 date: 2025-10-16
 ---
 
