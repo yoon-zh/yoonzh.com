@@ -5,7 +5,7 @@ card_title: "Properties of Fluids"
 math: true
 url: /posts/fluids/fluids-1
 excerpt: "Basic properties and equations for fluids"
-date: 2025-10-21
+date: 2025-10-22
 ---
 
 ## Density
