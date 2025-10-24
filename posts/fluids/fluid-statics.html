@@ -1,0 +1,339 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Fluid Statics - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Fluid Statics
+    
+  </h1>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-10-25T00:00:00+00:00">
+        📅 2025/10/25
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h2 id="pressure-distribution">Pressure Distribution</h2>
+
+<p>Consider a differential volume element of a fluid. For static balance, the pressure in any direction towards this element is the same regardless of the orientation in which it is applied. This means pressure can be considered as scalar in static fluids for practical and simple problems.</p>
+
+<p>Now consider a volume of some liquid, with some specific weight \(\gamma\) and height \(z\). Given the pressure as a scalar as mentioned above, we can do a static force balance that reduces to:</p>
+
+\[p + \gamma h = k\]
+
+<p>Where</p>
+<ul>
+  <li>\(p\) is pressure</li>
+  <li>\(\gamma = \rho g\) is <a href="fluids-1.html#:~:text=Specific,Weight">specific weight</a></li>
+  <li>\(h\) is height</li>
+  <li>\(k\) is a constant real number</li>
+</ul>
+
+<p>Pressure does not vary horizontally in the same body of liquid.</p>
+
+<p>This is used for liquids, since we assume the fluid is incompressible (density remains constant through pressure and temp changes), and does NOT apply to gases.</p>
+
+<p>Let’s visualize the equation in a more practical way:</p>
+
+<blockquote>
+  <p>Imagine we have some liquid in a bottle, with specific weight \(\gamma\). Imagine two points of reference, A and B. Point B is below A by some distance \(h\). Then the following is true:</p>
+
+\[P_B = P_A + \gamma h\]
+
+  <p>In other words,</p>
+
+\[P_A = P_B - \gamma h\]
+
+  <p>This equation tells us \(P_A\) is smaller than \(P_B\). Makes sense, since there is more liquid on top of B which increases the pressure compared to A.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="absolute-vs-gauge-pressure">Absolute vs. Gauge Pressure</h2>
+
+<blockquote>
+  <p>Absolute: Consider vacuum as reference. The absolute pressure of air in your room is roughly \(P_{\text{abs}} = P_{\text{atm}} = 101.325 kPa\)</p>
+
+  <p>Gauge: Consider atmosphere as reference. The gauge pressure of air in your room is then 0.</p>
+
+  <p>Formally speaking:</p>
+
+\[P_{\text{gauge}} = P_{\text{abs}} - P_{\text{atm}}\]
+</blockquote>
+
+<h3 id="pressure-head">Pressure Head</h3>
+
+\[h = \frac{P}{\gamma}\]
+
+<p>Where</p>
+<ul>
+  <li>\(h\) is pressure head (height)</li>
+  <li>\(P\) is pressure</li>
+  <li>\(\gamma = \rho g\) is <a href="fluids-1.html#:~:text=Specific,Weight">specific weight</a></li>
+</ul>
+
+<p>In short, pressure head is the height of a liquid body \(h\) that causes a pressure \(P\). For example, if they ask you how high a water tank is given the pressure at the bottom, then you can use this equation.</p>
+
+<p>Note: This equation ignores surface tension.</p>
+
+<hr />
+
+<h2 id="hydraulic-machines">Hydraulic Machines</h2>
+
+<p>Imagine we have some liquid enclosed in some tubes, and we block the tubes with pistons. If we apply pressure through the pistons so that the liquid is in contact with both of them, then the pressure in each piston is the same regardless of the height.</p>
+
+<blockquote>
+\[p_1 = p_2\]
+
+\[\frac{F1}{A1} = \frac{F2}{A2}\]
+</blockquote>
+
+<p>See <a href="https://www.youtube.com/watch?v=TMhrBeGkYow">this video</a> for an example where this is useful. DONT SKIP IT!</p>
+
+<hr />
+
+<h2 id="forces-on-flat-surfaces">Forces on flat surfaces</h2>
+
+<blockquote>
+  <p>Say we have some water where the pressure in the liquid surface is \(P_s\). There is some flat object (2D) submerged in the water at some angle \(\theta\) from the horizontal. Then the force applied to the object by the water AND atmosphere is</p>
+
+\[F = (P_s + \gamma \bar{y} \sin{\theta})A\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(F\) is force</li>
+  <li>\(P_s\) is pressure in the liquid surface</li>
+  <li>\(\gamma = \rho g\) is <a href="fluids-1.html#:~:text=Specific,Weight">specific weight</a></li>
+  <li>\(\bar{y}\) is distance from centroid<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> of plane to liquid surface</li>
+  <li>\(\theta\) is the angle of the submerged object from the horizontal</li>
+</ul>
+
+<p>Note the equation above simply uses the definition of pressure \(P = \frac{F}{A}\), where the pressure felt in the object is \(P_s + \gamma \bar{y} \sin{\theta}\). You can notice \(\gamma \bar{y} \sin{\theta}\) looks similar to the <a href="#pressure-distribution">pressure distribution</a> equation defined earlier, but the height is now \(\bar{y} \sin{\theta}\). This is because the shape of the object AND the inclination matters.</p>
+
+<p>The equation suggests that a large and short object may feel the same pressure given a specific angle, and a flat submerged object that is perfectly horizontal does not feel pressure from the water (because \(\sin{0} = 0\)).</p>
+
+<h3 id="center-of-pressure">Center of Pressure</h3>
+
+<p>Consider a submerged object as before. We can easily find the pressure the object feels, but it is more complex to explain how such pressure is distributed around it.</p>
+
+<p>Remember in simple physics where we calculate the center of gravity of an object, and replace a distributed weight as a single force acting on that center point? We can do the same with a liquid, and such point is called the center of pressure:</p>
+
+\[y_{cp} = \bar{y} + \frac{I_c \gamma \sin{\theta}}{A(P_s + \gamma \bar{y} \sin{\theta})}\]
+
+<p>Where</p>
+<ul>
+  <li>\(y_{cp}\) is center of pressure</li>
+  <li>\(\bar{y}\) is distance from centroid<sup id="fnref:1:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> of plane to liquid surface</li>
+  <li>\(I_c\) is moment of inertia about the central axis</li>
+  <li>\(\gamma\) is <a href="fluids-1.html#:~:text=Specific,Weight">specific weight</a></li>
+  <li>\(A\) is area</li>
+  <li>\(P_s\) is pressure in the liquid surface</li>
+  <li>\(\theta\) is the angle of the submerged object from the horizontal</li>
+</ul>
+
+<p>To keep it simple, the equation tells us the center of pressure is ALWAYS below the centroid \(\bar{y}\), which makes sense since the pressure exerted by a fluid increases with depth.</p>
+
+<p>This equation is rather complex, and it is not the formal definition (you may have noticed if you remember how the center of gravity goes). If you need to know more about this, go <a href="https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/cp.html">here</a>.</p>
+
+<p>In case you have a vertical wall that holds the water, you can model the water as a vertical triangle load and turn it into a statics problem.</p>
+
+<hr />
+
+<h2 id="forces-on-curved-surfaces">Forces on curved surfaces</h2>
+
+<p>When the submerged object is curved, we need to consider the horizontal forces.</p>
+
+<p>Horizontal component:</p>
+
+<blockquote>
+\[R_x = A_v (P_s + \gamma \bar{y}_v)\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(R_x\) is reaction force of the curved surface in the horizontal axis</li>
+  <li>\(A_v\) is projected area of the curved surface on a vertical plane</li>
+  <li>\(P_s\) is pressure in the liquid surface</li>
+  <li>\(\gamma\) is <a href="fluids-1.html#:~:text=Specific,Weight">specific weight</a></li>
+  <li>\(\bar{y}_v\) is vertical distance from centroid<sup id="fnref:1:2"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> of \(A_v\) to liquid surface</li>
+</ul>
+
+<p>Vertical component:</p>
+
+<blockquote>
+\[R_y = P_s A_h + \gamma V\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(R_y\) is reaction force of the curved surface in the vertical axis</li>
+  <li>\(P_s\) is pressure in the liquid surface</li>
+  <li>\(A_h\) is projected area of the curved surface on a horizontal plane</li>
+  <li>\(\gamma\) is <a href="fluids-1.html#:~:text=Specific,Weight">specific weight</a></li>
+  <li>\(V\) is volume of the liquid above the curved surface</li>
+</ul>
+
+<p>Total:</p>
+
+<blockquote>
+\[R = \sqrt{R_x^2 + R_y^2}\]
+
+\[\theta = \arctan{\frac{R_y}{R_x}}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(R\) is total hydrostatic force on the curved surface</li>
+  <li>\(\theta\) is orientation of the force</li>
+</ul>
+
+<blockquote>
+  <p>Note: sometimes the curved object has a liquid from only one side, like a dam. The equations above still apply, since we aim for static equilibrium.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="buoyancy">Buoyancy</h2>
+
+<blockquote>
+\[F_b = \gamma V\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(F_b\) is buoyant force</li>
+  <li>\(\gamma\) is <a href="fluids-1.html#:~:text=Specific,Weight">specific weight</a> of the fluid</li>
+  <li>\(V\) is volume of the object submerged in the fluid</li>
+</ul>
+
+<p>Notice we take the speficic weight of the <em>fluid</em>, but the volume of the <em>object</em>. This is because we care about the volume difference of the water applying pressure to the object, which is the volume occupied by the object itself.</p>
+
+<p>In case you don’t understand (it took me a while):</p>
+
+<p>Consider a simple example of a cube fully submerged in water. The water “above” the cube applies a pressure in the top face, while the water “below” applies pressure in the bottom face. Since the water pressure increases with depth, the water “below” exerts a greater pressure than the one “above”. This pressure difference is what causes buoyancy, which results in a force bringing the cube upwards.</p>
+
+<p>As such, we care about the difference in pressure applied by these two, which is a function of height as we said <a href="#pressure-distribution">here</a>. This height is clearly the space our cube is occupying. The volume in the equation considers this height as well as superficial area of the cube, where the water applies pressure.</p>
+
+<blockquote>
+  <p>The buoyant force acts at the centroid of the submerged volume of the object. If fully submerged, this is simply the centroid of the object.</p>
+</blockquote>
+
+<p>Of course, the object still has a weight. Don’t forget to sum it too.</p>
+
+<p>A good intuition: Consider a object submerged in some liquid, where \(V_{\text{sub}}\) is the submerged part. Now imagine a bucket of such liquid with the same volume \(V_{\text{sub}}\). If the whole object weighs less than the imaginary bucket, then it floats. Otherwise, it sinks (simplified).</p>
+
+<hr />
+
+<h2 id="dict">Dict</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Centroid \(\bar{y} = \frac{1}{A} \int y dA\) <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:1:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

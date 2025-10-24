@@ -1,0 +1,371 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Properties of Fluids - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Properties of Fluids
+    
+  </h1>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-10-22T00:00:00+00:00">
+        📅 2025/10/22
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h2 id="density">Density</h2>
+
+<blockquote>
+\[\rho = \frac{m}{V}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(m\) is the mass</li>
+  <li>\(V\) is the volume.</li>
+</ul>
+
+<p>For most gasses, density is proportional to pressure but inversely to temperature. In other words, a gas is more dense for higher pressure, but less dense at higher temps (look at <a href="#ideal-gases">Ideal Gases</a>).</p>
+
+<p>Liquids are much more dense than gases, and in practical cases can be considered incompressible (in reality, changes in density need a large, large change in pressure/temp).</p>
+
+<h3 id="specific-weight">Specific Weight</h3>
+
+<blockquote>
+\[\gamma = \rho g\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\gamma\) is specific weight</li>
+  <li>\(\rho\) is <a href="#density">density</a></li>
+  <li>\(g\) is gravity<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></li>
+</ul>
+
+<p>For reference, the specific weight at room conditions<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> is:</p>
+
+<ul>
+  <li>For water, \(\gamma_{H_2O} = 9790\ \text{N/m}^3\)</li>
+  <li>For air, \(\gamma_{air} = 11.8\ \text{N/m}^3\)</li>
+</ul>
+
+<h3 id="speficic-gravity">Speficic Gravity</h3>
+
+<blockquote>
+\[SG = \frac{\rho}{\rho_{H_2O @ 4°C}}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\rho\) is the <a href="#density">density</a> of some liquid</li>
+  <li>\(\rho_{H_2O @ 4°C}\) is the density of water at 4°C, which is \(1000 \text{kg/m}^3\)</li>
+</ul>
+
+<p>Specific gravity is adimensional.</p>
+
+<p>This is used for liquids, given the reference value is from a liquid. There is a specific gravity for gases, but not practically used.</p>
+
+<h3 id="specific-volume">Specific Volume</h3>
+
+<blockquote>
+\[\nu = \frac{1}{\rho}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\nu\) is specific volume</li>
+  <li>\(\rho\) is <a href="#density">density</a></li>
+</ul>
+
+<p>This property is most useful in thermodynamics, for example in energy balancing during Rankine cycles. For fluids, it is safe to skip this.</p>
+
+<hr />
+
+<h2 id="compressibility">Compressibility</h2>
+
+<blockquote>
+\[E_V = \left. -\frac{dp}{dV/V} \right|_{T_0}
+\approx \left. -\frac{\Delta p}{\Delta V/V} \right|_{T_0}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(E_V\) is bulk modulus of elasticity</li>
+  <li>\(\Delta p\) is pressure change</li>
+  <li>\(\Delta V\) is volume change</li>
+  <li>\(V\) is total volume</li>
+  <li>\(T_0\) is a given constant temperature</li>
+</ul>
+
+<p>The equation carries a negative sign because it is inversely proportional: more pressure =&gt; less volume (makes sense, since the pressure compresses it, right?)</p>
+
+<p>The delta form is used for averages or approximations, while the derivatives are for cases where you have an equation or a computer.</p>
+
+<p>\(E_V\) can be expressed with <a href="#density">density</a> \(\rho\) instead of volume:</p>
+
+\[E_V = \left. -\frac{dp}{d\rho / \rho} \right|_{T_0}\]
+
+<p>\(E_V\) is in units of pressure, like pascals.</p>
+
+<p>Large values of \(E_V\) usually mean hard to compress. As you may expect, \(E_V\) is usually several orders of magnitude bigger for liquids conpared to gases.</p>
+
+<p>For ideal gases, \(E_V = P\) if the temperature is constant.</p>
+
+<h3 id="speed-of-sound">Speed of sound</h3>
+
+\[c = \sqrt{\left. \frac{dp}{d\rho} \right|_{s}}
+\approx \sqrt{\left. \frac{dp}{d\rho} \right|_{T_0}}
+= \sqrt{\frac{E_V}{\rho}}\]
+
+<p>Where</p>
+<ul>
+  <li>\(c\) is speed of sound</li>
+  <li>\(p\) is pressure</li>
+  <li>\(\rho\) is <a href="#density">density</a></li>
+  <li>\(s\) is entropy (not covered here)</li>
+  <li>\(T_0\) is a given constant temperature</li>
+  <li>\(E_V\) is bulk modulus of elasticity</li>
+</ul>
+
+<p>The approximation applies to liquids, where small changes in pressure cause small changes in temp.</p>
+
+<p>The speed of sound at room conditions<sup id="fnref:2:1"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup></p>
+<ul>
+  <li>In water is about 5330 km/h (3313 mph)<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></li>
+  <li>In air is about 1235 km/h (767 mph)<sup id="fnref:3:1"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></li>
+</ul>
+
+<p><a href="https://www.reddit.com/r/NoStupidQuestions/comments/1afzv0k/if_water_is_more_dense_than_air_why_is_the_speed/">But why is it faster in water, if it is more dense than air?</a></p>
+
+<hr />
+
+<h2 id="ideal-gases">Ideal Gases</h2>
+
+<blockquote>
+\[PV = nRT\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(P\) is pressure</li>
+  <li>\(V\) is volume</li>
+  <li>\(n\) is moles</li>
+  <li>\(R\) is the universal gas constant<sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup></li>
+  <li>\(T\) is temperature</li>
+</ul>
+
+<p>An ideal gas means the intermolecular forces are small enough to be safely ignored. In short, we assume the gas molecules just bounce around without loosing speed or energy. This allows us to simplify its behaviour to the equation above. <em>A proper definition available <a href="https://www.ncbi.nlm.nih.gov/books/NBK441936/">here</a></em></p>
+
+<p>As a general rule, when gases are low pressure and far from their liquid stage, it is safe to model them as an ideal gas. In other words, gases should never be modeled as ideal when they are vapors, or near that stage. <em>Additional reading <a href="https://en.wikipedia.org/wiki/Non_ideal_compressible_fluid_dynamics">here</a></em></p>
+
+<hr />
+
+<h2 id="viscosity">Viscosity</h2>
+
+<p>For Newtonian fluids:</p>
+
+<blockquote>
+\[\tau = \mu \frac{du}{dy}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\tau\) is shear stress</li>
+  <li>\(\mu\) is dynamic viscosity</li>
+  <li>\(u\) is shear velocity</li>
+  <li>\(y\) is distance between the surfaces the liquid moves between</li>
+</ul>
+
+<p>NASA article on viscosity <a href="https://www.grc.nasa.gov/www/k-12/airplane/viscosity.html">here</a> (highly recommended!)</p>
+
+<p>Non-Newtonian fluids have a non-linear relationship like the one above. Read more about them <a href="https://en.wikipedia.org/wiki/Non-Newtonian_fluid">here</a>.</p>
+
+<hr />
+
+<h2 id="surface-tension">Surface Tension</h2>
+
+<blockquote>
+\[\sigma = \frac{F}{L}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\sigma\) is surface tension</li>
+  <li>\(F\) is intermolecular force</li>
+  <li>\(L\) is length of liquid surface</li>
+</ul>
+
+<p>As you can imagine, you will rarely find yourself using this equation since the force is complicated to define. But your teacher may ask you some surface tension questions involving droplets and bubbles. For these cases, the following equations come in handy:</p>
+
+<h3 id="droplet">Droplet</h3>
+
+<blockquote>
+\[p_{in} - p_{out} = \frac{2\sigma}{R}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(p_{in}\) is pressure inside the droplet</li>
+  <li>\(p_{out}\) is pressure outside the droplet</li>
+  <li>\(\sigma\) is surface tension</li>
+  <li>\(R\) is radius of the droplet</li>
+</ul>
+
+<p>This equation neglets the weight of the fluid inside the droplet.</p>
+
+<p>The value of \(\sigma\) depends on temperature and pressure. If you need it, you can find it in some table like <a href="https://www.engineeringtoolbox.com/surface-tension-d_962.html">this</a>.</p>
+
+<h3 id="bubble">Bubble</h3>
+
+<blockquote>
+\[p_{in} - p_{out} = \frac{4\sigma}{R}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(p_{in}\) is pressure inside the bubble</li>
+  <li>\(p_{out}\) is pressure outside the bubble</li>
+  <li>\(\sigma\) is surface tension</li>
+  <li>\(R\) is radius of the bubble</li>
+</ul>
+
+<p>Compared to the droplet, a bubble has twice the pressure assuming same size.</p>
+
+<h3 id="capillarity">Capillarity</h3>
+
+<blockquote>
+\[h = \frac{2\sigma \cos{\theta}}{\gamma R}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(h\) is height from the bottom of the tube to the top of the meniscus (the lowest part of the curve)</li>
+  <li>\(\sigma\) is <a href="#surface-tension">surface tension</a></li>
+  <li>\(\theta\) is the angle from the tube to the alignment of the curved liquid</li>
+  <li>\(\gamma\) is <a href="#specific-weight">specific weight</a></li>
+  <li>\(R\) is radius of the tube</li>
+</ul>
+
+<hr />
+
+<h2 id="dict">Dict</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Gravity in Earth \(g \approx 9.81\ \text{m/s}^2\) <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Room conditions: Temperature of 20°C (68°F) and atmospheric pressure 101.325 kPa (1 atm) <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="https://en.wikipedia.org/wiki/Speed_of_sound">Speed of sound wiki</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:3:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="https://www.engineeringtoolbox.com/individual-universal-gas-constant-d_588.html#:~:text=379-,The%20Universal%20Gas%20Constant,-%2D%20Ru">Universal Gas Constant values</a> <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

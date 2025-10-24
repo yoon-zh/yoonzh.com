@@ -1,0 +1,279 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Signals: The basics - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Signals: The basics
+    
+  </h1>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-10-16T00:00:00+00:00">
+        📅 2025/10/16
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h2 id="properties">Properties</h2>
+
+<p>Continuous (CT) vs discrete (DT)</p>
+
+<h3 id="periodicity">Periodicity</h3>
+
+<ul>
+  <li>CT \(x(t + nT) = x(t)\) for all \(t\)
+    <ul>
+      <li>Frequency \(f = \frac{1}{T}\)</li>
+    </ul>
+  </li>
+  <li>DT \(x[n + kN] = x[n]\) for all \(n\)</li>
+</ul>
+
+<h3 id="deterministic-vs-random">Deterministic vs random</h3>
+
+<p>If the signal can be represented by an equation (ex: sin, cos)</p>
+
+<h3 id="symmetry---even-odd">Symmetry - Even, Odd</h3>
+
+<blockquote>
+  <p>Even: \(x_e (t) = x_e (-t)\)</p>
+
+  <p>Odd: \(x_o (t) = -x_o (-t)\)</p>
+</blockquote>
+
+<p>Say we have two functions \(f, g\). Then</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function types</th>
+      <th>\(f+g\)</th>
+      <th>\(f \times g\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(f, g\) even</td>
+      <td>Even</td>
+      <td>Odd</td>
+    </tr>
+    <tr>
+      <td>\(f, g\) odd</td>
+      <td>Odd</td>
+      <td>Even</td>
+    </tr>
+    <tr>
+      <td>one even, one odd</td>
+      <td>Neither</td>
+      <td>Odd</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>Any function can be broken down into an even and odd component:</p>
+
+\[x(t) = x_e (t) + x_o (t)\]
+
+\[x_e(t) = \frac{1}{2} (x(t) + x(-t))\]
+
+\[x_o(t) = \frac{1}{2} (x(t) - x(-t))\]
+</blockquote>
+
+<blockquote>
+  <p>Any signal can be broken down into a conjugate-symmetric and conjugate-antisymmetric (CS, CA):</p>
+
+\[x(t) = x_{CS} (t) + x_{CA} (t)\]
+
+\[x_{CS} (t) = \frac{x(t) + x^* (-t)}{2}\]
+
+\[x_{CA} (t) = \frac{x(t) - x^* (-t)}{2}\]
+
+  <p>This is useful for functions with complex values, like \(e^{jt}\)</p>
+</blockquote>
+
+<h3 id="energy">Energy</h3>
+
+<p>CT</p>
+
+\[E = \int_{T_1}^{T_2} \left| {x(t)} \right|^2 dt\]
+
+<p>DT</p>
+
+\[E = \sum_{n=N_1}^{N_2} \left| {x[n]} \right| ^2\]
+
+<p>For total energy, the time interval is \((-\infty, \infty)\)</p>
+
+<h3 id="power">Power</h3>
+
+\[P_x = \frac{1}{T_0} \int_{t_1}^{t_1 + T_0} \left| {x(t)} \right|^2\]
+
+\[P_x = \frac{1}{N_0} \sum_{n_1}^{n_1 + N_0 -1} \left| {x[n]} \right| ^2\]
+
+<p>Which is basically the average of energy in some time (the above is average power).</p>
+
+<blockquote>
+  <p>A signal with finite energy has 0 power, and a signal with finite power has \(\infty\) energy</p>
+</blockquote>
+
+<hr />
+
+<h2 id="operations">Operations</h2>
+
+<p>Time shifting \(x(t-T)\)</p>
+
+<p>Time scaling \(x(kt)\)</p>
+
+<blockquote>
+  <p>For DT, time scaling \(x[kn]\) creates or deletes values from the signal:</p>
+
+  <p>if (k &gt; 1) =&gt; y[n] = x[kn] retains values only from the scale (x[0], x[M], x[2M]…), and other values in between are removed.</p>
+
+  <p>if (k &lt; 1) =&gt; y[n] = x[kn] interpolates from original values to create the new ones</p>
+</blockquote>
+
+<p>Time reversal \(x(-t)\) mirror y-axis</p>
+
+<p>Combined operations \(x(at + b) = x(a(t + \frac{b}{a}))\), first scale then shift</p>
+
+<hr />
+
+<h2 id="elementary-signals">Elementary Signals</h2>
+
+<p>Unit step \(u(t) = 1\) if \(t &gt; 0\), otherwise 0</p>
+
+<p>Rectangular pulse \(rect(\frac{t}{\tau}) = 1\)
+if \(|t| &lt; \frac{\tau}{2}\)</p>
+
+<p>Signum (sign) \(sgn(t)\) is 1 times the sign of \(t\), or 0 if \(t = 0\)</p>
+
+<p>Ramp \(r(t) = tu(t)\)</p>
+
+<p>Sines \(A\sin(\omega t + \theta)\)</p>
+<ul>
+  <li>Angular frequency \(\omega = 2\pi f\)</li>
+</ul>
+
+<p>Sinc \(sinc(kt) = \frac{\sin(kt)}{kt}\)</p>
+
+<p>Exponential \(e^{j\omega t}\)</p>
+
+<p>Unit impulse \(\delta (t) = 1\) only at \(t=0\), and 0 otherwise</p>
+
+<h3 id="unit-impulse-delta-t">Unit impulse \(\delta (t)\)</h3>
+
+<ul>
+  <li>\(\delta (t) = \delta (-t)\) (even)</li>
+  <li>Given a function \(f(t)\), the product \(f(t) \delta(t) = f(0) \delta(t)\)</li>
+  <li>The integral \(\int_{-\infty}^{\infty}\delta (t) = 1\)</li>
+</ul>
+
+<p>\(u(t)\) and \(\delta (t)\) are related:</p>
+
+<blockquote>
+\[\delta (t) = \frac{du(t)}{dt}\]
+
+\[u(t) = \int_{-\infty}^{t}\delta(\tau)d\tau\]
+</blockquote>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
