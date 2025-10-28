@@ -74,6 +74,12 @@
     
   </h1>
   
+  <div class="tech-tags">
+    
+      <span class="tech-tag">Signals</span>
+    
+  </div>
+  
   <div class="article-meta">
     
       <time datetime="2025-10-21T00:00:00+00:00">
@@ -86,13 +92,47 @@
 <div class="article-content">
   <h2 id="lti-systems">LTI Systems</h2>
 
-<p>Linear Time-Invariant =&gt; LTI systems are fundamental to signal analysis because it allows us to break down a signal into simpler pieces (superposition).</p>
+<p><a href="system-classification.html#:~:text=Linearity">Linear</a>, <a href="system-classification.html#:~:text=Time%20Invariance">Time-Invariant</a> =&gt; LTI systems are fundamental to signal analysis because it allows us to break down a signal into simpler pieces (superposition). Then we analyze the simpler signals.</p>
 
-<p>For example, a discrete signal \(x[n]\) can be considered as a sum of impulses times some coefficient per impulse: \(\sum x[k] \delta [n-k]\)</p>
+<p>For example,</p>
 
-<h3 id="impulse-response">Impulse Response</h3>
+<h2 id="impulse-response">Impulse Response</h2>
 
-<p>Given an LTI system, we may be interested in see how it behaves given an impulse \(\delta (t)\). The corresponding output \(h(t)\) is the impulse response.</p>
+<p>A signal can be considered as a sum of impulses times some coefficient per impulse.</p>
+
+<p>Given an LTI system, we may be interested in see how it behaves given an impulse \(\delta (t)\). The corresponding output \(h(t)\) is the impulse response. If we have the impulse response, we can calculate the output signal without knowing the LTI system itself.</p>
+
+<blockquote>
+  <p>In discrete systems (LTID):</p>
+
+\[x[n] = \sum x[k] \delta [n-k]\]
+
+\[y[n] = \sum_{k=-\infty}^{\infty} x[k]\ h[n-k] = x[n] * h[n]\]
+</blockquote>
+
+<blockquote>
+  <p>In continuous systems (LTIC):</p>
+
+\[x(t) = \int_{-\infty}^{\infty} x(\tau)\ \delta(t - \tau)\ d\tau\]
+
+\[y(t) = \int_{-\infty}^{\infty} x(\tau)\ h(t - \tau)\ d\tau = x(t) * h(t)\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(x[n],\ x(t)\) is input signal (linear combination of delayed impulses)</li>
+  <li>\(y[n],\ y(t)\) is output signal</li>
+  <li>\(h[n],\ h(t)\) is impulse response of the LTI system</li>
+  <li>\(k,\ \tau\) is time delays</li>
+</ul>
+
+<p>Given the system is <a href="system-classification.html#:~:text=Linearity">linear</a> and <a href="system-classification.html#:~:text=Time%20Invariance">time-invariant</a>, the impulse inputs and outputs behave linearly:</p>
+
+\[\delta (t-t_0) \Longrightarrow h(t-t_0)\]
+
+\[a\delta (t-t_0) \Longrightarrow ah(t-t_0)\]
+
+<hr />
 
 <h3 id="example">Example</h3>
 
@@ -110,15 +150,36 @@
 <p>Given:</p>
 
 <ul>
-  <li>The impulse response of a LTIC system \(h(t) = e^{3t}u(t)\)</li>
+  <li>Impulse response \(h(t) = e^{-3t}u(t)\)</li>
+  <li>Input signal \(x(t) = \delta(t+1) + 3\delta(t-2) + 2\delta(t-6)\)</li>
 </ul>
 
 <p>Find:</p>
 
 <ul>
-  <li>The output for the input signal \(x(t) = \delta(t+1) + 3\delta(t-2) + 2\delta(t-6)\)</li>
+  <li>Output \(y(t)\)</li>
 </ul>
 
+<hr />
+<h2 id="convolution-properties">Convolution Properties</h2>
+
+<ul>
+  <li>\(x(t) * h(t) = h(t) * x(t)\) (Commutative)</li>
+  <li>\(x(t) * (h_1(t) + h_2(t)) = x(t) * h_1(t) + x(t) * h_2(t)\) (Distributive)</li>
+  <li>\((x(t) * h_1(t)) * h_2(t) = x(t) * (h_1(t) * h_2(t))\) (Associative)</li>
+  <li>Given \(x(t) * h(t) = y(t)\), then \(x(t - T_1) * h(t - T_2) = y(t - T_1 - T_2)\) (Shifting)</li>
+  <li>\(x(t) * \delta(t- t_0) = x(t - t_0)\) (Unit impulse shifting)</li>
+</ul>
+
+<p>These apply for both continuous and discrete systems.</p>
+
+<h2 id="lti-system-properties">LTI System Properties</h2>
+
+<ul>
+  <li>Memoryless if \(h(t) = 0\) when \(t \neq 0\)</li>
+  <li>Causal if \(h(t) = 0\) when \(t &lt; 0\)</li>
+  <li>Stable if \(\int_{-\infty}^{\infty} \mid h(t) \mid dt &lt; \infty\)</li>
+</ul>
 
 </div>
 </article>
