@@ -6,6 +6,7 @@ math: true
 url: /posts/fluids/fluid-statics
 excerpt: "Structural statics, but with fluids"
 date: 2025-10-25
+tech_stack: [Fluids]
 ---
 
 ## Pressure Distribution

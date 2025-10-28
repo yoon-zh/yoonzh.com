@@ -6,6 +6,7 @@ math: true
 url: /posts/fluids/fluids-1
 excerpt: "Basic properties and equations for fluids"
 date: 2025-10-22
+tech_stack: [Fluids]
 ---
 
 ## Density

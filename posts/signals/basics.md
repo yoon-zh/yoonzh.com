@@ -1,11 +1,12 @@
 ---
 layout: post
-title: signals-1
+title: basics
 card_title: "Signals: The basics"
 math: true
-url: /posts/signals/signals-1
+url: /posts/signals/basics
 excerpt: "1, 2, 3: Basic properties, operations, and simple signals"
 date: 2025-10-16
+tech_stack: [Signals]
 ---
 
 ## Properties

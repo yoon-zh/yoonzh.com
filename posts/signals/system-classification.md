@@ -1,16 +1,19 @@
 ---
 layout: post
-title: signals-2
+title: system-classification
 card_title: "Signal systems classification"
 math: true
-url: /posts/signals/signals-2
+url: /posts/signals/system-classification
 excerpt: "4: Memory, invertibility, causality, stability, linearity, and time invariance"
 date: 2025-10-16
+tech_stack: [Signals]
 ---
 
 ## What is a System
 
 Basically a function $$f(t)$$ that takes some signal.
+
+***
 
 ## Classification
 

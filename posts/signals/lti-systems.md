@@ -1,11 +1,12 @@
 ---
 layout: post
-title: signals-3
+title: lti-systems
 card_title: "LTI Systems"
 math: true
-url: /posts/signals/signals-3
+url: /posts/signals/lti-systems
 excerpt: "5: Impulse response"
 date: 2025-10-21
+tech_stack: [Signals]
 ---
 
 ## LTI Systems

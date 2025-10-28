@@ -6,6 +6,7 @@ math: true
 url: /posts/fluids/fluid-dynamics-basics
 excerpt: "Some basic tools for analyzing fluids in motion, assuming steady, laminar flow"
 date: 2025-10-28
+tech_stack: [Fluids]
 ---
 
 ## Streamlines
