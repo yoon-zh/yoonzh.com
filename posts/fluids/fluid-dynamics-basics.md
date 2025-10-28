@@ -1,11 +1,11 @@
 ---
 layout: post
-title: fluid-streamlines
-card_title: "Streamlines"
+title: fluid-dynamics-basics
+card_title: "Fluid Dynamics basics"
 math: true
-url: /posts/fluids/fluid-streamlines
-excerpt: "Structural statics, but with fluids"
-date: 2025-10-25
+url: /posts/fluids/fluid-dynamics-basics
+excerpt: "Some basic tools for analyzing fluids in motion, assuming steady, laminar flow"
+date: 2025-10-28
 ---
 
 ## Streamlines
