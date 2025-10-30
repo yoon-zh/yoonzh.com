@@ -52,7 +52,7 @@ $$x_1(t) + x_2(t) = y_1 + y_2 = y$$
 
 $$ax(t) = ay(t)$$
 
-Some tips: $$x(t) + C,\quad x(t), y(t)$$ are not first-order eq, or there are abs(x,y) then it is not linear. Imagine a similar criteria to linear ODEs.
+Some tips: $$x(t) + C,\quad x(t), y(t)$$ are multiplied with derivatives/integrals, or scaled with non-integer exponents, or there are abs(x,y) then it is not linear. Imagine a similar criteria to linear ODEs.
 
 ### Time Invariance
 
