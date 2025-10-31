@@ -120,7 +120,7 @@
 
   <p>Inverse Fourier Transform:</p>
 
-\[x(t) = \mathcal{F}^{-1}\{X(\omega)\} = \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} dt\]
+\[x(t) = \mathcal{F}^{-1}\{X(\omega)\} = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} dt\]
 </blockquote>
 
 <p>Where</p>
@@ -129,6 +129,87 @@
 </ul>
 
 <p>The physical unit is [rad/s]</p>
+
+<p>If the integral goes to infinity, then the function \(x(t)\) does not have a fourier transform.</p>
+
+<h2 id="basic-pairs">Basic Pairs</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(x(t)\)</th>
+      <th>\(X(\omega)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(\delta(t-t_0)\)</td>
+      <td>\(e^{-j\omega t_0}\)</td>
+    </tr>
+    <tr>
+      <td>\(1\)</td>
+      <td>\(2\pi \delta(\omega)\)</td>
+    </tr>
+    <tr>
+      <td>\(u(t)\)</td>
+      <td>\(\frac{1}{j\omega} + \pi \delta(\omega)\)</td>
+    </tr>
+    <tr>
+      <td>\(e^{j\omega_0 t}\)</td>
+      <td>\(2\pi \delta(\omega - \omega_0)\)</td>
+    </tr>
+    <tr>
+      <td>\(\sin{\omega_0 t}\)</td>
+      <td>\(\frac{\pi}{j} (\delta(\omega - \omega_0) - \delta(\omega + \omega_0))\)</td>
+    </tr>
+    <tr>
+      <td>\(\cos{\omega_0 t}\)</td>
+      <td>\(\frac{\pi}{j} (\delta(\omega - \omega_0) + \delta(\omega + \omega_0))\)</td>
+    </tr>
+    <tr>
+      <td>\(1,\ \mid \omega \mid \ &lt; T_1\)</td>
+      <td>\(\frac{2\sin{\omega T_1}}{\omega}\)</td>
+    </tr>
+    <tr>
+      <td>\(\frac{\sin{Wt}}{\pi t}\)</td>
+      <td>\(1,\ \mid \omega \mid \ &lt; W\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="properties">Properties</h2>
+
+<p>Linearity</p>
+
+\[\mathcal{F}\{ax_1 (t) + bx_2 (t)\} = aX_1 (\omega) + bX_2 (\omega)\]
+
+<p>Time shifting</p>
+
+\[\mathcal{F}\{x(t - t_0)\} = X(\omega) e^{-j\omega t_0}\]
+
+<p>Scaling</p>
+
+\[\mathcal{F}\{x(at)\} = \frac{1}{\mid a \mid} X \left( \frac{\omega}{a} \right)\]
+
+<p>Frequency shifting</p>
+
+\[\mathcal{F}\{x(t)\ e^{j\omega_0 t} \} = X(\omega - \omega_0)\]
+
+<p>Differentiation</p>
+
+\[\mathcal{F}\left \{ \frac{d^n}{dt^n} x(t) \right \} = (j\omega)^n X(\omega)\]
+
+<p>Integration</p>
+
+\[\mathcal{F}\left \{ \int_{-\infty}^{t} x(\tau) d\tau \right \} = \frac{1}{j\omega} X(\omega) + \pi X(0) \delta(\omega)\]
+
+<p>Convolution</p>
+
+\[\mathcal{F}\{x_1(t) * x_2(t) \} = X_1(\omega)\ X_2(\omega)\]
+
+<p>Multiplication</p>
+
+\[\mathcal{F}\{x_1(t)\ x_2(t) \} = \frac{1}{2\pi} X_1(\omega) * X_2(\omega)\]
 
 </div>
 </article>
