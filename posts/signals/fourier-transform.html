@@ -82,15 +82,53 @@
   
   <div class="article-meta">
     
-      <time datetime="2025-10-21T00:00:00+00:00">
-        📅 2025/10/21
+      <time datetime="2025-10-31T00:00:00+00:00">
+        📅 2025/10/31
       </time>
     
   </div>
 </header>
 
 <div class="article-content">
-  <p>s</p>
+  <h2 id="definition">Definition</h2>
+
+<h3 id="linear-frequency-f">Linear Frequency \(f\)</h3>
+
+<blockquote>
+  <p>Fourier Transform:</p>
+
+\[X(f) = \mathcal{F}\{x(t)\} = \int_{-\infty}^{\infty} x(t) e^{-j2\pi tf} dt\]
+
+  <p>Inverse Fourier Transform:</p>
+
+\[x(t) = \mathcal{F}^{-1}\{X(f)\} = \int_{-\infty}^{\infty} X(f) e^{j2\pi tf} dt\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(f = \frac{1}{T}\) is frequency</li>
+</ul>
+
+<p>The physical unit is [Hz] \(= \frac{1}{s}\)</p>
+
+<h3 id="angular-frequency-omega--2pi-f">Angular frequency \(\omega = 2\pi f\)</h3>
+
+<blockquote>
+  <p>Fourier Transform:</p>
+
+\[X(\omega) = \mathcal{F}\{x(t)\} = \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt\]
+
+  <p>Inverse Fourier Transform:</p>
+
+\[x(t) = \mathcal{F}^{-1}\{X(\omega)\} = \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} dt\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\omega = 2\pi f\) is angular frequency</li>
+</ul>
+
+<p>The physical unit is [rad/s]</p>
 
 </div>
 </article>
