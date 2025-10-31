@@ -34,9 +34,58 @@ The physical unit is [Hz] $$= \frac{1}{s}$$
 >
 > Inverse Fourier Transform:
 >
-> $$x(t) = \mathcal{F}^{-1}\{X(\omega)\} = \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} dt$$
+> $$x(t) = \mathcal{F}^{-1}\{X(\omega)\} = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} dt$$
 
 Where
 - $$\omega = 2\pi f$$ is angular frequency
 
 The physical unit is [rad/s]
+
+If the integral goes to infinity, then the function $$x(t)$$ does not have a fourier transform.
+
+## Basic Pairs
+
+| $$x(t)$$ | $$X(\omega)$$ |
+|----------|---------------|
+| $$\delta(t-t_0)$$ | $$e^{-j\omega t_0}$$ |
+| $$1$$ | $$2\pi \delta(\omega)$$ |
+| $$u(t)$$ | $$\frac{1}{j\omega} + \pi \delta(\omega)$$ |
+| $$e^{j\omega_0 t}$$ | $$2\pi \delta(\omega - \omega_0)$$ |
+| $$\sin{\omega_0 t}$$ | $$\frac{\pi}{j} (\delta(\omega - \omega_0) - \delta(\omega + \omega_0))$$ |
+| $$\cos{\omega_0 t}$$ | $$\frac{\pi}{j} (\delta(\omega - \omega_0) + \delta(\omega + \omega_0))$$ |
+| $$1,\ \mid \omega \mid \ < T_1$$ | $$\frac{2\sin{\omega T_1}}{\omega}$$ |
+| $$\frac{\sin{Wt}}{\pi t}$$ | $$1,\ \mid \omega \mid \ < W$$ |
+
+## Properties
+
+Linearity
+
+$$\mathcal{F}\{ax_1 (t) + bx_2 (t)\} = aX_1 (\omega) + bX_2 (\omega)$$
+
+Time shifting
+
+$$\mathcal{F}\{x(t - t_0)\} = X(\omega) e^{-j\omega t_0}$$
+
+Scaling
+
+$$\mathcal{F}\{x(at)\} = \frac{1}{\mid a \mid} X \left( \frac{\omega}{a} \right)$$
+
+Frequency shifting
+
+$$\mathcal{F}\{x(t)\ e^{j\omega_0 t} \} = X(\omega - \omega_0)$$
+
+Differentiation
+
+$$\mathcal{F}\left \{ \frac{d^n}{dt^n} x(t) \right \} = (j\omega)^n X(\omega)$$
+
+Integration
+
+$$\mathcal{F}\left \{ \int_{-\infty}^{t} x(\tau) d\tau \right \} = \frac{1}{j\omega} X(\omega) + \pi X(0) \delta(\omega)$$
+
+Convolution
+
+$$\mathcal{F}\{x_1(t) * x_2(t) \} = X_1(\omega)\ X_2(\omega)$$
+
+Multiplication
+
+$$\mathcal{F}\{x_1(t)\ x_2(t) \} = \frac{1}{2\pi} X_1(\omega) * X_2(\omega)$$
