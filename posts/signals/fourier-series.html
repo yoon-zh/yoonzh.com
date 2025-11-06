@@ -119,7 +119,7 @@ If the output \(y(t) = k\ \phi(t)\), where \(k\) is a constant, then \(\phi(t)\)
 <h2 id="fourier-series-definition">Fourier Series definition</h2>
 
 <blockquote>
-\[\sum_{k = -\infty}^{\infty} a_k e^{jk \omega t}\]
+\[x(t) = \sum_{k = -\infty}^{\infty} a_k e^{jk \omega t}\]
 </blockquote>
 
 <p>Where</p>
@@ -147,6 +147,46 @@ If the output \(y(t) = k\ \phi(t)\), where \(k\) is a constant, then \(\phi(t)\)
 </ul>
 
 <p>Reminder: \(T = \frac{2\pi}{\omega}\)</p>
+
+<h3 id="discrete-time">Discrete time</h3>
+
+<blockquote>
+\[x[n] = \sum_{k = 0}^{N-1} a_k e^{jk\Omega n}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(N\) is the period</li>
+  <li>\(\Omega\) is frequency</li>
+</ul>
+
+<blockquote>
+\[a_k = \frac{1}{N} \sum_{n = 0}^{N-1} x[n] e^{-jk\Omega n}\]
+</blockquote>
+
+<p>Properties</p>
+
+<p>Periodicity</p>
+
+\[x[n] = x[n + aN]\]
+
+<p>Where</p>
+<ul>
+  <li>\(N\) is the period</li>
+  <li>\(a\) is some real int</li>
+</ul>
+
+<p>Linearity - superposition</p>
+
+<p>Time shifting</p>
+
+\[x[n-m] \rightarrow e^{-j (2\pi / N) km} c_k\]
+
+<p>Where</p>
+<ul>
+  <li>\(m\) is the shift</li>
+  <li>\(c_k\) is the fourier series sum of \(x[n]\)</li>
+</ul>
 
 <h1 id="problems">Problems</h1>
 
