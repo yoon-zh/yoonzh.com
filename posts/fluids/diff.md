@@ -11,7 +11,7 @@ tech_stack: [Fluids]
 
 ## Navier-stokes
 
-Given an incompressible fluid (density $$\rho$$ is constant) and the velocity field $$V(x,y,z) = u\vec{i} + v\vec{j} + w\vec{k}$$, where $$u,\ v,\ w$$ represent the velocity field in the $$x,\ y,\ z$$ axis respectively:
+Given an incompressible fluid (density $$\rho$$ is constant) and the velocity field $$V(x,y,z) = u\hat{i} + v\hat{j} + w\hat{k}$$, where $$u,\ v,\ w$$ represent the velocity field in the $$x,\ y,\ z$$ axis respectively:
 
 > $$\rho \frac{DV}{Dt} = - \nabla \rho + \rho g + \mu \nabla^2 V$$
 >
@@ -75,6 +75,10 @@ Also:
 Where
 - The component $$\frac{\partial V}{\partial t} = \frac{\partial u}{\partial t} + \frac{\partial v}{\partial t} + \frac{\partial w}{\partial t}$$
 
+***
+
+### Simplification
+
 > Steady:
 >
 > $$\frac{\partial V}{\partial t} = 0$$
@@ -98,7 +102,7 @@ Where
 
 Navier-Stokes is solvable by hand (analytically) for steady laminar flow between stationary parallel plates.
 
-## Reynolds number
+## Reynold's number
 
 $$\text{Re} = \frac{\rho V L}{\mu}$$
 
