@@ -33,7 +33,7 @@ We can use this to define the Fourier Series:
 
 ## Fourier Series definition
 
-> $$\sum_{k = -\infty}^{\infty} a_k e^{jk \omega t}$$
+> $$x(t) = \sum_{k = -\infty}^{\infty} a_k e^{jk \omega t}$$
 
 Where
 - $$k$$ is the counter (integer, real number)
@@ -54,6 +54,37 @@ Where
 - $$\omega$$ is frequency
 
 Reminder: $$T = \frac{2\pi}{\omega}$$
+
+### Discrete time
+
+> $$x[n] = \sum_{k = 0}^{N-1} a_k e^{jk\Omega n}$$
+
+Where
+- $$N$$ is the period
+- $$\Omega$$ is frequency
+
+> $$a_k = \frac{1}{N} \sum_{n = 0}^{N-1} x[n] e^{-jk\Omega n}$$
+
+Properties
+
+Periodicity
+
+$$x[n] = x[n + aN]$$
+
+Where
+- $$N$$ is the period
+- $$a$$ is some real int
+
+Linearity - superposition
+
+Time shifting
+
+$$x[n-m] \rightarrow e^{-j (2\pi / N) km} c_k$$
+
+Where
+- $$m$$ is the shift
+- $$c_k$$ is the fourier series sum of $$x[n]$$
+
 
 # Problems
 
