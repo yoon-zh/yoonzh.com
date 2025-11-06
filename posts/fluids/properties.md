@@ -1,9 +1,9 @@
 ---
 layout: post
-title: fluids-1
+title: properties
 card_title: "Properties of Fluids"
 math: true
-url: /posts/fluids/fluids-1
+url: /posts/fluids/properties
 excerpt: "Basic properties and equations for fluids"
 date: 2025-10-22
 tech_stack: [Fluids]
