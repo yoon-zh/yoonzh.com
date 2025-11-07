@@ -92,6 +92,58 @@
 <div class="article-content">
   <p>Given a 3D velocity field \(\vec{V}(x, y, z) = u\hat{i} + v\hat{j} + w\hat{k}\):</p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Equation</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Acceleration \(a\)</td>
+      <td>\(a = \frac{d\vec{V}}{dt}\)</td>
+      <td>Vector</td>
+    </tr>
+    <tr>
+      <td>Vorticity \(\zeta\)</td>
+      <td>\(\zeta = \nabla \times \vec{V}\)</td>
+      <td>Vector</td>
+    </tr>
+    <tr>
+      <td>Angular Velocity \(\omega\)</td>
+      <td>\(\omega = \frac{1}{2} \zeta\)</td>
+      <td>Vector</td>
+    </tr>
+    <tr>
+      <td>Angular Deformation \(\Omega\)</td>
+      <td>\(\Omega_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}\)</td>
+      <td>2D Scalar</td>
+    </tr>
+    <tr>
+      <td>Dilatation rate</td>
+      <td>\(\nabla \cdot \vec{V}\)</td>
+      <td>Scalar</td>
+    </tr>
+    <tr>
+      <td>Continuity Eq</td>
+      <td>\(\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{V}) = 0\)</td>
+      <td>Scalar</td>
+    </tr>
+    <tr>
+      <td>Stream Function</td>
+      <td>\(u = \frac{\partial \Psi}{\partial y},\quad v = -\frac{\partial \Psi}{\partial x}\)</td>
+      <td>2D Scalar</td>
+    </tr>
+    <tr>
+      <td>Navier-Stokes</td>
+      <td>\(\rho \frac{D\vec{V}}{Dt} = -\nabla P + \rho g + \mu \nabla^2 V\)</td>
+      <td>Vector</td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="acceleration">Acceleration</h2>
 
 <blockquote>
@@ -152,7 +204,11 @@
 
 <h2 id="dilatation-rate">Dilatation rate</h2>
 
+<blockquote>
 \[\text{dilatation rate} = \nabla \cdot \vec{V}\]
+
+\[\text{dilatation rate} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z}\]
+</blockquote>
 
 <p>Where</p>
 <ul>
@@ -178,21 +234,38 @@
 
 <h2 id="stream-function">Stream Function</h2>
 
-<p>For incompressible 2D flow:</p>
+<p>For incompressible 2D flow, from continuity equation:</p>
 
 \[\frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} = 0\]
 
-<p>from continuity equation. Then we can define a function that describes \(u,\ v\) to define streamlines.</p>
+<p>We can define a function \(\Psi\) that describes \(u,\ v\) to define streamlines:</p>
+
+<blockquote>
+\[u = \frac{\partial \Psi}{\partial y},\quad v = -\frac{\partial \Psi}{\partial x}\]
+</blockquote>
+
+<p>Using some basic 3D calc we can get \(\Psi(x,y)\). We define streamlines as \(\Psi(x,y) = k\), where \(k\) is any constant.</p>
+
+<hr />
 
 <h2 id="navier-stokes">Navier-Stokes</h2>
 
 <p>Given an incompressible fluid (density \(\rho\) is constant) and the velocity field \(V(x,y,z) = u\hat{i} + v\hat{j} + w\hat{k}\), where \(u,\ v,\ w\) represent the velocity field in the \(x,\ y,\ z\) axis respectively:</p>
 
 <blockquote>
-\[\rho \frac{DV}{Dt} = - \nabla \rho + \rho g + \mu \nabla^2 V\]
+\[\rho \frac{DV}{Dt} = - \nabla P + \rho g + \mu \nabla^2 V\]
 
-\[\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = - \nabla \rho + \rho g + \mu \nabla^2 V\]
+\[\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = -\nabla P + \rho g + \mu \nabla^2 V\]
 </blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\rho\) is <a href="properties.html#:~:text=Density">density</a> in \(kg/m^3\)</li>
+  <li>\(\frac{DV}{Dt}\) is the <a href="#acceleration">acceleration</a> in \(m/s^2\)</li>
+  <li>\(\nabla P\) is the <a href="../math/3d.html#:~:text=Scalar-,Gradient">gradient</a> of pressure, in Pa/m</li>
+  <li>\(\rho g\) is the force due to gravity (may replace if an external force applies), in \(kg/m^3 \cdot m/s^2 = Pa/m\)</li>
+  <li>\(\mu \nabla^2 V\) is the viscous diffusion of momentum, in \(Pa\cdot s \cdot m/s \cdot 1/m^2 = Pa/m\)</li>
+</ul>
 
 <p>Per component:</p>
 
@@ -218,8 +291,8 @@
   + v \frac{\partial v}{\partial y} 
   + w \frac{\partial v}{\partial z}
 \right) = 
-- \frac{\partial P}{\partial x}
-+ \rho g_x
+- \frac{\partial P}{\partial y}
++ \rho g_y
 + \mu \left(
   \frac{\partial^2 v}{\partial x^2}
   + \frac{\partial^2 v}{\partial y^2}
@@ -233,8 +306,8 @@
   + v \frac{\partial w}{\partial y} 
   + w \frac{\partial w}{\partial z}
 \right) = 
-- \frac{\partial P}{\partial x}
-+ \rho g_x
+- \frac{\partial P}{\partial z}
++ \rho g_z
 + \mu \left(
   \frac{\partial^2 w}{\partial x^2}
   + \frac{\partial^2 w}{\partial y^2}
@@ -256,9 +329,21 @@
   <li>The component \(\frac{\partial V}{\partial t} = \frac{\partial u}{\partial t} + \frac{\partial v}{\partial t} + \frac{\partial w}{\partial t}\)</li>
 </ul>
 
+<h3 id="diffusion-term-mu-nabla2-v">Diffusion term \(\mu \nabla^2 V\)</h3>
+
+<p>Consider a 1D problem about shear stress:</p>
+
+\[\tau_{xy} = \mu \frac{\partial u}{\partial y}\]
+
+<p>Then the force per volume is:</p>
+
+\[\frac{\partial \tau_{xy}}{dy} = \mu \frac{\partial^2 u}{\partial y^2}\]
+
+<p>In 3D we consider forces from all direction, thus</p>
+
 <hr />
 
-<h3 id="simplification">Simplification</h3>
+<h2 id="simplifying-navier-stokes">Simplifying Navier-Stokes</h2>
 
 <blockquote>
   <p>Steady:</p>
