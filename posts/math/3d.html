@@ -168,14 +168,6 @@ F_x &amp; F_y &amp; F_z
 
 <p>Note: The output is a scalar!</p>
 
-<h2 id="green">Green</h2>
-
-<p>Let C be a simple closed curve with positive, counterclockwise orientation. Let D be the region enclosed by C.</p>
-
-\[\oint_C (P dx + Q dy) = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA\]
-
-<p>Where \(dA = dy\ dx = dx \ dy\), depending on the integration order</p>
-
 <h2 id="implicit-derivative">Implicit Derivative</h2>
 
 <p>Given \(F(x,y) = 0\). Then:</p>
@@ -221,6 +213,29 @@ F_x &amp; F_y &amp; F_z
 \[\nabla f(x_1, x_2, ..., x_n) = \lambda \nabla g(x_1, x_2, ..., x_n)\]
 
 <p>Where \(\lambda\) is an arbitrary constant.</p>
+
+<h2 id="green">Green</h2>
+
+<p>Let C be a simple closed curve with positive, counterclockwise orientation. Let D be the region enclosed by C.</p>
+
+\[\oint_C (P dx + Q dy) = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA\]
+
+<p>Where \(dA = dy\ dx = dx \ dy\), depending on the integration order.</p>
+
+<h2 id="stokes">Stokes</h2>
+
+\[\oint_C \vec{F} \cdot d\vec{\Gamma} = \iint_s (\text{curl}\ \vec{F}) \cdot \hat{n}\ dS\]
+
+<p>Where</p>
+<ul>
+  <li>\(\vec{F}\) is force field</li>
+  <li>\(d\vec{\Gamma}\) is path differential</li>
+  <li>\(C\) is a closed curve</li>
+  <li>\(\oint_C \vec{F} \cdot d\vec{\Gamma}\) is the work done by a vector field on a closed curve</li>
+  <li>\(S\) is any surface bounded by \(C\)</li>
+</ul>
+
+<p>Full story <a href="https://youtu.be/tzoYhe3H5dM">here</a></p>
 
 <hr />
 

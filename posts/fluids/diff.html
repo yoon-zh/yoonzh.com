@@ -1,0 +1,347 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Fluids Differential Analysis - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Fluids Differential Analysis
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">Fluids</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-11-06T00:00:00+00:00">
+        📅 2025/11/06
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <p>Given a 3D velocity field \(\vec{V}(x, y, z) = u\hat{i} + v\hat{j} + w\hat{k}\):</p>
+
+<h2 id="acceleration">Acceleration</h2>
+
+<blockquote>
+\[a = \frac{d\vec{V}}{dt}\]
+
+\[a =
+\frac{\partial \vec{V}}{\partial t}
++ u\frac{\partial \vec{V}}{\partial x}
++ v\frac{\partial \vec{V}}{\partial y}
++ w\frac{\partial \vec{V}}{\partial z}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(a\) is acceleration field (vector) in \(m/s^2\)</li>
+  <li>\(\frac{d\vec{V}}{dt} = \frac{D\vec{V}}{Dt}\) is the <a href="fluid-dynamics-basics.html#:~:text=Material,derivative">material derivative</a> of \(\vec{V}\), viewed from a Lagrangian POV<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> (vector)</li>
+  <li>\(\frac{\partial \vec{V}}{\partial t}\) is the local acceleration (variation of velocity at a fixed point)</li>
+  <li>\(u\frac{\partial \vec{V}}{\partial x} + v\frac{\partial \vec{V}}{\partial y} + w\frac{\partial \vec{V}}{\partial z}\) is the acceleration from spatial variations</li>
+</ul>
+
+<p>In steady-state: \(\frac{\partial \vec{V}}{\partial t} = 0\)</p>
+
+<h2 id="vorticity">Vorticity</h2>
+
+<blockquote>
+\[\zeta = \nabla \times \vec{V}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\zeta\) is vorticity (vector) in rad/s</li>
+  <li>\(\nabla \times \vec{V} = \text{curl}\ \vec{V}\) (read <a href="../math/3d.html#:~:text=Curl,-cur">curl</a>)</li>
+</ul>
+
+<p>We say the fluid is irrotational (does not rotate) when \(\zeta = 0\).</p>
+
+<h3 id="angular-velocity">Angular velocity</h3>
+
+\[\omega = \frac{1}{2} \zeta\]
+
+<p>Where</p>
+<ul>
+  <li>\(\omega\) is angular velocity (vector) in rad/s</li>
+  <li>\(\zeta\) is vorticity (vector)</li>
+</ul>
+
+<h2 id="angular-deformation">Angular deformation</h2>
+
+<blockquote>
+\[\Omega_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}\]
+
+\[\Omega_{xz} = \frac{\partial w}{\partial x} + \frac{\partial u}{\partial z}\]
+
+\[\Omega_{yz} = \frac{\partial w}{\partial y} + \frac{\partial v}{\partial z}\]
+</blockquote>
+
+<p>Where \(\Omega\) is the angular deformation (scalar) in rad/s. Note \(\Omega\) is calculated in a 2D plane.</p>
+
+<h2 id="dilatation-rate">Dilatation rate</h2>
+
+\[\text{dilatation rate} = \nabla \cdot \vec{V}\]
+
+<p>Where</p>
+<ul>
+  <li>The dilatation rate (scalar) is in Hz (\(s^{-1}\))</li>
+  <li>\(\nabla \cdot \vec{V} = \text{div}\ \vec{V}\) (read <a href="../math/3d.html#:~:text=F-,Div">div</a>)</li>
+</ul>
+
+<p>Dilatation rate tells whether a fluid is expanding or compressing (volume is changing).</p>
+
+<p>If fluid is incompressible: \(\nabla \cdot \vec{V} = 0\)</p>
+
+<h2 id="continuity-equation">Continuity Equation</h2>
+
+<blockquote>
+\[\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{V}) = 0\]
+
+\[\frac{\partial \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} + \frac{\partial (\rho w)}{\partial z} = 0\]
+</blockquote>
+
+<p>Where \(\rho\) is <a href="properties.html#:~:text=Density">density</a></p>
+
+<p>In steady-state: \(\frac{\partial \rho}{\partial t} = 0\)</p>
+
+<h2 id="stream-function">Stream Function</h2>
+
+<p>For incompressible 2D flow:</p>
+
+\[\frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} = 0\]
+
+<p>from continuity equation. Then we can define a function that describes \(u,\ v\) to define streamlines.</p>
+
+<h2 id="navier-stokes">Navier-Stokes</h2>
+
+<p>Given an incompressible fluid (density \(\rho\) is constant) and the velocity field \(V(x,y,z) = u\hat{i} + v\hat{j} + w\hat{k}\), where \(u,\ v,\ w\) represent the velocity field in the \(x,\ y,\ z\) axis respectively:</p>
+
+<blockquote>
+\[\rho \frac{DV}{Dt} = - \nabla \rho + \rho g + \mu \nabla^2 V\]
+
+\[\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = - \nabla \rho + \rho g + \mu \nabla^2 V\]
+</blockquote>
+
+<p>Per component:</p>
+
+\[u: \quad 
+\rho \left(
+  \frac{\partial u}{\partial t} 
+  + u \frac{\partial u}{\partial x} 
+  + v \frac{\partial u}{\partial y} 
+  + w \frac{\partial u}{\partial z}
+\right) = 
+- \frac{\partial P}{\partial x}
++ \rho g_x
++ \mu \left(
+  \frac{\partial^2 u}{\partial x^2}
+  + \frac{\partial^2 u}{\partial y^2}
+  + \frac{\partial^2 u}{\partial z^2}
+\right)\]
+
+\[v: \quad 
+\rho \left(
+  \frac{\partial v}{\partial t} 
+  + u \frac{\partial v}{\partial x} 
+  + v \frac{\partial v}{\partial y} 
+  + w \frac{\partial v}{\partial z}
+\right) = 
+- \frac{\partial P}{\partial x}
++ \rho g_x
++ \mu \left(
+  \frac{\partial^2 v}{\partial x^2}
+  + \frac{\partial^2 v}{\partial y^2}
+  + \frac{\partial^2 v}{\partial z^2}
+\right)\]
+
+\[w: \quad 
+\rho \left(
+  \frac{\partial w}{\partial t} 
+  + u \frac{\partial w}{\partial x} 
+  + v \frac{\partial w}{\partial y} 
+  + w \frac{\partial w}{\partial z}
+\right) = 
+- \frac{\partial P}{\partial x}
++ \rho g_x
++ \mu \left(
+  \frac{\partial^2 w}{\partial x^2}
+  + \frac{\partial^2 w}{\partial y^2}
+  + \frac{\partial^2 w}{\partial z^2}
+\right)\]
+
+<p>Also:</p>
+
+<blockquote>
+  <p>Given incompressible flow:</p>
+
+\[\text{div}\ V = 0\]
+
+\[\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} = 0\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>The component \(\frac{\partial V}{\partial t} = \frac{\partial u}{\partial t} + \frac{\partial v}{\partial t} + \frac{\partial w}{\partial t}\)</li>
+</ul>
+
+<hr />
+
+<h3 id="simplification">Simplification</h3>
+
+<blockquote>
+  <p>Steady:</p>
+
+  <p>All time derivatives are 0.</p>
+
+\[\frac{\partial V}{\partial t} = 0\]
+
+  <p>Per component:</p>
+
+\[\frac{\partial u}{\partial t} = \frac{\partial v}{\partial t} = \frac{\partial w}{\partial t} = 0\]
+</blockquote>
+
+<blockquote>
+  <p>Flow along a specific axis (for example, \(x\)):</p>
+
+\[u \neq 0,\ v = 0,\ w = 0\]
+
+  <p>If flow is incompressible, then also:</p>
+
+\[\text{div}\ V = 0\]
+
+\[\frac{\partial^n u}{\partial x^n} = \frac{\partial^n v}{\partial y^n} = \frac{\partial^n w}{\partial z^n} = 0\]
+
+  <p>Each component of the div is 0 if flow along a specific axis + incompressible. Then any of its derivatives of order n is also 0.</p>
+</blockquote>
+
+<p>Navier-Stokes is solvable by hand (analytically) for steady laminar flow between stationary parallel plates.</p>
+
+<h2 id="reynolds-number">Reynold’s number</h2>
+
+\[\text{Re} = \frac{\rho V L}{\mu}\]
+
+<p>Where</p>
+<ul>
+  <li>\(\text{Re}\) is Reynold’s number</li>
+  <li>\(V\) is velocity</li>
+  <li>\(L\) is</li>
+  <li>\(\mu\) is viscosity</li>
+</ul>
+
+<p>The bigger \(\text{Re}\) is, the more turbulent the flow is.</p>
+
+<p>If we have a plane with a very smooth surface, it has less air resistance but it causes the air to be more turbulent, since the viscous forces become smaller.</p>
+
+<h2 id="dict">Dict</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Lagrangian point of view: From the perspective of the moving material (fluid), different from the perspective of an exterior observer (Eulerian). <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
