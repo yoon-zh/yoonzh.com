@@ -11,6 +11,18 @@ tech_stack: [Fluids]
 
 Given a 3D velocity field $$\vec{V}(x, y, z) = u\hat{i} + v\hat{j} + w\hat{k}$$:
 
+| Property                        | Equation                                                                              | Type      |
+|---------------------------------|---------------------------------------------------------------------------------------|-----------|
+| Acceleration $$a$$              | $$a = \frac{d\vec{V}}{dt}$$                                                           | Vector    |
+| Vorticity $$\zeta$$             | $$\zeta = \nabla \times \vec{V}$$                                                     | Vector    |
+| Angular Velocity $$\omega$$     | $$\omega = \frac{1}{2} \zeta$$                                                        | Vector    |
+| Angular Deformation $$\Omega$$  | $$\Omega_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}$$       | 2D Scalar |
+| Dilatation rate                 | $$\nabla \cdot \vec{V}$$                                                              | Scalar    |
+| Continuity Eq                   | $$\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{V}) = 0$$                | Scalar    |
+| Stream Function                 | $$u = \frac{\partial \Psi}{\partial y},\quad v = -\frac{\partial \Psi}{\partial x}$$  | 2D Scalar |
+| Navier-Stokes                   | $$\rho \frac{D\vec{V}}{Dt} = -\nabla P + \rho g + \mu \nabla^2 V$$                | Vector    |
+
+
 ## Acceleration
 
 > $$a = \frac{d\vec{V}}{dt}$$
@@ -63,7 +75,9 @@ Where $$\Omega$$ is the angular deformation (scalar) in rad/s. Note $$\Omega$$ i
 
 ## Dilatation rate
 
-$$\text{dilatation rate} = \nabla \cdot \vec{V}$$
+> $$\text{dilatation rate} = \nabla \cdot \vec{V}$$
+>
+> $$\text{dilatation rate} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z}$$
 
 Where 
 - The dilatation rate (scalar) is in Hz ($$s^{-1}$$)
@@ -87,19 +101,33 @@ In steady-state: $$\frac{\partial \rho}{\partial t} = 0$$
 
 ## Stream Function
 
-For incompressible 2D flow:
+For incompressible 2D flow, from continuity equation:
 
 $$\frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} = 0$$
 
-from continuity equation. Then we can define a function that describes $$u,\ v$$ to define streamlines.
+We can define a function $$\Psi$$ that describes $$u,\ v$$ to define streamlines:
+
+> $$u = \frac{\partial \Psi}{\partial y},\quad v = -\frac{\partial \Psi}{\partial x}$$
+
+Using some basic 3D calc we can get $$\Psi(x,y)$$. We define streamlines as $$\Psi(x,y) = k$$, where $$k$$ is any constant.
+
+***
 
 ## Navier-Stokes
 
 Given an incompressible fluid (density $$\rho$$ is constant) and the velocity field $$V(x,y,z) = u\hat{i} + v\hat{j} + w\hat{k}$$, where $$u,\ v,\ w$$ represent the velocity field in the $$x,\ y,\ z$$ axis respectively:
 
-> $$\rho \frac{DV}{Dt} = - \nabla \rho + \rho g + \mu \nabla^2 V$$
+> $$\rho \frac{DV}{Dt} = - \nabla P + \rho g + \mu \nabla^2 V$$
 >
-> $$\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = - \nabla \rho + \rho g + \mu \nabla^2 V$$
+> $$\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = -\nabla P + \rho g + \mu \nabla^2 V$$
+
+Where
+- $$\rho$$ is [density](properties.html#:~:text=Density) in $$kg/m^3$$
+- $$\frac{DV}{Dt}$$ is the [acceleration](#acceleration) in $$m/s^2$$
+- $$\nabla P$$ is the [gradient](../math/3d.html#:~:text=Scalar-,Gradient) of pressure, in Pa/m
+- $$\rho g$$ is the force due to gravity (may replace if an external force applies), in $$kg/m^3 \cdot m/s^2 = Pa/m$$
+- $$\mu \nabla^2 V$$ is the viscous diffusion of momentum, in $$Pa\cdot s \cdot m/s \cdot 1/m^2 = Pa/m$$
+
 
 Per component:
 
@@ -125,8 +153,8 @@ $$v: \quad
   + v \frac{\partial v}{\partial y} 
   + w \frac{\partial v}{\partial z}
 \right) = 
-- \frac{\partial P}{\partial x}
-+ \rho g_x
+- \frac{\partial P}{\partial y}
++ \rho g_y
 + \mu \left(
   \frac{\partial^2 v}{\partial x^2}
   + \frac{\partial^2 v}{\partial y^2}
@@ -140,8 +168,8 @@ $$w: \quad
   + v \frac{\partial w}{\partial y} 
   + w \frac{\partial w}{\partial z}
 \right) = 
-- \frac{\partial P}{\partial x}
-+ \rho g_x
+- \frac{\partial P}{\partial z}
++ \rho g_z
 + \mu \left(
   \frac{\partial^2 w}{\partial x^2}
   + \frac{\partial^2 w}{\partial y^2}
@@ -159,9 +187,21 @@ Also:
 Where
 - The component $$\frac{\partial V}{\partial t} = \frac{\partial u}{\partial t} + \frac{\partial v}{\partial t} + \frac{\partial w}{\partial t}$$
 
+### Diffusion term $$\mu \nabla^2 V$$
+
+Consider a 1D problem about shear stress:
+
+$$\tau_{xy} = \mu \frac{\partial u}{\partial y}$$
+
+Then the force per volume is:
+
+$$\frac{\partial \tau_{xy}}{dy} = \mu \frac{\partial^2 u}{\partial y^2}$$
+
+In 3D we consider forces from all direction, thus 
+
 ***
 
-### Simplification
+## Simplifying Navier-Stokes
 
 > Steady:
 >
@@ -185,8 +225,8 @@ Where
 >
 > Each component of the div is 0 if flow along a specific axis + incompressible. Then any of its derivatives of order n is also 0.
 
-
 Navier-Stokes is solvable by hand (analytically) for steady laminar flow between stationary parallel plates.
+
 
 ## Reynold's number
 
