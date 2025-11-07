@@ -9,7 +9,91 @@ date: 2025-11-06
 tech_stack: [Fluids]
 ---
 
-## Navier-stokes
+Given a 3D velocity field $$\vec{V}(x, y, z) = u\hat{i} + v\hat{j} + w\hat{k}$$:
+
+## Acceleration
+
+> $$a = \frac{d\vec{V}}{dt}$$
+>
+>$$a =
+\frac{\partial \vec{V}}{\partial t}
++ u\frac{\partial \vec{V}}{\partial x}
++ v\frac{\partial \vec{V}}{\partial y}
++ w\frac{\partial \vec{V}}{\partial z}
+$$
+
+Where 
+- $$a$$ is acceleration field (vector) in $$m/s^2$$
+- $$\frac{d\vec{V}}{dt} = \frac{D\vec{V}}{Dt}$$ is the [material derivative](fluid-dynamics-basics.html#:~:text=Material,derivative) of $$\vec{V}$$, viewed from a Lagrangian POV[^1] (vector)
+- $$\frac{\partial \vec{V}}{\partial t}$$ is the local acceleration (variation of velocity at a fixed point)
+- $$u\frac{\partial \vec{V}}{\partial x} + v\frac{\partial \vec{V}}{\partial y} + w\frac{\partial \vec{V}}{\partial z}$$ is the acceleration from spatial variations
+
+In steady-state: $$\frac{\partial \vec{V}}{\partial t} = 0$$
+
+
+## Vorticity
+
+> $$\zeta = \nabla \times \vec{V}$$
+
+Where 
+- $$\zeta$$ is vorticity (vector) in rad/s
+- $$\nabla \times \vec{V} = \text{curl}\ \vec{V}$$ (read [curl](../math/3d.html#:~:text=Curl,-cur))
+
+We say the fluid is irrotational (does not rotate) when $$\zeta = 0$$.
+
+### Angular velocity
+
+$$\omega = \frac{1}{2} \zeta$$
+
+Where
+- $$\omega$$ is angular velocity (vector) in rad/s
+- $$\zeta$$ is vorticity (vector)
+
+
+## Angular deformation
+
+> $$\Omega_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}$$
+>
+> $$\Omega_{xz} = \frac{\partial w}{\partial x} + \frac{\partial u}{\partial z}$$
+>
+> $$\Omega_{yz} = \frac{\partial w}{\partial y} + \frac{\partial v}{\partial z}$$
+
+Where $$\Omega$$ is the angular deformation (scalar) in rad/s. Note $$\Omega$$ is calculated in a 2D plane.
+
+
+## Dilatation rate
+
+$$\text{dilatation rate} = \nabla \cdot \vec{V}$$
+
+Where 
+- The dilatation rate (scalar) is in Hz ($$s^{-1}$$)
+- $$\nabla \cdot \vec{V} = \text{div}\ \vec{V}$$ (read [div](../math/3d.html#:~:text=F-,Div))
+
+Dilatation rate tells whether a fluid is expanding or compressing (volume is changing).
+
+If fluid is incompressible: $$\nabla \cdot \vec{V} = 0$$
+
+
+## Continuity Equation
+
+> $$\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{V}) = 0$$
+>
+> $$\frac{\partial \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} + \frac{\partial (\rho w)}{\partial z} = 0$$
+
+Where $$\rho$$ is [density](properties.html#:~:text=Density)
+
+In steady-state: $$\frac{\partial \rho}{\partial t} = 0$$
+
+
+## Stream Function
+
+For incompressible 2D flow:
+
+$$\frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} = 0$$
+
+from continuity equation. Then we can define a function that describes $$u,\ v$$ to define streamlines.
+
+## Navier-Stokes
 
 Given an incompressible fluid (density $$\rho$$ is constant) and the velocity field $$V(x,y,z) = u\hat{i} + v\hat{j} + w\hat{k}$$, where $$u,\ v,\ w$$ represent the velocity field in the $$x,\ y,\ z$$ axis respectively:
 
@@ -81,6 +165,8 @@ Where
 
 > Steady:
 >
+> All time derivatives are 0.
+>
 > $$\frac{\partial V}{\partial t} = 0$$
 >
 > Per component:
@@ -115,3 +201,7 @@ Where
 The bigger $$\text{Re}$$ is, the more turbulent the flow is.
 
 If we have a plane with a very smooth surface, it has less air resistance but it causes the air to be more turbulent, since the viscous forces become smaller.
+
+## Dict
+
+[^1]: Lagrangian point of view: From the perspective of the moving material (fluid), different from the perspective of an exterior observer (Eulerian).

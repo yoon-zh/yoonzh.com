@@ -19,7 +19,7 @@ $$p + \gamma h = k$$
 
 Where
 - $$p$$ is pressure
-- $$\gamma = \rho g$$ is [specific weight](fluids-1.html#:~:text=Specific,Weight)
+- $$\gamma = \rho g$$ is [specific weight](properties.html#:~:text=Specific,Weight)
 - $$h$$ is height
 - $$k$$ is a constant real number
 
@@ -58,7 +58,7 @@ $$h = \frac{P}{\gamma}$$
 Where
 - $$h$$ is pressure head (height)
 - $$P$$ is pressure
-- $$\gamma = \rho g$$ is [specific weight](fluids-1.html#:~:text=Specific,Weight)
+- $$\gamma = \rho g$$ is [specific weight](properties.html#:~:text=Specific,Weight)
 
 In short, pressure head is the height of a liquid body $$h$$ that causes a pressure $$P$$. For example, if they ask you how high a water tank is given the pressure at the bottom, then you can use this equation.
 
@@ -87,7 +87,7 @@ See [this video](https://www.youtube.com/watch?v=TMhrBeGkYow) for an example whe
 Where
 - $$F$$ is force
 - $$P_s$$ is pressure in the liquid surface
-- $$\gamma = \rho g$$ is [specific weight](fluids-1.html#:~:text=Specific,Weight)
+- $$\gamma = \rho g$$ is [specific weight](properties.html#:~:text=Specific,Weight)
 - $$\bar{y}$$ is distance from centroid[^1] of plane to liquid surface
 - $$\theta$$ is the angle of the submerged object from the horizontal
 
@@ -109,7 +109,7 @@ Where
 - $$y_{cp}$$ is center of pressure
 - $$\bar{y}$$ is distance from centroid[^1] of plane to liquid surface
 - $$I_c$$ is moment of inertia about the central axis
-- $$\gamma$$ is [specific weight](fluids-1.html#:~:text=Specific,Weight)
+- $$\gamma$$ is [specific weight](properties.html#:~:text=Specific,Weight)
 - $$A$$ is area
 - $$P_s$$ is pressure in the liquid surface
 - $$\theta$$ is the angle of the submerged object from the horizontal
@@ -134,7 +134,7 @@ Where
 - $$R_x$$ is reaction force of the curved surface in the horizontal axis
 - $$A_v$$ is projected area of the curved surface on a vertical plane
 - $$P_s$$ is pressure in the liquid surface
-- $$\gamma$$ is [specific weight](fluids-1.html#:~:text=Specific,Weight)
+- $$\gamma$$ is [specific weight](properties.html#:~:text=Specific,Weight)
 - $$\bar{y}_v$$ is vertical distance from centroid[^1] of $$A_v$$ to liquid surface
 
 Vertical component:
@@ -145,7 +145,7 @@ Where
 - $$R_y$$ is reaction force of the curved surface in the vertical axis
 - $$P_s$$ is pressure in the liquid surface
 - $$A_h$$ is projected area of the curved surface on a horizontal plane
-- $$\gamma$$ is [specific weight](fluids-1.html#:~:text=Specific,Weight)
+- $$\gamma$$ is [specific weight](properties.html#:~:text=Specific,Weight)
 - $$V$$ is volume of the liquid above the curved surface
 
 Total:
@@ -168,7 +168,7 @@ Where
 
 Where
 - $$F_b$$ is buoyant force
-- $$\gamma$$ is [specific weight](fluids-1.html#:~:text=Specific,Weight) of the fluid
+- $$\gamma$$ is [specific weight](properties.html#:~:text=Specific,Weight) of the fluid
 - $$V$$ is volume of the object submerged in the fluid
 
 Notice we take the speficic weight of the *fluid*, but the volume of the *object*. This is because we care about the volume difference of the water applying pressure to the object, which is the volume occupied by the object itself.

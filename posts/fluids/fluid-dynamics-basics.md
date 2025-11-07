@@ -72,7 +72,7 @@ Where
 
 Where
 - $$\dot m$$ is mass flow rate
-- $$\rho$$ is [density](fluids-1.html#:~:text=Density)
+- $$\rho$$ is [density](properties.html#:~:text=Density)
 - $$Q$$ is [volume flow rate](#volume-flow-rate)
 
 If we assume conservation of mass ($$\dot m_{in} = \dot m_{out}$$), we have the following equation:
@@ -80,7 +80,7 @@ If we assume conservation of mass ($$\dot m_{in} = \dot m_{out}$$), we have the 
 $$\rho_1 A_1 V_1 = \rho_2 A_2 V_2$$
 
 Where
-- $$\rho$$ is [density](fluids-1.html#:~:text=Density)
+- $$\rho$$ is [density](properties.html#:~:text=Density)
 - $$A$$ is area (of tube, where the fluid flows)
 - $$V$$ is velocity (normal to the area A)
 
@@ -96,9 +96,9 @@ Within a streamline:
 
 Where
 - $$p$$ is fluid pressure (static)
-- $$\rho$$ is [density](fluids-1.html#:~:text=Density)
+- $$\rho$$ is [density](properties.html#:~:text=Density)
 - $$V$$ is velocity
-- $$\gamma$$ is [specific weight](fluids-1.html#:~:text=Specific,Weight)
+- $$\gamma$$ is [specific weight](properties.html#:~:text=Specific,Weight)
 - $$h$$ is height
 - $$k$$ is a constant
 
@@ -116,7 +116,7 @@ Consider this equation as a child of the [pressure distribution equation](fluid-
 Where
 - $$p_s$$ is stagnation pressure
 - $$p_{\infty}$$ is static pressure
-- $$\rho$$ is [density](fluids-1.html#:~:text=Density)
+- $$\rho$$ is [density](properties.html#:~:text=Density)
 - $$V_{\infty}$$ is upstream velocity
 
 Stagnation means velocity is 0.
