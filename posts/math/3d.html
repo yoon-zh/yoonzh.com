@@ -118,6 +118,11 @@
       <td>\(\frac{\partial f_x}{\partial x} + \frac{\partial f_y}{\partial y} + \frac{\partial f_z}{\partial z}\)</td>
       <td>Scalar</td>
     </tr>
+    <tr>
+      <td>laplacian \(\nabla^2 f\)</td>
+      <td>\(\sum_{i=1}^n \frac{\partial^2 f}{\partial x_i^2}\)</td>
+      <td>Same as input</td>
+    </tr>
   </tbody>
 </table>
 
@@ -167,6 +172,28 @@ F_x &amp; F_y &amp; F_z
 </blockquote>
 
 <p>Note: The output is a scalar!</p>
+
+<h2 id="laplacian">Laplacian</h2>
+
+<blockquote>
+\[\nabla^2 = \sum_{i=1}^n \frac{\partial^2}{\partial x_i^2}\]
+</blockquote>
+
+<p>Where \(\nabla^2\) is laplacian operator (not to be confused with <a href="#gradient">gradient</a> squared).</p>
+
+<p>\(\nabla^2\) is unique as it returns the same type of the output (scalar, vector in and out).</p>
+
+<p>Say we have a function \(f(x, y, z) = u \vec{i} + v \vec{j} + w \vec{k}\). Then:</p>
+
+\[\nabla^2 f = (\nabla^2 u,\ \nabla^2 v,\ \nabla^2 w)\]
+
+\[\nabla^2 f = \left(
+  \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}
+  \right) \hat{i} + \left(
+  \frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} + \frac{\partial^2 v}{\partial z^2}
+  \right) \hat{j} + \left(
+  \frac{\partial^2 w}{\partial x^2} + \frac{\partial^2 w}{\partial y^2} + \frac{\partial^2 w}{\partial z^2}
+  \right) \hat{k}\]
 
 <h2 id="implicit-derivative">Implicit Derivative</h2>
 
