@@ -127,6 +127,7 @@ Where
 - $$\nabla P$$ is the [gradient](../math/3d.html#:~:text=Scalar-,Gradient) of pressure, in Pa/m
 - $$\rho g$$ is the force due to gravity (may replace if an external force applies), in $$kg/m^3 \cdot m/s^2 = Pa/m$$
 - $$\mu \nabla^2 V$$ is the viscous diffusion of momentum, in $$Pa\cdot s \cdot m/s \cdot 1/m^2 = Pa/m$$
+- $$\nabla^2 V$$ is the [laplacian](../math/3d.html#:~:text=scalar!-,Laplacian) of velocity
 
 
 Per component:
