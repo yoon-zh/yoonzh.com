@@ -218,7 +218,7 @@ In 3D we consider forces from all direction, thus
 >
 > $$u \neq 0,\ v = 0,\ w = 0$$
 >
-> If flow is incompressible, then also:
+> Since flow is incompressible, then also:
 >
 > $$\text{div}\ V = 0$$
 >
