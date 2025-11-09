@@ -1,11 +1,11 @@
 ---
 layout: post
 title: deformation
-card_title: "Structure deformation"
+card_title: "Structure deformation and inclined sections"
 math: true
 url: /posts/mechanics/deformation
-excerpt: "2.1: How do beams deform under loading"
-date: 2025-11-06
+excerpt: "2: How do beams deform under loading, how to get stress on inclined sections"
+date: 2025-11-09
 tech_stack: [Mechanics]
 ---
 
