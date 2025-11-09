@@ -14,12 +14,12 @@ tech_stack: [Mechanics]
 | Name | Eq |
 |------|----|
 | Axial stress    | $$\sigma = \frac{F_v}{A}$$ |
-| Axial strain    | $$\epsilon = \frac{\Delta l}{l_o}$$ |
-| Young's Modulus | $$E = \frac{\sigma}{\epsilon}$$ |
+| Axial strain    | $$\varepsilon = \frac{\Delta l}{l_o}$$ |
+| Young's Modulus | $$E = \frac{\sigma}{\varepsilon}$$ |
 | Shear Stress    | $$\tau = \frac{F_s}{A}$$ |
 | Shear Strain    | $$\gamma = \frac{d}{l_o}$$ |
 | Shear Modulus   | $$G = \frac{\tau}{\gamma}$$ |
-| Poisson's Ratio | $$v_{xy} = -\frac{\epsilon_y}{\epsilon_x}$$ |
+| Poisson's Ratio | $$v_{xy} = -\frac{\varepsilon_y}{\varepsilon_x}$$ |
 | Bulk Modulus    | $$K = \frac{P}{\Delta V/V}$$ |
 
 ***
@@ -37,21 +37,25 @@ Units: [Pa]
 
 ## Axial strain
 
-$$\epsilon = \frac{\Delta l}{l_o}$$
+$$\varepsilon = \frac{\Delta l}{l_o}$$
 
 Where
-- $$\epsilon$$ is axial strain
+- $$\varepsilon$$ is axial strain
 - $$\Delta l$$ is change in length
 - $$l_o$$ is original length
 
+Units: Dimensionless
+
 ## Young's Modulus
 
-$$E = \frac{\sigma}{\epsilon}$$
+$$E = \frac{\sigma}{\varepsilon}$$
 
 Where
 - $$E$$ is Young's Modulus
 - $$\sigma$$ is stress
-- $$\epsilon$$ is strain
+- $$\varepsilon$$ is strain
+
+Units: [Pa]
 
 ## Shear Stress
 
@@ -62,6 +66,8 @@ Where
 - $$F_s$$ is shear force
 - $$A$$ is area
 
+Units: [Pa]
+
 ## Shear Strain
 
 $$\gamma = \frac{d}{l_o}$$
@@ -70,6 +76,9 @@ Where
 - $$\gamma$$ is shear strain
 - $$d$$ is deformation
 - $$l_o$$ is original length
+
+Units: Dimensionless
+
 
 ## Shear Modulus
 
@@ -80,14 +89,16 @@ Where
 - $$\tau$$ is shear stress
 - $$\gamma$$ is shear strain
 
+Units: [Pa]
+
 ## Poisson's Ratio
 
-$$v_{xy} = -\frac{\epsilon_y}{\epsilon_x}$$
+$$v_{xy} = -\frac{\varepsilon_y}{\varepsilon_x}$$
 
 Where
 - $$v_{xy}$$ is Poisson's Ratio
-- $$\epsilon_y$$ is lateral strain
-- $$\epsilon_x$$ is applied strain
+- $$\varepsilon_y$$ is lateral strain
+- $$\varepsilon_x$$ is applied strain
 
 ## Bulk Modulus
 
