@@ -9,6 +9,21 @@ date: 2025-11-04
 tech_stack: [Mechanics]
 ---
 
+## Eq Table
+
+| Name | Eq |
+|------|----|
+| Axial stress    | $$\sigma = \frac{F_v}{A}$$ |
+| Axial strain    | $$\epsilon = \frac{\Delta l}{l_o}$$ |
+| Young's Modulus | $$E = \frac{\sigma}{\epsilon}$$ |
+| Shear Stress    | $$\tau = \frac{F_s}{A}$$ |
+| Shear Strain    | $$\gamma = \frac{d}{l_o}$$ |
+| Shear Modulus   | $$G = \frac{\tau}{\gamma}$$ |
+| Poisson's Ratio | $$v_{xy} = -\frac{\epsilon_y}{\epsilon_x}$$ |
+| Bulk Modulus    | $$K = \frac{P}{\Delta V/V}$$ |
+
+***
+
 ## Axial stress
 
 $$\sigma = \frac{F_v}{A}$$
@@ -82,18 +97,3 @@ Where
 - $$K$$ is bulk modulus
 - $$P$$ is pressure
 - $$\Delta V/V$$ is volumetric strain
-
-***
-
-## Eq Table
-
-| Name | Eq |
-|------|----|
-| Axial stress    | $$\sigma = \frac{F_v}{A}$$ |
-| Axial strain    | $$\epsilon = \frac{\Delta l}{l_o}$$ |
-| Young's Modulus | $$E = \frac{\sigma}{\epsilon}$$ |
-| Shear Stress    | $$\tau = \frac{F_s}{A}$$ |
-| Shear Strain    | $$\gamma = \frac{d}{l_o}$$ |
-| Shear Modulus   | $$G = \frac{\tau}{\gamma}$$ |
-| Poisson's Ratio | $$v_{xy} = -\frac{\epsilon_y}{\epsilon_x}$$ |
-| Bulk Modulus    | $$K = \frac{P}{\Delta V/V}$$ |

@@ -41,3 +41,16 @@ In differential form:
 
 $$d\delta = \frac{N(x) dx}{E A(x)}$$
 
+## Stresses on inclined sections
+
+$$\sigma_{\theta} = \frac{F}{A} \cos^2{\theta}$$
+
+Where
+- $$\sigma_{\theta}$$ is normal stress on angle $$\theta$$
+- $$F$$ is force
+- $$A$$ is area
+- $$\theta$$ is angle of inclination
+
+$$\tau_{\theta} = -\frac{F}{A} \sin{\theta} \cos{\theta}$$
+
+Where $$\tau_{\theta}$$ is shear stress on angle $$\theta$$

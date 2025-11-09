@@ -4,7 +4,7 @@ title: diff
 card_title: "Fluids Differential Analysis"
 math: true
 url: /posts/fluids/diff
-excerpt: "navier"
+excerpt: "4: 2D-3D differential parameters, navier-stokes"
 date: 2025-11-06
 tech_stack: [Fluids]
 ---
