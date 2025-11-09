@@ -90,99 +90,7 @@
 </header>
 
 <div class="article-content">
-  <h2 id="axial-stress">Axial stress</h2>
-
-\[\sigma = \frac{F_v}{A}\]
-
-<p>Where</p>
-<ul>
-  <li>\(\sigma\) is axial stress</li>
-  <li>\(F_v\) is axial force</li>
-  <li>\(A\) is area</li>
-</ul>
-
-<p>Units: [Pa]</p>
-
-<h2 id="axial-strain">Axial strain</h2>
-
-\[\epsilon = \frac{\Delta l}{l_o}\]
-
-<p>Where</p>
-<ul>
-  <li>\(\epsilon\) is axial strain</li>
-  <li>\(\Delta l\) is change in length</li>
-  <li>\(l_o\) is original length</li>
-</ul>
-
-<h2 id="youngs-modulus">Young’s Modulus</h2>
-
-\[E = \frac{\sigma}{\epsilon}\]
-
-<p>Where</p>
-<ul>
-  <li>\(E\) is Young’s Modulus</li>
-  <li>\(\sigma\) is stress</li>
-  <li>\(\epsilon\) is strain</li>
-</ul>
-
-<h2 id="shear-stress">Shear Stress</h2>
-
-\[\tau = \frac{F_s}{A}\]
-
-<p>Where</p>
-<ul>
-  <li>\(\tau\) is shear strain</li>
-  <li>\(F_s\) is shear force</li>
-  <li>\(A\) is area</li>
-</ul>
-
-<h2 id="shear-strain">Shear Strain</h2>
-
-\[\gamma = \frac{d}{l_o}\]
-
-<p>Where</p>
-<ul>
-  <li>\(\gamma\) is shear strain</li>
-  <li>\(d\) is deformation</li>
-  <li>\(l_o\) is original length</li>
-</ul>
-
-<h2 id="shear-modulus">Shear Modulus</h2>
-
-\[G = \frac{\tau}{\gamma}\]
-
-<p>Where</p>
-<ul>
-  <li>\(G\) is shear modulus</li>
-  <li>\(\tau\) is shear stress</li>
-  <li>\(\gamma\) is shear strain</li>
-</ul>
-
-<h2 id="poissons-ratio">Poisson’s Ratio</h2>
-
-\[v_{xy} = -\frac{\epsilon_y}{\epsilon_x}\]
-
-<p>Where</p>
-<ul>
-  <li>\(v_{xy}\) is Poisson’s Ratio</li>
-  <li>\(\epsilon_y\) is lateral strain</li>
-  <li>\(\epsilon_x\) is applied strain</li>
-</ul>
-
-<h2 id="bulk-modulus">Bulk Modulus</h2>
-
-\[K = \frac{P}{\Delta V/V}\]
-
-<p>Where</p>
-<ul>
-  <li>\(K\) is bulk modulus</li>
-  <li>\(P\) is pressure</li>
-  <li>\(\Delta V/V\) is volumetric strain</li>
-</ul>
-
-<hr />
-
-<h2 id="eq-table">Eq Table</h2>
+  <h2 id="eq-table">Eq Table</h2>
 
 <table>
   <thead>
@@ -198,11 +106,11 @@
     </tr>
     <tr>
       <td>Axial strain</td>
-      <td>\(\epsilon = \frac{\Delta l}{l_o}\)</td>
+      <td>\(\varepsilon = \frac{\Delta l}{l_o}\)</td>
     </tr>
     <tr>
       <td>Young’s Modulus</td>
-      <td>\(E = \frac{\sigma}{\epsilon}\)</td>
+      <td>\(E = \frac{\sigma}{\varepsilon}\)</td>
     </tr>
     <tr>
       <td>Shear Stress</td>
@@ -218,7 +126,7 @@
     </tr>
     <tr>
       <td>Poisson’s Ratio</td>
-      <td>\(v_{xy} = -\frac{\epsilon_y}{\epsilon_x}\)</td>
+      <td>\(v_{xy} = -\frac{\varepsilon_y}{\varepsilon_x}\)</td>
     </tr>
     <tr>
       <td>Bulk Modulus</td>
@@ -226,6 +134,108 @@
     </tr>
   </tbody>
 </table>
+
+<hr />
+
+<h2 id="axial-stress">Axial stress</h2>
+
+\[\sigma = \frac{F_v}{A}\]
+
+<p>Where</p>
+<ul>
+  <li>\(\sigma\) is axial stress</li>
+  <li>\(F_v\) is axial force</li>
+  <li>\(A\) is area</li>
+</ul>
+
+<p>Units: [Pa]</p>
+
+<h2 id="axial-strain">Axial strain</h2>
+
+\[\varepsilon = \frac{\Delta l}{l_o}\]
+
+<p>Where</p>
+<ul>
+  <li>\(\varepsilon\) is axial strain</li>
+  <li>\(\Delta l\) is change in length</li>
+  <li>\(l_o\) is original length</li>
+</ul>
+
+<p>Units: Dimensionless</p>
+
+<h2 id="youngs-modulus">Young’s Modulus</h2>
+
+\[E = \frac{\sigma}{\varepsilon}\]
+
+<p>Where</p>
+<ul>
+  <li>\(E\) is Young’s Modulus</li>
+  <li>\(\sigma\) is stress</li>
+  <li>\(\varepsilon\) is strain</li>
+</ul>
+
+<p>Units: [Pa]</p>
+
+<h2 id="shear-stress">Shear Stress</h2>
+
+\[\tau = \frac{F_s}{A}\]
+
+<p>Where</p>
+<ul>
+  <li>\(\tau\) is shear strain</li>
+  <li>\(F_s\) is shear force</li>
+  <li>\(A\) is area</li>
+</ul>
+
+<p>Units: [Pa]</p>
+
+<h2 id="shear-strain">Shear Strain</h2>
+
+\[\gamma = \frac{d}{l_o}\]
+
+<p>Where</p>
+<ul>
+  <li>\(\gamma\) is shear strain</li>
+  <li>\(d\) is deformation</li>
+  <li>\(l_o\) is original length</li>
+</ul>
+
+<p>Units: Dimensionless</p>
+
+<h2 id="shear-modulus">Shear Modulus</h2>
+
+\[G = \frac{\tau}{\gamma}\]
+
+<p>Where</p>
+<ul>
+  <li>\(G\) is shear modulus</li>
+  <li>\(\tau\) is shear stress</li>
+  <li>\(\gamma\) is shear strain</li>
+</ul>
+
+<p>Units: [Pa]</p>
+
+<h2 id="poissons-ratio">Poisson’s Ratio</h2>
+
+\[v_{xy} = -\frac{\varepsilon_y}{\varepsilon_x}\]
+
+<p>Where</p>
+<ul>
+  <li>\(v_{xy}\) is Poisson’s Ratio</li>
+  <li>\(\varepsilon_y\) is lateral strain</li>
+  <li>\(\varepsilon_x\) is applied strain</li>
+</ul>
+
+<h2 id="bulk-modulus">Bulk Modulus</h2>
+
+\[K = \frac{P}{\Delta V/V}\]
+
+<p>Where</p>
+<ul>
+  <li>\(K\) is bulk modulus</li>
+  <li>\(P\) is pressure</li>
+  <li>\(\Delta V/V\) is volumetric strain</li>
+</ul>
 
 </div>
 </article>
