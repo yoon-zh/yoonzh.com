@@ -1,0 +1,226 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Curvature and stress in deformed beams - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Curvature and stress in deformed beams
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">Mechanics</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-11-10T00:00:00+00:00">
+        📅 2025/11/10
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h2 id="strain-on-bending">Strain on bending</h2>
+
+<blockquote>
+\[\varepsilon_x - -\frac{y}{\rho}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\varepsilon_x\) is normal strain</li>
+  <li>\(y\) is distance of longitudinal line from neutral surface (where the beam length does not change under bending)</li>
+  <li>\(\rho\) is radius of curvature (defining the arc of the bent beam)</li>
+</ul>
+
+<p>Reminder, for an arc (part of a circle):</p>
+
+\[L = \theta r\]
+
+<p>Where</p>
+<ul>
+  <li>\(L\) is length of arc</li>
+  <li>\(\theta\) is angle</li>
+  <li>\(r\) is radius</li>
+</ul>
+
+<p>Sometimes a quantity called curvature is defined as \(\kappa = \frac{1}{\rho}\), and the equations on this page are expressed in terms of \(\kappa\) instead of \(\rho\).</p>
+
+<h2 id="flexure-formula">Flexure formula</h2>
+
+\[\sigma_x = -\frac{M y}{I}\]
+
+<p>Where</p>
+<ul>
+  <li>\(\sigma_x\) is normal stress</li>
+  <li>\(M\) is bending moment</li>
+  <li>\(y\) is distance of plane from neutral surface</li>
+  <li>\(I\) is inertial moment of the cross section (with respect to the neutral axis)</li>
+</ul>
+
+<h3 id="axial-loads">Axial loads</h3>
+
+<p>If axial loads are present, we can add such force to the flexure formula to get the normal stress:</p>
+
+\[\sigma_x = \frac{N}{A} -\frac{M y}{I}\]
+
+<p>Where</p>
+<ul>
+  <li>\(N\) is axial force</li>
+  <li>\(A\) is cross-section area</li>
+</ul>
+
+<p>This assumes the axial load acts in the centroid of the cross area. If this is not the case, we can decompose it as a central force and a moment caused by the offset:</p>
+
+\[\sigma_x = \frac{N}{A} - \frac{Ney}{y} -\frac{M y}{I}\]
+
+<p>Where</p>
+<ul>
+  <li>\(e\) is distance from centroid to where N is applied</li>
+</ul>
+
+<p>In this last equation, \(M\) is any other bending moments from external forces.</p>
+
+<h2 id="maximum-stress-in-cross-section">Maximum stress in cross section</h2>
+
+<p>From the previous equations, we can see that \(\sigma_x\) is maximum when \(y\) is maximum (aka. the furthest point from the center of a beam).</p>
+
+<p>Let \(c = y_{\text{max}}\) be the furthest point from neutral axis in a beam. Assuming a beam is symmetric about the neutral axis, \(c\) is the same from up and down the beam. Then we can rewrite flexure formula as:</p>
+
+\[\sigma_{\text{max}} = \frac{M c}{I}\]
+
+<blockquote>
+  <p>Let \(S = \frac{I}{c}\) be the section moduli. Then the maximum bending stress becomes:</p>
+
+\[\sigma_{\text{max}} = \frac{M}{S}\]
+
+  <p>Where the moment can be calculated as:</p>
+
+\[M = \frac{EI}{\rho}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(E\) is Young’s Modulus</li>
+  <li>\(I\) is inertial moment of the cross section (with respect to the neutral axis)</li>
+  <li>\(\rho\) is radius of curvature</li>
+</ul>
+
+<h3 id="shear-stress-in-cross-section">Shear stress in cross section</h3>
+
+<blockquote>
+\[\tau = \frac{VQ}{Ib}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(\tau\) is shear stress in a cross section for a bent beam</li>
+  <li>\(V\) is shear force</li>
+  <li>\(Q = \int y dA\) is first moment of area above the level of \(\tau\) section</li>
+  <li>\(I\) is inertial moment of the cross section</li>
+  <li>\(b\) is width of beam in the cross section</li>
+</ul>
+
+<p>Q is annoying to do by hand, for which it is common to have some tables with values of Q for different shapes (much like for moment of inertia).</p>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
