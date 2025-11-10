@@ -4,7 +4,7 @@ title: curvature
 card_title: "Curvature and stress in deformed beams"
 math: true
 url: /posts/mechanics/curvature
-excerpt: "4, 5: Behavior of beams deforming under loads and moments, how to calculate strain and stress in simple cases."
+excerpt: "4, 5, 6.1: Behavior of beams deforming under loads and moments, how to calculate strain and stress in simple cases."
 date: 2025-11-10
 tech_stack: [Mechanics]
 ---
@@ -38,6 +38,26 @@ Where
 - $$M$$ is bending moment
 - $$y$$ is distance of plane from neutral surface
 - $$I$$ is inertial moment of the cross section (with respect to the neutral axis)
+
+### Axial loads
+
+If axial loads are present, we can add such force to the flexure formula to get the normal stress:
+
+$$\sigma_x = \frac{N}{A} -\frac{M y}{I}$$
+
+Where
+- $$N$$ is axial force
+- $$A$$ is cross-section area
+
+This assumes the axial load acts in the centroid of the cross area. If this is not the case, we can decompose it as a central force and a moment caused by the offset:
+
+$$\sigma_x = \frac{N}{A} - \frac{Ney}{y} -\frac{M y}{I}$$
+
+Where
+- $$e$$ is distance from centroid to where N is applied
+
+In this last equation, $$M$$ is any other bending moments from external forces.
+
 
 ## Maximum stress in cross section
 
