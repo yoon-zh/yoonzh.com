@@ -1,0 +1,234 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>BJT configurations - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+  <script src="https://neilturley.dev/netlistsvg/elk.bundled.js"></script>
+  <script src="https://neilturley.dev/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="/scripts/circuits.js"></script>
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/project.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    BJT configurations
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">EE</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-11-11T00:00:00+00:00">
+        📅 2025/11/11
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <table>
+  <thead>
+    <tr>
+      <th>Configuration</th>
+      <th>\(A_v\)</th>
+      <th>Input R</th>
+      <th>Output R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Common collector</td>
+      <td>\(A_v &gt; 1\)</td>
+      <td>\(R_1 | R_2 | R_{ib}\)</td>
+      <td>\(R_C | r_o\)</td>
+    </tr>
+    <tr>
+      <td>Common base</td>
+      <td>\(A_v \approx 1\)</td>
+      <td>\(R_1 | R_2 | R_{ib}\)</td>
+      <td>\(\frac{r_{\pi}}{\beta + 1} | R_E | r_o\)</td>
+    </tr>
+    <tr>
+      <td>Common emitter</td>
+      <td>\(A_v &gt; 1\)</td>
+      <td>\(\frac{r_{\pi}}{\beta + 1}\)</td>
+      <td>\(r_o | R_C\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="common-collector-cc">Common Collector CC</h2>
+
+<p>Also called “emitter follower”</p>
+
+<p>DC</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Small Signal</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<h2 id="common-base-cb">Common Base CB</h2>
+
+<p>DC</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Small Signal</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<h2 id="common-emitter-ce">Common Emitter CE</h2>
+
+<p>DC</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+<p>Small Signal</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+  
+  </script>
+</div>
+
+\[r_o = \frac{V_A}{I_C}\]
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

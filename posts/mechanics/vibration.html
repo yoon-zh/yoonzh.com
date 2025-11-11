@@ -115,6 +115,69 @@
 
 <h2 id="resonant-frequency">Resonant frequency</h2>
 
+<table>
+  <thead>
+    <tr>
+      <th>q</th>
+      <th>Free undamped</th>
+      <th>Forced undamped</th>
+      <th>Torsion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Resonance frequency \(\omega\)</td>
+      <td>\(\sqrt{\frac{K}{I}} = \sqrt{\frac{g}{l}}\)</td>
+      <td>\(\sqrt{\frac{K}{m}}\)</td>
+      <td>\(\sqrt{\frac{K}{I}}\)</td>
+    </tr>
+    <tr>
+      <td>Stiffness \(K\)</td>
+      <td>\(mgl\)</td>
+      <td>\(\frac{3 E I}{L^3}\)</td>
+      <td>\(\frac{GJ}{L}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="free-undamped-system">Free undamped system</h3>
+
+<p>Frequency:</p>
+
+\[\omega = \sqrt{\frac{K}{m}}\]
+
+<p>Where</p>
+<ul>
+  <li>\(\omega\) is natural resonance frequency</li>
+  <li>\(K\) is stiffness of object</li>
+  <li>\(m\) is mass of object</li>
+</ul>
+
+\[K = mgl\]
+
+<p>Where</p>
+<ul>
+  <li>\(m\) is mass of object</li>
+  <li>\(g\) is gravity</li>
+  <li>\(l\) is length of spring</li>
+</ul>
+
+<p>Response:</p>
+
+\[x(t) = A_o \sin{\omega t + \phi_o}\]
+
+<p>Where</p>
+<ul>
+  <li>\(A_o\) is amplitude of oscillation</li>
+  <li>\(\omega\) is natural resonance frequency</li>
+  <li>\(t\) is time</li>
+  <li>\(\phi_o\) is phase (initial position, for \(t = 0\))</li>
+</ul>
+
+<h3 id="forced-undamped-system-1-degree-of-freedom">Forced undamped system, 1 degree of freedom</h3>
+
+<p>Frequency:</p>
+
 \[\omega = \sqrt{\frac{K}{M}}\]
 
 <p>Where</p>
@@ -122,6 +185,46 @@
   <li>\(\omega\) is natural resonance frequency</li>
   <li>\(K\) is stiffness of object</li>
   <li>\(M\) is mass of object</li>
+</ul>
+
+\[K = \frac{3 E I}{L^3}\]
+
+<p>Where</p>
+<ul>
+  <li>\(E\) is <a href="elastic.html#:~:text=Dimensionless-,Young’s%20Modulus">Young’s Modulus</a></li>
+  <li>\(I\) is area moment of inertia</li>
+  <li>\(L\) is length of beam/spring</li>
+</ul>
+
+<h3 id="forced-damped">Forced damped</h3>
+
+\[f_d = f_n \sqrt{1 - \zeta^2}\]
+
+<p>Where</p>
+<ul>
+  <li>\(f_d\) is damped natural frequency</li>
+  <li>\(f_n\) is undamped natural frequency</li>
+  <li>\(\zeta\) is damping ratio</li>
+</ul>
+
+<h3 id="torsion">Torsion</h3>
+
+\[\omega = \sqrt{\frac{K_t}{I}}\]
+
+<p>Where</p>
+<ul>
+  <li>\(\omega\) is natural resonance frequency</li>
+  <li>\(K_t\) is torsional stiffness of object</li>
+  <li>\(I\) is mass moment of inertia</li>
+</ul>
+
+\[K_t = \frac{GJ}{L}\]
+
+<p>Where</p>
+<ul>
+  <li>\(G\) is <a href="elastic.html#:~:text=Dimensionless-,Shear%20Modulus">shear modulus</a></li>
+  <li>\(J\) is polar moment of inertia</li>
+  <li>\(L\) is length of spring/shaft</li>
 </ul>
 
 </div>
