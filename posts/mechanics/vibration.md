@@ -30,9 +30,9 @@ $$\frac{1}{k_{eq}} = \sum \frac{1}{k_i}$$
 
 aka same as capacitors.
 
-## Resonant frequency
+## Resonance frequency
 
-| q                               | Free undamped | Forced undamped | Torsion |
+| q                               | Free | Forced (cantilever) | Torsion |
 |---------------------------------|---------------|-----------------|---------|
 | Resonance frequency $$\omega$$  | $$\sqrt{\frac{K}{I}} = \sqrt{\frac{g}{l}}$$ | $$\sqrt{\frac{K}{m}}$$ | $$\sqrt{\frac{K}{I}}$$ |
 | Stiffness $$K$$                 | $$mgl$$ | $$\frac{3 E I}{L^3}$$ | $$\frac{GJ}{L}$$ |
@@ -67,7 +67,7 @@ Where
 - $$\phi_o$$ is phase (initial position, for $$t = 0$$)
 
 
-### Forced undamped system, 1 degree of freedom
+### Forced undamped system, 1 degree of freedom, cantilever
 
 Frequency:
 
@@ -85,7 +85,7 @@ Where
 - $$I$$ is area moment of inertia
 - $$L$$ is length of beam/spring
 
-### Forced damped
+## Frequency for damped systems
 
 $$f_d = f_n \sqrt{1 - \zeta^2}$$
 
