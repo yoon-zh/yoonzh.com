@@ -1,0 +1,95 @@
+{
+  "modules": {
+    "npn-ce-ss": {
+      "ports": {
+        "Vin": {"direction": "output", "bits": [-11]},
+        "Vout": {"direction": "output", "bits": [-12]}
+      },
+      "cells": {
+        "gmVpi": {
+          "type": "i",
+          "connections": {
+            "+": [-12],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "RC": {
+          "type": "r_v",
+          "connections": {
+            "A": [-12],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "ro": {
+          "type": "r_v",
+          "connections": {
+            "A": [-12],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "Vs": {
+          "type": "v",
+          "connections": {
+            "+": [13],
+            "-": [0]
+          },
+          "port_directions": {
+            "+": "input",
+            "-": "output"
+          }
+        },
+        "Rs": {
+          "type": "r_h",
+          "connections": {
+            "A": [13],
+            "B": [-11]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "R1 || R2": {
+          "type": "r_v",
+          "connections": {
+            "A": [-11],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "rpi": {
+          "type": "r_v",
+          "connections": {
+            "A": [-11],
+            "B": [0]
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "output"
+          }
+        },
+        "gnd": {
+          "type": "gnd",
+          "connections": {
+            "A": [0]
+          }
+        }
+      }
+    }
+  }
+}
