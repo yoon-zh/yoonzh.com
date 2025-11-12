@@ -125,6 +125,48 @@
   </tbody>
 </table>
 
+<hr />
+
+<h2 id="small-signal-parameters">Small Signal parameters</h2>
+
+\[r_{\pi} = \frac{\beta V_T}{I_{CQ}}\]
+
+<p>Where</p>
+<ul>
+  <li>\(r_{\pi}\) is diffusion resistance (base-emitter input resistance)</li>
+  <li>\(\beta\) is common-emitter current gain constant</li>
+  <li>\(V_T\) is thermal voltage (around 0.026 V at 20°C)</li>
+  <li>\(I_{CQ}\) is collector current at Q-point</li>
+</ul>
+
+\[r_o = \frac{V_A}{I_{CQ}}\]
+
+<p>Where</p>
+<ul>
+  <li>\(r_o\) is output resistance of transistor (due to collector voltage, aka early effect)</li>
+  <li>\(V_A\) is early voltage</li>
+  <li>\(I_{CQ}\) is collector current at Q-point</li>
+</ul>
+
+\[g_m = \frac{I_{CQ}}{V_T}\]
+
+<p>Where</p>
+<ul>
+  <li>\(g_m\) is transconductance (current from transistor given input voltage)</li>
+  <li>\(I_{CQ}\) is collector current at Q-point</li>
+  <li>\(V_T\) is thermal voltage (around 0.026 V at 27°C)</li>
+</ul>
+
+<blockquote>
+  <p>Note: \(r_{\pi}\) and \(g_m\) are related:</p>
+
+\[g_m r_{\pi} = \beta\]
+
+  <p>Where \(\beta\) is common-emitter current gain constant</p>
+</blockquote>
+
+<hr />
+
 <h2 id="common-collector-cc">Common Collector CC</h2>
 
 <p>Also called “emitter follower”</p>
@@ -132,10 +174,10 @@
 <p>DC</p>
 
 <!-- _includes/circuit.html -->
-<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+<div class="circuit-container" id="circuit-npn-cc" data-circuit-container="">
   <script type="application/json" data-circuit-content="">
   
-    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+    {"modules":{"npn-cc":{"ports":{"Vin":{"direction":"input","bits":[1]},"Vout":{"direction":"output","bits":[2]}},"cells":{"npn":{"type":"q_npn","connections":{"C":[1],"B":[3],"E":[2]},"port_directions":{"B":"input","C":"input","E":"output"}},"RE":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RL":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}},"Vs":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"Rs":{"type":"r_h","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Cc":{"type":"c_h","connections":{"A":[5],"B":[3]},"port_directions":{"A":"input","B":"output"}}}}}}
   
   </script>
 </div>
@@ -143,13 +185,26 @@
 <p>Small Signal</p>
 
 <!-- _includes/circuit.html -->
-<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+<div class="circuit-container" id="circuit-npn-cc-ss" data-circuit-container="">
   <script type="application/json" data-circuit-content="">
   
-    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+    {"modules":{"npn-cc-ss":{"ports":{"Vout":{"direction":"output","bits":[3]}},"cells":{"Vs":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"Rs":{"type":"r_h","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"R1 || R2":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"rpi":{"type":"r_h","connections":{"A":[2],"B":[3]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}},"gmVpi":{"type":"i","connections":{"+":[3],"-":[0]},"port_directions":{"+":"input","-":"output"}},"ro":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RE":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RL":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}}}}}}
   
   </script>
 </div>
+
+\[R_i = r_{\pi} + (1 + \beta) R_E \| R_L\]
+
+\[R_o = \frac{r_{\pi} + R_s}{1 + \beta} \| R_E\]
+
+\[A_v = \frac{g_m (R_E \| R_L)}{1 + g_m (R_E \| R_L)}\]
+
+\[R_{\text{loss}} = \frac{R_i}{R_i + R_s}\]
+
+<details>
+   <summary>Full version </summary>
+   $$R_i = r_{\pi} + (1 + \beta) R_E \| R_L \| r_o$$
+</details>
 
 <h2 id="common-base-cb">Common Base CB</h2>
 
@@ -175,15 +230,21 @@
   </script>
 </div>
 
+\[R_i = \frac{r_{\pi}}{1 + \beta}\]
+
+\[R_o = R_C\]
+
+\[A_v = g_m R_C \| R_L\]
+
 <h2 id="common-emitter-ce">Common Emitter CE</h2>
 
 <p>DC</p>
 
 <!-- _includes/circuit.html -->
-<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+<div class="circuit-container" id="circuit-npn-ce" data-circuit-container="">
   <script type="application/json" data-circuit-content="">
   
-    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+    {"modules":{"npn-ce":{"ports":{"Vin":{"direction":"input","bits":[1]},"Vout":{"direction":"output","bits":[2]}},"cells":{"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RL":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}},"Vs":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"Rs":{"type":"r_h","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Cc":{"type":"c_h","connections":{"A":[5],"B":[3]},"port_directions":{"A":"input","B":"output"}}}}}}
   
   </script>
 </div>
@@ -191,15 +252,96 @@
 <p>Small Signal</p>
 
 <!-- _includes/circuit.html -->
-<div class="circuit-container" id="circuit-npn-commonemitter" data-circuit-container="">
+<div class="circuit-container" id="circuit-npn-ce-ss" data-circuit-container="">
   <script type="application/json" data-circuit-content="">
   
-    {"modules":{"npn-commonemitter":{"cells":{"Vcc":{"type":"v","connections":{"+":[1],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[1],"B":[2]},"port_directions":{"A":"input","B":"output"}},"npn":{"type":"q_npn","connections":{"C":[2],"B":[3],"E":[0]},"port_directions":{"B":"input","C":"input","E":"output"}},"RB":{"type":"r_h","connections":{"A":[4],"B":[3]},"port_directions":{"A":"input","B":"output"}},"VB":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
+    {"modules":{"npn-ce-ss":{"ports":{"Vin":{"direction":"output","bits":[-11]},"Vout":{"direction":"output","bits":[-12]}},"cells":{"gmVpi":{"type":"i","connections":{"+":[-12],"-":[0]},"port_directions":{"+":"input","-":"output"}},"RC":{"type":"r_v","connections":{"A":[-12],"B":[0]},"port_directions":{"A":"input","B":"output"}},"ro":{"type":"r_v","connections":{"A":[-12],"B":[0]},"port_directions":{"A":"input","B":"output"}},"Vs":{"type":"v","connections":{"+":[13],"-":[0]},"port_directions":{"+":"input","-":"output"}},"Rs":{"type":"r_h","connections":{"A":[13],"B":[-11]},"port_directions":{"A":"input","B":"output"}},"R1 || R2":{"type":"r_v","connections":{"A":[-11],"B":[0]},"port_directions":{"A":"input","B":"output"}},"rpi":{"type":"r_v","connections":{"A":[-11],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}}}}}}
   
   </script>
 </div>
 
-\[r_o = \frac{V_A}{I_C}\]
+\[R_i = r_{\pi}\]
+
+\[R_o = R_C \| r_o\]
+
+\[A_v = -g_m (R_C \| R_L \| r_o)\]
+
+\[R_{\text{loss}} = \frac{R1 \| R2 \| r_{\pi}}{R1 \| R2 \| r_{\pi} + R_s\]
+
+<p>Usage: Gain stage</p>
+
+<h3 id="common-emitter-with-resistor-degradation">Common emitter with resistor (degradation)</h3>
+
+<p>DC</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-cer" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    null
+  
+  </script>
+</div>
+
+<p>Small Signal</p>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-cer-ss" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    null
+  
+  </script>
+</div>
+
+\[R_i = r_{\pi} + (1 + \beta) R_E\]
+
+\[R_o = R_C \| r_o\]
+
+\[A_v = -\frac{g_m (R_C \| R_L)}{1 + g_m R_E}\]
+
+<details>
+   <summary>Full version of Av </summary>
+   $$A_v = -\frac{g_m (R_C \| R_L \| r_o)}{1 + g_m R_E + \frac{R_E}{r_{\pi}}}$$
+
+   The equation shown first omits r_o and a minor term in the denominator.
+</details>
+
+\[R_{\text{loss}} = \frac{R_i}{R_i + R_s}\]
+
+<p>Usage: Gain stage, \(R_E\) provides more stability</p>
+
+<p>Some intuition on CE with resistor <a href="https://www.reddit.com/r/AskElectronics/comments/18zbqlx/help_me_understand_common_emitter_amplifier/">here</a></p>
+
+<h2 id="diff-amp">Diff Amp</h2>
+
+\[R_i = 2 r_{\pi}\]
+
+\[R_o = R_c \| r_o\]
+
+\[A_v = -\frac{1}{2} A_v (CE) \approx \frac{g_m R_C}{2}\]
+
+<h2 id="darlington-pair">Darlington Pair</h2>
+
+\[R_i = r_{\pi 1} + (1 + \beta_1) r_{\pi 2}\]
+
+\[R_o = R_C \| r_o \approx R_C\]
+
+\[A_v = \frac{\beta_1 \beta_2 R_C}{r_{\pi 1} + (1 + \beta_1) r_{\pi 2}}\]
+
+<h2 id="current-mirror">Current Mirror</h2>
+
+\[I_{C2} = \frac{I_{REF}}{1 + \frac{2}{\beta}} \approx I_{REF}\]
+
+\[R_o = r_{o2}\]
+
+<h2 id="widlar-current-source">Widlar Current source</h2>
+
+\[I_{C2} = V_T \ln{\frac{I_{REF}}{I_{C2}}}\]
+
+<p>\(I_{C2}\) must be solved numerically.</p>
+
+\[R_o = r_{o2} (1 + g_{m2} R_E)\]
 
 </div>
 </article>
