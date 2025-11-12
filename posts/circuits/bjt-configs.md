@@ -28,12 +28,27 @@ Where
 - $$V_T$$ is thermal voltage (around 0.026 V at 20°C)
 - $$I_{CQ}$$ is collector current at Q-point
 
+
 $$r_o = \frac{V_A}{I_{CQ}}$$
 
 Where
-- $$r_o$$ is output resistance of transistor (due to collector voltage)
+- $$r_o$$ is output resistance of transistor (due to collector voltage, aka early effect)
 - $$V_A$$ is early voltage
 - $$I_{CQ}$$ is collector current at Q-point
+
+
+$$g_m = \frac{I_{CQ}}{V_T}$$
+
+Where 
+- $$g_m$$ is transconductance (current from transistor given input voltage)
+- $$I_{CQ}$$ is collector current at Q-point
+- $$V_T$$ is thermal voltage (around 0.026 V at 27°C)
+
+> Note: $$r_{\pi}$$ and $$g_m$$ are related:
+>
+> $$g_m r_{\pi} = \beta$$
+>
+> Where $$\beta$$ is common-emitter current gain constant
 
 ***
 
@@ -43,12 +58,17 @@ Also called "emitter follower"
 
 DC
 
-{% include circuit.html id="npn-commonemitter" from_data=true %}
+{% include circuit.html id="npn-cc" from_data=true %}
 
 Small Signal
 
-{% include circuit.html id="npn-commonemitter" from_data=true %}
+{% include circuit.html id="npn-cc-ss" from_data=true %}
 
+$$R_i = r_{\pi} + (1 + \beta) R_E \| R_L$$
+
+$$R_o = \frac{r_{\pi} + R_s}{}$$
+
+$$R_{\text{loss}} = \frac{R_i}{R_i + R_s}$$
 
 ## Common Base CB
 
@@ -77,6 +97,8 @@ $$R_o = R_C \| r_o$$
 
 $$A_v = -g_m (R_C \| R_L \| r_o)$$
 
+$$R_{\text{loss}} = \frac{R1 \| R2 \| r_{\pi}}{R1 \| R2 \| r_{\pi} + R_s$$
+
 Usage: Gain stage
 
 ### Common emitter with resistor (degradation)
@@ -89,11 +111,18 @@ Small Signal
 
 {% include circuit.html id="npn-cer-ss" from_data=true %}
 
-$$R_i = r_{\pi}$$
+$$R_i = r_{\pi} + (1 + \beta) R_E$$
 
 $$R_o = R_C \| r_o$$
 
-$$A_v = -g_m (R_C \| R_L \| r_o)$$
+$$A_v = -\frac{g_m (R_C \| R_L)}{1 + g_m R_E}$$
+
+<details>
+   <summary>Full version of Av </summary>
+   $$A_v = -\frac{g_m (R_C \| R_L \| r_o)}{1 + g_m R_E + \frac{R_E}{r_{\pi}}}$$
+</details>
+
+$$R_{\text{loss}} = \frac{R_i}{R_i + R_s}$$
 
 Usage: Gain stage, $$R_E$$ provides more stability
 
