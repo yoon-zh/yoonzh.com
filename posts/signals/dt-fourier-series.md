@@ -1,17 +1,17 @@
 ---
 layout: hidden
 title: dt-fourier-series
-card_title: "Discrete Time Fourier Transform"
+card_title: "Discrete Time Fourier Series"
 math: true
 url: /posts/signals/dt-fourier-series
-excerpt: "13: Definition and properties"
+excerpt: "13.1: Definition and properties"
 date: 2025-11-13
 tech_stack: [Signals]
 ---
 
 ## Definition
 
-$$x[n] = \sum_{k} a_k e^{jk\Omega_0 t}$$
+$$x[n] = \sum_{k} a_k e^{jk\Omega_0 n}$$
 
 Where
 - $$k$$ is the counter (integer, real number)
