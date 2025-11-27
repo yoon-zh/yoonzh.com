@@ -15,16 +15,16 @@ When a bar deforms under a load, the force is doing work on the bar. We can say 
 
 For hookean bars (linear elastic):
 
-$$U = \frac{F}{2} \delta$$
-
-$$U = \frac{F^2 L}{2EA}$$
+> $$U = \frac{F}{2} \delta$$
+>
+> $$U = \frac{F^2 L}{2EA}$$
 
 Where
 - $$U$$ is strain energy
-- $$\delta$$ is deformation
+- $$\delta$$ is [deformation](deformation.html#:~:text=deformation-,Deformation)
 - $$F$$ is force
 - $$L$$ is length
-- $$E$$ is Young's Modulus
+- $$E$$ is [Young's Modulus](elastic.html#:~:text=Dimensionless-,Young’s%20Modulus)
 - $$A$$ is area
 
 Of course, this undergoes multiple assumptions. Most importantly, we assume the strain is within the linear region of the [stress-strain curve](https://en.wikipedia.org/wiki/Stress–strain_curve).
@@ -33,7 +33,11 @@ We can model the strain energy as a sum:
 
 $$U = \sum_{i=1}^{n} \frac{N_i^2 L_i}{2E_i A_i}$$
 
-Where n is the number of sections in the bar, whenever properties between sections change. If not discrete, turn into integral.
+Where 
+- $$n$$ is the number of sections in the bar, whenever properties between sections change
+- $$N$$ is internal force at section $$i$$
+
+If not discrete, turn into integral.
 
 $$U$$ is always positive, in both tension and compression.
 
@@ -61,14 +65,14 @@ If you want a visualization, take a look at this article [here](https://www.coms
 
 ## Stress Concentration Factor
 
-Now, we know stress concentrates in an object where irregularities exist. For example, holes, corners, edges, or change of materials. Using the knowledge above, we can make up a proportionality constant between the stress from where the force is applied and the stress somewhere with irregularities:
+Stress concentrates in an object where irregularities exist (holes, corners, edges, or change of materials). Then we can define a proportionality constant between the stress from where the force is applied and the stress somewhere with irregularities:
 
-$$K = \frac{\sigma_{\text{max}}}{\sigma_{\text{nom}}}$$
+> $$K = \frac{\sigma_{\text{max}}}{\sigma_{\text{nom}}}$$
 
 Where
 - $$K$$ is stress concentration factor
-- $$\sigma_{\text{max}}$$ is maximum stress
-- $$\sigma_{\text{nom}}$$ is nominal stress
+- $$\sigma_{\text{max}}$$ is maximum stress (where the irregularity exists)
+- $$\sigma_{\text{nom}}$$ is nominal stress (where the load is applied)
 
 In short, consider an object with some "constant" shape like a bar, but with a irregularity around the middle, like a hole or some fillets. As we said before, we know the stress will be maximum $$\sigma_{\text{max}}$$ in those areas. But to simplify calculations, we can calculate the stress as if such imperfection didn't exist, $$\sigma_{\text{nom}}$$, and then multiply it by a factor $$K$$ to get the real stress because of the imperfection.
 
