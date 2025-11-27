@@ -9,7 +9,7 @@ date: 2025-11-09
 tech_stack: [Mechanics]
 ---
 
-## Stiffness and deformation
+## Stiffness
 
 $$F = k\delta$$
 
@@ -18,6 +18,8 @@ Where
 - $$F$$ is force
 - $$k$$ is stiffness
 - $$\delta$$ is deformation
+
+## Deformation
 
 $$\delta = \frac{FL}{EA}$$
 
