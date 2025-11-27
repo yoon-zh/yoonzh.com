@@ -112,7 +112,7 @@ Where
 ## Relationships
 
 | Shear Modulus G | Young's Modulus E | Poisson's Ratio v | Bulk Modulus K |
-|-|-|-|-|
-| $$\frac{E}{2(1 + v)}$$ | $$2G(1 + v)$$ | $$\frac{E - 2G}{2G}$$ | $$\frac{GE}{2(3G - E)}$$ |
-| $$\frac{3EK}{9K - E}$$ | $$\frac{3KG}{3K + G}$$ | $$\frac{3K - 2G}{2(3K + G)}$$ | $$\frac{2G(1 + v)}{3(1 - 2v)}$$ |
-| $$\frac{3K(1 - 2v)}{2(1 + v)}$$ | $$3K(1 - 2v)$$ | $$\frac{3K - E}{6K}$$ | $$\frac{E}{3(1 - 2v)}$$ |
+|-----------------|-------------------|-------------------|----------------|
+| $$\frac{E}{2(1 + v)}$$          | $$2G(1 + v)$$           | $$\frac{E - 2G}{2G}$$         | $$\frac{GE}{2(3G - E)}$$        |
+| $$\frac{3EK}{9K - E}$$          | $$\frac{3KG}{3K + G}$$  | $$\frac{3K - 2G}{2(3K + G)}$$ | $$\frac{2G(1 + v)}{3(1 - 2v)}$$ |
+| $$\frac{3K(1 - 2v)}{2(1 + v)}$$ | $$3K(1 - 2v)$$          | $$\frac{3K - E}{6K}$$         | $$\frac{E}{3(1 - 2v)}$$         |
