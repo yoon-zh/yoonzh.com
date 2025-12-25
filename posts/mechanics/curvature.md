@@ -11,7 +11,7 @@ tech_stack: [Mechanics]
 
 ## Strain on bending
 
-> $$\varepsilon_x - -\frac{y}{\rho}$$
+> $$\varepsilon_x = -\frac{y}{\rho}$$
 
 Where
 - $$\varepsilon_x$$ is normal strain
@@ -29,9 +29,16 @@ Where
 
 Sometimes a quantity called curvature is defined as $$\kappa = \frac{1}{\rho}$$, and the equations on this page are expressed in terms of $$\kappa$$ instead of $$\rho$$.
 
+With this, we can rewrite the normal stress for a linear elastic material:
+
+$$\sigma_x = E \varepsilon_x = -\frac{Ey}{\rho}$$
+
+Where
+- $$E$$ is [Young's Modulus](elastic.html#:~:text=Dimensionless-,Young’s%20Modulus)
+
 ## Flexure formula
 
-$$\sigma_x = -\frac{M y}{I}$$
+> $$\sigma_x = -\frac{M y}{I}$$
 
 Where
 - $$\sigma_x$$ is normal stress
