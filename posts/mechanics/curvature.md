@@ -99,3 +99,19 @@ Where
 - $$b$$ is width of beam in the cross section
 
 Q is annoying to do by hand, for which it is common to have some tables with values of Q for different shapes (much like for moment of inertia).
+
+> For rectangular cross-sections:
+>
+> $$\tau_{\text{max}} = \frac{3V}{2A}$$
+>
+> Where A = b*h is cross-sectional area.
+
+> For circular cross section (solid):
+>
+> $$\tau_{\text{max}} = \frac{4V}{3A}$$
+>
+> For circular cross section (hollow):
+>
+> $$\tau_{\text{max}} = \frac{4V}{3A} \left(\frac{r_2^2 + r_2 r_1 + r_1^2}{r_2^2 + r_1^2} \right)$$
+>
+> Where $$r_1,\ r_2$$ are inner and outer radius, respectively.
