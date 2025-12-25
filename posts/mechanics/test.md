@@ -38,6 +38,14 @@ Let internal force be $$V_x$$, moment $$M_x$$.
 >
 > $$V_x = \frac{qL}{2} - qx, \quad M_x = \frac{qLx}{2} - \frac{qx^2}{2}$$
 
+> For cantilevers, concentrated load $$P$$:
+>
+> $$V_x = -P,\quad M_x = -P(L - x)$$
+>
+> For cantilevers, uniform load $$q$$:
+>
+> $$V_x = -q(L - x),\quad M_x = -\frac{q(L - x)^2}{2}$$
+
 ### 2. Find moment of inertia
 
 > For rectangular cross section, width $$b$$, height $$h$$:
