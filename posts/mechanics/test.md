@@ -109,7 +109,7 @@ Find:
 
 ## Solution
 
-### 1. Find $$\sigma_{\text{avg}}$$, $$sigma_{\text{diff}}$$:
+### 1. Find $$\sigma_{\text{avg}},\ \sigma_{\text{diff}}$$:
 
 > $$\sigma_{\text{avg}} = \frac{\sigma_x + \sigma_y}{2}$$
 >
@@ -121,7 +121,7 @@ Find:
 > $$\tau_{\text{max}} = \sqrt{\frac{\sigma_{\text{diff}}^2}{4} + \tau_{xy}^2}$$
 
 
-### 3. Find the principal stresses
+### 3. Find the principal stresses $$\sigma_1,\ \sigma_2$$
 
 > $$\sigma_1 = \sigma_{\text{avg}} + \tau_{\text{max}}$$
 >
@@ -130,7 +130,7 @@ Find:
 Note: $$\tau_{\text{max}} = \frac{\sigma_1 - \sigma_2}{2}$$. AND $$\sigma_x + \sigma_y = \sigma_1 + \sigma_2$$. Use these to verify your values.
 
 
-### 4. Find the angles for the drawing
+### 4. Find the angles for the drawing $$\theta_p,\ \theta_s$$
 
 > $$\theta_p = \frac{1}{2} \arctan \frac{2\tau_{\text{xy}}}{\sigma_{\text{diff}}}$$
 >
