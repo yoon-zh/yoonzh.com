@@ -93,7 +93,7 @@
   <h2 id="strain-on-bending">Strain on bending</h2>
 
 <blockquote>
-\[\varepsilon_x - -\frac{y}{\rho}\]
+\[\varepsilon_x = -\frac{y}{\rho}\]
 </blockquote>
 
 <p>Where</p>
@@ -116,9 +116,20 @@
 
 <p>Sometimes a quantity called curvature is defined as \(\kappa = \frac{1}{\rho}\), and the equations on this page are expressed in terms of \(\kappa\) instead of \(\rho\).</p>
 
+<p>With this, we can rewrite the normal stress for a linear elastic material:</p>
+
+\[\sigma_x = E \varepsilon_x = -\frac{Ey}{\rho}\]
+
+<p>Where</p>
+<ul>
+  <li>\(E\) is <a href="elastic.html#:~:text=Dimensionless-,Young’s%20Modulus">Young’s Modulus</a></li>
+</ul>
+
 <h2 id="flexure-formula">Flexure formula</h2>
 
+<blockquote>
 \[\sigma_x = -\frac{M y}{I}\]
+</blockquote>
 
 <p>Where</p>
 <ul>
@@ -192,6 +203,26 @@
 </ul>
 
 <p>Q is annoying to do by hand, for which it is common to have some tables with values of Q for different shapes (much like for moment of inertia).</p>
+
+<blockquote>
+  <p>For rectangular cross-sections:</p>
+
+\[\tau_{\text{max}} = \frac{3V}{2A}\]
+
+  <p>Where A = b*h is cross-sectional area.</p>
+</blockquote>
+
+<blockquote>
+  <p>For circular cross section (solid):</p>
+
+\[\tau_{\text{max}} = \frac{4V}{3A}\]
+
+  <p>For circular cross section (hollow):</p>
+
+\[\tau_{\text{max}} = \frac{4V}{3A} \left(\frac{r_2^2 + r_2 r_1 + r_1^2}{r_2^2 + r_1^2} \right)\]
+
+  <p>Where \(r_1,\ r_2\) are inner and outer radius, respectively.</p>
+</blockquote>
 
 </div>
 </article>

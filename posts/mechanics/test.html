@@ -1,0 +1,337 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>test - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    test
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">Mechanics</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-12-25T00:00:00+00:00">
+        📅 2025/12/25
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h1 id="problem-type-5">Problem Type 5</h1>
+
+<p>A simply supported beam with a uniform shape (rectangular, circular) holds a weight (uniformly distributed or concentrated). A point X in the beam is of interest.</p>
+
+<p>Given:</p>
+<ul>
+  <li>Load: q (distributed, N/m) or P (concentrated, N)</li>
+  <li>Point X coordinates (x, y)</li>
+  <li>Beam dimensions (width, height, diameter…)</li>
+  <li>No axial (horizontal) load</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Stresses at point X</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="1-find-internal-force-and-moment-in-point-x">1. Find internal force and moment in point X</h3>
+
+<p>Let internal force be \(V_x\), moment \(M_x\).</p>
+
+<blockquote>
+  <p>For concentrated load \(P\) at distance \(m\) from origin:</p>
+
+\[V_x = \frac{P(L - m)}{L}, \quad M_x = \frac{Px(L - m)}{L}, \quad 0 &lt; x &lt; m\]
+
+\[V_x = -\frac{Pm}{L}, \quad M_x = \frac{Pm}{L}(L - x), \quad m &lt; x &lt; L\]
+</blockquote>
+
+<blockquote>
+  <p>For uniformly distributed load:</p>
+
+\[V_x = \frac{qL}{2} - qx, \quad M_x = \frac{qLx}{2} - \frac{qx^2}{2}\]
+</blockquote>
+
+<blockquote>
+  <p>For cantilevers, concentrated load \(P\):</p>
+
+\[V_x = P,\quad M_x = P(L - x)\]
+
+  <p>For cantilevers, uniform load \(q\):</p>
+
+\[V_x = q(L - x),\quad M_x = \frac{q(L - x)^2}{2}\]
+</blockquote>
+
+<h3 id="2-find-moment-of-inertia">2. Find moment of inertia</h3>
+
+<blockquote>
+  <p>For rectangular cross section, width \(b\), height \(h\):</p>
+
+\[I = \frac{bh^3}{12}\]
+</blockquote>
+
+<blockquote>
+  <p>For circular cross section, diameter \(d\):</p>
+
+\[I = \frac{\pi d^4}{64}\]
+</blockquote>
+
+<h3 id="3-calculate-stresses">3. Calculate stresses</h3>
+
+<blockquote>
+\[\sigma_x = -\frac{M_x y}{I}\]
+</blockquote>
+
+<blockquote>
+  <p>For rectangular beam:</p>
+
+\[\tau_x = \frac{V_x}{2I} \left( \frac{h^2}{4} - y^2 \right)\]
+</blockquote>
+
+<p>For \(\sigma_x &lt; 0\), the stress is compressive.</p>
+
+<h2 id="example">Example</h2>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% Inputs</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">25e-3</span><span class="p">;</span> <span class="c1">% m (distance from point to neutral axis)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mf">28e+3</span><span class="p">;</span> <span class="c1">% N/m (distributed load)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">% m (length of beam)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">L</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">;</span> <span class="c1">% m (x coord of point)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">25e-3</span><span class="p">;</span> <span class="c1">% m (beam width)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">100e-3</span><span class="p">;</span> <span class="c1">% m (beam height)</span>
+<span class="c1">% Here the beam is rectangular.</span>
+
+<span class="c1">%% Calculations</span>
+<span class="n">Vc</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">L</span><span class="p">)/</span><span class="mi">2</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+<span class="n">Mc</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="n">L</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="p">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="o">^</span><span class="mi">3</span><span class="p">))/</span><span class="mi">12</span><span class="p">;</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">Mc</span><span class="o">*</span><span class="n">y</span><span class="p">)/</span><span class="n">I</span><span class="p">;</span>
+<span class="n">Tc</span> <span class="o">=</span> <span class="p">(</span><span class="n">Vc</span><span class="p">/(</span><span class="mi">2</span><span class="o">*</span><span class="n">I</span><span class="p">))</span> <span class="o">*</span> <span class="p">((</span><span class="n">h</span><span class="o">^</span><span class="mi">2</span><span class="p">)/</span><span class="mi">4</span> <span class="o">-</span> <span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">%% Print</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"Mc = "</span> <span class="o">+</span> <span class="n">Mc</span> <span class="o">+</span> <span class="s2">" N*m"</span><span class="p">)</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"I = "</span> <span class="o">+</span> <span class="n">I</span> <span class="o">+</span> <span class="s2">" m^4"</span><span class="p">)</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"omega_c = "</span> <span class="o">+</span> <span class="n">omega</span> <span class="o">+</span> <span class="s2">" N/m^2"</span><span class="p">)</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"tau_c = "</span> <span class="o">+</span> <span class="n">Tc</span> <span class="o">+</span> <span class="s2">" N/m^2"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="problem-type-10">Problem Type 10</h1>
+
+<p>An element is under plane stress.
+Given:</p>
+<ul>
+  <li>Stress profile \(\sigma_x,\ \sigma_y,\ \tau_{xy}\)</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Principal stresses \(\sigma_1,\ \sigma_2\)</li>
+  <li>Maximum shear stress \(\tau_{\text{max}}\)</li>
+  <li>Draw the principal stresses on a properly oriented plane</li>
+  <li>Draw the max shear stress on a properly oriented plane</li>
+</ul>
+
+<h2 id="solution-1">Solution</h2>
+
+<h3 id="1-find-sigma_textavg-sigma_textdiff">1. Find \(\sigma_{\text{avg}},\ \sigma_{\text{diff}}\):</h3>
+
+<blockquote>
+\[\sigma_{\text{avg}} = \frac{\sigma_x + \sigma_y}{2}\]
+
+\[\sigma_{\text{diff}} = \sigma_x - \sigma_y\]
+</blockquote>
+
+<h3 id="2-find-tau_textmax">2. Find \(\tau_{\text{max}}\):</h3>
+
+<blockquote>
+\[\tau_{\text{max}} = \sqrt{\frac{\sigma_{\text{diff}}^2}{4} + \tau_{xy}^2}\]
+</blockquote>
+
+<h3 id="3-find-the-principal-stresses-sigma_1-sigma_2">3. Find the principal stresses \(\sigma_1,\ \sigma_2\)</h3>
+
+<blockquote>
+\[\sigma_1 = \sigma_{\text{avg}} + \tau_{\text{max}}\]
+
+\[\sigma_2 = \sigma_{\text{avg}} - \tau_{\text{max}}\]
+</blockquote>
+
+<p>Note: \(\tau_{\text{max}} = \frac{\sigma_1 - \sigma_2}{2}\). AND \(\sigma_x + \sigma_y = \sigma_1 + \sigma_2\). Use these to verify your values.</p>
+
+<h3 id="4-find-the-angles-for-the-drawing-theta_p-theta_s">4. Find the angles for the drawing \(\theta_p,\ \theta_s\)</h3>
+
+<blockquote>
+\[\theta_p = \frac{1}{2} \arctan \frac{2\tau_{\text{xy}}}{\sigma_{\text{diff}}}\]
+
+\[\theta_s = \frac{1}{2} \arctan \frac{\sigma_{\text{diff}}}{2\tau_{\text{xy}}}\]
+</blockquote>
+
+<h3 id="5-assign-principal-angles">5. Assign principal angles</h3>
+
+<p>To verify which angle is for \(\sigma_1\) and \(\sigma_2\), the safe way is to replace in the typical transformation equation. For example:</p>
+
+<blockquote>
+\[\sigma_{x1} =\sigma_{\text{avg}} + \frac{\sigma_{\text{diff}}}{2} \cos{2\theta_p} + \tau_{\text{xy}} \sin{2\theta}\]
+
+  <p>If \(\sigma_{x1} = \sigma_{1}\), then \(\theta_{p1} = \theta_p\) and \(\theta_{p2} = \theta_p + 90°\).</p>
+
+  <p>Otherwise, \(\theta_{p2} = \theta_p\) and \(\theta_{p1} = \theta_p + 90°\).</p>
+</blockquote>
+
+<p>Verify that \(\theta_s = \theta_{p1} \pm 45°\).</p>
+
+<h2 id="example-1">Example</h2>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% Inputs</span>
+<span class="n">sigma_x</span> <span class="o">=</span> <span class="mi">86</span><span class="p">;</span> <span class="c1">% MPa</span>
+<span class="n">sigma_y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">28</span><span class="p">;</span> <span class="c1">% MPa</span>
+<span class="n">tau_xy</span> <span class="o">=</span> <span class="o">-</span><span class="mi">32</span><span class="p">;</span> <span class="c1">% MPa</span>
+
+<span class="c1">% Positive =&gt; tensile</span>
+<span class="c1">% negative =&gt; compressive</span>
+
+<span class="c1">% For shear stress</span>
+<span class="c1">% Positive =&gt; points to (+)(+) and (-)(-) quadrants</span>
+<span class="c1">% negative =&gt; points to (-)(+) and (+)(-) quadrants</span>
+<span class="c1">%% Calculations</span>
+<span class="n">sigma_diff</span> <span class="o">=</span> <span class="n">sigma_x</span> <span class="o">-</span> <span class="n">sigma_y</span><span class="p">;</span>
+
+<span class="n">sigma_avg</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma_x</span> <span class="o">+</span> <span class="n">sigma_y</span><span class="p">)/</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">tau_max</span> <span class="o">=</span> <span class="nb">sqrt</span><span class="p">((</span><span class="n">sigma_diff</span><span class="o">^</span><span class="mi">2</span><span class="p">)/</span><span class="mi">4</span> <span class="o">+</span> <span class="n">tau_xy</span><span class="o">^</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="n">sigma_1</span> <span class="o">=</span> <span class="n">sigma_avg</span> <span class="o">+</span> <span class="n">tau_max</span><span class="p">;</span>
+<span class="n">sigma_2</span> <span class="o">=</span> <span class="n">sigma_avg</span> <span class="o">-</span> <span class="n">tau_max</span><span class="p">;</span>
+
+<span class="n">theta_p</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="nb">atand</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">tau_xy</span><span class="p">/</span><span class="n">sigma_diff</span><span class="p">);</span>
+<span class="n">theta_s</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="nb">atand</span><span class="p">(</span><span class="o">-</span><span class="n">sigma_diff</span><span class="p">/(</span><span class="mi">2</span><span class="o">*</span><span class="n">tau_xy</span><span class="p">));</span>
+
+<span class="c1">% Assign principal angles</span>
+<span class="n">theta_1</span> <span class="o">=</span> <span class="n">theta_p</span><span class="p">;</span>
+<span class="n">theta_2</span> <span class="o">=</span> <span class="n">theta_p</span><span class="p">;</span>
+
+<span class="n">sigma_test</span> <span class="o">=</span> <span class="n">sigma_avg</span> <span class="o">+</span> <span class="p">(</span><span class="n">sigma_diff</span><span class="p">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="nb">cosd</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">theta_p</span><span class="p">)</span> <span class="o">+</span> <span class="n">tau_xy</span><span class="o">*</span><span class="nb">sind</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">theta_p</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sigma_1</span> <span class="o">-</span> <span class="n">sigma_test</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">)</span>
+    <span class="n">theta_2</span> <span class="o">=</span> <span class="n">theta_2</span> <span class="o">+</span> <span class="mi">90</span><span class="p">;</span>
+<span class="k">else</span>
+    <span class="n">theta_1</span> <span class="o">=</span> <span class="n">theta_1</span> <span class="o">+</span> <span class="mi">90</span><span class="p">;</span>
+<span class="k">end</span>
+
+<span class="c1">%% Print</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"\sigma_1 = "</span> <span class="o">+</span> <span class="n">sigma_1</span> <span class="o">+</span> <span class="s2">" MPa"</span><span class="p">)</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"\sigma_2 = "</span> <span class="o">+</span> <span class="n">sigma_2</span> <span class="o">+</span> <span class="s2">" MPa"</span><span class="p">)</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"\tau_{max} = "</span> <span class="o">+</span> <span class="n">tau_max</span> <span class="o">+</span> <span class="s2">" MPa"</span><span class="p">)</span>
+
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"\theta_p = "</span> <span class="o">+</span> <span class="n">theta_p</span> <span class="o">+</span> <span class="s2">" deg"</span><span class="p">)</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"\theta_s = "</span> <span class="o">+</span> <span class="n">theta_s</span> <span class="o">+</span> <span class="s2">" deg"</span><span class="p">)</span>
+
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"\theta_1 = "</span> <span class="o">+</span> <span class="n">theta_1</span> <span class="o">+</span> <span class="s2">" deg"</span><span class="p">)</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s2">"\theta_2 = "</span> <span class="o">+</span> <span class="n">theta_2</span> <span class="o">+</span> <span class="s2">" deg"</span><span class="p">)</span>
+</code></pre></div></div>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
