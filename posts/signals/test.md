@@ -69,6 +69,20 @@ $$\cos{\omega} = \frac{1}{2}(e^{j\omega} + e^{-j\omega})$$
 
 $$\sin{\omega} = -\frac{j}{2}(e^{j\omega} - e^{-j\omega})$$
 
+> Note: if you have a first-order polynomial equation where the non-zero range is symmetrical around the y-axis:
+> - Even part $$x_e(t)$$ is the part with the constant
+> - Odd part $$x_o(t)$$ is the part with the variable t
+>
+> Example:
+>
+> $$x(t) = (0.5t + 1.5)(u(t + 3) - u(t - 3))$$
+>
+> This function is non-zero from (-3, 3). Then,
+>
+> $$x_e(t) = 1.5(u(t + 3) - u(t - 3))$$
+>
+> $$x_o(t) = 0.5t(u(t + 3) - u(t - 3))$$
+
 ### 4. Shifted, Expanded signal $$x(at + b)$$
 
 From [basics](basics.html#:~:text=Combined,operations): First scale then shift
@@ -127,6 +141,8 @@ Simply replace the given $$x(t)$$ in the relationship $$y(t) = f(x(t))$$. If $$x
 
 ## Example
 
+### 1. Classify
+
 | System | Linear - TI - Causal - Stable |
 |--------|--------|
 | $$y(t) = x(at)$$                          | |
@@ -142,6 +158,12 @@ Simply replace the given $$x(t)$$ in the relationship $$y(t) = f(x(t))$$. If $$x
 | $$y(t) = 2\cos(x(t)) + 3\sin(x(t)) + 5$$  | |
 | $$h[n] = u[n + 1] + u[n - 1]$$            | |
 | $$h(t) = e^{-t} u(t)$$                    | |
+
+### 2. Find impulse response
+
+$$y(t) = x(t-1) + 2x(t-3)$$
+
+$$y(t) = x(t+5) + x(t) + x(t-5)$$
 
 Answers [here](#type-2-example) (bottom of page)
 
@@ -165,12 +187,38 @@ Find:
 >
 > In parallel: $$h_1(t) + h_2(t)$$
 
+> An important property you might need:
+> - $$x(t) * \delta(t- t_0) = x(t - t_0)$$ (Unit impulse shifting)
+
 ### 2. Non-zero range
 
-Let the non-zero range of 
+Let the non-zero range of $$x(t)$$ be $$(x_o,\ x_f)$$, and the range of $$h(t)$$ be $$(h_o,\ h_f)$$. Then the non-zero range of $$y(t)$$ is
+
+$$(y_o,\ y_f) = (x_o + h_o,\ x_f + h_f)$$
+
+For example, if the non-zero range of $$x(t)$$ goes from -1 to 1, and $$h(t)$$ goes from 0 to infinity, then $$y(t)$$ goes from -1 to infinity.
 
 ## Example
 
+### 1. Find output
+
+- Find $$y(t)$$ given: 
+    - Impulse response $$h(t) = e^{-3t}u(t)$$
+    - Input signal $$x(t) = \delta(t+1) + 3\delta(t-2) + 2\delta(t-6)$$
+- Find overall response given two systems in series:
+    - First $$h_1(t) = \delta(t + 2) - \delta(t) + \delta(t - 1)$$
+    - Second $$h_2(t) = t u(t)$$
+
+### 2. Non-zero range
+
+- For a system given:
+    - The input $$x(t) = u(t + 1) - u(t - 1)$$
+    - The impulse response $$h(t) = 2u(t) - (u(t - 1) + u(t - 2))$$
+- For the overall response of two systems in series, where:
+    - The systems are $$h_1(t) = \delta(t + 2) - \delta(t) + \delta(t - 1)$$ and $$h_2(t) = t u(t)$$
+    - The input is $$x(t) = (0.5t + 1.5)(u(t + 3) - u(t - 3))$$
+
+Answers [here](#type-3-example) (bottom of page)
 
 ***
 
@@ -336,7 +384,67 @@ Find:
 | $$h[n] = u[n + 1] + u[n - 1]$$            | Y | Y | N | N |
 | $$h(t) = e^{-t} u(t)$$                    | Y | Y | Y | Y |
 
-* $$a, b$$ is any real number except 0 and 1
+\*$$a, b$$ is any real number except 0 and 1
+
+- For $$y(t) = x(t-1) + 2x(t-3)$$, the impulse response $$h(t) = \delta(t-1) + 2\delta(t-3)$$ 
+- For $$y(t) = x(t+5) + x(t) + x(t-5)$$, the impulse response $$h(t) = \delta(t+5) + \delta(t) + \delta(t-5)$$
+
+***
+
+## Type 3 Example
+
+### 1. Find output
+
+> - Find $$y(t)$$ given: 
+>    - Impulse response $$h(t) = e^{-3t}u(t)$$
+>    - Input signal $$x(t) = \delta(t+1) + 3\delta(t-2) + 2\delta(t-6)$$
+>
+> Remember: $$x(t) * \delta(t- t_0) = x(t - t_0)$$ (Unit impulse shifting)
+>
+> Then:
+>
+> $$y(t) = x(t) * h(t)$$
+>
+> $$y(t) = e^{-3(t + 1)} u(t + 1) + 3e^{-3(t + 2)} u(t + 2) + 2e^{-3(t - 6)} u(t - 6)$$
+
+> - Find overall response given two systems in series:
+>    - First $$h_1(t) = \delta(t + 2) - \delta(t) + \delta(t - 1)$$
+>    - Second $$h_2(t) = t u(t)$$
+>
+> Remember:
+> - Two systems in series $$h_f(t) = h_1(t) * h_2(t)$$
+> - $$x(t) * \delta(t- t_0) = x(t - t_0)$$ (Unit impulse shifting)
+>
+> Then:
+>
+> $$h_f(t) = (t + 2) u(t + 2) - tu(t) + (t - 1) u(t - 1)$$
+
+### 2. Non-zero range
+
+> - For a system given:
+>    - The input $$x(t) = u(t + 1) - u(t - 1)$$
+>    - The impulse response $$h(t) = 2u(t) - (u(t - 1) + u(t - 2))$$
+>
+> For $$x(t)$$, the non-zero range is $$(-1, 1)$$.
+>
+> For $$h(t)$$, the non-zero range is $$(0, 2)$$.
+>
+> Then, for $$y(t)$$ the non-zero range is $$(-1, 3)$$.
+
+> - For the overall response of two systems in series, where:
+>    - The systems are $$h_1(t) = \delta(t + 2) - \delta(t) + \delta(t - 1)$$ and $$h_2(t) = t u(t)$$
+>    - The input is $$x(t) = (0.5t + 1.5)(u(t + 3) - u(t - 3))$$
+>
+> First we find the impulse response of the whole system (done above):
+>
+> $$h_f(t) = (t + 2) u(t + 2) - tu(t) + (t - 1) u(t - 1)$$
+>
+> The non-zero range of $$h_f(t)$$ is $$(-2, \infty)$$.
+>
+> The non-zero range of $$x(t)$$ is $$(-3, 3)$$.
+>
+> Then the non-zero range of $$y(t)$$ is $$(-5, \infty)$$.
+
 
 ***
 
@@ -362,7 +470,7 @@ List
 19. 000000 SIMILAR:11,3 SAMPLING Given x(t) or relation y(t) = f(x(t)), find its Nyquist rate
 20. 000000 SIMILAR:15 Z-TRANSFORM Given H(z) or ODE, find impulse response (causal/stable matters)
 21. 000000 B-DIAGRAM Given H, draw direct form I and II, canonic form of block diagrams
-22. 000000 CONVOLUTION CT calculate convolution of two functions
+22. TYPE:3 SIMILAR:4 CONVOLUTION CT calculate convolution of two functions
 23. 000000 LAPLACE Given ULT X(s), find x(0^+) and x(inf)
 24. 000000 B-DIAGRAM Given some poles and zeroes, draw block diagram (consider series/parallel, first/second order)
 25. 000000 Z-TRANSFORM Prove some properties of z transform.
