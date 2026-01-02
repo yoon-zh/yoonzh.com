@@ -1,0 +1,1159 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>signals test - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/project.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    signals test
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">Signals</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2025-12-30T00:00:00+00:00">
+        📅 2025/12/30
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <ul>
+  <li>Basics</li>
+  <li>Given x(t) (eq or graph), energy/power, draw signal and shiftings</li>
+  <li>Given a block diagram of h_i(t), find H(j\Omega)</li>
+  <li>Classification</li>
+</ul>
+
+<h1 id="type-1-basics">Type 1: Basics</h1>
+
+<p>Given:</p>
+<ul>
+  <li>\(x(t)\) (equation or graph)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Graph from eq (or viceversa)</li>
+  <li>Period \(T\)</li>
+  <li>Even, odd part of \(x(t)\)</li>
+  <li>Shifted, expanded signal \(x(at + b)\)</li>
+  <li>Whether \(x(t)\) is finite energy or finite power signal</li>
+</ol>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="1-grapheq">1. Graph/Eq</h3>
+
+<p>Remember <a href="basics.html#:~:text=Elementary,Signals">elementary signals</a> (particularly \(u(t),\ \delta(t)\))</p>
+
+<h3 id="2-period-t">2. Period \(T\)</h3>
+
+<blockquote>
+  <p>For a signal to be periodic, it must fulfill the condition:</p>
+
+\[x(t + nT) = x(t)\]
+</blockquote>
+
+<p>See step by step <a href="basics.html#:~:text=Problems">here</a></p>
+
+<p>Some highlights:
+IF (\(x(t) = a(t) + b(t)\) where \(a,\ b\) are both periodic):<br />
+=&gt; \(T_x = LCM(T_a,\ T_b)\) (least common multiple)<br />
+NOTE: \(T_x\) from the LCM may be irrational (\(\pi, \sqrt{2}\)), but the multipliers of \(T_a,\ T_b\) MUST be integers to reach the LCM</p>
+
+<h3 id="3-even-odd">3. Even, odd</h3>
+
+<p>From <a href="basics.html#:~:text=Symmetry">basics</a>:</p>
+
+<blockquote>
+  <p>Any function can be broken down into an even and odd component:</p>
+
+\[x(t) = x_e (t) + x_o (t)\]
+
+\[x_e(t) = \frac{1}{2} (x(t) + x(-t))\]
+
+\[x_o(t) = \frac{1}{2} (x(t) - x(-t))\]
+</blockquote>
+
+<p>The fundamental you MUST remember: \(e^{j\omega}\)</p>
+
+\[\text{Even} (e^{j\omega}) = \cos{\omega}\]
+
+\[\text{Odd} (e^{j\omega}) = j\sin{\omega}\]
+
+<p>In such way,</p>
+
+\[\cos{\omega} = \frac{1}{2}(e^{j\omega} + e^{-j\omega})\]
+
+\[\sin{\omega} = -\frac{j}{2}(e^{j\omega} - e^{-j\omega})\]
+
+<blockquote>
+  <p>Note: if you have a first-order polynomial equation where the non-zero range is symmetrical around the y-axis:</p>
+  <ul>
+    <li>Even part \(x_e(t)\) is the part with the constant</li>
+    <li>Odd part \(x_o(t)\) is the part with the variable t</li>
+  </ul>
+
+  <p>Example:</p>
+
+\[x(t) = (0.5t + 1.5)(u(t + 3) - u(t - 3))\]
+
+  <p>This function is non-zero from (-3, 3). Then,</p>
+
+\[x_e(t) = 1.5(u(t + 3) - u(t - 3))\]
+
+\[x_o(t) = 0.5t(u(t + 3) - u(t - 3))\]
+</blockquote>
+
+<h3 id="4-shifted-expanded-signal-xat--b">4. Shifted, Expanded signal \(x(at + b)\)</h3>
+
+<p>From <a href="basics.html#:~:text=Combined,operations">basics</a>: First scale then shift</p>
+
+\[x(at + b) = x \left(a \left(t + \frac{b}{a} \right) \right)\]
+
+<h3 id="5-energy-power">5. Energy, Power</h3>
+
+<p>From <a href="basics.html#:~:text=Energy">basics</a>:</p>
+
+\[E = \int_{T_1}^{T_2} \left| {x(t)} \right|^2 dt\]
+
+\[E = \sum_{n=N_1}^{N_2} \left| {x[n]} \right| ^2\]
+
+\[P_x = \frac{1}{T_0} E\]
+
+<p>Where the T, N mean to consider only one period.</p>
+
+<blockquote>
+  <p>A signal with finite energy has 0 power, and a signal with finite power has \(\infty\) energy</p>
+</blockquote>
+
+<h2 id="example">Example</h2>
+
+<ol>
+  <li>Period of \(x[n] = \cos(\frac{a}{b} \pi n) + \cos(\frac{c}{d} \pi n)\)</li>
+</ol>
+
+<hr />
+
+<h1 id="type-2-system-properties">Type 2: System Properties</h1>
+
+<p>Given 1 of the 2:</p>
+<ul>
+  <li>Relationship \(y(t) = f(x(t))\) (CT/DT)</li>
+  <li>\(h(t)\) (CT/DT)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Classification (causal, stable, linear, time-invariant)</li>
+  <li>\(h(t)\) if not provided</li>
+  <li>Given an expression for \(x(t)\), the resultant \(y(t)\)</li>
+</ol>
+
+<h2 id="solution-1">Solution</h2>
+
+<h3 id="1-classification">1. Classification</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Condition for \(y = f(x(t))\)</th>
+      <th>Condition for \(h(t)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Linearity</td>
+      <td>\(T\{ax_1(t) + bx_2(t)\} = ay_1(t) + by_2(t)\)</td>
+      <td>Yes (Intrinsic to convolution definition)</td>
+    </tr>
+    <tr>
+      <td>Time-Invariance</td>
+      <td>\(x(t) =&gt; y(t), \quad x(t + T) = y(t + T)\)</td>
+      <td>Yes (Intrinsic to convolution definition)</td>
+    </tr>
+    <tr>
+      <td>Causality</td>
+      <td>\(y(t)\) depends only on \(x(\tau)\) for \(\tau \le t\)</td>
+      <td>\(h(t) = 0\) for all \(t &lt; 0\)</td>
+    </tr>
+    <tr>
+      <td>Stability (BIBO)</td>
+      <td>\(y(t)\) converges for any non-infinity \(x(t)\)</td>
+      <td>\(\int_{-\infty}^{\infty} \mid h(t) \mid dt &lt; \infty\) (Absolutely Integrable)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2-impulse-response-ht">2. Impulse Response \(h(t)\)</h3>
+
+<p>In \(y(t) = f(x(t))\) replace x with \(\delta(t)\) (impulses).</p>
+
+<h3 id="3-output-yt">3. Output \(y(t)\)</h3>
+
+<p>Simply replace the given \(x(t)\) in the relationship \(y(t) = f(x(t))\). If \(x(t)\) is something like a sum of unit step functions, do not try to simplify it.</p>
+
+<h2 id="example-1">Example</h2>
+
+<h3 id="1-classify">1. Classify</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>Linear - TI - Causal - Stable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(y(t) = x(at)\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y(t) = \mid x(t) \mid\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y[n] = x[an - b]\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y(t) = \int_{-\infty}^t x(\tau) d\tau\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y(t) = \cos(t) x(t)\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y(t) = \frac{dx(t)}{dt}\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y[n] = e^{x[n]}\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y[n] = x[n^2]\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y[n] = 2x[k] - 2x[-k + 2]\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y(t) = x(t + 1) + x(t) + x(t - 1)\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(y(t) = 2\cos(x(t)) + 3\sin(x(t)) + 5\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(h[n] = u[n + 1] + u[n - 1]\)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>\(h(t) = e^{-t} u(t)\)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2-find-impulse-response">2. Find impulse response</h3>
+
+\[y(t) = x(t-1) + 2x(t-3)\]
+
+\[y(t) = x(t+5) + x(t) + x(t-5)\]
+
+<p>Answers <a href="#type-2-example">here</a> (bottom of page)</p>
+
+<hr />
+
+<h1 id="type-3-impulse-response-properties">Type 3: Impulse Response Properties</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Impulse responses \(h_1(t),\ h_2(t)\)</li>
+  <li>Test input \(x(t)\) (expression)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Overall response if connected in series/parallel</li>
+  <li>Non-zero range of output</li>
+</ol>
+
+<h2 id="solution-2">Solution</h2>
+
+<h3 id="1-overall-response">1. Overall response</h3>
+
+<blockquote>
+  <p>In series: \(h_1(t) * h_2(t)\)</p>
+
+  <p>In parallel: \(h_1(t) + h_2(t)\)</p>
+</blockquote>
+
+<blockquote>
+  <p>An important property you might need:</p>
+  <ul>
+    <li>\(x(t) * \delta(t- t_0) = x(t - t_0)\) (Unit impulse shifting)</li>
+  </ul>
+</blockquote>
+
+<h3 id="2-non-zero-range">2. Non-zero range</h3>
+
+<p>Let the non-zero range of \(x(t)\) be \((x_o,\ x_f)\), and the range of \(h(t)\) be \((h_o,\ h_f)\). Then the non-zero range of \(y(t)\) is</p>
+
+\[(y_o,\ y_f) = (x_o + h_o,\ x_f + h_f)\]
+
+<p>For example, if the non-zero range of \(x(t)\) goes from -1 to 1, and \(h(t)\) goes from 0 to infinity, then \(y(t)\) goes from -1 to infinity.</p>
+
+<h2 id="example-2">Example</h2>
+
+<h3 id="1-find-output">1. Find output</h3>
+
+<ul>
+  <li>Find \(y(t)\) given:
+    <ul>
+      <li>Impulse response \(h(t) = e^{-3t}u(t)\)</li>
+      <li>Input signal \(x(t) = \delta(t+1) + 3\delta(t-2) + 2\delta(t-6)\)</li>
+    </ul>
+  </li>
+  <li>Find overall response given two systems in series:
+    <ul>
+      <li>First \(h_1(t) = \delta(t + 2) - \delta(t) + \delta(t - 1)\)</li>
+      <li>Second \(h_2(t) = t u(t)\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="2-non-zero-range-1">2. Non-zero range</h3>
+
+<ul>
+  <li>For a system given:
+    <ul>
+      <li>The input \(x(t) = u(t + 1) - u(t - 1)\)</li>
+      <li>The impulse response \(h(t) = 2u(t) - (u(t - 1) + u(t - 2))\)</li>
+    </ul>
+  </li>
+  <li>For the overall response of two systems in series, where:
+    <ul>
+      <li>The systems are \(h_1(t) = \delta(t + 2) - \delta(t) + \delta(t - 1)\) and \(h_2(t) = t u(t)\)</li>
+      <li>The input is \(x(t) = (0.5t + 1.5)(u(t + 3) - u(t - 3))\)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Answers <a href="#type-3-example">here</a> (bottom of page)</p>
+
+<hr />
+
+<h1 id="type-4-fourier-seriestransform">Type 4: Fourier Series/Transform</h1>
+
+<p>Given:</p>
+<ul>
+  <li>\(x(t)\) (CT) (equation or graph)</li>
+  <li>\(x(t)\) has a Fourier transform \(X(\omega)\) (expression not given)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>FS coefficients \(a_k\)</li>
+  <li>FT when \(t = 0\)</li>
+  <li>The integral \(\int_{-\infty}^{\infty} X(\omega) d\omega\)</li>
+  <li>FT expression</li>
+</ol>
+
+<h2 id="solution-3">Solution</h2>
+
+<h3 id="1-fs-coefficients-a_k">1. FS coefficients \(a_k\)</h3>
+
+<p>See detailed solution process <a href="fourier-series.html#:~:text=%5Bn%5D-,Problems,-Type%201%3A%20Find">here</a></p>
+
+<h3 id="2-ft-when-t--0">2. FT when \(t = 0\)</h3>
+
+<p>The way of calculating a CTFT is:</p>
+
+\[X(\omega) = X(j\omega) = \mathcal{F}\{x(t)\} = \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt\]
+
+<p>If we want it when \(\omega = 0\), this is simply the integral of x:</p>
+
+\[X(0) = \int_{-\infty}^{\infty} x(t) e^{-j (0) t} dt\]
+
+\[X(0) = \int_{-\infty}^{\infty} x(t) dt\]
+
+<p>So if you are asked for \(X(0)\), just integrate the signal.</p>
+
+<h3 id="3-the-integral-int_-inftyinfty-xomega-domega">3. The integral \(\int_{-\infty}^{\infty} X(\omega) d\omega\)</h3>
+
+<p>Look at the inverse Fourier Transform definition (synthesis):</p>
+
+\[x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega\]
+
+<p>To turn the above into \(\int_{-\infty}^{\infty} X(\omega) d\omega\), we set the \(e^{j\omega t}\) to be 1. For this, we simply set \(t = 0\):</p>
+
+\[x(0) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) d\omega\]
+
+\[\int_{-\infty}^{\infty} X(\omega) d\omega = 2\pi x(0)\]
+
+<h3 id="4-ft-expression">4. FT expression</h3>
+
+<p>If asked for the full expression, try using properties from the table first. You would rarely need to use the definition <a href="fourier-transform.html#:~:text=Definition">(here)</a> to calculate it.</p>
+
+<h2 id="example-3">Example</h2>
+
+\[x(t) = {
+    -1, 0 &lt; t &lt; 1
+    0, 1 &lt; t &lt; 2
+    1, 2 &lt; t &lt; 3
+}\]
+
+<p>With period \(T = 3\)</p>
+
+\[a_k = \frac{1}{3} (-1 + e^{-jk\omega_0} + e^{-2jk\omega_0} - e^{-3jk\omega_0})\]
+
+<hr />
+
+<h1 id="type-5-frequency-response">Type 5: Frequency Response</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Block diagram with different impulse responses \(h_1(t),\ h_2(t),\ ...,\ h_n(t)\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Frequency response \(H(\omega)\)</li>
+  <li>Classify \(H(\omega)\), is it causal and stable?</li>
+</ol>
+
+<h2 id="solution-4">Solution</h2>
+
+<h3 id="1-frequency-response-homega">1. Frequency response \(H(\omega)\)</h3>
+
+<p>Some key points:</p>
+
+<blockquote>
+  <p>In series: \(h_1(t) * h_2(t)\)</p>
+
+  <p>In parallel: \(h_1(t) + h_2(t)\)</p>
+
+\[h_1(t) * h_2(t) \Longrightarrow H_1(\omega) \times H_2(\omega)\]
+
+  <p>If x(t) is directly connected as an input (say, parallel to an \(h_n(t)\)), model it as an impulse \(\delta(t)\), then its Fourier transform is a 1</p>
+</blockquote>
+
+<h3 id="2-classify-homega">2. Classify \(H(\omega)\)</h3>
+
+<p>Remember:</p>
+
+<blockquote>
+  <ul>
+    <li>Causal if \(h(t) = 0\) when \(t &lt; 0\)</li>
+  </ul>
+
+  <p>For \(H(\omega)\), consider the time-domain functions given and apply the causal rule.</p>
+
+  <p>If all \(h_n(t)\) are causal, then \(H(\omega)\) is causal. If at least one of the \(h_n(t)\) is non-causal, the whole system \(H(\omega)\) is non-causal.</p>
+</blockquote>
+
+<blockquote>
+  <p>For stability, consider the poles of \(H(\omega)\).</p>
+
+  <p>All poles must have a negative real part (to the left in complex plane) to be stable.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="type-6-lccde---laplace">Type 6: LCCDE - Laplace</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Transfer function \(H(s)\)</li>
+  <li>Classification (causal, stable?)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Zero-pole plot</li>
+  <li>ROCs</li>
+  <li>Impulse response \(h(t)\)</li>
+  <li>Classify as low/band/high pass</li>
+  <li>Sketch its magnitude response \(\mid H(\omega) \mid\)</li>
+</ol>
+
+<h2 id="solution-5">Solution</h2>
+
+<h3 id="1-zero-pole-plot">1. Zero-pole plot</h3>
+
+<p>Usually, \(H(s)\) is a fraction. The zeros are when \(s = 0\) on the numerator, and the poles are when \(s = 0\) on the denominator. Then, draw a Re-Im graph and mark the zeros with a circle, and poles with an x.</p>
+
+<h3 id="2-rocs">2. ROCs</h3>
+
+<p>The ROC is parallel to the \(j\omega\) (vertical) axis, and is defined by the poles of \(H(s)\) (it cannot contain any).</p>
+
+<p>So if there are n poles, there are n + 1 possible ROCs.</p>
+
+<blockquote>
+  <p>Causal: The ROC is to the right of the rightmost pole</p>
+
+\[\text{ROC: } \Re(s) &gt; \text{pole}_{\text{max}}\]
+</blockquote>
+
+<blockquote>
+  <p>Stable: The ROC contains \(\Re(s) = 0\), which allows the variable change \(H(s) \Longleftrightarrow H(j\omega)\)</p>
+</blockquote>
+
+<h3 id="3-impulse-response-ht">3. Impulse response \(h(t)\)</h3>
+
+<p>Most of the times, you are given a few common transform pairs and are expected to use them along separating the fraction of \(H(s)\) by partial fraction expansion (PFE).</p>
+
+<blockquote>
+  <p>Simple way of doing PFE:</p>
+
+  <p>1. Separate into the form:</p>
+
+\[H(s) = \frac{A}{s - a} + \frac{B}{s - b} + ...\]
+
+  <p>2. For each constant, remove the zero-expression and evaluate:</p>
+
+\[A \Rightarrow s = a\]
+
+\[A = \frac{1}{s - a} H(a)\]
+
+  <p>In other words, grab the original function \(H(s)\), remove the \(s - a\) term in the denominator that makes it zero, and evaluate for \(s = a\). Then you get A. Repeat that for all terms.</p>
+</blockquote>
+
+<h3 id="4-classify-as-lowbandhigh-pass">4. Classify as low/band/high pass</h3>
+
+<p>A quick inspection method can be used for fractions. Let \(N(s)\) be the numerator, and \(D(s)\) be the denominator of \(H(s)\). Focus on the power of each polynomial.</p>
+<ul>
+  <li>If \(N(s)\) is a constant (no s present), it is low-pass</li>
+  <li>If \(N(s),\ D(s)\) have the same power of s, it is high-pass</li>
+  <li>If \(N(s)\) has lower power than \(D(s)\) (with s present on both), it is band-pass</li>
+</ul>
+
+<p>A bit more formal of a way would be by testing the value when s is 0 and infinity. In short:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filter type</th>
+      <th>\(s = 0\)</th>
+      <th>\(s = \infty\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Low pass</td>
+      <td>\(H(0) \neq 0\) (Passes)</td>
+      <td>\(H(0) = 0\) (Blocks)</td>
+    </tr>
+    <tr>
+      <td>High pass</td>
+      <td>\(H(0) = 0\) (Blocks)</td>
+      <td>\(H(0) \neq 0\) (Passes)</td>
+    </tr>
+    <tr>
+      <td>Band pass</td>
+      <td>\(H(0) = 0\) (Blocks)</td>
+      <td>\(H(0) = 0\) (Blocks)</td>
+    </tr>
+    <tr>
+      <td>All pass</td>
+      <td>\(H(0) \neq 0\) (Passes)</td>
+      <td>\(H(0) \neq 0\) (Passes)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="5-sketch-its-magnitude-response-mid-homega-mid">5. Sketch its magnitude response \(\mid H(\omega) \mid\)</h3>
+
+<p>Assuming \(H(s)\) is stable (ROC contains \(\Re(s) = 0\)), its Fourier transform exists, and we can simply change the variable \(s\) to \(j\omega\):</p>
+
+\[H(\omega) = H(s) \bigg |_{s = j\omega}\]
+
+<p>A simple way to sketch the magnitude response is to rewrite \(H(s)\) as \(H(\omega)\) and plot its zero-pole plot, where the horizontal axis is the real part, and vertical axis is imaginary \(j\omega\). Then, imagine \(\omega\) runs across this vertical axis.</p>
+<ul>
+  <li>When it gets close to a pole, the magnitude \(\mid H(\omega) \mid\) goes up</li>
+  <li>When it gets close to a zero, the magnitude \(\mid H(\omega) \mid\) goes down</li>
+</ul>
+
+<p>Of course, if it touches a pole or a zero, it goes to infinity and to zero respectively.</p>
+
+<p>With this, draw a graph with horizontal axis \(\omega\) and vertical axis \(\mid H(\omega) \mid\). The points of interest you should mark in the sketch are when \(\omega\) approaches a zero or a pole.</p>
+
+<hr />
+
+<h1 id="type-7-lccde---laplace">Type 7: LCCDE - Laplace</h1>
+
+<p>Given:</p>
+<ul>
+  <li>LCCDE or \(H(s)\)</li>
+  <li>Expression of \(x(t)\)</li>
+  <li>Initial conditions \(y(0),\ y'(0)\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>LCCDE if not given</li>
+  <li>Zero-input response</li>
+  <li>Zero-state response</li>
+  <li>Overall response \(y(t)\)</li>
+</ol>
+
+<h2 id="solution-6">Solution</h2>
+
+<h3 id="1-lccde">1. LCCDE</h3>
+
+<p>Knowing \(H(s) = \frac{Y(s)}{X(s)}\), and \(s^n Y(s) \Longleftrightarrow \frac{d^n y}{dt^n}\):</p>
+<ul>
+  <li>Multiply the \(Y(s),\ X(s)\) with the given \(H(s)\) to rewrite it in the form \(Y(s) D(s) = X(s) N(s)\), where D and N are denominator and numerator of H respectively</li>
+  <li>Check for pairs of \(s^n Y(s) \Longleftrightarrow \frac{d^n y}{dt^n}\) and rewrite in time domain</li>
+</ul>
+
+<p>* Note, this applies for bilateral Laplace transform, assuming initial conditions are zero</p>
+
+<h3 id="2-zero-input-response">2. Zero-input response</h3>
+
+<ul>
+  <li>Transform to Laplace, including the y(0) terms in the derivatives (\(\frac{dy}{dt} \Longleftrightarrow sY(s) - y(0^-)\))</li>
+  <li>Rewrite in the \(Y(s) = ...\) form, and separate the term that has the initial condition \(y(0)\)</li>
+  <li>The term without the initial condition \(y(0)\) is the zero-input response</li>
+</ul>
+
+<h3 id="3-zero-state-response">3. Zero-state response</h3>
+
+<p>From the previous step, the term with the initial condition \(y(0)\) is the zero-state response.</p>
+
+<h3 id="4-overall-response-yt">4. Overall response \(y(t)\)</h3>
+
+<p>Sum the zero-input and zero-state responses. For convenience, you may transform them back to time domain individually.</p>
+
+<h2 id="example-4">Example</h2>
+
+<p>Given:</p>
+
+\[H(s) = \frac{2s + 1}{s^2 - 4}\]
+
+\[\frac{dy}{dt} + 2y(t) = 4u(t)\]
+
+<hr />
+
+<h1 id="type-8-sampling">Type 8: Sampling</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Fourier transform graph of \(x(t)\)</li>
+  <li>Example frequency \(f_s\)</li>
+  <li>Cutoff frequency \(\omega_c\)</li>
+  <li>Frequency response expression \(H(\Omega)\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Maximum sampling period \(T_s\) to keep all info</li>
+  <li>Sketch fourier transform of \(x[n]\) sampled from \(x(t)\) at frequency \(f_s\)</li>
+  <li>Sketch spectrum of output \(Y(e^{j\omega})\)</li>
+  <li>Obtain spectrum of reconstructed signal \(y_r\) assuming sampling frequency is high enough</li>
+</ol>
+
+<h2 id="solution-7">Solution</h2>
+
+<h2 id="example-5">Example</h2>
+
+<hr />
+
+<h1 id="type-x-dtft">Type x: DTFT</h1>
+
+<p>Given:</p>
+<ul>
+  <li>
+\[x[n]\]
+  </li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>DTFT of \(x[n]\)</li>
+  <li>For given \(\omega\), find value of \(X(e^{j\omega})\) without calculating its transform</li>
+</ul>
+
+<h2 id="solution-8">Solution</h2>
+
+<h2 id="example-6">Example</h2>
+
+<hr />
+
+<h1 id="type-x-dt-convolution">Type x: DT Convolution</h1>
+
+<p>Given:</p>
+<ul>
+  <li>
+\[x[t]\]
+  </li>
+  <li>
+\[h[t]\]
+  </li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Linear convolution</li>
+  <li>Circular convolution</li>
+</ul>
+
+<h2 id="solution-9">Solution</h2>
+
+<h2 id="example-7">Example</h2>
+
+<hr />
+
+<h1 id="type-x-frequency-response">Type X: Frequency Response</h1>
+
+<p>Given:</p>
+<ul>
+  <li>
+\[x(t)\]
+  </li>
+  <li>\(H(\omega)\) graph</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>
+\[y(t)\]
+  </li>
+</ul>
+
+<h2 id="solution-10">Solution</h2>
+
+<h2 id="example-8">Example</h2>
+
+<hr />
+
+<h1 id="q2">Q2</h1>
+
+<ul>
+  <li>CTFS-FT x2</li>
+  <li>Impulse response</li>
+  <li>LTI properties (causal, stable?)</li>
+</ul>
+
+<h1 id="q3">Q3</h1>
+
+<ul>
+  <li>Laplace x2</li>
+  <li>Pole-zero plot, ROC, sketch magnitude of H(\omega)</li>
+  <li>Given laplace, determine where it is stable</li>
+</ul>
+
+<h1 id="q4">Q4</h1>
+
+<ul>
+  <li>Sampling x3</li>
+  <li>Convolution (linear, circular) x2</li>
+  <li>Nyquist rate</li>
+  <li>Minimum and maximum sampling rate</li>
+  <li>CT convolution</li>
+</ul>
+
+<h1 id="q5">Q5</h1>
+
+<ul>
+  <li>Z transform x2</li>
+  <li>DTLTI to H(e^jw) x2</li>
+  <li>Properties (causal, stable?)</li>
+  <li>Z transform obscure properties</li>
+</ul>
+
+<hr />
+
+<h1 id="q-type-a-impulse-response">Q. Type a: Impulse Response</h1>
+
+<p>Given a system with 2 of the following 3:</p>
+<ul>
+  <li>
+\[x(t)\]
+  </li>
+  <li>
+\[h(t)\]
+  </li>
+  <li>
+\[y(t)\]
+  </li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>The non-given</li>
+</ul>
+
+<h2 id="solution-11">Solution</h2>
+
+<h2 id="example-9">Example</h2>
+
+<hr />
+
+<h1 id="q-type-e-lti-system-z-transform">Q. Type e: LTI System, Z-transform</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Transfer function \(H(z)\) of LTI system</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Is it causal, stable?</li>
+  <li>Zero-pole plot</li>
+  <li>Possible ROCs</li>
+  <li>Magnitude, phase</li>
+  <li>Pass type (low, band, high, all)</li>
+</ul>
+
+<h2 id="solution-12">Solution</h2>
+
+<h2 id="example-10">Example</h2>
+
+<hr />
+
+<h1 id="answers">Answers</h1>
+
+<h2 id="type-2-example">Type 2 Example</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>Linear</th>
+      <th>TI</th>
+      <th>Causal</th>
+      <th>Stable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(y(t) = x(at)\)</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(y(t) = \mid x(t) \mid\)</td>
+      <td>N</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(y[n] = x[an - b]\)</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(y(t) = \int_{-\infty}^t x(\tau) d\tau\)</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <td>\(y(t) = \cos(t) x(t)\)</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(y(t) = \frac{dx(t)}{dt}\)</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <td>\(y[n] = e^{x[n]}\)</td>
+      <td>N</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(y[n] = x[n^2]\)</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(y[n] = 2x[n] - 2x[-n + 2]\)</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(y(t) = x(t + 1) + x(t) + x(t - 1)\)</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(y(t) = 2\cos(x(t)) + 3\sin(x(t)) + 5\)</td>
+      <td>N</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <td>\(h[n] = u[n + 1] + u[n - 1]\)</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <td>\(h(t) = e^{-t} u(t)\)</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>*\(a, b\) is any real number except 0 and 1</p>
+
+<ul>
+  <li>For \(y(t) = x(t-1) + 2x(t-3)\), the impulse response \(h(t) = \delta(t-1) + 2\delta(t-3)\)</li>
+  <li>For \(y(t) = x(t+5) + x(t) + x(t-5)\), the impulse response \(h(t) = \delta(t+5) + \delta(t) + \delta(t-5)\)</li>
+</ul>
+
+<hr />
+
+<h2 id="type-3-example">Type 3 Example</h2>
+
+<h3 id="1-find-output-1">1. Find output</h3>
+
+<blockquote>
+  <ul>
+    <li>Find \(y(t)\) given:
+      <ul>
+        <li>Impulse response \(h(t) = e^{-3t}u(t)\)</li>
+        <li>Input signal \(x(t) = \delta(t+1) + 3\delta(t-2) + 2\delta(t-6)\)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Remember: \(x(t) * \delta(t- t_0) = x(t - t_0)\) (Unit impulse shifting)</p>
+
+  <p>Then:</p>
+
+\[y(t) = x(t) * h(t)\]
+
+\[y(t) = e^{-3(t + 1)} u(t + 1) + 3e^{-3(t + 2)} u(t + 2) + 2e^{-3(t - 6)} u(t - 6)\]
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>Find overall response given two systems in series:
+      <ul>
+        <li>First \(h_1(t) = \delta(t + 2) - \delta(t) + \delta(t - 1)\)</li>
+        <li>Second \(h_2(t) = t u(t)\)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Remember:</p>
+  <ul>
+    <li>Two systems in series \(h_f(t) = h_1(t) * h_2(t)\)</li>
+    <li>\(x(t) * \delta(t- t_0) = x(t - t_0)\) (Unit impulse shifting)</li>
+  </ul>
+
+  <p>Then:</p>
+
+\[h_f(t) = (t + 2) u(t + 2) - tu(t) + (t - 1) u(t - 1)\]
+</blockquote>
+
+<h3 id="2-non-zero-range-2">2. Non-zero range</h3>
+
+<blockquote>
+  <ul>
+    <li>For a system given:
+      <ul>
+        <li>The input \(x(t) = u(t + 1) - u(t - 1)\)</li>
+        <li>The impulse response \(h(t) = 2u(t) - (u(t - 1) + u(t - 2))\)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>For \(x(t)\), the non-zero range is \((-1, 1)\).</p>
+
+  <p>For \(h(t)\), the non-zero range is \((0, 2)\).</p>
+
+  <p>Then, for \(y(t)\) the non-zero range is \((-1, 3)\).</p>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>For the overall response of two systems in series, where:
+      <ul>
+        <li>The systems are \(h_1(t) = \delta(t + 2) - \delta(t) + \delta(t - 1)\) and \(h_2(t) = t u(t)\)</li>
+        <li>The input is \(x(t) = (0.5t + 1.5)(u(t + 3) - u(t - 3))\)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>First we find the impulse response of the whole system (done above):</p>
+
+\[h_f(t) = (t + 2) u(t + 2) - tu(t) + (t - 1) u(t - 1)\]
+
+  <p>The non-zero range of \(h_f(t)\) is \((-2, \infty)\).</p>
+
+  <p>The non-zero range of \(x(t)\) is \((-3, 3)\).</p>
+
+  <p>Then the non-zero range of \(y(t)\) is \((-5, \infty)\).</p>
+</blockquote>
+
+<hr />
+
+<p>List</p>
+<ol>
+  <li>TYPE:1 BASICS given x(t) as graph/eq, find eq/graph, even/odd, transformations x(at + b), periodicity, energy/power</li>
+  <li>TYPE:2 PROPERTIES given relation y(t) = f(x(t)), find is it causal, stable, linear, time-invariant?</li>
+  <li>TYPE:2 IMPULSE Given x(t), relationship between y and x, find h(t) and y(t) for a given expression of x</li>
+  <li>TYPE:3 IMPULSE Given impulse response in series/parallel, find non-zero range of y(t)</li>
+  <li>TYPE:4 F-SERIES Given x(t), find its FS, coefficients ak !IMPORTANT</li>
+  <li>TYPE:4 F-TRANSFORM Given x(t), find/sketch its FT, find FT when t = 0 !IMPORTANT</li>
+  <li>TYPE:5 SIMILAR:4 Given impulse response in series/parallel, find frequency response, is it causal/stable? !IMPORTANT</li>
+  <li>TYPE:6 LAPLACE Given H(s) OR ODE, find zero-pole plot, ROC, h(t), sketch magnitude/phase, is it causal/stable? !IMPORTANT</li>
+  <li>TYPE:7 LCCDE Given transfer function H(s), find LCCDE</li>
+  <li>TYPE:7 LCCDE Given LCCDE, expression of x(t), initials of y(0) y’(0), find y(t) (zero-input, zero-state, overall) !IMPORTANT</li>
+  <li>000000 SAMPLING given FT of x(t) as graph, frequency, find maximum sampling period (avoid info loss/aliasing), sketch FT of x[n]</li>
+  <li>000000 SAMPLING Given FT graph of x(t), conditions of sampled signal x[n], find/sketch spectrum of y[n], sketch reconstructed y_r(t)</li>
+  <li>000000 DTFT given x[n], find its DTFT (see dtft properties)</li>
+  <li>000000 CONVOLUTION given x[n], h[n], find linear/circular convolution !IMPORTANT</li>
+  <li>000000 Z-TRANSFORM Given H(z) OR ODE, find zero-pole plot, ROCs, sketch magnitude/phase, classify low/band/high/all pass, is it causal/stable? !IMPORTANT</li>
+  <li>000000 B-DIAGRAM Given H(z), separate into H1 and H2 in series/parallel, draw block diagram</li>
+  <li>000000 F-TRANSFORM Given H(e^jw) OR ODE, and expression of x, find y, sketch magnitude/phase, classify low/band/high/all pass !IMPORTANT</li>
+  <li>000000 F-TRANSFORM Given x(t), sketch of magnitude/phase of H(Omega), find y !IMPORTANT</li>
+  <li>000000 SIMILAR:11,3 SAMPLING Given x(t) or relation y(t) = f(x(t)), find its Nyquist rate</li>
+  <li>000000 SIMILAR:15 Z-TRANSFORM Given H(z) or ODE, find impulse response (causal/stable matters)</li>
+  <li>000000 B-DIAGRAM Given H, draw direct form I and II, canonic form of block diagrams</li>
+  <li>TYPE:3 SIMILAR:4 CONVOLUTION CT calculate convolution of two functions</li>
+  <li>000000 LAPLACE Given ULT X(s), find x(0^+) and x(inf)</li>
+  <li>000000 B-DIAGRAM Given some poles and zeroes, draw block diagram (consider series/parallel, first/second order)</li>
+  <li>000000 Z-TRANSFORM Prove some properties of z transform.</li>
+  <li>000000 SIMILAR:15 Z-TRANSFORM Given H(z) and zero-pole plot, consider geometric interpretation of FT, classify low/band/high/all pass</li>
+</ol>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

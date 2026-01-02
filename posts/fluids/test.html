@@ -1,0 +1,355 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>fluids test - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/project.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    fluids test
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">Fluids</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2026-01-02T00:00:00+00:00">
+        📅 2026/01/02
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h1 id="type-1-viscosity">Type 1: Viscosity</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Velocity distribution \(u(y)\)</li>
+  <li>Viscosity \(\mu\)</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Shear stress \(\tau\)</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>From <a href="properties.html#:~:text=Viscosity">properties</a>:</p>
+
+\[\tau = \mu \frac{du}{dy}\]
+
+<h2 id="examples">Examples</h2>
+
+<hr />
+
+<h1 id="type-2-properties">Type 2: Properties</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Object in a liquid</li>
+  <li>Specific gravity of both \(SG_1,\ SG_2\)</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Fraction of body above liquid surface</li>
+</ul>
+
+<h2 id="solution-1">Solution</h2>
+
+<hr />
+
+<h1 id="type-3-submerged-bodies">Type 3: Submerged Bodies</h1>
+
+<hr />
+
+<h1 id="type-4-manometers">Type 4: Manometers</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Liquid in tanks/tubes at different heights</li>
+  <li>Dimensions</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Pressure difference</li>
+</ul>
+
+<h2 id="solution-2">Solution</h2>
+
+<hr />
+
+<h1 id="type-5-streamlines">Type 5: Streamlines</h1>
+
+<p>Given:</p>
+<ul>
+  <li>2D Velocity field</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Streamline equation</li>
+</ul>
+
+<hr />
+
+<h1 id="type-6-bernoulli">Type 6: Bernoulli</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Dimensions of pipe</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Water flow rate</li>
+  <li>Pressures</li>
+  <li>Change of height in Pitot tubes</li>
+</ol>
+
+<hr />
+
+<h1 id="type-7-water-jet-force">Type 7: Water Jet Force</h1>
+
+<p>Given 2 of the 3:</p>
+<ul>
+  <li>Water jet dimensions</li>
+  <li>Velocity</li>
+  <li>Flow rate</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>The non-given</li>
+  <li>Force exerted on the plate</li>
+</ol>
+
+<h2 id="solution-3">Solution</h2>
+
+<hr />
+
+<h1 id="type-8-vorticity">Type 8: Vorticity</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Velocity field</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Is the flow rotational?</li>
+  <li>Angular deformation</li>
+</ul>
+
+<h2 id="solution-4">Solution</h2>
+
+<hr />
+
+<h1 id="type-9-stream-equation">Type 9: Stream Equation</h1>
+
+<p>Given:</p>
+<ul>
+  <li>2D steady inviscid flow</li>
+  <li>One velocity component</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>The missing component</li>
+</ul>
+
+<h2 id="solution-5">Solution</h2>
+
+<hr />
+
+<h1 id="type-10-continuity-equation">Type 10: Continuity Equation</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Velocity</li>
+  <li>Mass flow</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Thrust from engine</li>
+</ul>
+
+<h2 id="solution-6">Solution</h2>
+
+<hr />
+
+<h1 id="type-11-navier-stokes">Type 11: Navier-Stokes</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Velocity field</li>
+  <li>Flow conditions</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Simplified Navier-Stokes equation</li>
+</ul>
+
+<h2 id="solution-7">Solution</h2>
+
+<hr />
+
+<h1 id="type-12-dimensional-analysis">Type 12: Dimensional Analysis</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Some variables</li>
+  <li>Description of physical behavior</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Equation to connect variables</li>
+</ul>
+
+<h2 id="solution-8">Solution</h2>
+
+<hr />
+
+<h1 id="type-13-draglift">Type 13: Drag/Lift</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Quantities to calculate drag or lift</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Drag/lift force</li>
+</ul>
+
+<h2 id="solution-9">Solution</h2>
+
+\[F_D = \frac{1}{2} C_D \rho A v^2\]
+
+<hr />
+
+<p>List</p>
+<ol>
+  <li>TYPE:01 VISCOSITY Given velocity distribution in pipe, find shear stress</li>
+  <li>TYPE:02 PROPERTIES Given an object in a liquid where both have different SGs, what portion of the solid is outside</li>
+  <li>TYPE:05 STREAMLINES Given velocity field, find streamline equation, plot streamlines in range !IMPORTANT</li>
+  <li>TYPE:06 BERNOULLI Given flow on pipe of changing diameter, find gauge pressures (incl. centerline slope) !IMPORTANT</li>
+  <li>TYPE:07 DYNAMICS Given flow from hose, find force exerted on object !IMPORTANT</li>
+  <li>TYPE:08 DIFFERENTIAL Given velocity field, find if the flow is rotational</li>
+  <li>TYPE:11 NAVIER-STOKES Given velocity field and conditions, find simplified Navier-Stokes equation</li>
+  <li>TYPE:12 DIMENSIONAL ANALYSIS Given description of behavior, find equation to connect variables</li>
+  <li>TYPE:13 DRAG-LIFT Given values for force, find drag force</li>
+  <li>TYPE:01 SIMILAR:01 VISCOSITY Given viscosity, find numerical value of stress !IMPORTANT</li>
+  <li>TYPE:03 STATICS - BUOYUANCY Given two objects with different weight, find water displaced</li>
+  <li>TYPE:04 STATICS Given water in manometer style, find pressures</li>
+  <li>TYPE:10 SIMILAR:5 Given velocity and mass flow in a system, find force (thrust force on engine)</li>
+  <li>TYPE:09 DIFFERENTIAL Given 2D steady inviscid flow and one velocity component, find missing component</li>
+  <li>TYPE:03 SIMILAR:11 STATICS-BUOYANCY Given ice cube on water, find height change</li>
+</ol>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>
