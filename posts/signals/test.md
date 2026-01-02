@@ -433,22 +433,62 @@ Find:
 
 ### 1. LCCDE
 
+Knowing $$H(s) = \frac{Y(s)}{X(s)}$$, and $$s^n Y(s) \Longleftrightarrow \frac{d^n y}{dt^n}$$:
+- Multiply the $$Y(s),\ X(s)$$ with the given $$H(s)$$ to rewrite it in the form $$Y(s) D(s) = X(s) N(s)$$, where D and N are denominator and numerator of H respectively
+- Check for pairs of $$s^n Y(s) \Longleftrightarrow \frac{d^n y}{dt^n}$$ and rewrite in time domain
+
+\* Note, this applies for bilateral Laplace transform, assuming initial conditions are zero
 
 ### 2. Zero-input response
 
+- Transform to Laplace, including the y(0) terms in the derivatives ($$\frac{dy}{dt} \Longleftrightarrow sY(s) - y(0^-)$$)
+- Rewrite in the $$Y(s) = ...$$ form, and separate the term that has the initial condition $$y(0)$$
+- The term without the initial condition $$y(0)$$ is the zero-input response
 
 ### 3. Zero-state response
 
+From the previous step, the term with the initial condition $$y(0)$$ is the zero-state response.
 
 ### 4. Overall response $$y(t)$$
+
+Sum the zero-input and zero-state responses. For convenience, you may transform them back to time domain individually.
+
+## Example
+
+Given: 
+
+$$
+H(s) = \frac{2s + 1}{s^2 - 4}
+$$
+
+$$
+\frac{dy}{dt} + 2y(t) = 4u(t)
+$$
+
+***
+
+# Type 8: Sampling
+
+Given:
+- Fourier transform graph of $$x(t)$$
+- Example frequency $$f_s$$
+- Cutoff frequency $$\omega_c$$
+- Frequency response expression $$H(\Omega)$$
+
+Find:
+1. Maximum sampling period $$T_s$$ to keep all info
+2. Sketch fourier transform of $$x[n]$$ sampled from $$x(t)$$ at frequency $$f_s$$
+3. Sketch spectrum of output $$Y(e^{j\omega})$$
+4. Obtain spectrum of reconstructed signal $$y_r$$ assuming sampling frequency is high enough
+
+## Solution
 
 
 ## Example
 
-
 ***
 
-# Type 7: DTFT
+# Type x: DTFT
 
 Given:
 - $$x[n]$$
@@ -463,7 +503,7 @@ Find:
 
 ***
 
-# Type 8: DT Convolution
+# Type x: DT Convolution
 
 Given:
 - $$x[t]$$
@@ -655,8 +695,8 @@ List
 10. TYPE:7 LCCDE Given LCCDE, expression of x(t), initials of y(0) y'(0), find y(t) (zero-input, zero-state, overall) !IMPORTANT
 11. 000000 SAMPLING given FT of x(t) as graph, frequency, find maximum sampling period (avoid info loss/aliasing), sketch FT of x[n]
 12. 000000 SAMPLING Given FT graph of x(t), conditions of sampled signal x[n], find/sketch spectrum of y[n], sketch reconstructed y_r(t)
-13. TYPE:7 DTFT given x[n], find its DTFT (see dtft properties)
-14. TYPE:8 CONVOLUTION given x[n], h[n], find linear/circular convolution !IMPORTANT
+13. 000000 DTFT given x[n], find its DTFT (see dtft properties)
+14. 000000 CONVOLUTION given x[n], h[n], find linear/circular convolution !IMPORTANT
 15. 000000 Z-TRANSFORM Given H(z) OR ODE, find zero-pole plot, ROCs, sketch magnitude/phase, classify low/band/high/all pass, is it causal/stable? !IMPORTANT
 16. 000000 B-DIAGRAM Given H(z), separate into H1 and H2 in series/parallel, draw block diagram
 17. 000000 F-TRANSFORM Given H(e^jw) OR ODE, and expression of x, find y, sketch magnitude/phase, classify low/band/high/all pass !IMPORTANT
