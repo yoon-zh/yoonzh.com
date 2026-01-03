@@ -282,10 +282,27 @@ $$
 Given:
 - Velocity field $$u(y) = (5y - 0.2y^2)$$ mm/s
 - Viscosity $$\mu = 0.482$$ Pa*s
+- Distance from ground to plate $$y = 4$$ mm
 - Fluid is between ground and plate, where velocity next to plate is max velocity
 
 Find:
 - Shear stress on plate and fixed surface
+
+> Solution:
+>
+> Find the derivative of $$u(y)$$:
+>
+> $$\frac{du}{dy} = 5 - 0.4y$$
+>
+> Note this is in units of $$\frac{1}{s}$$ (Hz). Replace in the shear stress equation:
+>
+> $$\tau = \mu \frac{du}{dy}$$
+>
+> $$\tau = 0.482(5 - 0.4y) \ \text{Pa}$$
+>
+> Shear stress on plate is $$\tau(y = 4 mm) = 1.64 \ \text{Pa}$$
+>
+> Shear stress on ground is $$\tau(y = 0 mm) = 3.86 \ \text{Pa}$$
 
 ### Ex 2
 
@@ -296,6 +313,18 @@ Given:
 Find:
 - Shear stress
 
+> Solution:
+>
+> Find the derivative of $$u(r)$$:
+>
+> $$\frac{du}{dr} = -\frac{2 v_0 r}{R^2}$$
+>
+> Replace in the shear stress equation:
+>
+> $$\tau = \mu \frac{du}{dy}$$
+>
+> $$\tau = -\mu \frac{2 v_0 r}{R^2}$$
+
 ### Ex 3
 
 Given:
@@ -305,6 +334,24 @@ Given:
 
 Find:
 - Shear stress on top and bottom plates
+
+> Solution:
+>
+> Find the derivative of $$u(y)$$:
+>
+> $$\frac{du}{dy} = -160 y$$
+>
+> Replace in the shear stress equation:
+>
+> $$\tau = \mu \frac{du}{dy}$$
+>
+> $$\tau = -48 y$$
+>
+> For top and bottom plates: $$y_{\text{top}} = 0.1 \ m,\ y_{\text{bottom}} = -0.1 \ m$$.
+>
+> $$\tau_{\text{top}} = -4.8 \ \text{Pa},\ \tau_{\text{bottom}} = 4.8 \ \text{Pa}$$
+
+***
 
 ## Type 2
 
