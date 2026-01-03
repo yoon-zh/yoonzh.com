@@ -39,15 +39,9 @@ Find:
 
 ## Solution
 
-
 ***
 
-# Type 3: Submerged Bodies
-
-
-***
-
-# Type 4: Manometers
+# Type 3: Manometers
 
 Given:
 - Liquid in tanks/tubes at different heights
@@ -60,7 +54,7 @@ Find:
 
 ***
 
-# Type 5: Streamlines
+# Type 4: Streamlines
 
 Given:
 - 2D Velocity field
@@ -70,7 +64,7 @@ Find:
 
 ***
 
-# Type 6: Bernoulli
+# Type 5: Bernoulli
 
 Given:
 - Dimensions of pipe
@@ -83,7 +77,7 @@ Find:
 
 ***
 
-# Type 7: Water Jet Force
+# Type 6: Water Jet Force
 
 Given 2 of the 3: 
 - Water jet dimensions
@@ -98,7 +92,7 @@ Find:
 
 ***
 
-# Type 8: Vorticity
+# Type 7: Vorticity
 
 Given:
 - Velocity field
@@ -111,7 +105,7 @@ Find:
 
 ***
 
-# Type 9: Stream Equation
+# Type 8: Stream Equation
 
 Given:
 - 2D steady inviscid flow
@@ -124,7 +118,7 @@ Find:
 
 ***
 
-# Type 10: Continuity Equation
+# Type 9: Continuity Equation
 
 Given:
 - Velocity
@@ -137,7 +131,7 @@ Find:
 
 ***
 
-# Type 11: Navier-Stokes
+# Type 10: Navier-Stokes
 
 Given:
 - Velocity field
@@ -150,7 +144,7 @@ Find:
 
 ***
 
-# Type 12: Dimensional Analysis
+# Type 11: Dimensional Analysis
 
 Given:
 - Some variables
@@ -163,7 +157,7 @@ Find:
 
 ***
 
-# Type 13: Drag/Lift
+# Type 12: Drag/Lift
 
 Given:
 - Quantities to calculate drag or lift
@@ -182,16 +176,16 @@ $$
 List
 01. TYPE:01 VISCOSITY Given velocity distribution in pipe, find shear stress
 02. TYPE:02 PROPERTIES Given an object in a liquid where both have different SGs, what portion of the solid is outside
-03. TYPE:05 STREAMLINES Given velocity field, find streamline equation, plot streamlines in range !IMPORTANT
-04. TYPE:06 BERNOULLI Given flow on pipe of changing diameter, find gauge pressures (incl. centerline slope) !IMPORTANT
-05. TYPE:07 DYNAMICS Given flow from hose, find force exerted on object !IMPORTANT
-06. TYPE:08 DIFFERENTIAL Given velocity field, find if the flow is rotational
-07. TYPE:11 NAVIER-STOKES Given velocity field and conditions, find simplified Navier-Stokes equation
-08. TYPE:12 DIMENSIONAL ANALYSIS Given description of behavior, find equation to connect variables
-09. TYPE:13 DRAG-LIFT Given values for force, find drag force
+03. TYPE:04 STREAMLINES Given velocity field, find streamline equation, plot streamlines in range !IMPORTANT
+04. TYPE:05 BERNOULLI Given flow on pipe of changing diameter, find gauge pressures (incl. centerline slope) !IMPORTANT
+05. TYPE:06 DYNAMICS Given flow from hose, find force exerted on object !IMPORTANT
+06. TYPE:07 DIFFERENTIAL Given velocity field, find if the flow is rotational
+07. TYPE:10 NAVIER-STOKES Given velocity field and conditions, find simplified Navier-Stokes equation
+08. TYPE:11 DIMENSIONAL ANALYSIS Given description of behavior, find equation to connect variables
+09. TYPE:12 DRAG-LIFT Given values for force, find drag force
 10. TYPE:01 SIMILAR:01 VISCOSITY Given viscosity, find numerical value of stress !IMPORTANT
-11. TYPE:03 STATICS - BUOYUANCY Given two objects with different weight, find water displaced
-12. TYPE:04 STATICS Given water in manometer style, find pressures
-13. TYPE:10 SIMILAR:5 Given velocity and mass flow in a system, find force (thrust force on engine)
-14. TYPE:09 DIFFERENTIAL Given 2D steady inviscid flow and one velocity component, find missing component
-15. TYPE:03 SIMILAR:11 STATICS-BUOYANCY Given ice cube on water, find height change
+11. TYPE:02 STATICS - BUOYUANCY Given two objects with different weight, find water displaced
+12. TYPE:03 STATICS Given water in manometer style, find pressures
+13. TYPE:09 SIMILAR:5 Given velocity and mass flow in a system, find force (thrust force on engine)
+14. TYPE:08 DIFFERENTIAL Given 2D steady inviscid flow and one velocity component, find missing component
+15. TYPE:02 SIMILAR:11 STATICS-BUOYANCY Given ice cube on water, find height change
