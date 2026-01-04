@@ -152,15 +152,37 @@ Find:
 
 ## Solution
 
+$$P = \rho g h$$
+
+If there is a tube with air, you can assume the points where it meets with liquids have the same pressure.
+
 ***
 
 # Type 4: Streamlines
 
 Given:
-- 2D Velocity field
+- Velocity field
 
 Find:
 - Streamline equation
+
+## Solution
+
+From [fluid dynamics](fluid-dynamics-basics.html#:~:text=Streamlines):
+
+$$\frac{dx}{v_x} = \frac{dy}{v_y} = \frac{dz}{v_z}$$
+
+## Examples
+
+1\. $$v = (2 - y)\hat{i} + \hat{j}$$
+
+2\. $$v = 5x\hat{i} + 3xy\hat{j}$$
+
+3\. $$v = 2y^2 \hat{i} + 4\hat{j}$$
+
+4\. $$v = 0.5\hat{i} + (0.8 + 0.6y)\hat{j}$$
+
+5\. $$v = 5y^2 \hat{i} + (4x - 1)\hat{j}$$
 
 ***
 
@@ -169,11 +191,42 @@ Find:
 Given:
 - Dimensions of pipe
 
- 
 Find: 
 1. Water flow rate
 2. Pressures
 3. Change of height in Pitot tubes
+
+## Solution
+
+From [fluid dynamics](fluid-dynamics-basics.html#:~:text=Volume,flow,rate), the volume flow rate is:
+
+$$Q = AV$$
+
+When we say steady flow, we mean $$Q_1 = Q_2$$.
+
+Regarding pitot tubes: Static tubes measure static pressure. Pitot tubes measure stagnation pressure (total).
+
+$$P_{\text{static}} = \rho g h$$
+
+$$P_{\text{dynamic}} = \frac{1}{2} \rho V^2$$
+
+$$P_{\text{stagnation}} = \frac{1}{2} \rho V^2 + \rho g h$$
+
+> For a pitot-static tube system, the relationship is:
+>
+> $$\frac{P_s}{\rho} = \frac{P_{\infty}}{\rho} + \frac{V_{\infty}^2}{2}$$
+
+Where
+- $$P_s$$ is stagnation pressure (at mouth of pitot tube)
+- $$P_{\infty}$$ is pressure from static tube (point between tube and fluid flow)
+- $$V_s = 0$$ is stagnation velocity, which is 0 since the mouth of pitot tube stops the fluid
+- $$V_{\infty}$$ is velocity of fluid as seen next to static tube
+
+If the pitot-static tube is used to measure some height difference between each, we can replace $$P_s = \rho g h_s,\ P_{\infty} = \rho g h_{\infty}$$:
+
+$$
+h_s = h_{\infty} + \frac{V_{\infty}^2}{2g}
+$$
 
 ***
 
@@ -190,6 +243,22 @@ Find:
 
 ## Solution
 
+From [fluid dynamics](fluid-dynamics-basics.html#:~:text=Volume,flow,rate), the volume flow rate is:
+
+$$Q = AV$$
+
+The equation above can be used to find the non-given.
+
+The force exerted on the plate is calculated from the momentum equation:
+
+$$F = \dot{m} (v_{in} - v_{out})$$
+
+Where $$\dot{m} = \rho A v = \rho Q$$ is mass flow (kg/s).
+
+Quick reminders:
+- Volume units: $$1 \ L = 10^{-3} \ m^3$$
+- If plate is at an angle $$\theta$$, consider perpendicular velocity as $$v\sin{\theta}$$
+
 ***
 
 # Type 7: Vorticity
@@ -202,6 +271,18 @@ Find:
 - Angular deformation
 
 ## Solution
+
+From [differential analysis](diff.html#:~:text=Vorticity), the vorticity is:
+
+$$\zeta = \nabla \times \vec{V} = \text{curl}\ \vec{V}$$
+
+The angular velocity is:
+
+$$\omega = \frac{1}{2} \zeta$$
+
+The angular deformation is:
+
+$$\Omega_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}$$
 
 ***
 
@@ -216,6 +297,14 @@ Find:
 
 ## Solution
 
+From [differential analysis](diff.html#:~:text=Stream,Function):
+
+$$\frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} = 0$$
+
+$$u = \frac{\partial \Psi}{\partial y},\quad v = -\frac{\partial \Psi}{\partial x}$$
+
+The key is to find the function $$\Psi(x, y)$$ by integrating the above, using vector calculus.
+
 ***
 
 # Type 9: Continuity Equation
@@ -229,6 +318,10 @@ Find:
 
 ## Solution
 
+$$F = \dot{m}_2 v_2 - \dot{m}_1 v_1 + (P_{\text{exit}} - P_{\text{atm}}) A_2$$
+
+Where 1 is the jet entrance and 2 is the exit. Usually, we assume no pressure difference, so it is just $$\dot{m}_2 v_2 - \dot{m}_1 v_1$$ for rough calculations.
+
 ***
 
 # Type 10: Navier-Stokes
@@ -241,6 +334,12 @@ Find:
 - Simplified Navier-Stokes equation
 
 ## Solution
+
+From [differential analysis](diff.html#:~:text=Navier-Stokes):
+
+> $$\rho \frac{DV}{Dt} = - \nabla P + \rho \vec{g} + \mu \nabla^2 V$$
+>
+> $$\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = -\nabla P + \rho \vec{g} + \mu \nabla^2 V$$
 
 ***
 

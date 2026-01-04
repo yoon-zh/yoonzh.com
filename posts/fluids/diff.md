@@ -117,9 +117,9 @@ Using some basic 3D calc we can get $$\Psi(x,y)$$. We define streamlines as $$\P
 
 Given an incompressible fluid (density $$\rho$$ is constant) and the velocity field $$V(x,y,z) = u\hat{i} + v\hat{j} + w\hat{k}$$, where $$u,\ v,\ w$$ represent the velocity field in the $$x,\ y,\ z$$ axis respectively:
 
-> $$\rho \frac{DV}{Dt} = - \nabla P + \rho g + \mu \nabla^2 V$$
+> $$\rho \frac{DV}{Dt} = - \nabla P + \rho \vec{g} + \mu \nabla^2 V$$
 >
-> $$\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = -\nabla P + \rho g + \mu \nabla^2 V$$
+> $$\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = -\nabla P + \rho \vec{g} + \mu \nabla^2 V$$
 
 Where
 - $$\rho$$ is [density](properties.html#:~:text=Density) in $$kg/m^3$$
