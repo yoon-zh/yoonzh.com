@@ -335,11 +335,13 @@ Find:
 
 ## Solution
 
-From [differential analysis](diff.html#:~:text=Navier-Stokes):
+From [differential analysis](diff.html#:~:text=is%20any%20constant.-,Navier%2DStokes,-Given%20an%20incompressible):
 
 > $$\rho \frac{DV}{Dt} = - \nabla P + \rho \vec{g} + \mu \nabla^2 V$$
 >
 > $$\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = -\nabla P + \rho \vec{g} + \mu \nabla^2 V$$
+
+See [simplifying Navier-Stokes](diff.html#:~:text=Simplifying%20Navier%2DStokes)
 
 ***
 
@@ -353,6 +355,13 @@ Find:
 - Equation to connect variables
 
 ## Solution
+
+1. List down the variables with their dimensions (length, mass, time...)
+2. Let $$N$$ be the number of variables, and $$m$$ the number of unique dimensions that show up
+3. You can group the variables in $$N-m$$ groups. Call them your $$\pi$$ groups
+4. Make $$N-m$$ groups in fractions where the variables cancel each other's dimensions
+5. Try to group them up in common forms (like Reynolds number), and use exponents (including square roots) to ensure they are dimensionless
+6. If you have two groups, you say $$\pi_1 = \pi_2$$, where $$\pi_2$$ would use the notation of $$f(\text{var}...)$$. Replace "var" with your $$\pi_2$$.
 
 ***
 
