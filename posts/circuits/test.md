@@ -17,7 +17,32 @@ tech_stack: [Circuits]
 | Common Collector  | $$\cong 1$$ | > 1         | High  | Low       |
 | Common Base       | > 1         | $$\cong 1$$ | Low   | Mid-high  |
 
-CC is used as buffer because it has high input impedance (draws little current from input) and low output impedance with hih current gain (can drive output). Its voltage gain of about 1 means it roughly passes the same voltage from input to output
+CC is used as buffer because:
+- It has high input impedance (draws little current from input)
+- Low output impedance with high current gain (can drive output)
+
+Its voltage gain of about 1 means it roughly passes the same voltage from input to output
+
+***
+
+### Miller Effect
+
+$$C_{\text{input}} = C(1 + A)$$
+
+
+***
+
+# Type f: Diff Amps
+
+CMRR, noise
+
+***
+
+# Type d: Current Mirrors
+
+Widlar adds a resistor to emitter, allowing to generate small output currents with reasonable resistor values.
+
+***
 
 # Type x: Op Amps
 
@@ -28,9 +53,19 @@ CC is used as buffer because it has high input impedance (draws little current f
 | Open-loop gain $$A_{OL}$$ | $$\infty$$ | Very high | Infinite gain allows to apply "virtual short" |
 | Bandwidth                 | $$\infty$$ | Finite | Non-ideals have slew rate, which distorts very high-frequency signals |
 
+### DC Imperfections
+
+1. Input offset voltage
+2. Input bias current
+3. Input offset current
+
 ### Virtual Short
 
+In an ideal op amp, the open-loop gain is infinite, then $$V_+ = V_-$$. The virtual short is to say positive and negative terminals are at same voltage, as if they were shorted. However, they are not physically connected so no current flows from one to the other.
 
+### Loading Effect
+
+Connecting a load (resistor) to a voltage affects the voltage that goes through it depending on the load, much like a voltage divider.
 
 ### Slew Rate
 
@@ -46,6 +81,17 @@ Where
 > $$SR = V_m \omega$$
 >
 > Where $$\omega = 2\pi f$$ is angular frequency (from the signal $$\sin{\omega t}$$)
+
+### Negative Feedback
+
+Advantages:
+- Gain is dependend on external resistors rather than op amp transistor parameters
+- Has increased bandwidth
+- Reduces non-linear distortions
+
+Disadvantages:
+- Lower gain
+- Susceptible to phase shifts
 
 ***
 
