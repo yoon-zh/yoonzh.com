@@ -111,6 +111,49 @@
 
 <h2 id="examples">Examples</h2>
 
+<p>Answers <a href="#answers">below</a></p>
+
+<h3 id="ex-1">Ex 1</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Velocity field \(u(y) = (5y - 0.2y^2)\) mm/s</li>
+  <li>Viscosity \(\mu = 0.482\) Pa*s</li>
+  <li>Fluid is between ground and plate, where velocity next to plate is max velocity</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Shear stress on plate and fixed surface</li>
+</ul>
+
+<h3 id="ex-2">Ex 2</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Velocity field \(u(r) = v_0 (1 - \frac{r^2}{R^2})\)</li>
+  <li>Pipe of radius R</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Shear stress</li>
+</ul>
+
+<h3 id="ex-3">Ex 3</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Distance between top and bottom plate 0.2 m</li>
+  <li>Viscosity \(\mu = 0.3\) Pa*s</li>
+  <li>Velocity distribution \(u(y) = 0.8(1 - 100y^2)\), where \(y\) is distance from centerline</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Shear stress on top and bottom plates</li>
+</ul>
+
 <hr />
 
 <h1 id="type-2-properties">Type 2: Properties</h1>
@@ -118,7 +161,13 @@
 <p>Given:</p>
 <ul>
   <li>Object in a liquid</li>
-  <li>Specific gravity of both \(SG_1,\ SG_2\)</li>
+  <li>One of the following:
+    <ul>
+      <li>Specific gravity of both \(SG_1,\ SG_2\)</li>
+      <li>Density of both</li>
+      <li>Force of both</li>
+    </ul>
+  </li>
 </ul>
 
 <p>Find:</p>
@@ -128,13 +177,93 @@
 
 <h2 id="solution-1">Solution</h2>
 
+<p>This is a simple force balance problem:</p>
+
+\[F_{\text{solid}} = F_{\text{sub}}\]
+
+<p>Where \(F_{\text{solid}}\) is the weight of the solid, and \(F_{\text{sub}}\) is the buoyant force exerted by the displaced water (submerged volume of solid). Then we rewrite it according to what we are given:</p>
+
+\[\rho_{\text{solid}} V_{\text{solid}} g = \rho_{\text{liquid}} V_{\text{sub}} g\]
+
+\[SG_{\text{solid}} V_{\text{solid}} g = SG_{\text{liquid}} V_{\text{sub}} g\]
+
+<p>In general cases, the acceleration is gravity, so it can be simplified. Usually, this kind of problem wants you to write the ratio of volumes:</p>
+
+\[\frac{V_{\text{sub}}}{V_{\text{solid}}} = \frac{\rho_{\text{solid}}}{\rho_{\text{liquid}}}\]
+
+\[\frac{V_{\text{sub}}}{V_{\text{solid}}} = \frac{SG_{\text{solid}}}{SG_{\text{liquid}}}\]
+
+<p>This is the volume fraction of the submerged solid (under liquid surface). If asked for the portion of solid ABOVE liquid surface:</p>
+
+<blockquote>
+\[\frac{V_{\text{above}}}{V_{\text{solid}}} = 1 - \frac{V_{\text{sub}}}{V_{\text{solid}}}\]
+
+\[\frac{V_{\text{above}}}{V_{\text{solid}}} = 1 - \frac{SG_{\text{solid}}}{SG_{\text{liquid}}}\]
+</blockquote>
+
+<h2 id="examples-1">Examples</h2>
+
+<p>Answers <a href="#answers">below</a></p>
+
+<h3 id="ex-1-1">Ex 1</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Ice cube with \(l =25 mm\)</li>
+  <li>Density \(\rho_{\text{ice}} = 920\) kg/m^3</li>
+  <li>Cup of water with diameter \(d = 50 mm\), height \(h = 100 mm\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>New height of water after placing the ice in the cup</li>
+  <li>New height of water when the ice melts</li>
+</ol>
+
+<h3 id="ex-2-1">Ex 2</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Ice with \(SG_{\text{ice}} = 0.95\)</li>
+  <li>Ocean water \(SG_{\text{ocean}} = 1.25\)</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Fraction of ice above ocean</li>
+</ul>
+
+<h3 id="ex-3-1">Ex 3</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Fully submerged sphere of diameter \(d = 0.6\) m and density \(\rho_{\text{ball}} = 48\) kg/m^3</li>
+  <li>Distance from liquid surface to top of sphere \(h = 1 m\)</li>
+  <li>Cable connecting the bottom of sphere to bottom of water tank of length \(c = 0.5 m\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Tension in cable</li>
+  <li>Change in tension after change in cable length</li>
+</ol>
+
+<h3 id="ex-4">Ex 4</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Weight of two objects \(W_1,\ W_2\)</li>
+  <li>Both are floating on water</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Fraction of volume displaced by the heavier vs lighter object</li>
+</ul>
+
 <hr />
 
-<h1 id="type-3-submerged-bodies">Type 3: Submerged Bodies</h1>
-
-<hr />
-
-<h1 id="type-4-manometers">Type 4: Manometers</h1>
+<h1 id="type-3-manometers">Type 3: Manometers</h1>
 
 <p>Given:</p>
 <ul>
@@ -149,13 +278,17 @@
 
 <h2 id="solution-2">Solution</h2>
 
+\[P = \rho g h\]
+
+<p>If there is a tube with air, you can assume the points where it meets with liquids have the same pressure.</p>
+
 <hr />
 
-<h1 id="type-5-streamlines">Type 5: Streamlines</h1>
+<h1 id="type-4-streamlines">Type 4: Streamlines</h1>
 
 <p>Given:</p>
 <ul>
-  <li>2D Velocity field</li>
+  <li>Velocity field</li>
 </ul>
 
 <p>Find:</p>
@@ -163,9 +296,27 @@
   <li>Streamline equation</li>
 </ul>
 
+<h2 id="solution-3">Solution</h2>
+
+<p>From <a href="fluid-dynamics-basics.html#:~:text=Streamlines">fluid dynamics</a>:</p>
+
+\[\frac{dx}{v_x} = \frac{dy}{v_y} = \frac{dz}{v_z}\]
+
+<h2 id="examples-2">Examples</h2>
+
+<p>1. \(v = (2 - y)\hat{i} + \hat{j}\)</p>
+
+<p>2. \(v = 5x\hat{i} + 3xy\hat{j}\)</p>
+
+<p>3. \(v = 2y^2 \hat{i} + 4\hat{j}\)</p>
+
+<p>4. \(v = 0.5\hat{i} + (0.8 + 0.6y)\hat{j}\)</p>
+
+<p>5. \(v = 5y^2 \hat{i} + (4x - 1)\hat{j}\)</p>
+
 <hr />
 
-<h1 id="type-6-bernoulli">Type 6: Bernoulli</h1>
+<h1 id="type-5-bernoulli">Type 5: Bernoulli</h1>
 
 <p>Given:</p>
 <ul>
@@ -179,9 +330,43 @@
   <li>Change of height in Pitot tubes</li>
 </ol>
 
+<h2 id="solution-4">Solution</h2>
+
+<p>From <a href="fluid-dynamics-basics.html#:~:text=Volume,flow,rate">fluid dynamics</a>, the volume flow rate is:</p>
+
+\[Q = AV\]
+
+<p>When we say steady flow, we mean \(Q_1 = Q_2\).</p>
+
+<p>Regarding pitot tubes: Static tubes measure static pressure. Pitot tubes measure stagnation pressure (total).</p>
+
+\[P_{\text{static}} = \rho g h\]
+
+\[P_{\text{dynamic}} = \frac{1}{2} \rho V^2\]
+
+\[P_{\text{stagnation}} = \frac{1}{2} \rho V^2 + \rho g h\]
+
+<blockquote>
+  <p>For a pitot-static tube system, the relationship is:</p>
+
+\[\frac{P_s}{\rho} = \frac{P_{\infty}}{\rho} + \frac{V_{\infty}^2}{2}\]
+</blockquote>
+
+<p>Where</p>
+<ul>
+  <li>\(P_s\) is stagnation pressure (at mouth of pitot tube)</li>
+  <li>\(P_{\infty}\) is pressure from static tube (point between tube and fluid flow)</li>
+  <li>\(V_s = 0\) is stagnation velocity, which is 0 since the mouth of pitot tube stops the fluid</li>
+  <li>\(V_{\infty}\) is velocity of fluid as seen next to static tube</li>
+</ul>
+
+<p>If the pitot-static tube is used to measure some height difference between each, we can replace \(P_s = \rho g h_s,\ P_{\infty} = \rho g h_{\infty}\):</p>
+
+\[h_s = h_{\infty} + \frac{V_{\infty}^2}{2g}\]
+
 <hr />
 
-<h1 id="type-7-water-jet-force">Type 7: Water Jet Force</h1>
+<h1 id="type-6-water-jet-force">Type 6: Water Jet Force</h1>
 
 <p>Given 2 of the 3:</p>
 <ul>
@@ -196,11 +381,29 @@
   <li>Force exerted on the plate</li>
 </ol>
 
-<h2 id="solution-3">Solution</h2>
+<h2 id="solution-5">Solution</h2>
+
+<p>From <a href="fluid-dynamics-basics.html#:~:text=Volume,flow,rate">fluid dynamics</a>, the volume flow rate is:</p>
+
+\[Q = AV\]
+
+<p>The equation above can be used to find the non-given.</p>
+
+<p>The force exerted on the plate is calculated from the momentum equation:</p>
+
+\[F = \dot{m} (v_{in} - v_{out})\]
+
+<p>Where \(\dot{m} = \rho A v = \rho Q\) is mass flow (kg/s).</p>
+
+<p>Quick reminders:</p>
+<ul>
+  <li>Volume units: \(1 \ L = 10^{-3} \ m^3\)</li>
+  <li>If plate is at an angle \(\theta\), consider perpendicular velocity as \(v\sin{\theta}\)</li>
+</ul>
 
 <hr />
 
-<h1 id="type-8-vorticity">Type 8: Vorticity</h1>
+<h1 id="type-7-vorticity">Type 7: Vorticity</h1>
 
 <p>Given:</p>
 <ul>
@@ -213,11 +416,23 @@
   <li>Angular deformation</li>
 </ul>
 
-<h2 id="solution-4">Solution</h2>
+<h2 id="solution-6">Solution</h2>
+
+<p>From <a href="diff.html#:~:text=Vorticity">differential analysis</a>, the vorticity is:</p>
+
+\[\zeta = \nabla \times \vec{V} = \text{curl}\ \vec{V}\]
+
+<p>The angular velocity is:</p>
+
+\[\omega = \frac{1}{2} \zeta\]
+
+<p>The angular deformation is:</p>
+
+\[\Omega_{xy} = \frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}\]
 
 <hr />
 
-<h1 id="type-9-stream-equation">Type 9: Stream Equation</h1>
+<h1 id="type-8-stream-equation">Type 8: Stream Equation</h1>
 
 <p>Given:</p>
 <ul>
@@ -230,11 +445,19 @@
   <li>The missing component</li>
 </ul>
 
-<h2 id="solution-5">Solution</h2>
+<h2 id="solution-7">Solution</h2>
+
+<p>From <a href="diff.html#:~:text=Stream,Function">differential analysis</a>:</p>
+
+\[\frac{\partial (\rho u)}{\partial x} + \frac{\partial (\rho v)}{\partial y} = 0\]
+
+\[u = \frac{\partial \Psi}{\partial y},\quad v = -\frac{\partial \Psi}{\partial x}\]
+
+<p>The key is to find the function \(\Psi(x, y)\) by integrating the above, using vector calculus.</p>
 
 <hr />
 
-<h1 id="type-10-continuity-equation">Type 10: Continuity Equation</h1>
+<h1 id="type-9-continuity-equation">Type 9: Continuity Equation</h1>
 
 <p>Given:</p>
 <ul>
@@ -247,11 +470,15 @@
   <li>Thrust from engine</li>
 </ul>
 
-<h2 id="solution-6">Solution</h2>
+<h2 id="solution-8">Solution</h2>
+
+\[F = \dot{m}_2 v_2 - \dot{m}_1 v_1 + (P_{\text{exit}} - P_{\text{atm}}) A_2\]
+
+<p>Where 1 is the jet entrance and 2 is the exit. Usually, we assume no pressure difference, so it is just \(\dot{m}_2 v_2 - \dot{m}_1 v_1\) for rough calculations.</p>
 
 <hr />
 
-<h1 id="type-11-navier-stokes">Type 11: Navier-Stokes</h1>
+<h1 id="type-10-navier-stokes">Type 10: Navier-Stokes</h1>
 
 <p>Given:</p>
 <ul>
@@ -264,11 +491,21 @@
   <li>Simplified Navier-Stokes equation</li>
 </ul>
 
-<h2 id="solution-7">Solution</h2>
+<h2 id="solution-9">Solution</h2>
+
+<p>From <a href="diff.html#:~:text=is%20any%20constant.-,Navier%2DStokes,-Given%20an%20incompressible">differential analysis</a>:</p>
+
+<blockquote>
+\[\rho \frac{DV}{Dt} = - \nabla P + \rho \vec{g} + \mu \nabla^2 V\]
+
+\[\rho \left(\frac{\partial V}{\partial t} + V \cdot \nabla V \right) = -\nabla P + \rho \vec{g} + \mu \nabla^2 V\]
+</blockquote>
+
+<p>See <a href="diff.html#:~:text=Simplifying%20Navier%2DStokes">simplifying Navier-Stokes</a></p>
 
 <hr />
 
-<h1 id="type-12-dimensional-analysis">Type 12: Dimensional Analysis</h1>
+<h1 id="type-11-dimensional-analysis">Type 11: Dimensional Analysis</h1>
 
 <p>Given:</p>
 <ul>
@@ -281,11 +518,20 @@
   <li>Equation to connect variables</li>
 </ul>
 
-<h2 id="solution-8">Solution</h2>
+<h2 id="solution-10">Solution</h2>
+
+<ol>
+  <li>List down the variables with their dimensions (length, mass, time…)</li>
+  <li>Let \(N\) be the number of variables, and \(m\) the number of unique dimensions that show up</li>
+  <li>You can group the variables in \(N-m\) groups. Call them your \(\pi\) groups</li>
+  <li>Make \(N-m\) groups in fractions where the variables cancel each other’s dimensions</li>
+  <li>Try to group them up in common forms (like Reynolds number), and use exponents (including square roots) to ensure they are dimensionless</li>
+  <li>If you have two groups, you say \(\pi_1 = \pi_2\), where \(\pi_2\) would use the notation of \(f(\text{var}...)\). Replace “var” with your \(\pi_2\).</li>
+</ol>
 
 <hr />
 
-<h1 id="type-13-draglift">Type 13: Drag/Lift</h1>
+<h1 id="type-12-draglift">Type 12: Drag/Lift</h1>
 
 <p>Given:</p>
 <ul>
@@ -297,9 +543,255 @@
   <li>Drag/lift force</li>
 </ul>
 
-<h2 id="solution-9">Solution</h2>
+<h2 id="solution-11">Solution</h2>
 
 \[F_D = \frac{1}{2} C_D \rho A v^2\]
+
+<hr />
+
+<h1 id="answers">Answers</h1>
+
+<h2 id="type-1">Type 1</h2>
+
+<h3 id="ex-1-2">Ex 1</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Velocity field \(u(y) = (5y - 0.2y^2)\) mm/s</li>
+  <li>Viscosity \(\mu = 0.482\) Pa*s</li>
+  <li>Distance from ground to plate \(y = 4\) mm</li>
+  <li>Fluid is between ground and plate, where velocity next to plate is max velocity</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Shear stress on plate and fixed surface</li>
+</ul>
+
+<blockquote>
+  <p>Solution:</p>
+
+  <p>Find the derivative of \(u(y)\):</p>
+
+\[\frac{du}{dy} = 5 - 0.4y\]
+
+  <p>Note this is in units of \(\frac{1}{s}\) (Hz). Replace in the shear stress equation:</p>
+
+\[\tau = \mu \frac{du}{dy}\]
+
+\[\tau = 0.482(5 - 0.4y) \ \text{Pa}\]
+
+  <p>Shear stress on plate is \(\tau(y = 4 mm) = 1.64 \ \text{Pa}\)</p>
+
+  <p>Shear stress on ground is \(\tau(y = 0 mm) = 3.86 \ \text{Pa}\)</p>
+</blockquote>
+
+<h3 id="ex-2-2">Ex 2</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Velocity field \(u(r) = v_0 (1 - \frac{r^2}{R^2})\)</li>
+  <li>Pipe of radius R</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Shear stress</li>
+</ul>
+
+<blockquote>
+  <p>Solution:</p>
+
+  <p>Find the derivative of \(u(r)\):</p>
+
+\[\frac{du}{dr} = -\frac{2 v_0 r}{R^2}\]
+
+  <p>Replace in the shear stress equation:</p>
+
+\[\tau = \mu \frac{du}{dy}\]
+
+\[\tau = -\mu \frac{2 v_0 r}{R^2}\]
+</blockquote>
+
+<h3 id="ex-3-2">Ex 3</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Distance between top and bottom plate 0.2 m</li>
+  <li>Viscosity \(\mu = 0.3\) Pa*s</li>
+  <li>Velocity distribution \(u(y) = 0.8(1 - 100y^2)\), where \(y\) is distance from centerline</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Shear stress on top and bottom plates</li>
+</ul>
+
+<blockquote>
+  <p>Solution:</p>
+
+  <p>Find the derivative of \(u(y)\):</p>
+
+\[\frac{du}{dy} = -160 y\]
+
+  <p>Replace in the shear stress equation:</p>
+
+\[\tau = \mu \frac{du}{dy}\]
+
+\[\tau = -48 y\]
+
+  <p>For top and bottom plates: \(y_{\text{top}} = 0.1 \ m,\ y_{\text{bottom}} = -0.1 \ m\).</p>
+
+\[\tau_{\text{top}} = -4.8 \ \text{Pa},\ \tau_{\text{bottom}} = 4.8 \ \text{Pa}\]
+</blockquote>
+
+<hr />
+
+<h2 id="type-2">Type 2</h2>
+
+<h3 id="ex-1-3">Ex 1</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Ice cube with \(l = 25 mm\)</li>
+  <li>Density \(\rho_{\text{ice}} = 920\) kg/m^3</li>
+  <li>Cup of water with diameter \(d = 50 mm\), height \(h = 100 mm\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>New height of water after placing the ice in the cup</li>
+  <li>New height of water when the ice melts</li>
+</ol>
+
+<blockquote>
+  <p>Solution:</p>
+
+  <p>The ice displaces some volume of water, although the volume of water remains the same. This causes the water level to go up, increasing the height.</p>
+
+  <p>1. Calculate the volume displaced (submerged volume of ice)</p>
+
+\[F_{\text{ice}} = F_B\]
+
+\[\rho_{\text{ice}} V_T g = \rho_{\text{water}} V_{\text{sub}} g\]
+
+\[V_{\text{sub}} = \frac{\rho_{\text{ice}}}{\rho_{\text{water}}} V_T\]
+
+  <p>2. Calculate the total volume of ice \(V_T\)</p>
+
+\[V_T = l^3 = 1.56 \cdot 10^{-5} \ m^3\]
+
+\[V_{\text{sub}} = 1.44 \cdot 10^{-5} \ m^3\]
+
+  <p>3. Find new height: The volume with the new height is the sum of the volume of submerged ice and water.</p>
+
+\[\frac{\pi}{4} d^2 h_N = V_{\text{water}} + V_{\text{sub}}\]
+
+\[h_N = h + \frac{V_{\text{sub}}}{\frac{\pi}{4} d^2} = 0.107 \ m\]
+
+  <hr />
+
+  <p>For part 2, we know the mass of ice is the same whether it is frozen or melted:</p>
+
+\[V_{\text{melt}} = \frac{m_{\text{ice}}}{\rho_{\text{water}}}\]
+
+  <p>We can rewrite the first equation of volume displaced where \(\rho_{\text{ice}} V_T = m_{\text{ice}}\):</p>
+
+\[m_{\text{ice}} = \rho_{\text{water}} V_{\text{sub}}\]
+
+\[V_{\text{sub}} = \frac{m_{\text{ice}}}{\rho_{\text{water}}}\]
+
+  <p>We can see that \(V_{\text{melt}} = V_{\text{sub}}\), for which the height remains the same (0.107 m). This applies ONLY IF the water of the ice has the same density as the water in the cup when isothermal.</p>
+</blockquote>
+
+<h3 id="ex-2-3">Ex 2</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Ice with \(SG_{\text{ice}} = 0.95\)</li>
+  <li>Ocean water \(SG_{\text{ocean}} = 1.25\)</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Fraction of ice above ocean</li>
+</ul>
+
+<blockquote>
+  <p>Solution:</p>
+
+\[SG_{\text{ice}} V_{\text{ice}} = SG_{\text{ocean}} V_{\text{sub}}\]
+
+\[\frac{V_{\text{sub}}}{V_{\text{ice}}} = \frac{SG_{\text{ice}}}{SG_{\text{ocean}}}\]
+
+\[\frac{V_{\text{above}}}{V_{\text{ice}}} = 1 - \frac{SG_{\text{ice}}}{SG_{\text{ocean}}}\]
+
+\[\frac{V_{\text{above}}}{V_{\text{ice}}} = 1 - \frac{0.95}{1.25} = 0.24\]
+</blockquote>
+
+<h3 id="ex-3-3">Ex 3</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Fully submerged sphere of diameter \(d = 0.6\) m and density \(\rho_{ball} = 48\) kg/m^3</li>
+  <li>Distance from liquid surface to top of sphere \(h = 0.9 m\)</li>
+  <li>Cable connecting the bottom of sphere to bottom of water tank</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Tension in cable</li>
+  <li>Change in tension after change in cable length</li>
+</ol>
+
+<blockquote>
+  <p>Solution:</p>
+
+  <p>Draw a free body diagram to see which forces act on which direction. Then balance them out:</p>
+
+\[T = F_B - W_{\text{ball}}\]
+
+\[T = \rho_{\text{water}} V_{\text{sub}} g - \rho_{\text{ball}} V_{\text{ball}} g\]
+
+  <p>Since the ball is fully submerged, \(V_{\text{sub}} = V_{\text{ball}}\):</p>
+
+\[T = V_{\text{ball}} \ g (\rho_{\text{water}}  - \rho_{\text{ball}})\]
+
+  <p>Remember the volume of a sphere (do NOT confuse radius with diameter!):</p>
+
+\[V_{\text{ball}} = \frac{4}{3} \pi r^3 = 0.113 \ m^3\]
+
+\[T = 1055.32 \ N\]
+
+  <p>Regarding the cable length, notice the buoyant force does not consider depth of the object or length of cord. Rather, we only care about how much of the object is submerged. Therefore, the tension is the same regardless of the length of the cable (as long as the ball is fully submerged).</p>
+
+  <p>The case where it may change is if the water tank is really deep, so that density changes with height.</p>
+</blockquote>
+
+<h3 id="ex-4-1">Ex 4</h3>
+
+<p>Given:</p>
+<ul>
+  <li>Weight of two objects \(W_1,\ W_2\)</li>
+  <li>Both are floating on water</li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>Additional volume displaced by heavier object vs lighter object</li>
+</ul>
+
+<blockquote>
+  <p>Solution:</p>
+
+\[W_1 = \rho_{\text{water}} V_{\text{sub 1}} g,\quad V_{\text{sub 1}} = \frac{W_1}{\rho_{\text{water}} g}\]
+
+\[W_2 = \rho_{\text{water}} V_{\text{sub 2}} g, \quad V_{\text{sub 2}} = \frac{W_2}{\rho_{\text{water}} g}\]
+
+\[\Delta V = V_{\text{sub 1}} - V_{\text{sub 2}} =  \frac{W_1 - W_2}{\rho_{\text{water}} g}\]
+
+  <p>You may dismiss the sign (+, -) in the result.</p>
+</blockquote>
 
 <hr />
 
@@ -307,19 +799,19 @@
 <ol>
   <li>TYPE:01 VISCOSITY Given velocity distribution in pipe, find shear stress</li>
   <li>TYPE:02 PROPERTIES Given an object in a liquid where both have different SGs, what portion of the solid is outside</li>
-  <li>TYPE:05 STREAMLINES Given velocity field, find streamline equation, plot streamlines in range !IMPORTANT</li>
-  <li>TYPE:06 BERNOULLI Given flow on pipe of changing diameter, find gauge pressures (incl. centerline slope) !IMPORTANT</li>
-  <li>TYPE:07 DYNAMICS Given flow from hose, find force exerted on object !IMPORTANT</li>
-  <li>TYPE:08 DIFFERENTIAL Given velocity field, find if the flow is rotational</li>
-  <li>TYPE:11 NAVIER-STOKES Given velocity field and conditions, find simplified Navier-Stokes equation</li>
-  <li>TYPE:12 DIMENSIONAL ANALYSIS Given description of behavior, find equation to connect variables</li>
-  <li>TYPE:13 DRAG-LIFT Given values for force, find drag force</li>
+  <li>TYPE:04 STREAMLINES Given velocity field, find streamline equation, plot streamlines in range !IMPORTANT</li>
+  <li>TYPE:05 BERNOULLI Given flow on pipe of changing diameter, find gauge pressures (incl. centerline slope) !IMPORTANT</li>
+  <li>TYPE:06 DYNAMICS Given flow from hose, find force exerted on object !IMPORTANT</li>
+  <li>TYPE:07 DIFFERENTIAL Given velocity field, find if the flow is rotational</li>
+  <li>TYPE:10 NAVIER-STOKES Given velocity field and conditions, find simplified Navier-Stokes equation</li>
+  <li>TYPE:11 DIMENSIONAL ANALYSIS Given description of behavior, find equation to connect variables</li>
+  <li>TYPE:12 DRAG-LIFT Given values for force, find drag force</li>
   <li>TYPE:01 SIMILAR:01 VISCOSITY Given viscosity, find numerical value of stress !IMPORTANT</li>
-  <li>TYPE:03 STATICS - BUOYUANCY Given two objects with different weight, find water displaced</li>
-  <li>TYPE:04 STATICS Given water in manometer style, find pressures</li>
-  <li>TYPE:10 SIMILAR:5 Given velocity and mass flow in a system, find force (thrust force on engine)</li>
-  <li>TYPE:09 DIFFERENTIAL Given 2D steady inviscid flow and one velocity component, find missing component</li>
-  <li>TYPE:03 SIMILAR:11 STATICS-BUOYANCY Given ice cube on water, find height change</li>
+  <li>TYPE:02 STATICS - BUOYUANCY Given two objects with different weight, find water displaced</li>
+  <li>TYPE:03 STATICS Given water in manometer style, find pressures</li>
+  <li>TYPE:09 SIMILAR:5 Given velocity and mass flow in a system, find force (thrust force on engine)</li>
+  <li>TYPE:08 DIFFERENTIAL Given 2D steady inviscid flow and one velocity component, find missing component</li>
+  <li>TYPE:02 SIMILAR:11 STATICS-BUOYANCY Given ice cube on water, find height change</li>
 </ol>
 
 </div>
