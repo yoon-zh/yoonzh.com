@@ -9,6 +9,44 @@ date: 2026-01-04
 tech_stack: [Circuits]
 ---
 
+# Type 1: Basic BJTs
+
+| Config | Voltage Gain $$A_v$$ | Current Gain $$A_i$$ | Input resistance | Output resistance |
+|--------|----------------------|----------------------|------------------|-------------------|
+| Common Emitter    | > 1           | > 1         | Mid   | Mid-high  |
+| Common Collector  | $$\cong 1$$ | > 1         | High  | Low       |
+| Common Base       | > 1         | $$\cong 1$$ | Low   | Mid-high  |
+
+CC is used as buffer because it has high input impedance (draws little current from input) and low output impedance with hih current gain (can drive output). Its voltage gain of about 1 means it roughly passes the same voltage from input to output
+
+# Type x: Op Amps
+
+| Differences | Ideal | Non-Ideal | Description |
+|-------------|-------|-----------|-------------|
+| Input Impedance           | $$\infty$$ | Very high | Infinite impedance draws no current, preventing input loading |
+| Output Impedance          | 0          | Low (10-100 $$\Omega$$) | Zero impedance means output voltage remains stable |
+| Open-loop gain $$A_{OL}$$ | $$\infty$$ | Very high | Infinite gain allows to apply "virtual short" |
+| Bandwidth                 | $$\infty$$ | Finite | Non-ideals have slew rate, which distorts very high-frequency signals |
+
+### Virtual Short
+
+
+
+### Slew Rate
+
+$$SR = \frac{V_m}{\tau_r}$$
+
+Where
+- $$SR$$ is slew rate in V/s
+- $$V_m$$ is output voltage
+- $$\tau_r$$ is 
+
+> For sinusoidal signal inputs:
+>
+> $$SR = V_m \omega$$
+>
+> Where $$\omega = 2\pi f$$ is angular frequency (from the signal $$\sin{\omega t}$$)
+
 ***
 
 List
