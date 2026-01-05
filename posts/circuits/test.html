@@ -90,7 +90,161 @@
 </header>
 
 <div class="article-content">
-  <hr />
+  <h1 id="type-1-basic-bjts">Type 1: Basic BJTs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Config</th>
+      <th>Voltage Gain \(A_v\)</th>
+      <th>Current Gain \(A_i\)</th>
+      <th>Input resistance</th>
+      <th>Output resistance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Common Emitter</td>
+      <td>&gt; 1</td>
+      <td>&gt; 1</td>
+      <td>Mid</td>
+      <td>Mid-high</td>
+    </tr>
+    <tr>
+      <td>Common Collector</td>
+      <td>\(\cong 1\)</td>
+      <td>&gt; 1</td>
+      <td>High</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>Common Base</td>
+      <td>&gt; 1</td>
+      <td>\(\cong 1\)</td>
+      <td>Low</td>
+      <td>Mid-high</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>CC is used as buffer because:</p>
+<ul>
+  <li>It has high input impedance (draws little current from input)</li>
+  <li>Low output impedance with high current gain (can drive output)</li>
+</ul>
+
+<p>Its voltage gain of about 1 means it roughly passes the same voltage from input to output</p>
+
+<hr />
+
+<h3 id="miller-effect">Miller Effect</h3>
+
+\[C_{\text{input}} = C(1 + A)\]
+
+<hr />
+
+<h1 id="type-f-diff-amps">Type f: Diff Amps</h1>
+
+<p>CMRR, noise</p>
+
+<hr />
+
+<h1 id="type-d-current-mirrors">Type d: Current Mirrors</h1>
+
+<p>Widlar adds a resistor to emitter, allowing to generate small output currents with reasonable resistor values.</p>
+
+<hr />
+
+<h1 id="type-x-op-amps">Type x: Op Amps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Differences</th>
+      <th>Ideal</th>
+      <th>Non-Ideal</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Input Impedance</td>
+      <td>\(\infty\)</td>
+      <td>Very high</td>
+      <td>Infinite impedance draws no current, preventing input loading</td>
+    </tr>
+    <tr>
+      <td>Output Impedance</td>
+      <td>0</td>
+      <td>Low (10-100 \(\Omega\))</td>
+      <td>Zero impedance means output voltage remains stable</td>
+    </tr>
+    <tr>
+      <td>Open-loop gain \(A_{OL}\)</td>
+      <td>\(\infty\)</td>
+      <td>Very high</td>
+      <td>Infinite gain allows to apply “virtual short”</td>
+    </tr>
+    <tr>
+      <td>Bandwidth</td>
+      <td>\(\infty\)</td>
+      <td>Finite</td>
+      <td>Non-ideals have slew rate, which distorts very high-frequency signals</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="dc-imperfections">DC Imperfections</h3>
+
+<ol>
+  <li>Input offset voltage</li>
+  <li>Input bias current</li>
+  <li>Input offset current</li>
+</ol>
+
+<h3 id="virtual-short">Virtual Short</h3>
+
+<p>In an ideal op amp, the open-loop gain is infinite, then \(V_+ = V_-\). The virtual short is to say positive and negative terminals are at same voltage, as if they were shorted. However, they are not physically connected so no current flows from one to the other.</p>
+
+<h3 id="loading-effect">Loading Effect</h3>
+
+<p>Connecting a load (resistor) to a voltage affects the voltage that goes through it depending on the load, much like a voltage divider.</p>
+
+<h3 id="slew-rate">Slew Rate</h3>
+
+\[SR = \frac{V_m}{\tau_r}\]
+
+<p>Where</p>
+<ul>
+  <li>\(SR\) is slew rate in V/s</li>
+  <li>\(V_m\) is output voltage</li>
+  <li>\(\tau_r\) is</li>
+</ul>
+
+<blockquote>
+  <p>For sinusoidal signal inputs:</p>
+
+\[SR = V_m \omega\]
+
+  <p>Where \(\omega = 2\pi f\) is angular frequency (from the signal \(\sin{\omega t}\))</p>
+</blockquote>
+
+<h3 id="negative-feedback">Negative Feedback</h3>
+
+<p>Advantages:</p>
+<ul>
+  <li>Gain is dependend on external resistors rather than op amp transistor parameters</li>
+  <li>Has increased bandwidth</li>
+  <li>Reduces non-linear distortions</li>
+</ul>
+
+<p>Disadvantages:</p>
+<ul>
+  <li>Lower gain</li>
+  <li>Susceptible to phase shifts</li>
+</ul>
+
+<hr />
 
 <p>List</p>
 <ol>
