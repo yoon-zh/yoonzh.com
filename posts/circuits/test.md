@@ -25,20 +25,96 @@ Its voltage gain of about 1 means it roughly passes the same voltage from input 
 
 ***
 
-### Miller Effect
+# Type 2: Frequency Response
 
-$$C_{\text{input}} = C(1 + A)$$
+Find:
+1. Transfer function $$T(s) = \frac{V_o(s)}{V_i(s)}$$
+2. Corner frequencies $$f_L,\ f_H$$
+3. Bandwidth $$f_B$$
+
+## Solution
+
+### 1. Transfer function
+
+Use Laplace to model capacitors' impedance as $$\frac{1}{sC}$$. Then do KVL or KCL as usual.
+
+> For a series connection (R1 -> C -> R2), where Vo is voltage between C and R2:
+>
+> $$T(s) = \frac{V_o(s)}{V_i(s)} = \left(\frac{R_2}{R_1 + R_2} \right) \left(\frac{s\tau_s}{1 + s\tau_s} \right)$$
+>
+> Where $$\tau_s = C(R_1 + R_2)$$ (seconds)
+
+> For a parallel connection (R1 -> (R2, C)), where Vo is voltage between R1 and the rest:
+>
+> $$T(s) = \frac{V_o(s)}{V_i(s)} = \left(\frac{R_2}{R_1 + R_2} \right) \left(\frac{1}{1 + s\tau_p} \right)$$
+>
+> Where $$\tau_p = C(R_1 \| R_2)$$ (seconds)
+
+### 2. Corner frequencies $$f_L,\ f_H$$
+
+$$f_L = \frac{1}{2\pi \tau_s}$$
+
+$$f_H = \frac{1}{2\pi \tau_p}$$
+
+### 3. Bandwidth $$f_B$$
+
+$$f_B = f_H - f_L$$
+
+***
+
+# Type 3: Miller Effect
+
+Find:
+1. Beta cutoff frequency $$f_{\beta}$$
+2. Capacitance $$C_{\pi}$$
+3. Miller Capacitance $$C_M$$
+4. 3 dB frequency $$f_{3dB}$$
+
+## Solution
+
+### 1. Beta cutoff frequency $$f_{\beta}$$
+
+$$f_T = \beta_o f_{\beta}$$
+
+
+### 2. Capacitance $$C_{\pi}$$
+
+$$f_T = \frac{g_m}{C_{\pi} + C_{\mu}}$$
+
+Reminders:
+- Transconductance $$g_m = \frac{I_c}{V_T}$$
+- Thermal voltage at room temp $$V_T = 26 \ mV$$
+
+
+### 3. Miller Capacitance
+
+Miller theorem: a linear circuit with an impedance connected between input and output, where there is a voltage gain, the impedance can be represented as two equivalent grounded impedances
+
+$$C_M = C_{\mu} (1 + \mid A_v \mid)$$
+
+Reminders:
+- Voltage gain magnitude $$\mid A_v \mid = g_m (R_C \| R_L)$$
+
+
+### 4. 3 dB frequency $$f_{3dB}$$
+
+$$f_{3dB} = \frac{1}{2\pi \tau}$$
+
+Reminders:
+- Time constant $$\tau = R_{\text{total}} C_{\text{total}}$$
+- Resistances $$R_{\text{total}} = R_{in} = R_B \| r_{\pi}$$
+- Capacitances $$C_{\text{total}} = C_{\pi} + C_M$$
 
 
 ***
 
-# Type f: Diff Amps
+# Type 4: Diff Amps
 
 CMRR, noise
 
 ***
 
-# Type d: Current Mirrors
+# Type 5: Current Mirrors
 
 Widlar adds a resistor to emitter, allowing to generate small output currents with reasonable resistor values.
 
