@@ -137,25 +137,223 @@
 
 <hr />
 
-<h3 id="miller-effect">Miller Effect</h3>
+<h1 id="type-2-frequency-response">Type 2: Frequency Response</h1>
 
-\[C_{\text{input}} = C(1 + A)\]
+<p>Find:</p>
+<ol>
+  <li>Transfer function \(T(s) = \frac{V_o(s)}{V_i(s)}\)</li>
+  <li>Corner frequencies \(f_L,\ f_H\)</li>
+  <li>Bandwidth \(f_B\)</li>
+</ol>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="1-transfer-function">1. Transfer function</h3>
+
+<p>Use Laplace to model capacitors’ impedance as \(\frac{1}{sC}\). Then do KVL or KCL as usual.</p>
+
+<blockquote>
+  <p>For a series connection (R1 -&gt; C -&gt; R2), where Vo is voltage between C and R2:</p>
+
+\[T(s) = \frac{V_o(s)}{V_i(s)} = \left(\frac{R_2}{R_1 + R_2} \right) \left(\frac{s\tau_s}{1 + s\tau_s} \right)\]
+
+  <p>Where \(\tau_s = C(R_1 + R_2)\) (seconds)</p>
+</blockquote>
+
+<blockquote>
+  <p>For a parallel connection (R1 -&gt; (R2, C)), where Vo is voltage between R1 and the rest:</p>
+
+\[T(s) = \frac{V_o(s)}{V_i(s)} = \left(\frac{R_2}{R_1 + R_2} \right) \left(\frac{1}{1 + s\tau_p} \right)\]
+
+  <p>Where \(\tau_p = C(R_1 \| R_2)\) (seconds)</p>
+</blockquote>
+
+<h3 id="2-corner-frequencies-f_l-f_h">2. Corner frequencies \(f_L,\ f_H\)</h3>
+
+\[f_L = \frac{1}{2\pi \tau_s}\]
+
+\[f_H = \frac{1}{2\pi \tau_p}\]
+
+<h3 id="3-bandwidth-f_b">3. Bandwidth \(f_B\)</h3>
+
+\[f_B = f_H - f_L\]
 
 <hr />
 
-<h1 id="type-f-diff-amps">Type f: Diff Amps</h1>
+<h1 id="type-3-miller-effect">Type 3: Miller Effect</h1>
+
+<p>Find:</p>
+<ol>
+  <li>Beta cutoff frequency \(f_{\beta}\)</li>
+  <li>Capacitance \(C_{\pi}\)</li>
+  <li>Miller Capacitance \(C_M\)</li>
+  <li>3 dB frequency \(f_{3dB}\)</li>
+</ol>
+
+<h2 id="solution-1">Solution</h2>
+
+<h3 id="1-beta-cutoff-frequency-f_beta">1. Beta cutoff frequency \(f_{\beta}\)</h3>
+
+\[f_T = \beta_o f_{\beta}\]
+
+<h3 id="2-capacitance-c_pi">2. Capacitance \(C_{\pi}\)</h3>
+
+\[f_T = \frac{g_m}{C_{\pi} + C_{\mu}}\]
+
+<p>Reminders:</p>
+<ul>
+  <li>Transconductance \(g_m = \frac{I_c}{V_T}\)</li>
+  <li>Thermal voltage at room temp \(V_T = 26 \ mV\)</li>
+</ul>
+
+<h3 id="3-miller-capacitance">3. Miller Capacitance</h3>
+
+<p>Miller theorem: a linear circuit with an impedance connected between input and output, where there is a voltage gain, the impedance can be represented as two equivalent grounded impedances</p>
+
+\[C_M = C_{\mu} (1 + \mid A_v \mid)\]
+
+<p>Reminders:</p>
+<ul>
+  <li>Voltage gain magnitude \(\mid A_v \mid = g_m (R_C \| R_L)\)</li>
+</ul>
+
+<h3 id="4-3-db-frequency-f_3db">4. 3 dB frequency \(f_{3dB}\)</h3>
+
+\[f_{3dB} = \frac{1}{2\pi \tau}\]
+
+<p>Reminders:</p>
+<ul>
+  <li>Time constant \(\tau = R_{\text{total}} C_{\text{total}}\)</li>
+  <li>Resistances \(R_{\text{total}} = R_{in} = R_B \| r_{\pi}\)</li>
+  <li>Capacitances \(C_{\text{total}} = C_{\pi} + C_M\)</li>
+</ul>
+
+<hr />
+
+<h1 id="type-4-diff-amps">Type 4: Diff Amps</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Simple diff amp diagram</li>
+  <li>Params \(V^+,\ R_C,\ I_Q,\ \beta,\ V_A,\ V_{BE}(on),\ v_{B1},\ v_{B2}\)</li>
+</ul>
+
+<p>Find:</p>
+<ol>
+  <li>Common emitter voltage \(v_E\)</li>
+  <li>Collector currents \(i_{C1},\ i_{C2}\)</li>
+  <li>CE voltages \(v_{CE1},\ v_{CE2}\)</li>
+  <li>Difference between \(v_{CE1},\ v_{CE2}\) given change in \(i_{C1},\ i_{C2}\)</li>
+</ol>
+
+<h2 id="solution-2">Solution</h2>
+
+<h3 id="1-common-emitter-voltage-v_e">1. Common emitter voltage \(v_E\)</h3>
+
+\[v_E = v_{cm} - V_{BE}(on)\]
+
+<p>Reminders:</p>
+<ul>
+  <li>Common-mode voltage \(v_{cm} = \frac{v_{B1} + v_{B2}}{2}\)</li>
+</ul>
+
+<h3 id="2-collector-currents-i_c1-i_c2">2. Collector currents \(i_{C1},\ i_{C2}\)</h3>
+
+<p>If \(\beta = \infty\), then \(i_B\) is negligible. Then \(i_C = i_E\).</p>
+
+<p>If the transistors and inputs are equal, and the end is driven by a current source \(I_Q\), then \(i_E = 0.5 I_Q\)</p>
+
+<h3 id="3-ce-voltages-v_ce1-v_ce2">3. CE voltages \(v_{CE1},\ v_{CE2}\)</h3>
+
+\[v_{CE} = v_C - v_E\]
+
+<p>Reminders:</p>
+<ul>
+  <li>The collector voltage \(v_C = V^+ - R_C i_C\)</li>
+</ul>
+
+<h3 id="4-difference-between-v_ce1-v_ce2-given-change-in-i_c1-i_c2">4. Difference between \(v_{CE1},\ v_{CE2}\) given change in \(i_{C1},\ i_{C2}\)</h3>
+
+<p>Remember \(i_{E1} + i_{E2} = I_Q\). If one current goes up, the other one must go down. Then the difference in the CE voltages should consider the drop and increase in each side.</p>
+
+<h3 id="extra">Extra</h3>
+
+\[R_i = 2 r_{\pi}\]
+
+\[R_o = R_C \| r_o\]
+
+<hr />
+
+<h1 id="type-5-simple-diff-amps">Type 5: Simple Diff Amps</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Simple diff amp diagram</li>
+  <li>Inputs \(v_1,\ v_2\) or \(v_d\)</li>
+  <li>Two of the following:
+    <ul>
+      <li>Differential mode gain \(A_d\)</li>
+      <li>Common mode gain \(A_{cm}\)</li>
+      <li>Common mode rejection ratio CMRR</li>
+      <li>Output voltage \(v_o\)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>The missing params</li>
+</ul>
+
+<h2 id="solution-3">Solution</h2>
+
+\[CMRR = \left| \frac{A_d}{A_{cm}} \right|\]
+
+<p>In decibels:</p>
+
+\[CMRR_{dB} = 20\log_{10} \left| \frac{A_d}{A_{cm}} \right|\]
+
+<p>The voltages:</p>
+
+\[v_d = v_1 - v_2\]
+
+\[v_{cm} = \frac{v_1 + v_2}{2}\]
+
+\[v_o = A_d v_d + A_{cm} v_cm\]
 
 <p>CMRR, noise</p>
 
 <hr />
 
-<h1 id="type-d-current-mirrors">Type d: Current Mirrors</h1>
+<h1 id="type-6-current-mirrors">Type 6: Current Mirrors</h1>
 
-<p>Widlar adds a resistor to emitter, allowing to generate small output currents with reasonable resistor values.</p>
+<p>Without emitter resistor (plain current mirror):</p>
+
+\[I_{REF} = I_O \left(1 + \frac{2}{\beta} \right)\]
+
+<p>With emitter resistor (Widlar):</p>
+
+\[I_O R_E = V_T \ln \frac{I_{REF}}{I_O}\]
+
+<p>Widlar adds a resistor to the second emitter, allowing to generate small output currents with reasonable resistor values versus without shorting the emitter.</p>
+
+<p>Widlar Output resistance:</p>
+
+\[R_{out} = r_{o2}(1 + g_m (r_{\pi 2} \| R_E))\]
+
+<h3 id="diff-amp-with-active-load">Diff amp with active load</h3>
+
+\[A_v = g_m (r_{o2} \| r_{o4} \| R_L)\]
+
+\[R_{out} = r_{o2} \| r_{o4} \| R_L\]
 
 <hr />
 
-<h1 id="type-x-op-amps">Type x: Op Amps</h1>
+<h1 id="type-7-simple-feedback-system">Type 7: Simple Feedback System</h1>
+
+\[A_f = \frac{A}{1 + \beta A}\]
+
+<h1 id="type-8-op-amps">Type 8: Op Amps</h1>
 
 <table>
   <thead>
@@ -194,13 +392,23 @@
   </tbody>
 </table>
 
+<h3 id="open-loop-gain-a_ol">Open-Loop Gain \(A_{OL}\)</h3>
+
+\[v_o = A_{OL}(v_+ - v_-)\]
+
+\[A_{CL} = \frac{-\frac{R_2}{R_1}}{1 + \frac{1}{A_{OL}} \left(1 + \frac{R_2}{R_1} \right)}\]
+
 <h3 id="dc-imperfections">DC Imperfections</h3>
 
 <ol>
-  <li>Input offset voltage</li>
-  <li>Input bias current</li>
-  <li>Input offset current</li>
+  <li>Input offset voltage \(V_{OS}\)</li>
+  <li>Input bias current \(I_B\)</li>
+  <li>Input offset current \(I_{OS}\)</li>
 </ol>
+
+\[I_B = \frac{I_{BP} + I_{BN}}{2}\]
+
+\[I_{OS} = \left| I_{BP} - I_{BN} \right|\]
 
 <h3 id="virtual-short">Virtual Short</h3>
 
@@ -244,13 +452,48 @@
   <li>Susceptible to phase shifts</li>
 </ul>
 
+<h1 id="type-9-stability">Type 9: Stability</h1>
+
+<p>Given:</p>
+<ul>
+  <li>Loop gain function \(T(f)\)</li>
+  <li>One of the 2:
+    <ul>
+      <li>Phase Margin</li>
+      <li>Beta \(\beta\)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Find:</p>
+<ul>
+  <li>The missing one</li>
+  <li>Whether the system is stable</li>
+</ul>
+
+<h2 id="solution-4">Solution</h2>
+
+<p>Let phase margin be \(PM\).</p>
+
+\[\phi = -180 + PM\]
+
+<p>We want the magnitude of \(T(f)\) to be 1 at the value of \(\phi\).</p>
+
+\[\phi = -\left( \arctan{\frac{f}{f_1}} + \arctan{\frac{f}{f_2}} + \arctan{\frac{f}{f_3}} \right)\]
+
+<p>Solve for \(f\) above by trial and error. Then rewrite \(T(f)\) to solve for \(\beta\).</p>
+
+<h3 id="stability">Stability</h3>
+
+<p>Using the method above, set \(\phi = -180\) and find the frequency \(f\). Then calculate \(T(f)\) in terms of magnitude. If bigger than 1, it is unstable. Less than 1 is stable.</p>
+
 <hr />
 
 <p>List</p>
 <ol>
   <li>TYPE:01 BASICS Given simple bjt amp, find small signal params, input resistance, voltage gain</li>
-  <li>0000000 FREQUENCY Given cutoff frequency, find bandwith, capacitance, transfer function (what is miller effect)</li>
-  <li>0000000 DIFF-AMP Given diff-amp, find emitter voltage, collector voltage, differential mode gain, CMRR</li>
+  <li>TYPE:02 FREQUENCY Given cutoff frequency, find bandwith, capacitance, transfer function (what is miller effect)</li>
+  <li>TYPE:04 DIFF-AMP Given diff-amp, find emitter voltage, collector voltage, differential mode gain, CMRR</li>
   <li>0000000 C-MIRRORS Given current mirror, find params without and with early effect (draw from memory)</li>
   <li>0000000 FEEDBACK Given block diagram, gains, find transfer function, gain function (draw from memory)</li>
   <li>0000000 OP-AMPS Given op-amp, find output voltage, currents</li>
