@@ -110,15 +110,112 @@ Reminders:
 
 # Type 4: Diff Amps
 
+Given:
+- Simple diff amp diagram
+- Params $$V^+,\ R_C,\ I_Q,\ \beta,\ V_A,\ V_{BE}(on),\ v_{B1},\ v_{B2}$$
+
+Find:
+1. Common emitter voltage $$v_E$$
+2. Collector currents $$i_{C1},\ i_{C2}$$
+3. CE voltages $$v_{CE1},\ v_{CE2}$$
+4. Difference between $$v_{CE1},\ v_{CE2}$$ given change in $$i_{C1},\ i_{C2}$$
+
+## Solution
+
+### 1. Common emitter voltage $$v_E$$
+
+$$v_E = v_{cm} - V_{BE}(on)$$
+
+Reminders:
+- Common-mode voltage $$v_{cm} = \frac{v_{B1} + v_{B2}}{2}$$
+
+
+### 2. Collector currents $$i_{C1},\ i_{C2}$$
+
+If $$\beta = \infty$$, then $$i_B$$ is negligible. Then $$i_C = i_E$$.
+
+If the transistors and inputs are equal, and the end is driven by a current source $$I_Q$$, then $$i_E = 0.5 I_Q$$
+
+
+### 3. CE voltages $$v_{CE1},\ v_{CE2}$$
+
+$$v_{CE} = v_C - v_E$$
+
+Reminders:
+- The collector voltage $$v_C = V^+ - R_C i_C$$
+
+
+### 4. Difference between $$v_{CE1},\ v_{CE2}$$ given change in $$i_{C1},\ i_{C2}$$
+
+Remember $$i_{E1} + i_{E2} = I_Q$$. If one current goes up, the other one must go down. Then the difference in the CE voltages should consider the drop and increase in each side.
+
+### Extra
+
+$$R_i = 2 r_{\pi}$$
+
+$$R_o = R_C \| r_o$$
+
+***
+
+# Type 5: Simple Diff Amps
+
+Given:
+- Simple diff amp diagram
+- Inputs $$v_1,\ v_2$$ or $$v_d$$
+- Two of the following:
+    - Differential mode gain $$A_d$$
+    - Common mode gain $$A_{cm}$$
+    - Common mode rejection ratio CMRR
+    - Output voltage $$v_o$$
+
+Find:
+- The missing params
+
+## Solution
+
+$$CMRR = \left| \frac{A_d}{A_{cm}} \right|$$
+
+In decibels:
+
+$$CMRR_{dB} = 20\log_{10} \left| \frac{A_d}{A_{cm}} \right|$$
+
+The voltages:
+
+$$v_d = v_1 - v_2$$
+
+$$v_{cm} = \frac{v_1 + v_2}{2}$$
+
+$$v_o = A_d v_d + A_{cm} v_cm$$
+
 CMRR, noise
 
 ***
 
-# Type 5: Current Mirrors
+# Type 6: Current Mirrors
 
-Widlar adds a resistor to emitter, allowing to generate small output currents with reasonable resistor values.
+Without emitter resistor (plain current mirror):
+
+$$I_{REF} = I_O \left(1 + \frac{2}{\beta} \right)$$
+
+With emitter resistor (Widlar):
+
+$$I_O R_E = V_T \ln \frac{I_{REF}}{I_O}$$
+
+Widlar adds a resistor to the second emitter, allowing to generate small output currents with reasonable resistor values versus without shorting the emitter.
+
+Widlar Output resistance:
+
+$$R_{out} = r_{o2}(1 + g_m (r_{\pi 2} \| R_E))$$
+
+### Diff amp with active load
+
+$$A_v = g_m (r_{o2} \| r_{o4} \| R_L)$$
+
+$$R_{out} = r_{o2} \| r_{o4} \| R_L$$
 
 ***
+
+
 
 # Type x: Op Amps
 
@@ -128,6 +225,12 @@ Widlar adds a resistor to emitter, allowing to generate small output currents wi
 | Output Impedance          | 0          | Low (10-100 $$\Omega$$) | Zero impedance means output voltage remains stable |
 | Open-loop gain $$A_{OL}$$ | $$\infty$$ | Very high | Infinite gain allows to apply "virtual short" |
 | Bandwidth                 | $$\infty$$ | Finite | Non-ideals have slew rate, which distorts very high-frequency signals |
+
+### Open-Loop Gain $$A_{OL}$$
+
+$$v_o = A_{OL}(v_+ - v_-)$$
+
+$$A_{CL} = \frac{-\frac{R_2}{R_1}}{1 + \frac{1}{A_{OL}} \left(1 + \frac{R_2}{R_1} \right)}$$
 
 ### DC Imperfections
 
@@ -173,8 +276,8 @@ Disadvantages:
 
 List
 01. TYPE:01 BASICS Given simple bjt amp, find small signal params, input resistance, voltage gain
-02. 0000000 FREQUENCY Given cutoff frequency, find bandwith, capacitance, transfer function (what is miller effect)
-03. 0000000 DIFF-AMP Given diff-amp, find emitter voltage, collector voltage, differential mode gain, CMRR
+02. TYPE:02 FREQUENCY Given cutoff frequency, find bandwith, capacitance, transfer function (what is miller effect)
+03. TYPE:04 DIFF-AMP Given diff-amp, find emitter voltage, collector voltage, differential mode gain, CMRR
 04. 0000000 C-MIRRORS Given current mirror, find params without and with early effect (draw from memory)
 05. 0000000 FEEDBACK Given block diagram, gains, find transfer function, gain function (draw from memory)
 06. 0000000 OP-AMPS Given op-amp, find output voltage, currents
