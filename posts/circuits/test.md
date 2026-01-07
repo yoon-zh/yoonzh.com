@@ -215,9 +215,12 @@ $$R_{out} = r_{o2} \| r_{o4} \| R_L$$
 
 ***
 
+# Type 7: Simple Feedback System
+
+$$A_f = \frac{A}{1 + \beta A}$$
 
 
-# Type x: Op Amps
+# Type 8: Op Amps
 
 | Differences | Ideal | Non-Ideal | Description |
 |-------------|-------|-----------|-------------|
@@ -234,9 +237,13 @@ $$A_{CL} = \frac{-\frac{R_2}{R_1}}{1 + \frac{1}{A_{OL}} \left(1 + \frac{R_2}{R_1
 
 ### DC Imperfections
 
-1. Input offset voltage
-2. Input bias current
-3. Input offset current
+1. Input offset voltage $$V_{OS}$$
+2. Input bias current $$I_B$$
+3. Input offset current $$I_{OS}$$
+
+$$I_B = \frac{I_{BP} + I_{BN}}{2}$$
+
+$$I_{OS} = \left| I_{BP} - I_{BN} \right|$$
 
 ### Virtual Short
 
@@ -271,6 +278,35 @@ Advantages:
 Disadvantages:
 - Lower gain
 - Susceptible to phase shifts
+
+# Type 9: Stability
+
+Given:
+- Loop gain function $$T(f)$$
+- One of the 2:
+    - Phase Margin
+    - Beta $$\beta$$
+
+Find:
+- The missing one
+- Whether the system is stable
+
+## Solution
+
+Let phase margin be $$PM$$.
+
+$$\phi = -180 + PM$$
+
+We want the magnitude of $$T(f)$$ to be 1 at the value of $$\phi$$.
+
+$$\phi = -\left( \arctan{\frac{f}{f_1}} + \arctan{\frac{f}{f_2}} + \arctan{\frac{f}{f_3}} \right)$$
+
+Solve for $$f$$ above by trial and error. Then rewrite $$T(f)$$ to solve for $$\beta$$.
+
+### Stability
+
+Using the method above, set $$\phi = -180$$ and find the frequency $$f$$. Then calculate $$T(f)$$ in terms of magnitude. If bigger than 1, it is unstable. Less than 1 is stable.
+
 
 ***
 
