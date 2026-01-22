@@ -49,9 +49,30 @@ Regarding the moons and asteroids, perhaps there are too many to list them here.
 | Makemake | "MK 2" |
 | Eris | Dysnomia |
 
+To select between these options, I will apply the following criteria:
+1. Discard any of the planets/moons where we have too little data to work on a rover to explore it
+2. Discard any place we have sent rovers already to
+3. Discard any place where a space agency has a concept design of a rover to visit
+4. The surface of the planet/moon must include solid matter for the rover to land
 
+With the above criteria, the following destinations are discarded:
+1. Pluto and moons, Haumea and moons, Makemake and MK 2, Eris and Dysnomia, moons in Uranus, moons in Neptune
+2. Mars, our Moon
+3. Titan, Venus, Phobos, Deimos, Europa, Enceladus
+4. Jupiter, Saturn, Uranus, Neptune
 
+Our updated list of options after filtering is:
+- Mercury
+- Ceres
+- Ganymede
+- Callisto
+- Io
+- Hyperion
+- Mimas
+- Dione
+- Iapetus
 
+Each one of these candidates has their own charm, but the one that stands out for me is Mercury, the only planet in the inner solar system we haven't even conceptualized an explorer robot to visit. 
 
 ***
 
@@ -76,3 +97,13 @@ https://science.nasa.gov/dwarf-planets/pluto/moons/
 https://science.nasa.gov/dwarf-planets/haumea/#otp_moons
 
 https://science.nasa.gov/dwarf-planets/eris/#otp_moons
+
+Japan Aerospace Exploration Agency (JAXA). MMX: Martian Moons eXploration (Phobos, Deimos) https://www.mmx.jaxa.jp/en/
+
+NASA Jet Propulsion Laboratory. BRUIE. https://www.jpl.nasa.gov/robotics-at-jpl/bruie/
+
+NASA Jet Propulsion Laboratory. EELS. https://www.jpl.nasa.gov/robotics-at-jpl/eels/
+
+https://science.nasa.gov/dwarf-planets/ceres/
+
+https://www.esa.int/Science_Exploration/Space_Science/Juice/Spotlight_on_Ganymede_Juice_s_primary_target
