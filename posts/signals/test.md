@@ -483,6 +483,31 @@ Find:
 
 ## Solution
 
+### 1. Maximum sampling period $$T_s$$
+
+The Nyquist criterion says:
+
+$$f_s \geq 2f_o$$
+
+Rewriting for $$T_s = 1/f_s$$:
+
+$$T_s \leq \frac{1}{2f_o}$$
+
+Then $$T_{MAX} = \frac{1}{2f_o}$$
+
+
+### 2. Sketch fourier transform of $$x[n]$$ sampled from $$x(t)$$ at frequency $$f_s$$
+
+The magnitude of $$X_n(\omega)$$ is scaled by $$1/T_s$$
+
+
+### 3. Sketch spectrum of output $$Y(e^{j\omega})$$
+
+$$Y(\omega)$$ is simply the values of $$X_n(\omega)$$ multiplied by $$H(\omega)$$. Usually the magnitude is 1, and the important part is whether H is a low pass, band or high pass. Then you only include the values of X that are within the non-zero area of H to get Y.
+
+### 4. Obtain spectrum of reconstructed signal $$y_r$$ assuming sampling frequency is high enough
+
+
 
 ## Example
 
@@ -506,14 +531,54 @@ Find:
 # Type x: DT Convolution
 
 Given:
-- $$x[t]$$
-- $$h[t]$$
+- Input $$x[n]$$
+- Impulse response $$h[n]$$
 
 Find:
 - Linear convolution
 - Circular convolution
 
 ## Solution
+
+### 1. Prepwork
+
+To ensure we do it correctly, calculate the size and the starting index of the convolution result:
+
+$$\text{size}_f = \text{size}_x + \text{size}_h - 1$$
+
+$$\text{first}_f = \text{first}_x + \text{first}_h$$
+
+This means, the array size of the result should be the sum of x and h minus 1. And the starting index is the sum of the starting indexes of x and h.
+
+### 2. Linear convolution
+
+Write x horizontally and denote its $$n = 0$$ value. Under that, write h so the $$n = 0$$ position matches vertically for both.
+
+Then multiply the h values individually with all x values, positioning them according to the h position.
+
+Then sum all of them vertically as array.
+
+The first value in the array is of the n position calculated before: $$\text{first}_f = \text{first}_x + \text{first}_h$$.
+
+For example, say x[n] starts at n = -2, and h[n] starts at n = 0. Then the resulting array starts at n = -2 (which will be equal to $$h[0] \times x[-2]$$).
+
+### 3. Circular convolution
+
+Consider the longer array between x[n] and h[n]. Take the bigger size, call it N.
+
+Then take the result of the linear convolution $$y[n]$$ and wrap it to make it of size N. Sum the wrapping values, and keep the position of the n = 0 value fixed.
+
+For example, if $$y[n] = [6, -1, -9, 2, 16, -3, -4, -7, 12]$$, where the first value of the array is at $$n = -2$$ and we know N = 5, then:
+
+$$[6, -1, -9, 2, 16]$$
+
+$$[-3, -4, -7, 12, 0]$$
+
+The sum is then
+
+$$y_c[n] = [3, -5, -16, 14, 16]$$
+
+And the array starts at $$n = -2$$ (the value of -16 is then at $$n = 0$$)
 
 ## Example
 
