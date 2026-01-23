@@ -72,17 +72,47 @@ Our updated list of options after filtering is:
 - Dione
 - Iapetus
 
-Each one of these candidates has their own charm, but the one that stands out for me is Mercury, the only planet in the inner solar system we haven't even conceptualized an explorer robot to visit. 
-
-I personally choose Mercury, and will dedicate a separate post on why. For now, let's talk about the other options and why or why not go there:
+Each one of these candidates are quite interesting, but the one that stands out for me is Mercury, the only planet in the inner solar system we haven't even conceptualized an explorer robot to visit. I will dedicate a separate post on why choose Mercury. For now, let's talk about the other options and why or why not go there:
 
 ## Ceres
 
-facts[^17]
+Ceres is a dwarf planet sitting between Mars and Jupiter[^20], and was visited by the spacecraft Dawn[^21] in 2015[^22].
+
+### What we know[^22]
+
+- Ceres is the largest object in the asteroid belt between Mars and Jupiter, accounting for roughly 35% of the total mass in the asteroid belt
+- Ceres is the only dwarf planet in the inner solar system
+- Ceres contains a lot of water ice. We estimate the whole planet to be 25% ice
+- Ceres is geologically active, holding cryovolcanoes that spit water into the surface
+- Ceres has some bright spots (see [here](https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/2948/Image_of_Ceres_with_bright_spot.jpeg?w=640&h=350&fit=clip&crop=faces%2Cfocalpoint)), which are salt deposits left from water that came up the surface and later evaporated
+- Ceres has organic matter including large amounts of carbon material[^23], particularly in the craters Ernutet and Occator
+- Ceres has "ammonia-rich clays"[^24]
+
+### What questions remain
+
+1. Where did Ceres form?
+    - For objects formed within our solar system, the presence of ammonia can only happen if they originated far from the Sun, beyond the current average distance of Neptune
+    - The clays with ammonia in Ceres leads to theories that it did not form in the asteroid belt where it is now, but is rather a TNO (trans-Neptunian object) or received materials from a TNO[^24]
+
+2. Is Ceres habitable?
+    - Ceres has lots of water, and active cryovolcanoes may hide liquid water from the surface
+    - If large amounts of liquid brine exist, Ceres could potentially be a target for a space colony in the long-term
 
 ## Ganymede
 
 juice[^18]
+
+## Callisto
+
+## Io
+
+## Hyperion
+
+## Mimas
+
+## Dione
+
+## Iapetus
 
 ***
 
@@ -127,3 +157,11 @@ juice[^18]
 [^19]: NASA (2016). Automaton Rover for Extreme Environments (AREE). <https://www.nasa.gov/general/automaton-rover-for-extreme-environments-aree-2/>
 
 [^20]: NASA (2025). Ceres Facts. <https://science.nasa.gov/dwarf-planets/ceres/facts/>
+
+[^21]: NASA (2024). Dawn. https://science.nasa.gov/mission/dawn/
+
+[^22]: NASA (2024). Dawn at Ceres. https://science.nasa.gov/mission/dawn/science/ceres/
+
+[^23]: Raponi et al (2020). Organic Material on Ceres: Insights from Visible and Infrared Space Observations. Life (Basel). doi: [10.3390/life11010009](https://doi.org/10.3390/life11010009). PMID: 33374247; PMCID: PMC7823631.
+
+[^24]: Landau, E (2015). New Clues to Ceres' Bright Spots and Origins. https://www.jpl.nasa.gov/news/new-clues-to-ceres-bright-spots-and-origins/
