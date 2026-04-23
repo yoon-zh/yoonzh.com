@@ -58,11 +58,42 @@ I use PK4GYP2 as an example here.
     - $$S_{13}$$: `-6.9E-12`
 6. In Anisotropic Relative Permittivity:
 
-
+7. In Piezoelectric Matrix:
 
 ## Explanation
 
-This is a thorough explanation on what each material property means, and how we get the numbers.
+This is a thorough explanation on what each material property means, and how we get the numbers. *For a full in-depth explanation, you can check these two resources [here](https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v242/en/ans_thry/thy_coup2.html) and [here](http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf).*
+
+### Piezoelectric Constitutive Equations
+
+The characteristic of a piezoelectric material is the coupling of mechanical and electrical physics. In short, we combine Hooke's law with the charge equations of electrostatics, as discussed [here](http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf):
+
+> $$T_{ij} = c_{ijkl}^E S_{kl} - e_{kij} E_k$$
+>
+> $$D_i = e_{ikl} S_{kl} + \varepsilon_{ij}^S E_k$$
+>
+> Where
+> - $$T_{ij}$$ is stress tensor
+> - $$S_{kl}$$ is strain tensor
+> - $$c_{ijkl}^E$$ is elastic stiffness constant at constant electric field
+> - $$e_{kij},\ e_{ikl}$$ are piezoelectric constants
+> - $$E_k$$ is electrid field
+> - $$D_i$$ is electric displacement field
+> - $$\varepsilon_{ij}^S$$ is dielectric constant (permittivity) at constant strain
+
+Going step by step:
+
+The first equation calculates the stress tensor $$T_{ij}$$ as a result of the mechanical strain $$c_{ijkl}^E S_{kl}$$ and electric field $$e_{kij} E_k$$.
+- The mechanical term $$c_{ijkl}^E S_{kl}$$ is simply [Hooke's law](https://en.wikipedia.org/wiki/Hooke%27s_law) in tensor notation.
+  - $$c_{ijkl}^E$$ is the stiffness matrix. The superscript $$E$$ means this is measured at a constant electric field (for example, when the piezoelectric is shorted).
+- The electrical term $$e_{kij} E_k$$ is the piezoelectric stress.
+  - Since the material is anisotropic (polarized), applying an electric field $$E_k$$ in a certain direction induces a mechanical stress.
+  - The piezoelectric constant $$e_{kij}$$ is a measured value that tells how much stress is induced given an electric field.
+
+The second equation is the electric displacement $$D_i$$
+
+For this model, $$T_{ij}$$ and $$S_{kl}$$ are 3x3 tensors.
+
 
 ### Anisotropic Elasticity
 
@@ -70,7 +101,9 @@ This is basically the elastic parameters of the material, aka the Young's Modulu
 
 > As discussed [here](https://en.wikipedia.org/wiki/Hooke%27s_law#Matrix_representation_stiffness_tensor), we define a stiffness tensor $$C$$ to express Hooke's law as:
 >
-> $$[\sigma]= [C][\epsilon]$$
+> $$[\sigma]= [C][\varepsilon]$$
+>
+> Where $$\sigma$$ is stress, and $$\varepsilon$$ is strain.
 >
 > We can also define it the other way around by inverting the stiffness tensor:
 >
@@ -78,7 +111,7 @@ This is basically the elastic parameters of the material, aka the Young's Modulu
 >
 > Where $$s$$ is the compliance matrix. Then:
 >
-> $$[\epsilon] = [s][\sigma]$$
+> $$[\varepsilon] = [s][\sigma]$$
 
 - For the compliance matrix $$s$$, the diagonals represent the inverse of Young's and Shear Modulus, in this order: `X, Y, Z, YZ, XZ, XY`
 - The point group refers to the material inner geometry, as discussed [here](https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v252/en/wb_eda/eda_point_group.html). In our example, we assume the piezostack material properties to be symmetric in X and Y. The `6mm` setting basically represents this, more properly known as "transversely isotropic" as discussed in [this paper](https://doi.org/10.1063/1.340167).
@@ -136,3 +169,24 @@ fprintf('The rest should be automatically filled\n');
 ```
 
 Make sure to select Format: `IEEE`, Point group: `6mm`
+
+If you need to define the elasticity for a different piezoelectric material, I recommend checking [this link](https://en.wikipedia.org/wiki/Hooke%27s_law#Transversely_isotropic_materials).
+
+### Anisotropic Relative Permittivity
+
+As defined [here](https://courses.cit.cornell.edu/ece303/Lectures/lecture17.pdf), the 
+
+> $$
+> \begin{bmatrix}
+> \varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\
+> \varepsilon_{yx} & \varepsilon_{yy} & \varepsilon_{yz} \\
+> \varepsilon_{zx} & \varepsilon_{zy} & \varepsilon_{zz}
+> \end{bmatrix}
+> $$
+
+
+
+
+https://support.onscale.com/hc/en-us/articles/360002073378-Calculating-Piezoelectric-Material-Properties-from-Material-Datasheet
+https://www.thorlabs.com/piezoelectric-tutorial?tabName=Operational%20Theory
+https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v242/en/ans_cou/Hlp_G_COU3_piezo.html
