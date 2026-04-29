@@ -57,8 +57,13 @@ I use PK4GYP2 as an example here.
     - $$S_{12}$$: `-5.1E-12`
     - $$S_{13}$$: `-6.9E-12`
 6. In Anisotropic Relative Permittivity:
-
+  - Set Input type to `Constant Stress`
+  - Set Point Group to `6mm`
+  - Open the table, put the following data (dimensionless):
+    - $$\varepsilon_{11} = 4050$$
+    - $$\varepsilon_{33} = 4500$$
 7. In Piezoelectric Matrix:
+
 
 ## Explanation
 
@@ -201,6 +206,12 @@ The assumptions done in this analysis are:
 - This implies the Young's modulus $$E_{55} = 2.3 \text{e+10}$$ N/m^2.
 - Since we assume transversely isotropic, then $$s_{44} = s_{55}$$
 
+4\. The relative permittivity $$\varepsilon_{xx} = 0.9\varepsilon_{zz}$$
+- The manufacturer provided a unique value of the relative permittivity as 4500, which I have assumed to be the value of $$\varepsilon_{zz}$$ at constant stress.
+- Due to anisotropy, we need at least one more value of permittivity to run the simulation in Ansys.
+- Since the primary direction of the force is in the z axis, defining an accurate value of $$\varepsilon_{xx}$$ is not needed as it will have near zero influence in the final results.
+- I believe the permittivity in the z direction is bigger than in x and y, for which I arbitrarily assign $$\varepsilon_{xx}$$ to be slightly smaller than $$\varepsilon_{zz}$$ by a factor of 0.9
+
 
 ### Anisotropic Elasticity
 
@@ -297,14 +308,45 @@ Where $$\varepsilon_0 = 8.854 \times 10^{-12}$$ F/m is the permittivity of free 
 Since the piezostack is anisotropic, the material permittivity is not a scalar but a 3x3 matrix:
 
 > $$
-> \begin{bmatrix}
+> \varepsilon_r = \begin{bmatrix}
 > \varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\
 > \varepsilon_{yx} & \varepsilon_{yy} & \varepsilon_{yz} \\
 > \varepsilon_{zx} & \varepsilon_{zy} & \varepsilon_{zz}
 > \end{bmatrix}
 > $$
 
-> Important: The permittivity may be measured at a constant strain $$\varepsilon^S$$ or at a constant stress $$\varepsilon^T$$. Double check which one you have, and configure Ansys to the correct version.
+We assume the piezoelectric material is transversely anisotropic. Then, $$\varepsilon_{xx} = \varepsilon_{yy}$$. Additionally, we consider [Neumann's principle](https://www.doitpoms.ac.uk/tlplib/tensors/symmetry.php) to say that $$\varepsilon_r = \varepsilon_r^T$$, so that it becomes a diagonal matrix:
+
+> $$
+> \varepsilon_r = \begin{bmatrix}
+> \varepsilon_{xx} & 0 & 0 \\
+> 0 & \varepsilon_{xx} & 0 \\
+> 0 & 0 & \varepsilon_{zz}
+> \end{bmatrix}
+> $$
+
+This is because we consider the material symmetric in the x-y plane. Additional reading on justifying this: [wiki](https://en.wikipedia.org/wiki/Transverse_isotropy), [dictionary](https://dictionary.iucr.org/Neumann%27s_principle).
+
+Notice we have simplified the permittivity matrix so that only two values are to be found. For the PK4GYP2, the manufacturer provided me with a value of 4500, which I assume to be for the z-axis since it is the axis of interest. Then, $$\varepsilon_{zz} = 4500$$.
+
+From the assumptions [above](#assumptions), I claim $$\varepsilon_{xx} = 0.9\varepsilon_{zz} = 4050$$.
+
+> With the above, we can define the relative permittivity matrix as
+>
+> $$
+> \varepsilon_r = \begin{bmatrix}
+> 4050 & 0 & 0 \\
+> 0 & 4050 & 0 \\
+> 0 & 0 & 4500
+> \end{bmatrix}
+> $$
+
+> Important: The permittivity may be measured at a constant strain $$\varepsilon^S$$ or at a constant stress $$\varepsilon^T$$. Double check which one you have, and configure Ansys to the correct type. Usually it is at constant stress $$\varepsilon^T$$.
+
+
+### Piezoelectric Matrix
+
+
 
 
 Sources:
@@ -327,3 +369,9 @@ Sources:
 - [Wikipedia: Relative Permittivity](https://en.wikipedia.org/wiki/Relative_permittivity)
 - [Wikipedia: Electric Displacement Field](https://en.wikipedia.org/wiki/Electric_displacement_field)
 - [Wikipedia: Maxwell Equations](https://en.wikipedia.org/wiki/Maxwell%27s_equations)
+- [Wikipedia: Transverse isotropy](https://en.wikipedia.org/wiki/Transverse_isotropy)
+- [Cambrige: The effects of crystal symmetry](https://www.doitpoms.ac.uk/tlplib/tensors/symmetry.php)
+- [Online ictionary of Crystallography: Neumann's principle](https://dictionary.iucr.org/Neumann%27s_principle)
+
+
+https://application.wiley-vch.de/books/sample/3527345124_c01.pdf
