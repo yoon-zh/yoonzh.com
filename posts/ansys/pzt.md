@@ -60,10 +60,18 @@ I use PK4GYP2 as an example here.
   - Set Input type to `Constant Stress`
   - Set Point Group to `6mm`
   - Open the table, put the following data (dimensionless):
-    - $$\varepsilon_{11} = 4050$$
-    - $$\varepsilon_{33} = 4500$$
+    - $$\varepsilon_{11}$$: `4050`
+    - $$\varepsilon_{33}$$: `4500`
 7. In Piezoelectric Matrix:
+  - Set Active Table to `Strain`
+  - Set Format to `IEEE`
+  - Set Point Group to `6mm`
+  - Open the table, put the following data (A s N^-1):
+    - $$d_{33}$$: `6.56303972e-10`
+    - $$d_{31}$$: `-2.62521589e-10`
+    - $$d_{15}$$: `7.37e-10`
 
+***
 
 ## Explanation
 
@@ -171,7 +179,7 @@ A brief summary of the quantities from these equations, with their dimensions:
 | $$c$$ | Elastic Stiffness | N/m^2 | 6x6 |
 | $$s$$ | Compliance | m^2/N | 6x6 |
 | $$e$$ | Piezoelectric stress constant | C/m^2 | 3x6 |
-| $$d$$ | Piezoelectric strain constant | m/V C/N | 3x6 |
+| $$d$$ | Piezoelectric strain constant | m/V, C/N | 3x6 |
 | $$\varepsilon$$ | Dielectric permittivity | F/m | 3x3 |
 
 In Ansys, we can define the 3 material properties by inserting the following:
@@ -192,7 +200,8 @@ The assumptions done in this analysis are:
 
 1\. The piezostack is transversely isotropic around the z axis.
 - This means the x, y properties are the same. For example, the compliance $$s$$ and permittivity $$\varepsilon$$ in the x and y direction are the same.
-- We assume this because the main axis of interest is the z-axis, which will be the direction of the applied load. Additionally, the manufacturer did not provide specific properties for x and y. Since the layers are geometrically symmetric in x and y, we can safely treat them as isotropic. 
+- We assume this because the main axis of interest is the z-axis, which will be the direction of the applied load. Additionally, the manufacturer did not provide specific properties for x and y. Since the layers are geometrically symmetric in x and y, we can safely treat them as isotropic.
+- This assumption has been previously validated [here](http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf) (page 21) for lead zirconate titanate.
 
 2\. The Poisson ratio for all axis to be 0.3.
 - The manufacturer did not specify the coupling compliances nor the Poisson ratio, so we must assume it to calculate the compliance matrix.
@@ -211,6 +220,13 @@ The assumptions done in this analysis are:
 - Due to anisotropy, we need at least one more value of permittivity to run the simulation in Ansys.
 - Since the primary direction of the force is in the z axis, defining an accurate value of $$\varepsilon_{xx}$$ is not needed as it will have near zero influence in the final results.
 - I believe the permittivity in the z direction is bigger than in x and y, for which I arbitrarily assign $$\varepsilon_{xx}$$ to be slightly smaller than $$\varepsilon_{zz}$$ by a factor of 0.9
+
+5\. The piezoelectric constant $$d_{15} = 737 \text{e+12}$$ m/V
+- The manufacturer did not provide any values for the piezoelectric constants
+- [Below](#piezoelectric-matrix) I derivate the values for $$d_{33},\ d_{31}$$
+- Using the other values, I can look for the most similar piezoelectric material from [this datasheet](https://www.fujicera.co.jp/wpkanri/wp-content/uploads/2023/11/The-material-characteristics-of-piezoceramics_2023.11E.pdf) and use the value provided for $$d_{15}$$.
+- The constants for the material `C-7` are very close to the $$d_{33},\ d_{31}$$ values derived [below](#piezoelectric-matrix), for which we can approximate the value of $$d_{15}$$ to be roughly equal
+- Defining a more accurate value of $$d_{15}$$ is not strictly necessary, as our model aims to have as little shear stress as possible, and instead concentrate the force in the z axis entirely, for which the influence of $$d_{15}$$ is small compared to $$d_{33}$$
 
 
 ### Anisotropic Elasticity
@@ -346,8 +362,115 @@ From the assumptions [above](#assumptions), I claim $$\varepsilon_{xx} = 0.9\var
 
 ### Piezoelectric Matrix
 
+This is the constant inherent to piezoelectric materials, which relates the mechanical and electric physics. There are two notations as mentioned [above](#piezoelectric-constitutive-equations):
+- Stress-charge form $$e$$
+- Strain-charge form $$d$$
+
+Here we use the strain-charge form $$d$$. For a 6mm hexagonal system, the matrix can be simplified as [(source 1, page 24)](http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf), [(source 2)](https://en.wikipedia.org/wiki/Piezoelectricity):
+
+> $$
+> d = \begin{bmatrix}
+> 0 & 0 & 0 & 0 & d_{15} & 0 \\
+> 0 & 0 & 0 & d_{15} & 0 & 0 \\
+> d_{31} & d_{31} & d_{33} & 0 & 0 & 0
+> \end{bmatrix}
+> $$
+
+The matrix above contains only 3 unknowns we must input:
+- $$d_{33}$$ is the piezoelectric constant for the z axis, where a positive value indicates that tension in the z axis causes a potential difference with the +Z face holding the positive terminal [(page 22)](http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf)
+- $$d_{31}$$ relates an electric field in Z with a strain in X
+- $$d_{15}$$ relates an electric field in X to a shear strain in XZ
+
+As you can deduce, the values in $$d_{32}$$ and $$d_{24}$$ are related to the y axis. Since we assume transversely isotropic, we use the same values defined for the x axis.
+
+The manufacturer did not provide me with these coefficients, which is a bit problematic. We can use the displacement graph in the datasheet to estimate the value of $$d_{33}$$. Observing the strain equation (strain-charge form):
+
+$$S = s T + d E$$
+
+From the [datasheet](https://media.thorlabs.com/globalassets/items/p/pk/pk4/pk4gyp2/doc-100483.pdf?v=0116021108), we know that a voltage of 150 V generates a displacement of roughly 38 $$\mu \text{m}$$ at no load. Then the stress is zero:
+
+$$S = d E$$
+
+We can expand the equation above to include the displacement and voltage explicitly. Let $$S = \frac{\delta}{t}$$, $$E = \frac{V}{t}$$ where $$\delta$$ is deformation, $$t$$ is thickness of a single piezostack layer, and $$V$$ is voltage. Then:
+
+$$\frac{\delta}{t} = d\frac{V}{t}$$
+
+Simplifying the thickness,
+
+$$\delta = dV$$
+
+Note this is for a single layer. Since the datasheet is based on a piezostack, we must multiply by the number of layers (386) to use the displacement and voltage values from the datasheet. Also, we assume these values are for the z axis, which is represented by $$d_{33}$$. Then:
+
+$$\delta_{\text{total}} = d_{33} V N $$
+
+Where $$N$$ is the number of layers, equal to 386 for the PK4GYP2. Solving for $$d$$:
+
+$$d_{33} = \frac{\delta_{\text{total}}}{V N}$$
+
+From the datasheet, we know $$\delta_{\text{total}} = 38\mu \text{m},\ V = 150\ \text{V},\ N = 386$$ layers. Then we can calculate $$d_{33}$$.
+
+> Warning: This derivation assumes a linear relationship between voltage and displacement, which is not entirely true due to hysteresis. This error is calculated later.
+
+Having $$d_{33}$$, we can use the equations [here](https://application.wiley-vch.de/books/sample/3527345124_c01.pdf) to estimate the value of $$d_{31}$$, given the relationship:
+
+$$d_{33} \approx -2.5 d_{31}$$
+
+With these equations, the constants are estimated as:
+- $$d_{33} = 6.56303972 \text{e-10}$$ m/V
+- $$d_{31} = -2.62521589 \text{e-10}$$ m/V
+
+As explained in the [assumptions](#assumptions), these two values nearly match the coefficients of the C-7 material defined [here](https://www.fujicera.co.jp/wpkanri/wp-content/uploads/2023/11/The-material-characteristics-of-piezoceramics_2023.11E.pdf). Then, we can use the value of $$d_{15}$$ provided for C-7, equal to $$737 \text{e-12}$$ m/V.
+
+For the hysteresis error, I look for the biggest gap in the measured displacement at the same voltage, when increasing and decreasing. The error is calculated as:
+
+$$err_{\text{hysteresis}} = \frac{\left| \delta_{\text{decreasing}} - \delta_{\text{increasing}} \right|}{\delta_{\text{max}}}$$
+
+Looking at the PK4GYP2 [datasheet](https://media.thorlabs.com/globalassets/items/p/pk/pk4/pk4gyp2/doc-100483.pdf?v=0116021108), I estimate:
+- The biggest gap is at V = 75 V
+- The measured displacement $$\delta_{\text{decreasing}} = 22.5 \mu \text{m},\ \delta_{\text{increasing}} = 25.5 \mu \text{m}$$
+- The biggest displacement $$\delta_{\text{max}} = 38 \mu \text{m}$$ is at V = 150 V
+
+With these, the hysteresis error is roughly 7.89%.
+
+All these values are calculated from the matlab script below:
+
+```m
+clc
+clear
+close all
+
+%% From Manufacturer
+N = 386; % Number of layers
+
+%% From Datasheet
+delta = 38e-6; % displacement in m
+V = 150; % Voltage in V
+
+%% From C-7 in this datasheet: https://www.fujicera.co.jp/wpkanri/wp-content/uploads/2023/11/The-material-characteristics-of-piezoceramics_2023.11E.pdf
+C7_d15 = 737e-12;
+
+%% Calculations
+d33 = delta / (V*N);
+d31 = d33 / (-2.5);
+d15 = C7_d15;
+
+%% Hysteresis error calculations
+delta_decreasing = 22.5e-6; % m
+delta_increasing = 25.5e-6; % m
+err_hysteresis = abs(delta_decreasing - delta_increasing)/delta;
+
+fprintf('Put these values in Ansys:\n');
+fprintf('d_{33} = %.8e\n', d33);
+fprintf('d_{31} = %.8e\n', d31);
+fprintf('d_{15} = %.8e\n', d15);
+
+fprintf('The rest should be automatically filled (make sure to select Point group: 6mm, Active Table: Strain)\n');
+
+fprintf('These values are subject to a hysteresis error of roughly %.2f %%\n', err_hysteresis * 100);
+```
 
 
+***
 
 Sources:
 - [IEEE Standard on Piezoelectricity](http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf)
@@ -370,8 +493,13 @@ Sources:
 - [Wikipedia: Electric Displacement Field](https://en.wikipedia.org/wiki/Electric_displacement_field)
 - [Wikipedia: Maxwell Equations](https://en.wikipedia.org/wiki/Maxwell%27s_equations)
 - [Wikipedia: Transverse isotropy](https://en.wikipedia.org/wiki/Transverse_isotropy)
+- [Wikipedia: Piezoelectricity](https://en.wikipedia.org/wiki/Piezoelectricity)
 - [Cambrige: The effects of crystal symmetry](https://www.doitpoms.ac.uk/tlplib/tensors/symmetry.php)
-- [Online ictionary of Crystallography: Neumann's principle](https://dictionary.iucr.org/Neumann%27s_principle)
-
+- [Online Dictionary of Crystallography: Neumann's principle](https://dictionary.iucr.org/Neumann%27s_principle)
+- Graham, J; Lee, J (2011). Reflection and Transmission at Isotropic-Biaxial Interface. [ursi.org/proceedings/procGA11/ursi/BP1-14.pdf](https://www.ursi.org/proceedings/procGA11/ursi/BP1-14.pdf)
 
 https://application.wiley-vch.de/books/sample/3527345124_c01.pdf
+
+https://application.wiley-vch.de/books/sample/3527351892_c01.pdf
+
+https://www.nature.com/articles/sdata201553
