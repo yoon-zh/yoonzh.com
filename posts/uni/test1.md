@@ -43,7 +43,6 @@ $$P(A|C) = \frac{P(A \cap C)}{P(C)}$$
 
 to-do
 - website
-  - implement cookies
   - fix header bar for mobile display
   - optimize image loading
   - write full documentation, building steps
