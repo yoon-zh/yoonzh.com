@@ -25,6 +25,10 @@
         onload="renderMathInElement(document.body);"></script>
   
   
+  <script src="https://neilturley.dev/netlistsvg/elk.bundled.js"></script>
+  <script src="https://neilturley.dev/netlistsvg/built/netlistsvg.bundle.js"></script>
+  <script type="module" src="/scripts/circuits.js"></script>
+  
 </head>
 </head>
 <body class="">
@@ -93,20 +97,20 @@
 
 <h2 id="why-do-we-care-about-it">Why do we care about it?</h2>
 
-<p>It shows <em>core functionalities</em> and <code class="language-text highlighter-rouge">page styles</code> I have <strong><em>added</em></strong> throughout the making of the <strong>website</strong>.</p>
+<p>It shows core functionalities <em>and</em> <code class="language-text highlighter-rouge">page styles</code> I have <strong><em>added</em></strong> throughout <strong>the</strong> making of the website.</p>
 
 <blockquote>
   <p>This website is built with Jekyll, where most of the content is written in <code class="language-text highlighter-rouge">.md</code> and compiled into <code class="language-text highlighter-rouge">HTML</code>.</p>
 </blockquote>
 
-<ul>
+<ol>
   <li>It took about 1 week to set up Jekyll</li>
   <li>It is my first time using Ruby or making a website at all</li>
-</ul>
+</ol>
 
 <hr />
 
-<p>This project is <strong><em>open source</em></strong> -&gt; check it <a href="https://github.com/yoon-zh/yoonzh.com" title="My website in GitHub">here</a></p>
+<p>This project is open source, check it <a href="https://github.com/yoon-zh/yoonzh.com" title="https://github.com/yoon-zh/yoonzh.com">here</a></p>
 
 <p><a href="https://www.markdownguide.org/basic-syntax/">Writing in <code class="language-text highlighter-rouge">.md</code></a></p>
 
@@ -141,7 +145,20 @@
   </tbody>
 </table>
 
+<h3 id="test-circuit">Test circuit</h3>
+
+<!-- _includes/circuit.html -->
+<div class="circuit-container" id="circuit-npn-cc" data-circuit-container="">
+  <script type="application/json" data-circuit-content="">
+  
+    {"modules":{"npn-cc":{"ports":{"Vin":{"direction":"input","bits":[1]},"Vout":{"direction":"output","bits":[2]}},"cells":{"npn":{"type":"q_npn","connections":{"C":[1],"B":[3],"E":[2]},"port_directions":{"B":"input","C":"input","E":"output"}},"RE":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"RL":{"type":"r_v","connections":{"A":[2],"B":[0]},"port_directions":{"A":"input","B":"output"}},"R1":{"type":"r_v","connections":{"A":[1],"B":[3]},"port_directions":{"A":"input","B":"output"}},"R2":{"type":"r_v","connections":{"A":[3],"B":[0]},"port_directions":{"A":"input","B":"output"}},"gnd":{"type":"gnd","connections":{"A":[0]}},"Vs":{"type":"v","connections":{"+":[4],"-":[0]},"port_directions":{"+":"input","-":"output"}},"Rs":{"type":"r_h","connections":{"A":[4],"B":[5]},"port_directions":{"A":"input","B":"output"}},"Cc":{"type":"c_h","connections":{"A":[5],"B":[3]},"port_directions":{"A":"input","B":"output"}}}}}}
+  
+  </script>
+</div>
+
 <p><a href="#what-is-it">Go to top</a></p>
+
+<hr />
 
 <!--Written by Jorge Porras (2025)-->
 
