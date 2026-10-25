@@ -1,0 +1,765 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- _includes/head.html -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Simulating a Piezostack in Ansys - yoonzh.com</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="윤志" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0a0a0a" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+  
+  
+</head>
+</head>
+<body class="">
+  <!-- _includes/header.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M9QVQ44D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M9QVQ44D');
+</script>
+
+<header class="site-header">
+  <div class="nav-container">
+    <div class="logo-group">
+      <a href="/" class="logo-image">
+        <img src="/images/pepito-square.jpg" alt="Home">
+      </a>
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <h1 class="logo">윤志</h1>
+        </a>
+        <p class="logo-subtitle">[云 ~ 찌]</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      
+        <a href="/projects/" class="hover-glow">Projects</a>
+      
+        <a href="/posts/" class="hover-glow">Posts</a>
+      
+        <a href="/about/" class="hover-glow">About</a>
+      
+    </nav>
+  </div>
+</header>
+  
+  <main class="page-content">
+    <!-- _layouts/post.html -->
+<article class="article-detail">
+  <!-- _includes/article-content.html -->
+<header class="article-header">
+  <h1>
+    Simulating a Piezostack in Ansys
+    
+  </h1>
+  
+  <div class="tech-tags">
+    
+      <span class="tech-tag">Ansys</span>
+    
+  </div>
+  
+  <div class="article-meta">
+    
+      <time datetime="2026-04-22T00:00:00+00:00">
+        📅 2026/04/22
+      </time>
+    
+  </div>
+</header>
+
+<div class="article-content">
+  <h2 id="1-material-definition">1. Material Definition</h2>
+
+<p>Depending on the piezostack to use, see if its material is already defined in Ansys. If yes, use it and jump to part 2. Or if not sure what material to use, pick something like PZT-5H.</p>
+
+<p>If you must define the material, then the key properties you need are:</p>
+<ul>
+  <li>Density</li>
+  <li>Anisotropic Elasticity (elastic compliance)</li>
+  <li>Relative Permittivity</li>
+  <li>Piezoelectric Charge Constants</li>
+</ul>
+
+<p>First look up the datasheet. I will use a PK4GYP2, with the datasheet <a href="https://media.thorlabs.com/globalassets/items/p/pk/pk4/pk4gyp2/doc-100483.pdf">here</a>.</p>
+
+<p>Your datasheet might not contain the properties we mentioned above. If this is the case, you will have to contact the manufacturer asking for them.</p>
+
+<p>My manufacturer gave me these values for the PK4GYP2:</p>
+<ul>
+  <li>Material: Lead zirconate titanate (PZT)</li>
+  <li>Number of layers: 386</li>
+  <li>Single-layer thickness: 70μm - 75μm (top and bottom layers are thicker for protection)</li>
+  <li>Density \(\rho = 7.85 \times 10^3\) kg/m³</li>
+  <li>Elastic compliance
+    <ul>
+      <li>\(S_{11} = 17 \times 10^{-12}\) m²/N</li>
+      <li>\(S_{33} = 23 \times 10^{-12}\) m²/N</li>
+    </ul>
+  </li>
+  <li>Relative dielectric constant (permittivity): 4500</li>
+</ul>
+
+<h2 id="ansys-steps">Ansys steps</h2>
+
+<p>I use PK4GYP2 as an example here.</p>
+
+<ol>
+  <li>Create an Engineering Data item</li>
+  <li>Create a new material, name it <code class="language-text highlighter-rouge">PK4GYP2</code></li>
+  <li>Add the following properties:
+    <ul>
+      <li><code class="language-text highlighter-rouge">Density</code> (in Physical Properties)</li>
+      <li><code class="language-text highlighter-rouge">Anisotropic Elasticity</code> (in Linear Elastic)</li>
+      <li><code class="language-text highlighter-rouge">Anisotropic Relative Permittivity</code> (in Electric)</li>
+      <li><code class="language-text highlighter-rouge">Piezoelectric Matrix</code> (in Piezoelectric)</li>
+    </ul>
+  </li>
+  <li>Assign Density: <code class="language-text highlighter-rouge">7850</code> (kg m^-3)</li>
+  <li>In Anisotropic Elasticity:
+    <ul>
+      <li>Set Matrix Type to <code class="language-text highlighter-rouge">Compliance</code></li>
+      <li>Set Format to <code class="language-text highlighter-rouge">IEEE</code></li>
+      <li>Set Point Group to <code class="language-text highlighter-rouge">6mm</code></li>
+      <li>Open the table, put the following data (in Pa^-1):</li>
+    </ul>
+    <ul>
+      <li>\(S_{11}\): <code class="language-text highlighter-rouge">17e-12</code></li>
+      <li>\(S_{33}\): <code class="language-text highlighter-rouge">23e-12</code></li>
+      <li>\(S_{44}\): <code class="language-text highlighter-rouge">4.34782609e-11</code></li>
+      <li>\(S_{66}\): <code class="language-text highlighter-rouge">4.42e-11</code></li>
+      <li>\(S_{12}\): <code class="language-text highlighter-rouge">-5.1E-12</code></li>
+      <li>\(S_{13}\): <code class="language-text highlighter-rouge">-6.9E-12</code></li>
+    </ul>
+  </li>
+  <li>In Anisotropic Relative Permittivity:
+    <ul>
+      <li>Set Input type to <code class="language-text highlighter-rouge">Constant Stress</code></li>
+      <li>Set Point Group to <code class="language-text highlighter-rouge">6mm</code></li>
+      <li>Open the table, put the following data (dimensionless):</li>
+    </ul>
+    <ul>
+      <li>\(\varepsilon_{11}\): <code class="language-text highlighter-rouge">4050</code></li>
+      <li>\(\varepsilon_{33}\): <code class="language-text highlighter-rouge">4500</code></li>
+    </ul>
+  </li>
+  <li>In Piezoelectric Matrix:
+    <ul>
+      <li>Set Active Table to <code class="language-text highlighter-rouge">Strain</code></li>
+      <li>Set Format to <code class="language-text highlighter-rouge">IEEE</code></li>
+      <li>Set Point Group to <code class="language-text highlighter-rouge">6mm</code></li>
+      <li>Open the table, put the following data (A s N^-1):</li>
+    </ul>
+    <ul>
+      <li>\(d_{33}\): <code class="language-text highlighter-rouge">6.56303972e-10</code></li>
+      <li>\(d_{31}\): <code class="language-text highlighter-rouge">-2.62521589e-10</code></li>
+      <li>\(d_{15}\): <code class="language-text highlighter-rouge">7.37e-10</code></li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="explanation">Explanation</h2>
+
+<p>This is a thorough explanation on what each material property means, and how we get the numbers. <em>For a full in-depth explanation, you can check these two resources <a href="https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v242/en/ans_thry/thy_coup2.html">here</a> and <a href="http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf">here</a>.</em></p>
+
+<h3 id="piezoelectric-constitutive-equations">Piezoelectric Constitutive Equations</h3>
+
+<p>The characteristic of a piezoelectric material is the coupling of mechanical and electrical physics. In short, we combine Hooke’s law with the charge equations of electrostatics, as discussed <a href="http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf">here</a>:</p>
+
+<blockquote>
+\[T_{ij} = c_{ijkl}^E S_{kl} - e_{kij} E_k\]
+
+\[D_i = e_{ikl} S_{kl} + \varepsilon_{ij}^S E_k\]
+
+  <p>Where</p>
+  <ul>
+    <li>\(T_{ij}\) is stress tensor</li>
+    <li>\(S_{kl}\) is strain tensor</li>
+    <li>\(c_{ijkl}^E\) is elastic stiffness constant at constant electric field</li>
+    <li>\(e_{kij},\ e_{ikl}\) are piezoelectric constants</li>
+    <li>\(E_k\) is electrid field</li>
+    <li>\(D_i\) is electric displacement field</li>
+    <li>\(\varepsilon_{ij}^S\) is dielectric constant (permittivity) at constant strain</li>
+  </ul>
+</blockquote>
+
+<p>Going step by step:</p>
+
+<p>The first equation calculates the stress tensor \(T_{ij}\) as a result of the mechanical strain \(c_{ijkl}^E S_{kl}\) and electric field \(e_{kij} E_k\).</p>
+<ul>
+  <li>The mechanical term \(c_{ijkl}^E S_{kl}\) is simply <a href="https://en.wikipedia.org/wiki/Hooke%27s_law">Hooke’s law</a> in tensor notation.
+    <ul>
+      <li>\(c_{ijkl}^E\) is the stiffness matrix. The superscript \(E\) means this is measured at a constant electric field (for example, when the piezoelectric is shorted).</li>
+    </ul>
+  </li>
+  <li>The electrical term \(e_{kij} E_k\) is the piezoelectric stress.
+    <ul>
+      <li>Since the material is anisotropic (polarized), applying an electric field \(E_k\) in a certain direction induces a mechanical stress.</li>
+      <li>The piezoelectric constant \(e_{kij}\) is a measured value that tells how much stress is induced given an electric field.</li>
+      <li>The negative sign implies a positive electric field tries to expands the material. If the material is clamped and cannot expand (\(S_{kl} = 0\)), it will result in a negative stress, which means an inner compressive stress.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The second equation is the electric displacement field \(D_i\) in terms of the strain \(e_{ikl} S_{kl}\) and the electric field \(\varepsilon_{ij}^S E_k\).</p>
+<ul>
+  <li>\(D_i\) basically means how the charge is being distributed across the material.</li>
+  <li>The mechanical term \(e_{ikl} S_{kl}\) is the piezoelectric effect in the electric displacement field.
+    <ul>
+      <li>Since the material is anisotropic, there are more electrons in a certain side. Then, if the material is stretched or compressed, the electrons move a bit closer or farther from each other, thus concentrating a charge in a specific side.</li>
+      <li>\(e_{ikl}\) is the piezoelectric constant matrix, exactly the same as in the first equation \(e_{kij}\). The difference in subscripts is a convention technicality, which you can safely ignore.</li>
+      <li>The strain \(S_{kl}\) is the same from the first equation of stress.</li>
+    </ul>
+  </li>
+  <li>The electrical term \(\varepsilon_{ij}^S E_k\) is the original standard form of the electric displacement field \(D = \varepsilon E\), as discussed <a href="https://www.iue.tuwien.ac.at/phd/holzer/node46.html">here</a> and <a href="https://en.wikipedia.org/wiki/Electric_displacement_field">here</a>.
+    <ul>
+      <li>In simple terms, this equation means how the charge is distributed across the material when subject to an electric field. The permittivity \(\varepsilon\) is the material property to distribute the charge. Think of it as the “insulation” property, whether charges move around easily (like in copper) or not (like in rubber).</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For this model, \(T_{ij}\) and \(S_{kl}\) are 3x3 tensors.</p>
+
+<blockquote>
+  <p>We can rewrite these equations in an informal way for a simpler understanding:</p>
+
+\[T = c S - e E\]
+
+\[D = e S + \varepsilon E\]
+
+  <p>Where</p>
+  <ul>
+    <li>\(T\) is stress</li>
+    <li>\(S\) is strain</li>
+    <li>\(c\) is elastic stiffness</li>
+    <li>\(e\) is the piezoelectric coupling constant</li>
+    <li>\(E\) is electrid field</li>
+    <li>\(D\) is electric displacement field</li>
+    <li>\(\varepsilon\) is dielectric constant (permittivity)</li>
+  </ul>
+</blockquote>
+
+<p>You may notice that both equations are written as a function of the strain \(S\) and the electric field \(E\). We can rewrite them to use a known stress instead and solve for the strain, as discussed <a href="https://support.onscale.com/hc/en-us/articles/360002073378-Calculating-Piezoelectric-Material-Properties-from-Material-Datasheet">here</a>:</p>
+
+<blockquote>
+\[S = s T + d E\]
+
+\[D = d T + \varepsilon E\]
+
+  <p>Where</p>
+  <ul>
+    <li>\(s = c^{-1}\) is the compliance (inverse of the stiffness, as discussed <a href="https://www.weizmann.ac.il/chembiophys/bouchbinder/sites/chemphys.bouchbinder/files/uploads/Courses/2023/TA/TA3-Linear_elasticity-I.pdf">here</a>)</li>
+    <li>\(d = e c^{-1}\) is the piezoelectric strain constant (replacing the piezoelectric stress constant \(e\), where \(e = dc\))</li>
+  </ul>
+</blockquote>
+
+<p>The formal definitions of these values as defined <a href="http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf">here (section 2.6)</a>:</p>
+<ul>
+  <li>Compliance: \(c_{pr}^E s_{qr}^E = \delta_{pg}\)</li>
+  <li>Piezoelectric strain constant: \(e_{ip} = d_{iq} c_{qp}^E\)</li>
+</ul>
+
+<p>From these equations, we can define whether to solve for the strain or the stress. Each pair of equations require different definitions of materials:</p>
+
+<blockquote>
+  <p>For the stress-charge form:</p>
+
+\[T = c S - e E\]
+
+\[D = e S + \varepsilon E\]
+
+  <p>We must define in the material properties:</p>
+  <ul>
+    <li>Elastic stiffness \(c\)</li>
+    <li>Piezoelectric stress matrix \(e\)</li>
+    <li>Dielectric permittivity \(\varepsilon\)</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>For the strain-charge form:</p>
+
+\[S = s T + d E\]
+
+\[D = d T + \varepsilon E\]
+
+  <p>We must define in the material properties:</p>
+  <ul>
+    <li>Compliance \(s\)</li>
+    <li>Piezoelectric strain matrix \(d\)</li>
+    <li>Dielectric permittivity \(\varepsilon\)</li>
+  </ul>
+</blockquote>
+
+<p>A brief summary of the quantities from these equations, with their dimensions:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Meaning</th>
+      <th>Units</th>
+      <th>Dimensions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(T\)</td>
+      <td>Stress</td>
+      <td>MPa</td>
+      <td>3x3</td>
+    </tr>
+    <tr>
+      <td>\(S\)</td>
+      <td>Strain</td>
+      <td>Dimensionless</td>
+      <td>3x3</td>
+    </tr>
+    <tr>
+      <td>\(E\)</td>
+      <td>Electric Field</td>
+      <td>V/m = N/C</td>
+      <td>3x3</td>
+    </tr>
+    <tr>
+      <td>\(D\)</td>
+      <td>Electric Displacement Field</td>
+      <td>F/m</td>
+      <td>3x3</td>
+    </tr>
+    <tr>
+      <td>\(c\)</td>
+      <td>Elastic Stiffness</td>
+      <td>N/m^2</td>
+      <td>6x6</td>
+    </tr>
+    <tr>
+      <td>\(s\)</td>
+      <td>Compliance</td>
+      <td>m^2/N</td>
+      <td>6x6</td>
+    </tr>
+    <tr>
+      <td>\(e\)</td>
+      <td>Piezoelectric stress constant</td>
+      <td>C/m^2</td>
+      <td>3x6</td>
+    </tr>
+    <tr>
+      <td>\(d\)</td>
+      <td>Piezoelectric strain constant</td>
+      <td>m/V, C/N</td>
+      <td>3x6</td>
+    </tr>
+    <tr>
+      <td>\(\varepsilon\)</td>
+      <td>Dielectric permittivity</td>
+      <td>F/m</td>
+      <td>3x3</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In Ansys, we can define the 3 material properties by inserting the following:</p>
+<ul>
+  <li>Anisotropic Elasticity (in Linear Elastic)</li>
+  <li>Anisotropic Relative Permittivity (in Electric)</li>
+  <li>Piezoelectric Matrix (in Piezoelectric)</li>
+</ul>
+
+<p>Note we also need to define the density of the material, to calculate stress and strain.</p>
+
+<p>Throughout this analysis, we will use the strain-charge form of the equations, since the manufacturer provided me the compliance values instead of the stiffness.</p>
+
+<h3 id="assumptions">Assumptions</h3>
+
+<p>For the PK4GYP2 piezostack, consider the z axis to be the vertical (the 36mm side). Then, the x-y plane is parallel to the 7x7mm piezostack layers.</p>
+
+<p>The assumptions done in this analysis are:</p>
+
+<p>1. The piezostack is transversely isotropic around the z axis.</p>
+<ul>
+  <li>This means the x, y properties are the same. For example, the compliance \(s\) and permittivity \(\varepsilon\) in the x and y direction are the same.</li>
+  <li>We assume this because the main axis of interest is the z-axis, which will be the direction of the applied load. Additionally, the manufacturer did not provide specific properties for x and y. Since the layers are geometrically symmetric in x and y, we can safely treat them as isotropic.</li>
+  <li>This assumption has been previously validated <a href="http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf">here</a> (page 21) for lead zirconate titanate.</li>
+</ul>
+
+<p>2. The Poisson ratio for all axis to be 0.3.</p>
+<ul>
+  <li>The manufacturer did not specify the coupling compliances nor the Poisson ratio, so we must assume it to calculate the compliance matrix.</li>
+  <li>We know the PK4GYP2 is made of lead zirconate titanate. In <a href="https://www.fujicera.co.jp/wpkanri/wp-content/uploads/2023/11/The-material-characteristics-of-piezoceramics_2023.11E.pdf">this datasheet</a>, we find that similar materials have a Poisson ratio around 0.3.</li>
+  <li>This value \(\nu = 0.3\) is used exclusively to calculate \(s_{12}\) and \(s_{13}\).</li>
+</ul>
+
+<p>3. The shear compliances \(s_{44},\ s_{55}\) are set as 4.34782609e-11 m^2/N.</p>
+<ul>
+  <li>The manufacturer did not specify the shear compliances \(s_{44},\ s_{55}\).</li>
+  <li>In our design, the shear stresses are expected to be small as the load is applied in the z-axis, aiming to keeping the load as vertical as possible since the piezostack is fragile at bending.</li>
+  <li>To complete the compliance matrix, we can reuse the shear compliance values of a different PZT. In this case I refer to the PZT-5H as defined in Ansys.</li>
+  <li>This implies the Young’s modulus \(E_{55} = 2.3 \text{e+10}\) N/m^2.</li>
+  <li>Since we assume transversely isotropic, then \(s_{44} = s_{55}\)</li>
+</ul>
+
+<p>4. The relative permittivity \(\varepsilon_{xx} = 0.9\varepsilon_{zz}\)</p>
+<ul>
+  <li>The manufacturer provided a unique value of the relative permittivity as 4500, which I have assumed to be the value of \(\varepsilon_{zz}\) at constant stress.</li>
+  <li>Due to anisotropy, we need at least one more value of permittivity to run the simulation in Ansys.</li>
+  <li>Since the primary direction of the force is in the z axis, defining an accurate value of \(\varepsilon_{xx}\) is not needed as it will have near zero influence in the final results.</li>
+  <li>I believe the permittivity in the z direction is bigger than in x and y, for which I arbitrarily assign \(\varepsilon_{xx}\) to be slightly smaller than \(\varepsilon_{zz}\) by a factor of 0.9</li>
+</ul>
+
+<p>5. The piezoelectric constant \(d_{15} = 737 \text{e+12}\) m/V</p>
+<ul>
+  <li>The manufacturer did not provide any values for the piezoelectric constants</li>
+  <li><a href="#piezoelectric-matrix">Below</a> I derivate the values for \(d_{33},\ d_{31}\)</li>
+  <li>Using the other values, I can look for the most similar piezoelectric material from <a href="https://www.fujicera.co.jp/wpkanri/wp-content/uploads/2023/11/The-material-characteristics-of-piezoceramics_2023.11E.pdf">this datasheet</a> and use the value provided for \(d_{15}\).</li>
+  <li>The constants for the material <code class="language-text highlighter-rouge">C-7</code> are very close to the \(d_{33},\ d_{31}\) values derived <a href="#piezoelectric-matrix">below</a>, for which we can approximate the value of \(d_{15}\) to be roughly equal</li>
+  <li>Defining a more accurate value of \(d_{15}\) is not strictly necessary, as our model aims to have as little shear stress as possible, and instead concentrate the force in the z axis entirely, for which the influence of \(d_{15}\) is small compared to \(d_{33}\)</li>
+</ul>
+
+<h3 id="anisotropic-elasticity">Anisotropic Elasticity</h3>
+
+<p>This is basically the elastic parameters of the material, aka the Young’s Modulus and Poisson Ratio.</p>
+
+<blockquote>
+  <p>As discussed <a href="https://en.wikipedia.org/wiki/Hooke%27s_law#Matrix_representation_stiffness_tensor">here</a>, we define a stiffness tensor \(c\) to express Hooke’s law as:</p>
+
+\[[T]= [c][S]\]
+
+  <p>Where \(T\) is stress, and \(S\) is strain.</p>
+
+  <p>We can also define it the other way around by inverting the stiffness tensor:</p>
+
+\[s = c^{-1}\]
+
+  <p>Where \(s\) is the compliance matrix. Then:</p>
+
+\[[S] = [s][T]\]
+</blockquote>
+
+<ul>
+  <li>For the compliance matrix \(s\), the diagonals represent the inverse of Young’s and Shear Modulus, in this order: <code class="language-text highlighter-rouge">X, Y, Z, YZ, XZ, XY</code></li>
+  <li>In Ansys, the <code class="language-text highlighter-rouge">point group</code> setting refers to the material inner geometry, as discussed <a href="https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v252/en/wb_eda/eda_point_group.html">here</a>. In our example, we assume the piezostack to be transversely isotropic in X and Y. The <code class="language-text highlighter-rouge">6mm</code> setting basically represents this, as discussed in <a href="https://doi.org/10.1063/1.340167">this paper</a>.</li>
+  <li>The IEEE and MAPDL formats order the diagonal items differently. I believe <code class="language-text highlighter-rouge">X, Y, Z, YZ, XZ, XY</code> is the IEEE format, while in MAPDL it changes to <code class="language-text highlighter-rouge">X, Y, Z, XY, YZ, XZ</code>. I assume this from the matrix definitions in Anisotropic Viscosity Example 5.1 in <a href="https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v251/en/ans_mat/mat_electricmagnet.html">here</a></li>
+</ul>
+
+<blockquote>
+  <p>As explained <a href="https://en.wikipedia.org/wiki/Hooke%27s_law#Transversely_isotropic_materials">here</a> and <a href="https://support.onscale.com/hc/en-us/articles/360002073378-Calculating-Piezoelectric-Material-Properties-from-Material-Datasheet">here</a>, we can define the compliance matrix for transversely isotropic materials (z as the symmetry axis) as:</p>
+
+\[\begin{bmatrix}
+\frac{1}{E_x} &amp; -\frac{\nu_{yx}}{E_y} &amp; -\frac{\nu_{zx}}{E_z} &amp; 0 &amp; 0 &amp; 0 \\
+-\frac{\nu_{xy}}{E_x} &amp; \frac{1}{E_y} &amp; -\frac{\nu_{zy}}{E_z} &amp; 0 &amp; 0 &amp; 0 \\
+-\frac{\nu_{xz}}{E_z} &amp; -\frac{\nu_{yz}}{E_z} &amp; \frac{1}{E_z} &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; \frac{1}{G_{yz}} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{1}{G_{xz}} &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \frac{1}{G_{xy}}
+\end{bmatrix}\]
+</blockquote>
+
+<ul>
+  <li>Since we assume the piezostack is transversely isotropic, we assume \(E_y = E_x\). Then, \(s_{11} = s_{22}\).</li>
+  <li>We assume a Poisson ratio of 0.3 for all axis, to calculate \(s_{12}\) and \(s_{13}\).</li>
+  <li>For the shear compliances \(s_{44},\ s_{55}\), we use the values from PZT-5H as defined in Ansys.</li>
+  <li>Since the piezostack is isotropic in the x-y plane, we can actually calculate \(s_{66} = \frac{2(1 + \nu_{xy})}{E_x} = 2(s_{11} - s_{12})\)</li>
+</ul>
+
+<p>With all this, we can define the compliance matrix:</p>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">%% From Manufacturer</span>
+<span class="n">S11</span> <span class="o">=</span> <span class="mf">17e-12</span><span class="p">;</span>
+<span class="n">S33</span> <span class="o">=</span> <span class="mf">23e-12</span><span class="p">;</span>
+
+<span class="c1">%% From PZT-5H in Ansys</span>
+<span class="n">PZT_5H_C44</span> <span class="o">=</span> <span class="mf">2.3e10</span><span class="p">;</span>
+
+<span class="c1">%% Assumptions</span>
+<span class="n">S22</span> <span class="o">=</span> <span class="n">S11</span><span class="p">;</span> <span class="c1">% transversely isotropic for x, y</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span> <span class="c1">% poisson ratio, estimated from other piezo materials</span>
+
+<span class="n">S44</span> <span class="o">=</span> <span class="mi">1</span><span class="p">/</span><span class="n">PZT_5H_C44</span><span class="p">;</span> <span class="c1">% Use this as a default value </span>
+<span class="n">S55</span> <span class="o">=</span> <span class="n">S44</span><span class="p">;</span> <span class="c1">% transversely isotropic for x, y</span>
+<span class="n">S66</span> <span class="o">=</span> <span class="n">S11</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">);</span> <span class="c1">% transversely isotropic for x, y</span>
+
+<span class="c1">%% Calculations</span>
+<span class="n">S12</span> <span class="o">=</span> <span class="o">-</span><span class="n">S11</span> <span class="o">*</span> <span class="n">nu</span><span class="p">;</span>
+<span class="n">S13</span> <span class="o">=</span> <span class="o">-</span><span class="n">S33</span> <span class="o">*</span> <span class="n">nu</span><span class="p">;</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'Put these values in Ansys:\n'</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'s_{11} = %.8e \n'</span><span class="p">,</span> <span class="n">S11</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'s_{33} = %.8e \n'</span><span class="p">,</span> <span class="n">S33</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'s_{44} = %.8e \n'</span><span class="p">,</span> <span class="n">S44</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'s_{66} = %.8e \n'</span><span class="p">,</span> <span class="n">S66</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'s_{12} = %.8e \n'</span><span class="p">,</span> <span class="n">S12</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'s_{13} = %.8e \n'</span><span class="p">,</span> <span class="n">S13</span><span class="p">);</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'The rest should be automatically filled\n'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>In Ansys, make sure to select:</p>
+<ul>
+  <li>Format <code class="language-text highlighter-rouge">IEEE</code></li>
+  <li>Point group <code class="language-text highlighter-rouge">6mm</code></li>
+</ul>
+
+<p>If you need to define the elasticity for a different piezoelectric material, I recommend checking <a href="https://en.wikipedia.org/wiki/Hooke%27s_law#Transversely_isotropic_materials">this link</a>.</p>
+
+<h3 id="anisotropic-relative-permittivity">Anisotropic Relative Permittivity</h3>
+
+<p>As defined <a href="https://courses.cit.cornell.edu/ece303/Lectures/lecture17.pdf">here</a>, the electric displacement field is proportional to the electric field by the equation:</p>
+
+\[D = \varepsilon E\]
+
+<p>Ansys uses a relative permittivity matrix \(\varepsilon_r\) to calculate the material permittivity from the relationship mentioned <a href="https://en.wikipedia.org/wiki/Relative_permittivity">here</a>:</p>
+
+\[\varepsilon_r = \frac{\varepsilon}{\varepsilon_0}\]
+
+<p>Where \(\varepsilon_0 = 8.854 \times 10^{-12}\) F/m is the permittivity of free space, as defined <a href="http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf">here</a>.</p>
+
+<p>Since the piezostack is anisotropic, the material permittivity is not a scalar but a 3x3 matrix:</p>
+
+<blockquote>
+\[\varepsilon_r = \begin{bmatrix}
+\varepsilon_{xx} &amp; \varepsilon_{xy} &amp; \varepsilon_{xz} \\
+\varepsilon_{yx} &amp; \varepsilon_{yy} &amp; \varepsilon_{yz} \\
+\varepsilon_{zx} &amp; \varepsilon_{zy} &amp; \varepsilon_{zz}
+\end{bmatrix}\]
+</blockquote>
+
+<p>We assume the piezoelectric material is transversely anisotropic. Then, \(\varepsilon_{xx} = \varepsilon_{yy}\). Additionally, we consider <a href="https://www.doitpoms.ac.uk/tlplib/tensors/symmetry.php">Neumann’s principle</a> to say that \(\varepsilon_r = \varepsilon_r^T\), so that it becomes a diagonal matrix:</p>
+
+<blockquote>
+\[\varepsilon_r = \begin{bmatrix}
+\varepsilon_{xx} &amp; 0 &amp; 0 \\
+0 &amp; \varepsilon_{xx} &amp; 0 \\
+0 &amp; 0 &amp; \varepsilon_{zz}
+\end{bmatrix}\]
+</blockquote>
+
+<p>This is because we consider the material symmetric in the x-y plane. Additional reading on justifying this: <a href="https://en.wikipedia.org/wiki/Transverse_isotropy">wiki</a>, <a href="https://dictionary.iucr.org/Neumann%27s_principle">dictionary</a>.</p>
+
+<p>Notice we have simplified the permittivity matrix so that only two values are to be found. For the PK4GYP2, the manufacturer provided me with a value of 4500, which I assume to be for the z-axis since it is the axis of interest. Then, \(\varepsilon_{zz} = 4500\).</p>
+
+<p>From the assumptions <a href="#assumptions">above</a>, I claim \(\varepsilon_{xx} = 0.9\varepsilon_{zz} = 4050\).</p>
+
+<blockquote>
+  <p>With the above, we can define the relative permittivity matrix as</p>
+
+\[\varepsilon_r = \begin{bmatrix}
+4050 &amp; 0 &amp; 0 \\
+0 &amp; 4050 &amp; 0 \\
+0 &amp; 0 &amp; 4500
+\end{bmatrix}\]
+</blockquote>
+
+<blockquote>
+  <p>Important: The permittivity may be measured at a constant strain \(\varepsilon^S\) or at a constant stress \(\varepsilon^T\). Double check which one you have, and configure Ansys to the correct type. Usually it is at constant stress \(\varepsilon^T\).</p>
+</blockquote>
+
+<h3 id="piezoelectric-matrix">Piezoelectric Matrix</h3>
+
+<p>This is the constant inherent to piezoelectric materials, which relates the mechanical and electric physics. There are two notations as mentioned <a href="#piezoelectric-constitutive-equations">above</a>:</p>
+<ul>
+  <li>Stress-charge form \(e\)</li>
+  <li>Strain-charge form \(d\)</li>
+</ul>
+
+<p>Here we use the strain-charge form \(d\). For a 6mm hexagonal system, the matrix can be simplified as <a href="http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf">(source 1, page 24)</a>, <a href="https://en.wikipedia.org/wiki/Piezoelectricity">(source 2)</a>:</p>
+
+<blockquote>
+\[d = \begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 &amp; d_{15} &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; d_{15} &amp; 0 &amp; 0 \\
+d_{31} &amp; d_{31} &amp; d_{33} &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}\]
+</blockquote>
+
+<p>The matrix above contains only 3 unknowns we must input:</p>
+<ul>
+  <li>\(d_{33}\) is the piezoelectric constant for the z axis, where a positive value indicates that tension in the z axis causes a potential difference with the +Z face holding the positive terminal <a href="http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf">(page 22)</a></li>
+  <li>\(d_{31}\) relates an electric field in Z with a strain in X</li>
+  <li>\(d_{15}\) relates an electric field in X to a shear strain in XZ</li>
+</ul>
+
+<p>As you can deduce, the values in \(d_{32}\) and \(d_{24}\) are related to the y axis. Since we assume transversely isotropic, we use the same values defined for the x axis.</p>
+
+<p>The manufacturer did not provide me with these coefficients, which is a bit problematic. We can use the displacement graph in the datasheet to estimate the value of \(d_{33}\). Observing the strain equation (strain-charge form):</p>
+
+\[S = s T + d E\]
+
+<p>From the <a href="https://media.thorlabs.com/globalassets/items/p/pk/pk4/pk4gyp2/doc-100483.pdf?v=0116021108">datasheet</a>, we know that a voltage of 150 V generates a displacement of roughly 38 \(\mu \text{m}\) at no load. Then the stress is zero:</p>
+
+\[S = d E\]
+
+<p>We can expand the equation above to include the displacement and voltage explicitly. Let \(S = \frac{\delta}{t}\), \(E = \frac{V}{t}\) where \(\delta\) is deformation, \(t\) is thickness of a single piezostack layer, and \(V\) is voltage. Then:</p>
+
+\[\frac{\delta}{t} = d\frac{V}{t}\]
+
+<p>Simplifying the thickness,</p>
+
+\[\delta = dV\]
+
+<p>Note this is for a single layer. Since the datasheet is based on a piezostack, we must multiply by the number of layers (386) to use the displacement and voltage values from the datasheet. Also, we assume these values are for the z axis, which is represented by \(d_{33}\). Then:</p>
+
+\[\delta_{\text{total}} = d_{33} V N\]
+
+<p>Where \(N\) is the number of layers, equal to 386 for the PK4GYP2. Solving for \(d\):</p>
+
+\[d_{33} = \frac{\delta_{\text{total}}}{V N}\]
+
+<p>From the datasheet, we know \(\delta_{\text{total}} = 38\mu \text{m},\ V = 150\ \text{V},\ N = 386\) layers. Then we can calculate \(d_{33}\).</p>
+
+<blockquote>
+  <p>Warning: This derivation assumes a linear relationship between voltage and displacement, which is not entirely true due to hysteresis. This error is calculated later.</p>
+</blockquote>
+
+<p>Having \(d_{33}\), we can use the equations <a href="https://application.wiley-vch.de/books/sample/3527345124_c01.pdf">here</a> to estimate the value of \(d_{31}\), given the relationship:</p>
+
+\[d_{33} \approx -2.5 d_{31}\]
+
+<p>With these equations, the constants are estimated as:</p>
+<ul>
+  <li>\(d_{33} = 6.56303972 \text{e-10}\) m/V</li>
+  <li>\(d_{31} = -2.62521589 \text{e-10}\) m/V</li>
+</ul>
+
+<p>As explained in the <a href="#assumptions">assumptions</a>, these two values nearly match the coefficients of the C-7 material defined <a href="https://www.fujicera.co.jp/wpkanri/wp-content/uploads/2023/11/The-material-characteristics-of-piezoceramics_2023.11E.pdf">here</a>. Then, we can use the value of \(d_{15}\) provided for C-7, equal to \(737 \text{e-12}\) m/V.</p>
+
+<p>For the hysteresis error, I look for the biggest gap in the measured displacement at the same voltage, when increasing and decreasing. The error is calculated as:</p>
+
+\[err_{\text{hysteresis}} = \frac{\left| \delta_{\text{decreasing}} - \delta_{\text{increasing}} \right|}{\delta_{\text{max}}}\]
+
+<p>Looking at the PK4GYP2 <a href="https://media.thorlabs.com/globalassets/items/p/pk/pk4/pk4gyp2/doc-100483.pdf?v=0116021108">datasheet</a>, I estimate:</p>
+<ul>
+  <li>The biggest gap is at V = 75 V</li>
+  <li>The measured displacement \(\delta_{\text{decreasing}} = 22.5 \mu \text{m},\ \delta_{\text{increasing}} = 25.5 \mu \text{m}\)</li>
+  <li>The biggest displacement \(\delta_{\text{max}} = 38 \mu \text{m}\) is at V = 150 V</li>
+</ul>
+
+<p>With these, the hysteresis error is roughly 7.89%.</p>
+
+<p>All these values are calculated from the matlab script below:</p>
+
+<div class="language-m highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">clc</span>
+<span class="nb">clear</span>
+<span class="nb">close</span> <span class="nb">all</span>
+
+<span class="c1">%% From Manufacturer</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">386</span><span class="p">;</span> <span class="c1">% Number of layers</span>
+
+<span class="c1">%% From Datasheet</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="mf">38e-6</span><span class="p">;</span> <span class="c1">% displacement in m</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span> <span class="c1">% Voltage in V</span>
+
+<span class="c1">%% From C-7 in this datasheet: https://www.fujicera.co.jp/wpkanri/wp-content/uploads/2023/11/The-material-characteristics-of-piezoceramics_2023.11E.pdf</span>
+<span class="n">C7_d15</span> <span class="o">=</span> <span class="mf">737e-12</span><span class="p">;</span>
+
+<span class="c1">%% Calculations</span>
+<span class="n">d33</span> <span class="o">=</span> <span class="n">delta</span> <span class="p">/</span> <span class="p">(</span><span class="n">V</span><span class="o">*</span><span class="n">N</span><span class="p">);</span>
+<span class="n">d31</span> <span class="o">=</span> <span class="n">d33</span> <span class="p">/</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">);</span>
+<span class="n">d15</span> <span class="o">=</span> <span class="n">C7_d15</span><span class="p">;</span>
+
+<span class="c1">%% Hysteresis error calculations</span>
+<span class="n">delta_decreasing</span> <span class="o">=</span> <span class="mf">22.5e-6</span><span class="p">;</span> <span class="c1">% m</span>
+<span class="n">delta_increasing</span> <span class="o">=</span> <span class="mf">25.5e-6</span><span class="p">;</span> <span class="c1">% m</span>
+<span class="n">err_hysteresis</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta_decreasing</span> <span class="o">-</span> <span class="n">delta_increasing</span><span class="p">)/</span><span class="n">delta</span><span class="p">;</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'Put these values in Ansys:\n'</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'d_{33} = %.8e\n'</span><span class="p">,</span> <span class="n">d33</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'d_{31} = %.8e\n'</span><span class="p">,</span> <span class="n">d31</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'d_{15} = %.8e\n'</span><span class="p">,</span> <span class="n">d15</span><span class="p">);</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'The rest should be automatically filled (make sure to select Point group: 6mm, Active Table: Strain)\n'</span><span class="p">);</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s1">'These values are subject to a hysteresis error of roughly %.2f %%\n'</span><span class="p">,</span> <span class="n">err_hysteresis</span> <span class="o">*</span> <span class="mi">100</span><span class="p">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>Sources:</p>
+<ul>
+  <li><a href="http://rfc.nop.hu/ieee2/ANSI-IEEE%20Std%20176-1987.pdf">IEEE Standard on Piezoelectricity</a></li>
+  <li><a href="https://courses.cit.cornell.edu/ece303/Lectures/lecture17.pdf">Waves in Anisotropic Media</a></li>
+  <li><a href="https://www.doitpoms.ac.uk/tlplib/anisotropy/dielectric.php">Anisotropic dielectric permittivity</a></li>
+  <li><a href="https://www.thorlabs.com/piezoelectric-tutorial?tabName=Operational%20Theory">Thorlabs: Piezoelectric Basic Background and Operation Tutorial</a></li>
+  <li><a href="https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v242/en/ans_thry/thy_coup2.html">Ansys: Piezoelectrics</a></li>
+  <li><a href="https://ansyshelp.ansys.com/public/account/secured?returnurl=/Views/Secured/corp/v242/en/ans_cou/Hlp_G_COU3_piezo.html">Ansys: Piezoelectric Analysis</a></li>
+  <li><a href="https://ansyshelp.ansys.com/public/Views/Secured/Electronics/v251/en/Subsystems/HFSS/HFSS.htm#HFSS/AnisotropicRelativePermittivityTensors.htm">Ansys: Anisotropic Relative Permittivity Tensors</a></li>
+  <li><a href="https://ansyshelp.ansys.com/public/Views/Secured/Electronics/v242/en/Subsystems/Maxwell/Content/DefiningAnisotropicRelativePermittivityTensors.htm">Ansys: Defining Anisotropic Relative Permittivity Tensors</a></li>
+  <li><a href="https://www.autodesk.com/products/fusion-360/blog/piezoelectricity/">Autodesk: How Piezoelectricity Works to Make Crystals Conduct Electric Current</a></li>
+  <li><a href="https://support.onscale.com/hc/en-us/articles/360002073378-Calculating-Piezoelectric-Material-Properties-from-Material-Datasheet">OnScale: Calculating Piezoelectric Material Properties from Material Datasheet</a></li>
+  <li><a href="https://www.iue.tuwien.ac.at/phd/holzer/node46.html">Electrical Permittivity (Stefan Holzer)</a></li>
+  <li><a href="https://web.mit.edu/sahughes/www/8.022/lec19.pdf">MIT: Displacement current. Maxwell’s equations</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Hooke%27s_law#Transversely_isotropic_materials">Wikipedia: Hooke’s Law</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Stiffness_matrix">Wikipedia: Stiffness Matrix</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Capacitor">Wikipedia: Capacitor</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Permittivity">Wikipedia: Permittivity</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Relative_permittivity">Wikipedia: Relative Permittivity</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Electric_displacement_field">Wikipedia: Electric Displacement Field</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Maxwell%27s_equations">Wikipedia: Maxwell Equations</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Transverse_isotropy">Wikipedia: Transverse isotropy</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Piezoelectricity">Wikipedia: Piezoelectricity</a></li>
+  <li><a href="https://www.doitpoms.ac.uk/tlplib/tensors/symmetry.php">Cambrige: The effects of crystal symmetry</a></li>
+  <li><a href="https://dictionary.iucr.org/Neumann%27s_principle">Online Dictionary of Crystallography: Neumann’s principle</a></li>
+  <li>Graham, J; Lee, J (2011). Reflection and Transmission at Isotropic-Biaxial Interface. <a href="https://www.ursi.org/proceedings/procGA11/ursi/BP1-14.pdf">ursi.org/proceedings/procGA11/ursi/BP1-14.pdf</a></li>
+</ul>
+
+<p>https://application.wiley-vch.de/books/sample/3527345124_c01.pdf</p>
+
+<p>https://application.wiley-vch.de/books/sample/3527351892_c01.pdf</p>
+
+<p>https://www.nature.com/articles/sdata201553</p>
+
+</div>
+</article>
+  </main>
+
+  <!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://github.com/yoon-zh" class="hover-glow" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:yoon_zh@outlook.com" class="hover-glow" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/jorge-porras-1a7393282/" class="hover-glow" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://t.me/yo_o_n" class="hover-glow" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 윤志</p>
+    </div>
+  </div>
+</footer>
+<script src="/scripts/main.js"></script>
+<script src="/scripts/codeblocks.js"></script>
+<script src="/scripts/axeptio.js"></script>
+</body>
+</html>

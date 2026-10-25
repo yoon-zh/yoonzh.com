@@ -735,6 +735,28 @@ NOTE: \(T_x\) from the LCM may be irrational (\(\pi, \sqrt{2}\)), but the multip
 
 <h2 id="solution-7">Solution</h2>
 
+<h3 id="1-maximum-sampling-period-t_s">1. Maximum sampling period \(T_s\)</h3>
+
+<p>The Nyquist criterion says:</p>
+
+\[f_s \geq 2f_o\]
+
+<p>Rewriting for \(T_s = 1/f_s\):</p>
+
+\[T_s \leq \frac{1}{2f_o}\]
+
+<p>Then \(T_{MAX} = \frac{1}{2f_o}\)</p>
+
+<h3 id="2-sketch-fourier-transform-of-xn-sampled-from-xt-at-frequency-f_s">2. Sketch fourier transform of \(x[n]\) sampled from \(x(t)\) at frequency \(f_s\)</h3>
+
+<p>The magnitude of \(X_n(\omega)\) is scaled by \(1/T_s\)</p>
+
+<h3 id="3-sketch-spectrum-of-output-yejomega">3. Sketch spectrum of output \(Y(e^{j\omega})\)</h3>
+
+<p>\(Y(\omega)\) is simply the values of \(X_n(\omega)\) multiplied by \(H(\omega)\). Usually the magnitude is 1, and the important part is whether H is a low pass, band or high pass. Then you only include the values of X that are within the non-zero area of H to get Y.</p>
+
+<h3 id="4-obtain-spectrum-of-reconstructed-signal-y_r-assuming-sampling-frequency-is-high-enough">4. Obtain spectrum of reconstructed signal \(y_r\) assuming sampling frequency is high enough</h3>
+
 <h2 id="example-5">Example</h2>
 
 <hr />
@@ -764,12 +786,8 @@ NOTE: \(T_x\) from the LCM may be irrational (\(\pi, \sqrt{2}\)), but the multip
 
 <p>Given:</p>
 <ul>
-  <li>
-\[x[t]\]
-  </li>
-  <li>
-\[h[t]\]
-  </li>
+  <li>Input \(x[n]\)</li>
+  <li>Impulse response \(h[n]\)</li>
 </ul>
 
 <p>Find:</p>
@@ -779,6 +797,46 @@ NOTE: \(T_x\) from the LCM may be irrational (\(\pi, \sqrt{2}\)), but the multip
 </ul>
 
 <h2 id="solution-9">Solution</h2>
+
+<h3 id="1-prepwork">1. Prepwork</h3>
+
+<p>To ensure we do it correctly, calculate the size and the starting index of the convolution result:</p>
+
+\[\text{size}_f = \text{size}_x + \text{size}_h - 1\]
+
+\[\text{first}_f = \text{first}_x + \text{first}_h\]
+
+<p>This means, the array size of the result should be the sum of x and h minus 1. And the starting index is the sum of the starting indexes of x and h.</p>
+
+<h3 id="2-linear-convolution">2. Linear convolution</h3>
+
+<p>Write x horizontally and denote its \(n = 0\) value. Under that, write h so the \(n = 0\) position matches vertically for both.</p>
+
+<p>Then multiply the h values individually with all x values, positioning them according to the h position.</p>
+
+<p>Then sum all of them vertically as array.</p>
+
+<p>The first value in the array is of the n position calculated before: \(\text{first}_f = \text{first}_x + \text{first}_h\).</p>
+
+<p>For example, say x[n] starts at n = -2, and h[n] starts at n = 0. Then the resulting array starts at n = -2 (which will be equal to \(h[0] \times x[-2]\)).</p>
+
+<h3 id="3-circular-convolution">3. Circular convolution</h3>
+
+<p>Consider the longer array between x[n] and h[n]. Take the bigger size, call it N.</p>
+
+<p>Then take the result of the linear convolution \(y[n]\) and wrap it to make it of size N. Sum the wrapping values, and keep the position of the n = 0 value fixed.</p>
+
+<p>For example, if \(y[n] = [6, -1, -9, 2, 16, -3, -4, -7, 12]\), where the first value of the array is at \(n = -2\) and we know N = 5, then:</p>
+
+\[[6, -1, -9, 2, 16]\]
+
+\[[-3, -4, -7, 12, 0]\]
+
+<p>The sum is then</p>
+
+\[y_c[n] = [3, -5, -16, 14, 16]\]
+
+<p>And the array starts at \(n = -2\) (the value of -16 is then at \(n = 0\))</p>
 
 <h2 id="example-7">Example</h2>
 
