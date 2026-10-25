@@ -5,6 +5,7 @@ title: test
 card_title: Test
 url: /projects/test
 math: true
+circuit: true
 excerpt: "Test project"
 date: 2025-02-12
 ---
@@ -19,16 +20,16 @@ puts("This is a codeblock in C");
 
 ## Why do we care about it?
 
-It shows *core functionalities* and `page styles` I have ***added*** throughout the making of the **website**.
+It shows core functionalities *and* `page styles` I have ***added*** throughout **the** making of the website.
 
 > This website is built with Jekyll, where most of the content is written in `.md` and compiled into `HTML`.
 
-- It took about 1 week to set up Jekyll
-- It is my first time using Ruby or making a website at all
+1. It took about 1 week to set up Jekyll
+2. It is my first time using Ruby or making a website at all
 
 ***
 
-This project is ***open source*** -> check it [here](https://github.com/yoon-zh/yoonzh.com "My website in GitHub")
+This project is open source, check it [here](https://github.com/yoon-zh/yoonzh.com "https://github.com/yoon-zh/yoonzh.com")
 
 [Writing in `.md`][1] 
 
@@ -38,8 +39,13 @@ This project is ***open source*** -> check it [here](https://github.com/yoon-zh/
 | **Row 2** | Cell         | Cell         | Cell         |
 | **Row 3** | Cell         | Cell         | Cell         |
 
+### Test circuit
+
+{% include circuit.html id="npn-cc" from_data=true %}
 
 [Go to top](#what-is-it)
+
+***
 
 [1]: https://www.markdownguide.org/basic-syntax/
 <!--Written by Jorge Porras (2025)-->
