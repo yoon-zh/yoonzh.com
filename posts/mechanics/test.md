@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: hidden
 title: test
 card_title: "test"
 math: true

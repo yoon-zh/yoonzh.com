@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: hidden
 title: planets
 card_title: "Planets to send a robot"
 url: /posts/space/planets

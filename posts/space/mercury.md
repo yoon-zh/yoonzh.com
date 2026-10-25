@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: hidden
 title: mercury
 card_title: "Mercury"
 url: /posts/space/mercury
